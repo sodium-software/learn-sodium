@@ -70,4 +70,4 @@ PY
 
 echo
 echo "Para usarlo en esta terminal:"
-echo 'export CLOUDFLARE_API_TOKEN="$(grep oauth_token ~/.config/.wrangler/config/default.toml | sed \'s/.*= "//; s/"//\')"'
+echo "export CLOUDFLARE_API_TOKEN=\"\$(grep oauth_token ~/.config/.wrangler/config/default.toml | sed 's/.*= \"//; s/\"//')\""
