@@ -1,0 +1,64 @@
+name: Desplegar en Cloudflare Pages
+
+# Alternativa a la integración de Git de Cloudflare: cada push a `main`
+# compila y publica en el proyecto `learn-sodium`.
+#
+# Requiere un secreto de repositorio con un token de API de Cloudflare que
+# tenga permiso "Cloudflare Pages: Edit" sobre la cuenta 27a1784f9b6d99639db1e2ac1288cb26.
+# Crear el token: https://dash.cloudflare.com/profile/api-tokens
+#
+#   gh secret set CLOUDFLARE_API_TOKEN --repo sodium-software/learn-sodium
+#
+# Si prefieres la integración nativa de Cloudflare (sin secretos), borra este
+# archivo y conecta el repositorio desde el panel de Pages.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Compilar y publicar
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 27a1784f9b6d99639db1e2ac1288cb26
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar tipos y reglas
+        run: |
+          npm run typecheck
+          npm run lint
+
+      - name: Compilar
+        run: npm run build
+
+      - name: Verificar el multimedia
+        run: npm run test:media
+
+      - name: Publicar en Cloudflare Pages
+        run: npx wrangler@4 pages deploy dist --project-name learn-sodium --branch main
+
+      - name: Comprobar el despliegue
+        run: |
+          sleep 20
+          curl -sSf -o /dev/null -w "raíz: %{http_code}\n" https://learn-sodium.pages.dev/
+          curl -sSf -o /dev/null -w "ruta interna: %{http_code}\n" \
+            https://learn-sodium.pages.dev/activities/act-quiz-roads
