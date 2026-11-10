@@ -1,0 +1,585 @@
+{
+  "songs": [
+    {
+      "id": "counting-the-miles",
+      "title": "Counting the Miles",
+      "artist": "The Cartilla Sessions",
+      "level": "A2",
+      "mood": "Ruta larga, ventanas abiertas, melancolía que avanza",
+      "summary": "Una canción sobre viajes por carretera y todo lo que uno cuenta en el camino. El vocabulario gira en torno a distancias, velocidad y las decisiones que se toman mirando el horizonte.",
+      "cover": "counting-the-miles",
+      "audio": "/media/audio/counting-the-miles.mp3",
+      "bed": "route",
+      "lyrics": [
+        {
+          "text": "Counting the miles from the passenger seat",
+          "note": "Contando las millas desde el asiento del acompañante",
+          "keywords": [
+            "miles",
+            "passenger seat"
+          ]
+        },
+        {
+          "text": "Every sign a promise I don't read",
+          "note": "Cada señal una promesa que no leo",
+          "keywords": [
+            "sign",
+            "promise"
+          ]
+        },
+        {
+          "text": "The horizon leans and the radio hums",
+          "note": "El horizonte se inclina y la radio zumba",
+          "keywords": [
+            "horizon",
+            "hums"
+          ]
+        },
+        {
+          "text": "A pocket full of nowhere to go",
+          "note": "Un bolsillo lleno de ningún sitio adonde ir",
+          "keywords": [
+            "pocket",
+            "nowhere"
+          ]
+        },
+        {
+          "text": "I count the miles that the road has kept",
+          "note": "Cuento las millas que el camino ha guardado",
+          "keywords": [
+            "count",
+            "road"
+          ]
+        },
+        {
+          "text": "Every one of them a promise I forgot",
+          "note": "Cada una, una promesa que olvidé",
+          "keywords": [
+            "forgot"
+          ]
+        },
+        {
+          "text": "The coffee's cold and the window's white",
+          "note": "El café está frío y la ventana es blanca",
+          "keywords": [
+            "cold",
+            "window"
+          ]
+        },
+        {
+          "text": "And somewhere north a town I used to know",
+          "note": "Y al norte, un pueblo que solía conocer",
+          "keywords": [
+            "town",
+            "used to"
+          ]
+        },
+        {
+          "text": "I count the miles in the passenger seat",
+          "note": "Cuento las millas en el asiento del acompañante",
+          "keywords": [
+            "miles"
+          ]
+        },
+        {
+          "text": "And leave the ones I never will regret",
+          "note": "Y dejo las que nunca lamentaré",
+          "keywords": [
+            "regret"
+          ]
+        },
+        {
+          "text": "Every mile is a door I haven't opened",
+          "note": "Cada milla es una puerta que no he abierto",
+          "keywords": [
+            "door",
+            "haven't opened"
+          ]
+        },
+        {
+          "text": "Every mile is a song I haven't written",
+          "note": "Cada milla es una canción que no he escrito",
+          "keywords": [
+            "written"
+          ]
+        }
+      ],
+      "glossary": [
+        {
+          "term": "mile",
+          "translation": "milla",
+          "definition": "A unit of distance equal to 1,609 metres, used in the United Kingdom and the United States.",
+          "example": "We drove three hundred miles before the rain started."
+        },
+        {
+          "term": "horizon",
+          "translation": "horizonte",
+          "definition": "The line where the earth meets the sky, seen from a high place or a moving vehicle.",
+          "example": "The horizon disappeared behind the hills."
+        },
+        {
+          "term": "to count on someone",
+          "translation": "contar con alguien",
+          "definition": "To rely on a person or a thing to help you.",
+          "example": "You can always count on your brother."
+        },
+        {
+          "term": "to regret",
+          "translation": "arrepentirse de",
+          "definition": "To feel sorry about a choice you made, especially because you wish you had chosen differently.",
+          "example": "I don't regret learning to play the guitar."
+        },
+        {
+          "term": "passenger seat",
+          "translation": "asiento del acompañante",
+          "definition": "The seat next to the driver of a vehicle.",
+          "example": "She shifted to the passenger seat to read the map."
+        }
+      ],
+      "highlights": [
+        {
+          "id": "h-ctm-1",
+          "label": "The horizon leans",
+          "start": 0,
+          "end": 0,
+          "note": "La imagen central de la canción: la ligera movimiento del mundo mientras el carro avanza."
+        },
+        {
+          "id": "h-ctm-2",
+          "label": "Every mile is a door",
+          "start": 0,
+          "end": 0,
+          "note": "El final convierte la distancia en posibilidades, no en kilómetros perdidos."
+        },
+        {
+          "id": "h-ctm-3",
+          "label": "A pocket full of nowhere",
+          "note": "Expresión útil: hablar de propósito sin decirlo directamente."
+        }
+      ],
+      "relatedActivityIds": [
+        "act-vocab-roads",
+        "act-quiz-roads",
+        "act-listening-roads"
+      ]
+    },
+    {
+      "id": "paper-boats",
+      "title": "Paper Boats",
+      "artist": "The Cartilla Sessions",
+      "level": "A1",
+      "mood": "Infantil, limpio, con agua debajo",
+      "summary": "La letra más sencilla del catálogo y la mejor puerta de entrada: verbos básicos del agua, objetos de una mesa y una sola idea repetida con variaciones.",
+      "cover": "paper-boats",
+      "audio": "/media/audio/paper-boats.mp3",
+      "bed": "water",
+      "lyrics": [
+        {
+          "text": "Fold the paper, fold it twice",
+          "note": "Dobla el papel, dobla dos veces",
+          "keywords": [
+            "fold"
+          ]
+        },
+        {
+          "text": "Put a hat on top and watch it fly",
+          "note": "Ponle un sombrero arriba y míralo volar",
+          "keywords": [
+            "watch"
+          ]
+        },
+        {
+          "text": "Down the steps and down the rain",
+          "note": "Abajo por los escalones y bajo la lluvia",
+          "keywords": [
+            "down",
+            "rain"
+          ]
+        },
+        {
+          "text": "Little boats that come again",
+          "note": "Barquitos que vuelven otra vez",
+          "keywords": [
+            "again"
+          ]
+        },
+        {
+          "text": "Take the page and fold it well",
+          "note": "Toma la hoja y dóblala bien",
+          "keywords": [
+            "take",
+            "well"
+          ]
+        },
+        {
+          "text": "Send it off where waters swell",
+          "note": "Envíala donde el agua se hincha",
+          "keywords": [
+            "send",
+            "swell"
+          ]
+        },
+        {
+          "text": "Fold the paper, fold it twice",
+          "note": "Dobla el papel, dobla dos veces",
+          "keywords": [
+            "fold"
+          ]
+        },
+        {
+          "text": "Every child is worth a chance",
+          "note": "Cada niño merece una oportunidad",
+          "keywords": [
+            "worth",
+            "chance"
+          ]
+        },
+        {
+          "text": "Down the steps and down the rain",
+          "note": "Abajo por los escalones y bajo la lluvia",
+          "keywords": [
+            "rain"
+          ]
+        },
+        {
+          "text": "Little boats that come again",
+          "note": "Barquitos que vuelven otra vez",
+          "keywords": [
+            "again"
+          ]
+        }
+      ],
+      "glossary": [
+        {
+          "term": "to fold",
+          "translation": "doblar",
+          "definition": "To bend a piece of paper or cloth so that one part lies on another.",
+          "example": "Fold the letter before you put it in the envelope."
+        },
+        {
+          "term": "to swell",
+          "translation": "hincharse",
+          "definition": "To become larger and rounder, especially of water.",
+          "example": "The river swells after the heavy rain."
+        },
+        {
+          "term": "worth a chance",
+          "translation": "merecer la pena",
+          "definition": "An expression meaning something is good enough to be tried.",
+          "example": "The exam was hard but it was worth a chance."
+        },
+        {
+          "term": "to come again",
+          "translation": "volver",
+          "definition": "To return, especially something that happens repeatedly.",
+          "example": "The rain always comes again in November."
+        }
+      ],
+      "highlights": [
+        {
+          "id": "h-pb-1",
+          "label": "Fold the paper, fold it twice",
+          "note": "El motivo que se repite: dos acciones simples que se vuelven canción."
+        },
+        {
+          "id": "h-pb-2",
+          "label": "Every child is worth a chance",
+          "note": "El único mensaje explícito de la letra. Buen fragmento para leer en voz alta."
+        }
+      ],
+      "relatedActivityIds": [
+        "act-vocab-water",
+        "act-fill-water",
+        "act-quiz-water"
+      ]
+    },
+    {
+      "id": "morning-market",
+      "title": "Morning Market",
+      "artist": "The Cartilla Sessions",
+      "level": "B1",
+      "mood": "Rápido, bullicioso, con el golpe de las cajas",
+      "summary": "Una canción de mercado: precios, cantidades, negotiaciones y el ritmo de una jornada que empieza antes que el sol.",
+      "cover": "morning-market",
+      "audio": "/media/audio/morning-market.mp3",
+      "bed": "market",
+      "lyrics": [
+        {
+          "text": "Six in the morning and the crates arrive",
+          "note": "Las seis de la mañana y llegan las cajas",
+          "keywords": [
+            "crates",
+            "arrive"
+          ]
+        },
+        {
+          "text": "Someone is stacking them against the wall",
+          "note": "Alguien las apila contra la pared",
+          "keywords": [
+            "stacking",
+            "against"
+          ]
+        },
+        {
+          "text": "First of the season and the best of it all",
+          "note": "Lo primero de la temporada y lo mejor de todo",
+          "keywords": [
+            "season"
+          ]
+        },
+        {
+          "text": "Two for a pound and I'll take the whole crate",
+          "note": "Dos por una libra y me llevo la caja entera",
+          "keywords": [
+            "crate",
+            "whole"
+          ]
+        },
+        {
+          "text": "Hey, you want these or you want those?",
+          "note": "Oye, ¿quieres estos o quieres aquellos?",
+          "keywords": [
+            "those"
+          ]
+        },
+        {
+          "text": "Money changes hands and the morning grows",
+          "note": "El dinero cambia de manos y la mañana crece",
+          "keywords": [
+            "grows"
+          ]
+        },
+        {
+          "text": "Everything here has a story to sell",
+          "note": "Todo aquí tiene una historia que vender",
+          "keywords": [
+            "story",
+            "sell"
+          ]
+        },
+        {
+          "text": "You can ask the seller how it used to be",
+          "note": "Puedes preguntarle al vendedor cómo era antes",
+          "keywords": [
+            "seller",
+            "used to be"
+          ]
+        },
+        {
+          "text": "Six in the morning and the light is thin",
+          "note": "Las seis de la mañana y la luz es fina",
+          "keywords": [
+            "light",
+            "thin"
+          ]
+        },
+        {
+          "text": "By eight o'clock the whole street is in",
+          "note": "A las ocho toda la calle está dentro",
+          "keywords": [
+            "whole street"
+          ]
+        },
+        {
+          "text": "Buy it while it's cheap, come back at noon",
+          "note": "Cómpralo mientras está barato, vuelve al mediodía",
+          "keywords": [
+            "cheap",
+            "noon"
+          ]
+        },
+        {
+          "text": "The best of the market is gone by then",
+          "note": "Lo mejor del mercado para entonces ya se fue",
+          "keywords": [
+            "market",
+            "gone"
+          ]
+        }
+      ],
+      "glossary": [
+        {
+          "term": "crate",
+          "translation": "caja",
+          "definition": "A large box, usually wooden, used for carrying fruit, vegetables or other goods.",
+          "example": "The crate of apples weighs twenty kilos."
+        },
+        {
+          "term": "to stack",
+          "translation": "apilar",
+          "definition": "To put things on top of each other in an organised pile.",
+          "example": "They stack the empty crates by the door."
+        },
+        {
+          "term": "money changes hands",
+          "translation": "el dinero cambia de manos",
+          "definition": "An expression meaning a payment is made, from one person to another.",
+          "example": "Money changes hands quickly at a busy market."
+        },
+        {
+          "term": "thin (light)",
+          "translation": "tenue (la luz)",
+          "definition": "Describing light that is pale or weak, usually early in the morning.",
+          "example": "The thin light of dawn comes through the shutters."
+        }
+      ],
+      "highlights": [
+        {
+          "id": "h-mm-1",
+          "label": "Two for a pound",
+          "note": "El núcleo negociador de la letra: precio, cantidad y decisión en una línea."
+        },
+        {
+          "id": "h-mm-2",
+          "label": "Everything here has a story to sell",
+          "note": "Metáfora comercial: el producto también vende un relato."
+        }
+      ],
+      "relatedActivityIds": [
+        "act-vocab-market",
+        "act-quiz-market",
+        "act-matching-market"
+      ]
+    },
+    {
+      "id": "the-long-way-round",
+      "title": "The Long Way Round",
+      "artist": "The Cartilla Sessions",
+      "level": "B2",
+      "mood": "Contemplativo, con resignación y un fondo de esperanza",
+      "summary": "La pieza más demanding del catálogo. Trabaja tiempos verbales, conectores y un contenido abstracto: los desvíos que termina siendo el camino correcto.",
+      "cover": "the-long-way-round",
+      "audio": "/media/audio/the-long-way-round.mp3",
+      "bed": "longway",
+      "lyrics": [
+        {
+          "text": "I had taken the road that everyone praised",
+          "note": "Había tomado la carretera que todos elogiaban",
+          "keywords": [
+            "praised"
+          ]
+        },
+        {
+          "text": "And I had reasons, and I had been certain",
+          "note": "Y tenía razones, y estaba seguro",
+          "keywords": [
+            "certain"
+          ]
+        },
+        {
+          "text": "But the long way round is the way that stays",
+          "note": "Pero el camino largo es el que se queda",
+          "keywords": [
+            "stays"
+          ]
+        },
+        {
+          "text": "Because it taught me what the river knows",
+          "note": "Porque me enseñó lo que sabe el río",
+          "keywords": [
+            "taught"
+          ]
+        },
+        {
+          "text": "If you had asked me, I would have said no",
+          "note": "Si me hubieras preguntado, habría dicho que no",
+          "keywords": [
+            "would have said"
+          ]
+        },
+        {
+          "text": "If you had asked me, I would have gone",
+          "note": "Si me hubieras preguntado, habría ido",
+          "keywords": [
+            "would have gone"
+          ]
+        },
+        {
+          "text": "But nobody asked, and here I am",
+          "note": "Pero nadie preguntó, y aquí estoy",
+          "keywords": [
+            "nobody"
+          ]
+        },
+        {
+          "text": "With dust on my shoes and dust on my hands",
+          "note": "Con polvo en los zapatos y polvo en las manos",
+          "keywords": [
+            "dust"
+          ]
+        },
+        {
+          "text": "The long way round is the way that stays",
+          "note": "El camino largo es el que se queda",
+          "keywords": [
+            "long way round"
+          ]
+        },
+        {
+          "text": "And what the river knows, I know as well",
+          "note": "Y lo que sabe el río, lo sé también",
+          "keywords": [
+            "as well"
+          ]
+        },
+        {
+          "text": "I had taken the road that everyone praised",
+          "note": "Había tomado la carretera que todos elogiaban",
+          "keywords": [
+            "praised"
+          ]
+        },
+        {
+          "text": "And it led me here, and it led me well",
+          "note": "Y me trajo aquí, y me trajo bien",
+          "keywords": [
+            "led"
+          ]
+        }
+      ],
+      "glossary": [
+        {
+          "term": "the long way round",
+          "translation": "el camino largo",
+          "definition": "A longer route taken instead of a direct one, often used figuratively for a longer path to reach a goal.",
+          "example": "We took the long way round to avoid the traffic."
+        },
+        {
+          "term": "to praise",
+          "translation": "elogiar",
+          "definition": "To say that something or someone is very good, especially in public.",
+          "example": "Everyone praised the design of the new library."
+        },
+        {
+          "term": "certain",
+          "translation": "seguro",
+          "definition": "Sure that something is true, without any doubt.",
+          "example": "She was certain that she had left the book at home."
+        },
+        {
+          "term": "to lead somewhere",
+          "translation": "llevar a",
+          "definition": "To show the way to a place or to a result.",
+          "example": "That decision led him to a job abroad."
+        }
+      ],
+      "highlights": [
+        {
+          "id": "h-lwr-1",
+          "label": "If you had asked me",
+          "note": "Tercer condicional completo en dos versos consecutivos. Fragmento clave para la práctica de condicionales."
+        },
+        {
+          "id": "h-lwr-2",
+          "label": "The long way round is the way that stays",
+          "note": "El estribillo: la idea que da nombre a la canción."
+        }
+      ],
+      "relatedActivityIds": [
+        "act-vocab-roads",
+        "act-fill-conditionals",
+        "act-quiz-roads"
+      ]
+    }
+  ]
+}

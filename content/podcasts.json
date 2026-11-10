@@ -1,0 +1,255 @@
+{
+  "episodes": [
+    {
+      "id": "the-practice-room-ep1",
+      "title": "How to shadow a song",
+      "show": "The Practice Room",
+      "level": "A2",
+      "cover": "the-practice-room",
+      "summary": "El episodio piloto: por qué cantarle una canción en inglés funciona mejor que repetirla en silencio, y cómo hacer shadowing en cinco pasos que aguantan quince minutos.",
+      "segments": [
+        { "speaker": "Nina", "start": 0, "text": "Welcome to The Practice Room. I'm Nina. Today we are going to do something that looks lazy and is not: we are going to sing along with a song in English, badly, and that is the point." },
+        { "speaker": "Nina", "start": 0, "text": "Most learners try to understand a song first. They listen, they look up every word, they try to translate the whole thing, and by the time they have understood it, they have lost the thread. Understanding a song is not the first step. Singing it is." },
+        { "speaker": "Nina", "start": 0, "text": "Here is the method. Five steps, fifteen minutes. First, listen once without the text. Just hear the shape of it. Notice where the music goes up and where it comes down." },
+        { "speaker": "Nina", "start": 0, "text": "Second, read the lyrics with your finger under the line. Not out loud yet. Your eye needs to find the lines first, because your mouth is going to have to find them later." },
+        { "speaker": "Nina", "start": 0, "text": "Third, sing. Badly. Nobody is listening. You are not singing for accuracy, you are singing for timing. You are training your mouth to arrive at the same moment as the singer." },
+        { "speaker": "Nina", "start": 0, "text": "Fourth, shadow. Now you follow the voice in real time, half a word behind, like a shadow. This is the hard part and it is the useful part. It trains your ear and your mouth at the same time." },
+        { "speaker": "Nina", "start": 0, "text": "And fifth, one line only. Pick the single line you liked best and sing it ten times until it is yours. Not the song. The line." },
+        { "speaker": "Nina", "start": 0, "text": "That is the whole method. Notice what is not in it: no dictionary, no grammar, no app that tells you your pronunciation was wrong. You need about fifteen minutes and a song you already like." },
+        { "speaker": "Nina", "start": 0, "text": "Try it now with Counting the Miles. Start with the first step: one listen, no text. Then come back and tell me how it went." }
+      ],
+      "keyTerms": [
+        { "term": "shadowing", "translation": "sombreado / seguimiento", "definition": "Repeating what a speaker says a fraction of a second after them, to practise rhythm and pronunciation together.", "example": "Shadowing is the technique used in this episode." },
+        { "term": "to arrive at", "translation": "llegar a", "definition": "To reach a place or a moment, especially in time.", "example": "Your mouth must arrive at the word with the music." },
+        { "term": "shape (of a song)", "translation": "forma (de una canción)", "definition": "The general contour of a piece of music, which rises and falls.", "example": "Listen for the shape of the song before the words." },
+        { "term": "a line of a song", "translation": "un verso", "definition": "One row of words in a song, between two musical phrases.", "example": "She sang one line of the chorus over and over." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-pr1-1",
+          "prompt": "¿Cuál es el error más común según el episodio?",
+          "options": [
+            { "id": "a", "text": "Cantar en voz baja." },
+            { "id": "b", "text": "Intentar entender la canción antes de cantarla." },
+            { "id": "c", "text": "Escucharla demasiadas veces." },
+            { "id": "d", "text": "Usar un diccionario." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "El episodio dice que entender una canción no es el primer paso: cantarla es el primero."
+        },
+        {
+          "id": "q-pr1-2",
+          "prompt": "What is the goal of the third step, singing badly?",
+          "options": [
+            { "id": "a", "text": "To sing the song correctly from the first try." },
+            { "id": "b", "text": "To train timing, not accuracy." },
+            { "id": "c", "text": "To memorise every word." },
+            { "id": "d", "text": "To find out who wrote the song." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Dice: «You are singing for timing. You are training your mouth to arrive at the same moment as the singer.»"
+        },
+        {
+          "id": "q-pr1-3",
+          "prompt": "¿Qué se trabaja en el cuarto paso, el shadowing?",
+          "options": [
+            { "id": "a", "text": "Solo el oído." },
+            { "id": "b", "text": "Solo la pronunciación." },
+            { "id": "c", "text": "El oído y la boca a la vez." },
+            { "id": "d", "text": "La gramática y el vocabulario." }
+          ],
+          "correctOptionId": "c",
+          "explanation": "«It trains your ear and your mouth at the same time.»"
+        }
+      ]
+    },
+    {
+      "id": "el-sonido-del-cafe-ep1",
+      "title": "How coffee tastes of where it grows",
+      "show": "El Sonido del Café",
+      "level": "B1",
+      "cover": "el-sonido-del-cafe",
+      "summary": "Un episodio de historia del café: por qué el sabor de una taza depende de la altura, el clima y las manos que la cosechan, contado desde una finca en el eje cafetero.",
+      "segments": [
+        { "speaker": "Lucía", "start": 0, "text": "Hello, and welcome to El Sonido del Café. I'm Lucía, and today we are going to taste a place without tasting it. We are going to talk about how a coffee bean can taste of the hill it grew on." },
+        { "speaker": "Lucía", "start": 0, "text": "Picture a farm in the coffee-growing region of Colombia. The farm is not flat. It is a set of steep green slopes, and at the top of each slope the temperature is a little cooler than at the bottom." },
+        { "speaker": "Lucía", "start": 0, "text": "That difference of a few degrees is enough to change the bean. The cold nights slow the ripening, so the seed inside stays small and sweet, and the fruit around it turns a deep red. Those red fruits are called cherries, even though they are not fruit at all." },
+        { "speaker": "Lucía", "start": 0, "text": "Now the harvest. In Colombia most coffee is picked by hand, and this is not nostalgia. A machine can strip a branch in two seconds, but it takes the ripe cherries and the green ones together." },
+        { "speaker": "Lucía", "start": 0, "text": "So pickers walk the rows, and they look. They look for the colour, they feel the weight, and they take only what is right. A good picker can pick about sixty kilos of cherries in a day, and they can tell you the name of every farm on the slope." },
+        { "speaker": "Lucía", "start": 0, "text": "That name matters. Single-origin coffee is not a marketing word invented last year. It is an old promise: this cup came from this farm, this family, this hillside, in this year." },
+        { "speaker": "Lucía", "start": 0, "text": "And the last thing is the drying. The beans leave the farm as mucilage, a sticky layer like honey, and they are dried on patios or in parabolic beds under the sun for up to two weeks." },
+        { "speaker": "Lucía", "start": 0, "text": "During that time, whoever turns the beans is making decisions. Too much sun and they bake. Too little and they mould. A good worker reads the humidity in the afternoon and decides how thick to spread the layer." },
+        { "speaker": "Lucía", "start": 0, "text": "So when you drink a coffee that tastes of chocolate, or of orange, or of nothing in particular, none of that happened in your kitchen. It happened on a slope, in a season, in the hands of somebody you will never meet." }
+      ],
+      "keyTerms": [
+        { "term": "slope", "translation": "ladera", "definition": "A steep or gentle inclined surface of land.", "example": "The coffee grows on the slopes above the river." },
+        { "term": "to ripen", "translation": "madurar", "definition": "To become ripe and ready to be picked, especially fruit.", "example": "The cherries ripen slowly at high altitude." },
+        { "term": "single-origin", "translation": "de origen único", "definition": "Coffee that comes from one farm or region rather than being blended.", "example": "This bag is a single-origin from Huila." },
+        { "term": "to strip a branch", "translation": "despojar una rama", "definition": "To remove all the fruit from a branch quickly and roughly.", "example": "The machine strips the branch in seconds." },
+        { "term": "humidity", "translation": "humedad", "definition": "The amount of water vapour in the air.", "example": "The humidity in the afternoon decides how they spread the beans." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-sdc-1",
+          "prompt": "¿Por qué las noches frías en las partes altas mejoran el café?",
+          "options": [
+            { "id": "a", "text": "Porque la semilla se mantiene pequeña y dulce." },
+            { "id": "b", "text": "Porque las plantas reciben más sol." },
+            { "id": "c", "text": "Porque el café se seca más rápido." },
+            { "id": "d", "text": "Porque los trabajadores pueden trabajar más rápido." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "El frío ralentiza la maduración, así que la semilla se queda pequeña y dulce."
+        },
+        {
+          "id": "q-sdc-2",
+          "prompt": "Why is hand-picking better than machine harvesting?",
+          "options": [
+            { "id": "a", "text": "It is cheaper for the farm." },
+            { "id": "b", "text": "It is faster in the dry season." },
+            { "id": "c", "text": "Machines take ripe and unripe cherries together." },
+            { "id": "d", "text": "Machines damage the branches." }
+          ],
+          "correctOptionId": "c",
+          "explanation": "Una máquina quita los cerezas maduras y las verdes a la vez; quien recoge a mano escoge."
+        },
+        {
+          "id": "q-sdc-3",
+          "prompt": "¿Qué problema produce demasiado sol durante el secado?",
+          "options": [
+            { "id": "a", "text": "Que los granos se cuecen." },
+            { "id": "b", "text": "Que los granos se humedecen." },
+            { "id": "c", "text": "Que la capa queda demasiado fina." },
+            { "id": "d", "text": "Que se pierde la mucílago." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "«Too much sun and they bake.» Demasiado sol y se hornean."
+        }
+      ]
+    },
+    {
+      "id": "focus-and-noise-ep1",
+      "title": "Working in a loud place",
+      "show": "The Practice Room",
+      "level": "B2",
+      "cover": "focus-and-noise",
+      "summary": "Un episodio sobre el ruido: por qué las oficinas abiertas inspiran a algunas personas y las destruyen a otras, y qué hacer cuando no puedes cambiar de sitio.",
+      "segments": [
+        { "speaker": "Nina", "start": 0, "text": "This is episode two of The Practice Room, and today we are talking about noise, which is either the best thing that has ever happened to your focus or the worst." },
+        { "speaker": "Nina", "start": 0, "text": "There is a well-known experiment from the nineties about this. Two groups of people did the same task. One group worked in silence and one worked with noise. The noisy group performed better on dull tasks and much worse on tasks that needed thought." },
+        { "speaker": "Nina", "start": 0, "text": "That is the whole story, really. Noise is not good or bad for your brain. It is good for one kind of work and terrible for another, and the mistake is using the wrong tool for the job." },
+        { "speaker": "Nina", "start": 0, "text": "So if you are doing something repetitive, something mechanical, something where your hands are busy and the decision-making is small, then background noise can carry you a long way. The music becomes a rhythm for the hands." },
+        { "speaker": "Nina", "start": 0, "text": "But if you are writing an argument, learning a language, or reading something you do not fully understand, then noise eats the part of your attention that holds the sentence in place. You read the line three times and still lose it at the end." },
+        { "speaker": "Nina", "start": 0, "text": "Here is what works if you cannot change your room. First, separate the noise from the task with headphones. Even headphones with no music playing will cut the sharp edges, and you can use the music at a volume low enough to disappear." },
+        { "speaker": "Nina", "start": 0, "text": "Second, give the hard task a fixed place and a fixed time. People protect what has a slot in the calendar much better than what is supposed to happen whenever there is a gap." },
+        { "speaker": "Nina", "start": 0, "text": "And third, keep one sound for one kind of work. If the same music plays while you write and while you rest, you stop learning what it means. Give the studying its own sound and the resting its own silence." }
+      ],
+      "keyTerms": [
+        { "term": "dull task", "translation": "tarea mecánica", "definition": "A task that needs attention but little thought.", "example": "Folding laundry is a dull task." },
+        { "term": "to eat (attention)", "translation": "consumir (atención)", "definition": "To use up a resource such as attention, so that less of it remains.", "example": "Background noise eats the attention needed to hold a sentence." },
+        { "term": "a gap", "translation": "un hueco", "definition": "An empty period of time between other commitments.", "example": "Studying in whatever gap appears rarely works." },
+        { "term": "to cut the edges", "translation": "cortar los bordes", "definition": "To reduce the sharpness or intensity of something.", "example": "Headphones cut the sharp edges of a noisy room." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-fn-1",
+          "prompt": "¿Cuál fue el hallazgo del experimento de los noventa?",
+          "options": [
+            { "id": "a", "text": "El ruido mejoraba todas las tareas." },
+            { "id": "b", "text": "El ruido ayudaba en tareas mecánicas y perjudicaba en las que exigían pensar." },
+            { "id": "c", "text": "El silencio siempre era mejor." },
+            { "id": "d", "text": "El ruido mejoraba sólo a los estudiantes." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "El grupo ruidoso rindió mejor en tareas mecánicas y mucho peor en las que necesitaban pensamiento."
+        },
+        {
+          "id": "q-fn-2",
+          "prompt": "According to the episode, why do headphones help even with no music playing?",
+          "options": [
+            { "id": "a", "text": "They cut the sharp edges of the noise." },
+            { "id": "b", "text": "They make the room warmer." },
+            { "id": "c", "text": "They make you work faster by hiding your screen." },
+            { "id": "d", "text": "They block all sounds completely." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "«Even headphones with no music playing will cut the sharp edges.»"
+        },
+        {
+          "id": "q-fn-3",
+          "prompt": "¿Por qué conviene un sonido distinto para estudiar y para descansar?",
+          "options": [
+            { "id": "a", "text": "Porque si no, dejas de aprender qué significa ese sonido." },
+            { "id": "b", "text": "Porque el descansar necesita música lenta." },
+            { "id": "c", "text": "Porque las oraciones duran menos con ruido." },
+            { "id": "d", "text": "Porque el cerebro olvida los sonidos en dos semanas." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "«If the same music plays while you write and while you rest, you stop learning what it means.»"
+        }
+      ]
+    },
+    {
+      "id": "cosas-del-metro-ep1",
+      "title": "Things you learn on the metro",
+      "show": "Cosas del Metro",
+      "level": "A2",
+      "cover": "cosas-del-metro",
+      "summary": "Un episodio sobre el transporte público como aula accidental: las palabras que sólo aprendes cuando viajas todos los días, y por qué una frase said on a platform is easier to remember than one in a textbook.",
+      "segments": [
+        { "speaker": "Andrés", "start": 0, "text": "Welcome to Cosas del Metro. I am Andrés, and this week: the words you only learn when you travel. Every day, for a year, on the same line." },
+        { "speaker": "Andrés", "start": 0, "text": "Nobody teaches you the vocabulary of a station. You learn it because you need it. The announcement says the name of the next station and you want to know whether you have to get up now or two stops later." },
+        { "speaker": "Andrés", "start": 0, "text": "So you learn 'the next stop'. You learn 'the last stop', because the driver says it at the end of the line and you finally know where you are. You learn 'connection', which in English is 'transfer'." },
+        { "speaker": "Andrés", "start": 0, "text": "And you learn the small politeness of a shared space. 'Excuse me.' 'Sorry, is this seat taken?' You learn them standing up, with your bag on your shoulder, and they stick in a way that a classroom sentence never does." },
+        { "speaker": "Andrés", "start": 0, "text": "Then there is the vocabulary of delay. When the line stops for four minutes with no announcement, people look around. And then somebody says, in a voice that is not really a question: 'Is it running?'" },
+        { "speaker": "Andrés", "start": 0, "text": "Four words, one grammatical mistake, and a completely different meaning. 'Is it running' means 'is it moving again'. 'Is it running' does not mean 'is the service operating'. In English, a small wrong word can change the whole question." },
+        { "speaker": "Andrés", "start": 0, "text": "I do not think teachers should stop using textbooks. But I do think a language is also the set of words a city hands you for free, every morning, whether you are ready or not." },
+        { "speaker": "Andrés", "start": 0, "text": "So the exercise for this week is simple. On your next trip, write down ten words you did not know on Monday. Ten is enough. Then use five of them badly tonight, in a sentence about your day." }
+      ],
+      "keyTerms": [
+        { "term": "the next stop", "translation": "la próxima parada", "definition": "The station that comes immediately after the one you are at.", "example": "The next stop is where you have to change." },
+        { "term": "transfer (connection)", "translation": "transbordar / conexión", "definition": "To change from one line or vehicle to another during a journey.", "example": "You transfer at Central Station." },
+        { "term": "to be taken (a seat)", "translation": "estar ocupado", "definition": "To be occupied by somebody.", "example": "Sorry, is this seat taken?" },
+        { "term": "delay", "translation": "retraso", "definition": "A period of time when something happens later than expected.", "example": "There was a ten-minute delay on the line." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-cm-1",
+          "prompt": "According to Andrés, why do we learn station vocabulary so easily?",
+          "options": [
+            { "id": "a", "text": "Because teachers explain it carefully." },
+            { "id": "b", "text": "Because we need it, every single day." },
+            { "id": "c", "text": "Because it appears in exams." },
+            { "id": "d", "text": "Because it is written on the walls." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "«Nobody teaches you the vocabulary of a station. You learn it because you need it.»"
+        },
+        {
+          "id": "q-cm-2",
+          "prompt": "What does 'Is it running?' mean in the episode?",
+          "options": [
+            { "id": "a", "text": "Is the service operating?" },
+            { "id": "b", "text": "Is it moving again?" },
+            { "id": "c", "text": "Should I run?" },
+            { "id": "d", "text": "Is the train late?" }
+          ],
+          "correctOptionId": "b",
+          "explanation": "En el episodio, 'Is it running' significa «¿se mueve ya?», no «¿funciona el servicio?»."
+        },
+        {
+          "id": "q-cm-3",
+          "prompt": "¿Cuál es el ejercicio de la semana?",
+          "options": [
+            { "id": "a", "text": "Leer un texto en voz alta." },
+            { "id": "b", "text": "Escribir diez palabras desconocidas y usar cinco mal a propósito." },
+            { "id": "c", "text": "Grabar un podcast propio." },
+            { "id": "d", "text": "Repetir el episodio cinco veces." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "«Write down ten words you did not know on Monday... Then use five of them badly tonight, in a sentence about your day.»"
+        }
+      ]
+    }
+  ]
+}

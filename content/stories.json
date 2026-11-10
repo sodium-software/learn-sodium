@@ -1,0 +1,276 @@
+{
+  "stories": [
+    {
+      "id": "cartographers-apprentice",
+      "title": "The Cartographer's Apprentice",
+      "author": "The Cartilla Sessions",
+      "level": "B1",
+      "readingTime": 7,
+      "cover": "cartographers-apprentice",
+      "summary": "Un aprendiz de cartógrafo recibe la tarea imposible de dibujar un lugar que todavía no existe. Una historia sobre mapas, errores y la diferencia entre medir y comprender.",
+      "intro": "En el taller de cartografía de la calle Aldana, los mapas se dibujaban a mano y cada error se corregía con tinta roja. A los diecisiete años, Nilo creyó que corregir era la única manera de dibujar bien.",
+      "chapters": [
+        {
+          "id": "ch-1",
+          "title": "The workshop on Aldana Street",
+          "paragraphs": [
+            "The workshop smelled of ink and paper that had dried too many times. Nilo's master, Doña Irene, had drawn coastlines for forty years, and she kept every rejected sheet in a drawer that nobody was allowed to open.",
+            "\"A map is an argument,\" she told him on his first morning. \"Somebody looked at the world and decided what was worth keeping. Your job is to make a better argument.\"",
+            "Nilo copied coastlines for a year. He learned how to let a line curve without trembling, how to space a letter so a name would fit on a narrow peninsula, how to leave white space where a mountain should go. He was good at it. He never asked what the white space was for.",
+            "In the second year, Doña Irene gave him a commission that the other apprentices refused. \"The valley of the river Arupi,\" she said, \"nobody has surveyed. It flooded last winter and the old map is wrong. Go and look.\""
+          ]
+        },
+        {
+          "id": "ch-2",
+          "title": "What the flood changed",
+          "paragraphs": [
+            "The river had moved. That was the first fact, and it was enough to ruin a month of the old map. Where there had been a bend there was now a straight cut, and where there had been a grove of willows there was a shallow lake full of branches.",
+            "Nilo measured the new course twice, carefully, because he wanted the number to be right. Then he walked upstream to the village of Puerto Alegre, because that was on the old map and he needed to check whether the road still reached the river.",
+            "It did not. The road had ended in a cliff of mud forty metres from the water. The people of Puerto Alegre had been walking to a different landing place for eleven months. No one had thought to send word to the workshop.",
+            "\"So we redraw it,\" Nilo said to himself, and opened his notebook to write the new road. Then he stopped, because he had no idea what the villagers called the place where they now crossed. It was not on any map. It was, he realised, not a place yet. It was a habit."
+          ]
+        },
+        {
+          "id": "ch-3",
+          "title": "The argument",
+          "paragraphs": [
+            "He stayed four more days. He sat in the school yard while the children showed him the stones they skipped at the new crossing, and he learned that the crossing was called *el paso de la abuela*, because the women of the village had crossed there so many times that nobody remembered when it started.",
+            "He drew the new river as it was. He drew the road as it was, ending in mud. And in the margin, in smaller letters than the rest, he wrote: *el paso de la abuela* — and marked it with a small square, the cartographers' sign for a place named by the people who live there.",
+            "Doña Irene read the sheet for a long time. Then she opened the drawer of rejected maps, took out thirty years of her own discarded sheets, and laid them on the table beside Nilo's.",
+            "\"Every one of these is wrong,\" she said. \"And every one of them was more useful than a perfect one, because someone trusted it enough to walk there.\" She put her finger on his margin. \"You drew a river. Now you have drawn a road. This square you added is the first true thing on the map.\"",
+            "Nilo never became a famous cartographer. He became a better one. He learned that measuring is the easy half, and that the hard half is knowing which measurements matter enough to write down."
+          ]
+        }
+      ],
+      "glossary": [
+        { "term": "coastline", "translation": "línea de costa", "definition": "The line where the land meets the sea, drawn on a map.", "example": "The coastline of the north is very jagged." },
+        { "term": "to survey", "translation": "levantar un plano", "definition": "To examine an area of land carefully in order to record its features and measurements.", "example": "A team of engineers surveyed the valley in March." },
+        { "term": "peninsula", "translation": "península", "definition": "A piece of land almost surrounded by water, connected to the mainland at one side.", "example": "The old town sits on a narrow peninsula." },
+        { "term": "to run out", "translation": "agotarse", "definition": "To have no more of something left to use or to do.", "example": "We ran out of paper before the map was finished." },
+        { "term": "habit", "translation": "costumbre", "definition": "Something you do regularly and without thinking about it.", "example": "Walking to the river became a habit after the flood." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-ca-1",
+          "prompt": "¿Por qué Doña guardaba los mapas rechazados en un cajón que nadie podía abrir?",
+          "options": [
+            { "id": "a", "text": "Porque eran los mapas que ella había dibujado." },
+            { "id": "b", "text": "Porque eran mapas equivocados que sin embargo le sirvieron a alguien." },
+            { "id": "c", "text": "Porque Nilo los había tirado." },
+            { "id": "d", "text": "Porque los planos de Puerto Alegre estaban en ese cajón." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Al final del tercer capítulo Doña explica que todos esos mapas estaban mal, pero fueron más útiles que los perfectos porque alguien confió en ellos lo suficiente para caminar hasta allí."
+        },
+        {
+          "id": "q-ca-2",
+          "prompt": "What does the small square next to «el paso de la abuela» represent?",
+          "options": [
+            { "id": "a", "text": "A place named by the people who live there." },
+            { "id": "b", "text": "A place that flooded last winter." },
+            { "id": "c", "text": "A place nobody has surveyed yet." },
+            { "id": "d", "text": "A measurement that Nilo could not confirm." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "La cartografía usa ese cuadrado para marcar un topónimo local, el nombre que usa la gente, no el nombre oficial."
+        },
+        {
+          "id": "q-ca-3",
+          "prompt": "¿Cuál es la diferencia entre «medir» y «comprender» según el final de la historia?",
+          "options": [
+            { "id": "a", "text": "Medir es más difícil que comprender." },
+            { "id": "b", "text": "Son la misma cosa con dos nombres." },
+            { "id": "c", "text": "Medir es la mitad fácil; comprender es elegir qué mediciones importan." },
+            { "id": "d", "text": "Comprender solo sirve para los mapas antiguos." }
+          ],
+          "correctOptionId": "c",
+          "explanation": "La última frase lo dice literalmente: medir es la mitad fácil, y lo difícil es saber qué mediciones merecen escribirse."
+        },
+        {
+          "id": "q-ca-4",
+          "prompt": "How long had the villagers of Puerto Alegre been using the new crossing?",
+          "options": [
+            { "id": "a", "text": "Four days, when Nilo arrived." },
+            { "id": "b", "text": "Eleven months." },
+            { "id": "c", "text": "One year and eleven months." },
+            { "id": "d", "text": "Forty years." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "El texto dice que los aldeanos habían caminado hasta un lugar de cruce distinto durante once meses."
+        }
+      ]
+    },
+    {
+      "id": "letters-from-the-salt-road",
+      "title": "Letters from the Salt Road",
+      "author": "The Cartilla Sessions",
+      "level": "B2",
+      "readingTime": 9,
+      "cover": "letters-from-the-salt-road",
+      "summary": "Durante treinta años, una mujer escribió cartas a su hermana que nunca envió. Cuando por fin decidió mandarlas, descubre que las cartas ya no dicen lo que ella creía.",
+      "intro": "Elena escribió su primera carta a las diecisiete y no la envió. Escribió casi todas las semanas durante treinta años, y las guardó en una caja de bananas. Cuando por fin decidió mandarlas, ya no las escribía ella.",
+      "chapters": [
+        {
+          "id": "ch-1",
+          "title": "The box under the bed",
+          "paragraphs": [
+            "The letters were written on the backs of the delivery calendars from the shop on the corner, because paper cost money and Elena's mother kept the calendars to wrap things in. She had never thought of this as a habit. It was only that there was always a calendar, and there was always something to say.",
+            "In 1994 she wrote: *Mara, today a man came to the house to ask for my hand and I said no. I do not know why I said no. Write and tell me if that was foolish.* She never sent it. By the time she was ready to send it, six months had passed and the question had become strange.",
+            "By the year twenty she had filled two boxes. The first one, she remembered, held the years when she still believed she would send them. The second held the years when sending them had become a way of talking about herself."
+          ]
+        },
+        {
+          "id": "ch-2",
+          "title": "The road",
+          "paragraphs": [
+            "Mara had gone north in 1991 to work on the salt road, the one that runs flat along the edge of the flats, where the only landmarks are the piles of white that mark where the water has been taken out. Elena stayed in the town, married, divorced, kept the shop for six years, and then did not.",
+            "They wrote to each other. That is what Elena told people, and it was true, but not in the way it sounded. Mara's letters came every month, warm and funny and full of small news about weather and salt and a dog called Reglamento. Elena's letters did not come. Elena's letters went into the box.",
+            "What Elena did write, in those years, is the thing she could not say aloud: that she was lonely, that she had chosen wrong, that she thought about the road more than she thought about her husband. She wrote it beautifully. She wrote it so well that reading it back felt like reading about somebody else."
+          ]
+        },
+        {
+          "id": "ch-3",
+          "title": "What the letters said",
+          "paragraphs": [
+            "She took them out in the order she had written them, which was not the order she wanted to read them in. The first ones were so eager that they embarrassed her. The middle ones were so careful. And the last ones, the ones from the year thirty, were three pages long and full of a tenderness she could barely recognise, addressed to a woman she had become certain she would never be.",
+            "Mara was dead since the March. Elena had known that for two years and had not opened the box, because opening it would mean the last letter had no answer, and Elena had spent her life making sure that no letter of hers was without one.",
+            "In the end she did not send them. She drove north to the salt road with the two boxes in the boot of the car and she read them all there, in the flat white light, one after the other, out loud, to nobody. Then she drove back. The letters went back in the box under the bed, and this time she put the box on the shelf in the front room, in the light, where she could see it.",
+            "She did not need them to arrive. She had needed to know what she had said."
+          ]
+        }
+      ],
+      "glossary": [
+        { "term": "to keep something in mind", "translation": "recordar algo", "definition": "To remember something deliberately over time.", "example": "I kept her advice in mind all week." },
+        { "term": "flat (noun)", "translation": "salina / explanada", "definition": "A wide level area of land, especially the salt flats beside a coast.", "example": "The road crosses the flat for twelve kilometres." },
+        { "term": "to give up", "translation": "rendirse", "definition": "To stop trying at something, especially after a long time.", "example": "She didn't give up even when the shop failed." },
+        { "term": "to recognise", "translation": "reconocer", "definition": "To know something or someone because you have seen or heard it before.", "example": "I didn't recognise the letter at first." },
+        { "term": "endless", "translation": "infinito", "definition": "Continuing for a very long time without an end, especially in a tiring way.", "example": "There was an endless queue outside the office." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-lsr-1",
+          "prompt": "¿Por qué Elena escribía las cartas en el reverso de los calendarios?",
+          "options": [
+            { "id": "a", "text": "Porque era más fácil escribir en un calendario que en una hoja." },
+            { "id": "b", "text": "Porque el papel costaba dinero y su madre reutilizaba los calendarios." },
+            { "id": "c", "text": "Porque las cartas tenían que parecer listas de compras." },
+            { "id": "d", "text": "Porque Mara le había pedido que lo hiciera." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "El primer párrafo lo explica: el papel era caro y su madre guardaba los calendarios para envolver cosas, así que ahí escribía ella."
+        },
+        {
+          "id": "q-lsr-2",
+          "prompt": "What did Elena's letters say, according to the second chapter?",
+          "options": [
+            { "id": "a", "text": "That she was happy and busy." },
+            { "id": "b", "text": "That she was lonely, had chosen wrong, and missed the road." },
+            { "id": "c", "text": "Nothing; most of the letters are blank." },
+            { "id": "d", "text": "That she was planning to move north." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "El capítulo dos dice exactamente eso: se sentía sola, había elegido mal y pensaba en el camino más que en su marido."
+        },
+        {
+          "id": "q-lsr-3",
+          "prompt": "Why did Elena never open the box after Mara died?",
+          "options": [
+            { "id": "a", "text": "The key was lost." },
+            { "id": "b", "text": "Opening it would mean her last letter had no answer." },
+            { "id": "c", "text": "She had burnt the earlier letters." },
+            { "id": "d", "text": "She did not know the box existed." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Because había dedicado su vida a que ninguna de sus cartas se quedara sin respuesta."
+        },
+        {
+          "id": "q-lsr-4",
+          "prompt": "What did Elena need from the letters at the end?",
+          "options": [
+            { "id": "a", "text": "To reach her sister." },
+            { "id": "b", "text": "To know what she had said." },
+            { "id": "c", "text": "To be forgiven." },
+            { "id": "d", "text": "To sell the house." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "La frase final: no necesitaba que llegaran; necesitaba saber qué había dicho."
+        }
+      ]
+    },
+    {
+      "id": "the-night-the-river-froze",
+      "title": "The Night the River Froze",
+      "author": "The Cartilla Sessions",
+      "level": "A2",
+      "readingTime": 5,
+      "cover": "the-night-the-river-froze",
+      "summary": "La historia más corta y clara del catálogo: un niño ve el río congelarse por primera vez y decide cruzarlo. Vocabulario del clima, del frío y de la sorpresa.",
+      "intro": "Tomás had been told the river never froze. He had lived on its bank for eleven years and had only ever seen it move.",
+      "chapters": [
+        {
+          "id": "ch-1",
+          "title": "Thursday",
+          "paragraphs": [
+            "On Thursday night the air was so still that the dogs did not bark. Tomás woke because the house was cold in a new way, and because he heard a sound he had never heard before: a long, thin crack, like a plate breaking in another room.",
+            "He went to the window. The river was white. Not white the way clouds are white, but white the way metal is white, and it was making that sound all along its length, from the bridge to the bend.",
+            "His father said the river had frozen like this once before, when Tomás was four. His mother said it had not. They agreed about nothing else that morning, which was normal."
+          ]
+        },
+        {
+          "id": "ch-2",
+          "title": "The crossing",
+          "paragraphs": [
+            "In the afternoon Tomás took his father's old skates and walked down to the bank. The ice was covered in a thin layer of snow, and where his foot landed the snow went under and the ice made a deep green sound under it, like a door.",
+            "He stepped out. The first step was frightening. The second was not. By the tenth he was laughing, and the laugh came out of him in the way that things come out of you when you are completely cold and completely happy at once.",
+            "Halfway across he stopped. The ice was thinner there, and he could see the black water moving under it, slow, carrying a leaf. He sat down on the ice immediately, because his legs had decided before he did, and he watched the leaf go.",
+            "When he got back his mother wrapped him in three blankets and asked him what he had seen. He said: \"A leaf.\" She said: \"You went onto the ice?\" He said: \"There's a leaf under the ice, and it's going to the sea.\" That was the answer he had prepared on the way home, and he delivered it with enormous seriousness, and both of his parents laughed, and he understood then that he had got away with it."
+          ]
+        }
+      ],
+      "glossary": [
+        { "term": "to freeze", "translation": "congelarse", "definition": "To become very cold and turn to ice.", "example": "The puddles froze overnight." },
+        { "term": "bank (of a river)", "translation": "orilla", "definition": "The land along the edge of a river.", "example": "We sat on the bank and watched the boats." },
+        { "term": "thin", "translation": "delgado", "definition": "Not thick; having little depth or width.", "example": "The ice was thin, so we stayed off it." },
+        { "term": "to get away with something", "translation": "salirse con la suya", "definition": "To do something wrong without being caught or punished.", "example": "He got away with telling one small lie." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-nrf-1",
+          "prompt": "¿Qué oyó Tomás la noche del jueves?",
+          "options": [
+            { "id": "a", "text": "Un perro ladrando." },
+            { "id": "b", "text": "Un crujido largo y delgado, como un plato rompiéndose." },
+            { "id": "c", "text": "La voz de su madre." },
+            { "id": "d", "text": "El sonido de un tren." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "El primer párrafo describe un crack largo y delgado, como un plato que se rompe en otra habitación."
+        },
+        {
+          "id": "q-nrf-2",
+          "prompt": "Why did Tomás stop halfway across the ice?",
+          "options": [
+            { "id": "a", "text": "Because his skates broke." },
+            { "id": "b", "text": "Because he heard his father calling." },
+            { "id": "c", "text": "Because the ice was thinner and he could see the water moving under it." },
+            { "id": "d", "text": "Because he dropped the skates." }
+          ],
+          "correctOptionId": "c",
+          "explanation": "El hielo era más delgado en ese punto y veía el agua negra moviéndose debajo."
+        },
+        {
+          "id": "q-nrf-3",
+          "prompt": "What was Tomás's answer when his mother asked what he had seen?",
+          "options": [
+            { "id": "a", "text": "\"The ice.\"" },
+            { "id": "b", "text": "\"A leaf.\"" },
+            { "id": "c", "text": "\"A dog.\"" },
+            { "id": "d", "text": "\"Nothing.\"" }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Dijo: \"Una hoja.\" Y ésa fue la respuesta que había preparado camino a casa."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# Dependencias
+node_modules
+.pnp
+.pnp.js
+
+# Build
+dist
+dist-ssr
+*.local
+
+# Herramientas
+.taste-skill
+*.tsbuildinfo
+.eslintcache
+
+# Editores
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Entorno
+.env
+.env.local
+.env.*.local

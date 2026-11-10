@@ -1,0 +1,665 @@
+{
+  "songs:counting-the-miles": [
+    {
+      "start": 0.0,
+      "end": 2.101,
+      "text": "Counting the miles from the passenger seat"
+    },
+    {
+      "start": 2.521,
+      "end": 4.53,
+      "text": "Every sign a promise I don't read"
+    },
+    {
+      "start": 4.95,
+      "end": 7.249,
+      "text": "The horizon leans and the radio hums"
+    },
+    {
+      "start": 7.669,
+      "end": 9.503,
+      "text": "A pocket full of nowhere to go"
+    },
+    {
+      "start": 9.923,
+      "end": 12.083,
+      "text": "I count the miles that the road has kept"
+    },
+    {
+      "start": 12.503,
+      "end": 14.511,
+      "text": "Every one of them a promise I forgot"
+    },
+    {
+      "start": 14.931,
+      "end": 16.835,
+      "text": "The coffee's cold and the window's white"
+    },
+    {
+      "start": 17.255,
+      "end": 19.577,
+      "text": "And somewhere north a town I used to know"
+    },
+    {
+      "start": 19.997,
+      "end": 22.04,
+      "text": "I count the miles in the passenger seat"
+    },
+    {
+      "start": 22.46,
+      "end": 24.632,
+      "text": "And leave the ones I never will regret"
+    },
+    {
+      "start": 25.052,
+      "end": 27.037,
+      "text": "Every mile is a door I haven't opened"
+    },
+    {
+      "start": 27.457,
+      "end": 29.547,
+      "text": "Every mile is a song I haven't written"
+    }
+  ],
+  "duration:songs:counting-the-miles": 30.57,
+  "songs:paper-boats": [
+    {
+      "start": 0.0,
+      "end": 1.997,
+      "text": "Fold the paper, fold it twice"
+    },
+    {
+      "start": 2.417,
+      "end": 4.542,
+      "text": "Put a hat on top and watch it fly"
+    },
+    {
+      "start": 4.962,
+      "end": 6.668,
+      "text": "Down the steps and down the rain"
+    },
+    {
+      "start": 7.088,
+      "end": 8.539,
+      "text": "Little boats that come again"
+    },
+    {
+      "start": 8.959,
+      "end": 10.805,
+      "text": "Take the page and fold it well"
+    },
+    {
+      "start": 11.225,
+      "end": 13.199,
+      "text": "Send it off where waters swell"
+    },
+    {
+      "start": 13.619,
+      "end": 15.616,
+      "text": "Fold the paper, fold it twice"
+    },
+    {
+      "start": 16.036,
+      "end": 17.801,
+      "text": "Every child is worth a chance"
+    },
+    {
+      "start": 18.221,
+      "end": 19.893,
+      "text": "Down the steps and down the rain"
+    },
+    {
+      "start": 20.313,
+      "end": 21.81,
+      "text": "Little boats that come again"
+    }
+  ],
+  "duration:songs:paper-boats": 22.83,
+  "songs:morning-market": [
+    {
+      "start": 0.0,
+      "end": 1.892,
+      "text": "Six in the morning and the crates arrive"
+    },
+    {
+      "start": 2.312,
+      "end": 4.46,
+      "text": "Someone is stacking them against the wall"
+    },
+    {
+      "start": 4.88,
+      "end": 7.075,
+      "text": "First of the season and the best of it all"
+    },
+    {
+      "start": 7.495,
+      "end": 9.666,
+      "text": "Two for a pound and I'll take the whole crate"
+    },
+    {
+      "start": 10.086,
+      "end": 12.303,
+      "text": "Hey, you want these or you want those?"
+    },
+    {
+      "start": 12.723,
+      "end": 14.894,
+      "text": "Money changes hands and the morning grows"
+    },
+    {
+      "start": 15.314,
+      "end": 17.485,
+      "text": "Everything here has a story to sell"
+    },
+    {
+      "start": 17.905,
+      "end": 20.1,
+      "text": "You can ask the seller how it used to be"
+    },
+    {
+      "start": 20.52,
+      "end": 22.482,
+      "text": "Six in the morning and the light is thin"
+    },
+    {
+      "start": 22.902,
+      "end": 24.922,
+      "text": "By eight o'clock the whole street is in"
+    },
+    {
+      "start": 25.342,
+      "end": 27.931,
+      "text": "Buy it while it's cheap, come back at noon"
+    },
+    {
+      "start": 28.351,
+      "end": 30.313,
+      "text": "The best of the market is gone by then"
+    }
+  ],
+  "duration:songs:morning-market": 31.33,
+  "songs:the-long-way-round": [
+    {
+      "start": 0.0,
+      "end": 2.287,
+      "text": "I had taken the road that everyone praised"
+    },
+    {
+      "start": 2.707,
+      "end": 5.308,
+      "text": "And I had reasons, and I had been certain"
+    },
+    {
+      "start": 5.728,
+      "end": 8.038,
+      "text": "But the long way round is the way that stays"
+    },
+    {
+      "start": 8.458,
+      "end": 10.536,
+      "text": "Because it taught me what the river knows"
+    },
+    {
+      "start": 10.956,
+      "end": 13.545,
+      "text": "If you had asked me, I would have said no"
+    },
+    {
+      "start": 13.965,
+      "end": 16.218,
+      "text": "If you had asked me, I would have gone"
+    },
+    {
+      "start": 16.638,
+      "end": 18.809,
+      "text": "But nobody asked, and here I am"
+    },
+    {
+      "start": 19.229,
+      "end": 21.679,
+      "text": "With dust on my shoes and dust on my hands"
+    },
+    {
+      "start": 22.099,
+      "end": 24.56,
+      "text": "The long way round is the way that stays"
+    },
+    {
+      "start": 24.98,
+      "end": 27.406,
+      "text": "And what the river knows, I know as well"
+    },
+    {
+      "start": 27.826,
+      "end": 30.113,
+      "text": "I had taken the road that everyone praised"
+    },
+    {
+      "start": 30.533,
+      "end": 33.099,
+      "text": "And it led me here, and it led me well"
+    }
+  ],
+  "duration:songs:the-long-way-round": 34.12,
+  "podcasts:the-practice-room-ep1": [
+    {
+      "start": 0.0,
+      "end": 9.927,
+      "speaker": "Nina",
+      "text": "Welcome to The Practice Room. I'm Nina. Today we are going to do something that looks lazy and is not: we are going to sing along with a song in English, badly, and that is the point."
+    },
+    {
+      "start": 10.477,
+      "end": 24.049,
+      "speaker": "Nina",
+      "text": "Most learners try to understand a song first. They listen, they look up every word, they try to translate the whole thing, and by the time they have understood it, they have lost the thread. Understanding a song is not the first step. Singing it is."
+    },
+    {
+      "start": 24.599,
+      "end": 34.2,
+      "speaker": "Nina",
+      "text": "Here is the method. Five steps, fifteen minutes. First, listen once without the text. Just hear the shape of it. Notice where the music goes up and where it comes down."
+    },
+    {
+      "start": 34.75,
+      "end": 43.55,
+      "speaker": "Nina",
+      "text": "Second, read the lyrics with your finger under the line. Not out loud yet. Your eye needs to find the lines first, because your mouth is going to have to find them later."
+    },
+    {
+      "start": 44.1,
+      "end": 53.795,
+      "speaker": "Nina",
+      "text": "Third, sing. Badly. Nobody is listening. You are not singing for accuracy, you are singing for timing. You are training your mouth to arrive at the same moment as the singer."
+    },
+    {
+      "start": 54.345,
+      "end": 65.096,
+      "speaker": "Nina",
+      "text": "Fourth, shadow. Now you follow the voice in real time, half a word behind, like a shadow. This is the hard part and it is the useful part. It trains your ear and your mouth at the same time."
+    },
+    {
+      "start": 65.646,
+      "end": 73.273,
+      "speaker": "Nina",
+      "text": "And fifth, one line only. Pick the single line you liked best and sing it ten times until it is yours. Not the song. The line."
+    },
+    {
+      "start": 73.823,
+      "end": 83.889,
+      "speaker": "Nina",
+      "text": "That is the whole method. Notice what is not in it: no dictionary, no grammar, no app that tells you your pronunciation was wrong. You need about fifteen minutes and a song you already like."
+    },
+    {
+      "start": 84.439,
+      "end": 91.544,
+      "speaker": "Nina",
+      "text": "Try it now with Counting the Miles. Start with the first step: one listen, no text. Then come back and tell me how it went."
+    }
+  ],
+  "duration:podcasts:the-practice-room-ep1": 92.59,
+  "podcasts:el-sonido-del-cafe-ep1": [
+    {
+      "start": 0.0,
+      "end": 10.635,
+      "speaker": "Lucía",
+      "text": "Hello, and welcome to El Sonido del Café. I'm Lucía, and today we are going to taste a place without tasting it. We are going to talk about how a coffee bean can taste of the hill it grew on."
+    },
+    {
+      "start": 11.185,
+      "end": 22.528,
+      "speaker": "Lucía",
+      "text": "Picture a farm in the coffee-growing region of Colombia. The farm is not flat. It is a set of steep green slopes, and at the top of each slope the temperature is a little cooler than at the bottom."
+    },
+    {
+      "start": 23.078,
+      "end": 37.985,
+      "speaker": "Lucía",
+      "text": "That difference of a few degrees is enough to change the bean. The cold nights slow the ripening, so the seed inside stays small and sweet, and the fruit around it turns a deep red. Those red fruits are called cherries, even though they are not fruit at all."
+    },
+    {
+      "start": 38.535,
+      "end": 50.296,
+      "speaker": "Lucía",
+      "text": "Now the harvest. In Colombia most coffee is picked by hand, and this is not nostalgia. A machine can strip a branch in two seconds, but it takes the ripe cherries and the green ones together."
+    },
+    {
+      "start": 50.846,
+      "end": 64.197,
+      "speaker": "Lucía",
+      "text": "So pickers walk the rows, and they look. They look for the colour, they feel the weight, and they take only what is right. A good picker can pick about sixty kilos of cherries in a day, and they can tell you the name of every farm on the slope."
+    },
+    {
+      "start": 64.747,
+      "end": 76.369,
+      "speaker": "Lucía",
+      "text": "That name matters. Single-origin coffee is not a marketing word invented last year. It is an old promise: this cup came from this farm, this family, this hillside, in this year."
+    },
+    {
+      "start": 76.919,
+      "end": 87.112,
+      "speaker": "Lucía",
+      "text": "And the last thing is the drying. The beans leave the farm as mucilage, a sticky layer like honey, and they are dried on patios or in parabolic beds under the sun for up to two weeks."
+    },
+    {
+      "start": 87.662,
+      "end": 100.793,
+      "speaker": "Lucía",
+      "text": "During that time, whoever turns the beans is making decisions. Too much sun and they bake. Too little and they mould. A good worker reads the humidity in the afternoon and decides how thick to spread the layer."
+    },
+    {
+      "start": 101.343,
+      "end": 112.802,
+      "speaker": "Lucía",
+      "text": "So when you drink a coffee that tastes of chocolate, or of orange, or of nothing in particular, none of that happened in your kitchen. It happened on a slope, in a season, in the hands of somebody you will never meet."
+    }
+  ],
+  "duration:podcasts:el-sonido-del-cafe-ep1": 113.85,
+  "podcasts:focus-and-noise-ep1": [
+    {
+      "start": 0.0,
+      "end": 8.069,
+      "speaker": "Nina",
+      "text": "This is episode two of The Practice Room, and today we are talking about noise, which is either the best thing that has ever happened to your focus or the worst."
+    },
+    {
+      "start": 8.619,
+      "end": 21.715,
+      "speaker": "Nina",
+      "text": "There is a well-known experiment from the nineties about this. Two groups of people did the same task. One group worked in silence and one worked with noise. The noisy group performed better on dull tasks and much worse on tasks that needed thought."
+    },
+    {
+      "start": 22.265,
+      "end": 32.296,
+      "speaker": "Nina",
+      "text": "That is the whole story, really. Noise is not good or bad for your brain. It is good for one kind of work and terrible for another, and the mistake is using the wrong tool for the job."
+    },
+    {
+      "start": 32.846,
+      "end": 44.92,
+      "speaker": "Nina",
+      "text": "So if you are doing something repetitive, something mechanical, something where your hands are busy and the decision-making is small, then background noise can carry you a long way. The music becomes a rhythm for the hands."
+    },
+    {
+      "start": 45.47,
+      "end": 57.51,
+      "speaker": "Nina",
+      "text": "But if you are writing an argument, learning a language, or reading something you do not fully understand, then noise eats the part of your attention that holds the sentence in place. You read the line three times and still lose it at the end."
+    },
+    {
+      "start": 58.06,
+      "end": 70.529,
+      "speaker": "Nina",
+      "text": "Here is what works if you cannot change your room. First, separate the noise from the task with headphones. Even headphones with no music playing will cut the sharp edges, and you can use the music at a volume low enough to disappear."
+    },
+    {
+      "start": 71.079,
+      "end": 80.065,
+      "speaker": "Nina",
+      "text": "Second, give the hard task a fixed place and a fixed time. People protect what has a slot in the calendar much better than what is supposed to happen whenever there is a gap."
+    },
+    {
+      "start": 80.615,
+      "end": 92.028,
+      "speaker": "Nina",
+      "text": "And third, keep one sound for one kind of work. If the same music plays while you write and while you rest, you stop learning what it means. Give the studying its own sound and the resting its own silence."
+    }
+  ],
+  "duration:podcasts:focus-and-noise-ep1": 93.08,
+  "podcasts:cosas-del-metro-ep1": [
+    {
+      "start": 0.0,
+      "end": 8.359,
+      "speaker": "Andrés",
+      "text": "Welcome to Cosas del Metro. I am Andrés, and this week: the words you only learn when you travel. Every day, for a year, on the same line."
+    },
+    {
+      "start": 8.909,
+      "end": 19.358,
+      "speaker": "Andrés",
+      "text": "Nobody teaches you the vocabulary of a station. You learn it because you need it. The announcement says the name of the next station and you want to know whether you have to get up now or two stops later."
+    },
+    {
+      "start": 19.908,
+      "end": 30.009,
+      "speaker": "Andrés",
+      "text": "So you learn 'the next stop'. You learn 'the last stop', because the driver says it at the end of the line and you finally know where you are. You learn 'connection', which in English is 'transfer'."
+    },
+    {
+      "start": 30.559,
+      "end": 42.227,
+      "speaker": "Andrés",
+      "text": "And you learn the small politeness of a shared space. 'Excuse me.' 'Sorry, is this seat taken?' You learn them standing up, with your bag on your shoulder, and they stick in a way that a classroom sentence never does."
+    },
+    {
+      "start": 42.777,
+      "end": 53.772,
+      "speaker": "Andrés",
+      "text": "Then there is the vocabulary of delay. When the line stops for four minutes with no announcement, people look around. And then somebody says, in a voice that is not really a question: 'Is it running?'"
+    },
+    {
+      "start": 54.322,
+      "end": 66.756,
+      "speaker": "Andrés",
+      "text": "Four words, one grammatical mistake, and a completely different meaning. 'Is it running' means 'is it moving again'. 'Is it running' does not mean 'is the service operating'. In English, a small wrong word can change the whole question."
+    },
+    {
+      "start": 67.306,
+      "end": 76.396,
+      "speaker": "Andrés",
+      "text": "I do not think teachers should stop using textbooks. But I do think a language is also the set of words a city hands you for free, every morning, whether you are ready or not."
+    },
+    {
+      "start": 76.946,
+      "end": 87.442,
+      "speaker": "Andrés",
+      "text": "So the exercise for this week is simple. On your next trip, write down ten words you did not know on Monday. Ten is enough. Then use five of them badly tonight, in a sentence about your day."
+    }
+  ],
+  "duration:podcasts:cosas-del-metro-ep1": 88.49,
+  "films:the-last-tram": [
+    {
+      "start": 0.0,
+      "end": 2.949,
+      "speaker": "Narrator",
+      "line": "The last tram leaves the square at eleven forty.",
+      "translation": "El último tranvía sale de la plaza a las once y cuarenta."
+    },
+    {
+      "start": 2.949,
+      "end": 8.034,
+      "speaker": "Narrator",
+      "line": "By then the shops have closed and the square belongs to the people who have nowhere else to be.",
+      "translation": "Para entonces las tiendas han cerrado y la plaza es de quienes no tienen otro sitio donde estar."
+    },
+    {
+      "start": 8.034,
+      "end": 9.567,
+      "speaker": "Old man",
+      "line": "You are the last one?",
+      "translation": "¿Usted es el último?"
+    },
+    {
+      "start": 9.567,
+      "end": 10.995,
+      "speaker": "Driver",
+      "line": "I am the last one.",
+      "translation": "Soy el último."
+    },
+    {
+      "start": 10.995,
+      "end": 12.701,
+      "speaker": "Old man",
+      "line": "Then I will wait for you.",
+      "translation": "Entonces lo espero a usted."
+    },
+    {
+      "start": 12.701,
+      "end": 19.598,
+      "speaker": "Narrator",
+      "line": "He says it as if it were obvious. As if waiting for a tram at midnight were a thing that people did every night of their lives.",
+      "translation": "Lo dice como si fuera obvio. Como si esperar un tranvía a medianoche fuera algo que la gente hiciera todas las noches de su vida."
+    },
+    {
+      "start": 19.598,
+      "end": 21.676,
+      "speaker": "Driver",
+      "line": "You will be here when I come back.",
+      "translation": "Usted estará aquí cuando yo vuelva."
+    },
+    {
+      "start": 21.676,
+      "end": 23.766,
+      "speaker": "Old man",
+      "line": "I will be here when you come back.",
+      "translation": "Estaré aquí cuando usted vuelva."
+    },
+    {
+      "start": 23.766,
+      "end": 29.246,
+      "speaker": "Narrator",
+      "line": "The doors close. The tram takes the square, and the two of them watch each other through the glass.",
+      "translation": "Las puertas se cierran. El tranvía cruza la plaza y los dos se miran a través del vidrio."
+    },
+    {
+      "start": 29.246,
+      "end": 35.062,
+      "speaker": "Narrator",
+      "line": "The square is empty again. But something in it has changed, and nobody will say what.",
+      "translation": "La plaza vuelve a estar vacía. Pero algo en ella ha cambiado, y nadie dirá qué."
+    }
+  ],
+  "duration:films:the-last-tram": 35.06,
+  "films:paper-and-ink": [
+    {
+      "start": 0.0,
+      "end": 5.457,
+      "speaker": "Narrator",
+      "line": "He has been coming to the workshop for eleven years. He brings the same book every time.",
+      "translation": "Lleva once años viniendo al taller. Trae siempre el mismo libro."
+    },
+    {
+      "start": 5.457,
+      "end": 16.358,
+      "speaker": "Narrator",
+      "line": "The book is called A Handbook of Correspondence. It was printed in nineteen fifty-four, and it is still, according to the owner, the only book about the subject that has ever been written.",
+      "translation": "El libro se titula Manual de correspondencia. Se imprimió en mil novecientos cincuenta y cuatro y sigue siendo, según el dueño, el único libro sobre el tema que se ha escrito."
+    },
+    {
+      "start": 16.358,
+      "end": 20.759,
+      "speaker": "Binder",
+      "line": "Ninety-one pages. Fifty-one of them are about envelopes.",
+      "translation": "Noventa y una páginas. Cincuenta y una son sobre sobres."
+    },
+    {
+      "start": 20.759,
+      "end": 24.764,
+      "speaker": "Man",
+      "line": "Envelopes are the difficult part. Paper is easy.",
+      "translation": "Los sobres son la parte difícil. El papel es fácil."
+    },
+    {
+      "start": 24.764,
+      "end": 28.491,
+      "speaker": "Binder",
+      "line": "You are not writing a letter. You are choosing a letter.",
+      "translation": "Usted no está escribiendo una carta. Está eligiendo una carta."
+    },
+    {
+      "start": 28.491,
+      "end": 34.435,
+      "speaker": "Narrator",
+      "line": "He says this without any weight. Then he looks at the book for a while, and corrects himself.",
+      "translation": "Lo dice sin ninguna ironía. Luego mira el libro un rato y se corrige."
+    },
+    {
+      "start": 34.435,
+      "end": 38.592,
+      "speaker": "Man",
+      "line": "You are not choosing a letter. You are choosing not to send one.",
+      "translation": "Usted no está eligiendo una carta. Está eligiendo no enviar ninguna."
+    },
+    {
+      "start": 38.592,
+      "end": 46.301,
+      "speaker": "Narrator",
+      "line": "The binder does not answer. She ties the pages, trims the edges, and sets the book on the shelf with the others, where it will wait.",
+      "translation": "La encuadernadora no contesta. Ata las páginas, recorta los bordes y pone el libro en la estantería con los demás, donde esperará."
+    },
+    {
+      "start": 46.301,
+      "end": 49.853,
+      "speaker": "Narrator",
+      "line": "He will be back on Thursday. He will bring the same book.",
+      "translation": "Volverá el jueves. Traerá el mismo libro."
+    }
+  ],
+  "duration:films:paper-and-ink": 49.85,
+  "films:night-shift-observatory": [
+    {
+      "start": 0.0,
+      "end": 7.372,
+      "speaker": "Narrator",
+      "line": "The dome opens at sunset and closes at sunrise, and between those two events the observatory belongs to whoever is on shift.",
+      "translation": "La cúpula se abre al atardecer y se cierra al amanecer, y entre esos dos hechos el observatorio pertenece a quien esté de turno."
+    },
+    {
+      "start": 7.372,
+      "end": 14.454,
+      "speaker": "Dr. Reyes",
+      "line": "Meridian transit in forty minutes. Coffee number two is wrong, by the way. Somebody left the sugar out.",
+      "translation": "Tránsito meridiano en cuarenta minutos. Por cierto, el café número dos está mal. Alguien dejó el azúcar fuera."
+    },
+    {
+      "start": 14.454,
+      "end": 25.391,
+      "speaker": "Narrator",
+      "line": "Nobody answers. The radio on the desk is tuned to a frequency that stopped transmitting in nineteen ninety-eight, and she keeps it on because the static is easier to work with than silence.",
+      "translation": "Nadie contesta. La radio del escritorio está sintonizada a una frecuencia que dejó de transmitir en mil novecientos noventa y ocho, y ella la deja encendida porque la estática es más fácil de trabajar que el silencio."
+    },
+    {
+      "start": 25.391,
+      "end": 26.424,
+      "speaker": "Dr. Reyes",
+      "line": "Are you there?",
+      "translation": "¿Está ahí?"
+    },
+    {
+      "start": 26.424,
+      "end": 33.739,
+      "speaker": "Narrator",
+      "line": "The static does not answer either. But she asks again, and then again, because the question is not really for the radio.",
+      "translation": "La estática tampoco contesta. Pero pregunta otra vez, y luego otra, porque la pregunta no es realmente para la radio."
+    },
+    {
+      "start": 33.739,
+      "end": 42.597,
+      "speaker": "Dr. Reyes",
+      "line": "The plate is finished. One hundred and two exposures. It is the clearest night of the year so far, and there is nobody here to see it with.",
+      "translation": "La placa está terminada. Ciento dos exposiciones. Es la noche más clara del año hasta ahora, y no hay nadie aquí para verlo con ella."
+    },
+    {
+      "start": 42.597,
+      "end": 49.876,
+      "speaker": "Narrator",
+      "line": "She closes the dome at sunrise. It takes forty minutes and she does it alone, as she has done for six years.",
+      "translation": "Cierra la cúpula al amanecer. Tarda cuarenta minutos y lo hace sola, como lleva haciendo seis años."
+    },
+    {
+      "start": 49.876,
+      "end": 51.734,
+      "speaker": "Dr. Reyes",
+      "line": "Same frequency tomorrow?",
+      "translation": "¿Misma frecuencia mañana?"
+    },
+    {
+      "start": 51.734,
+      "end": 58.294,
+      "speaker": "Narrator",
+      "line": "The static keeps its shape. It is the only company that has never needed her to explain why she is still awake.",
+      "translation": "La estática mantiene su forma. Es la única compañía que nunca ha necesitado que le explique por qué sigue despierta."
+    }
+  ],
+  "duration:films:night-shift-observatory": 58.29
+}

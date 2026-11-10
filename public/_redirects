@@ -1,0 +1,6 @@
+# Cloudflare Pages — SPA.
+#
+# Toda ruta interna (/song, /podcast/the-practice-room-ep1, …) se sirve con el
+# index.html para que el enrutado del lado del cliente funcione al recargar.
+# Sin esta regla, recargar una vista interna devuelve 404.
+/*    /index.html   200

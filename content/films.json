@@ -1,0 +1,179 @@
+{
+  "films": [
+    {
+      "id": "the-last-tram",
+      "title": "The Last Tram",
+      "director": "The Cartilla Sessions",
+      "level": "A2",
+      "cover": "the-last-tram",
+      "synopsis": "El último tranvía de la noche pasa por una calle donde nadie baja. Un cortometraje de 4 minutos sobre las horas en que una ciudad deja de ser pública.",
+      "scenes": [
+        { "start": 0, "speaker": "Narrator", "line": "The last tram leaves the square at eleven forty.", "translation": "El último tranvía sale de la plaza a las once y cuarenta." },
+        { "start": 0, "speaker": "Narrator", "line": "By then the shops have closed and the square belongs to the people who have nowhere else to be.", "translation": "Para entonces las tiendas han cerrado y la plaza es de quienes no tienen otro sitio donde estar." },
+        { "start": 0, "speaker": "Old man", "line": "You are the last one?", "translation": "¿Usted es el último?" },
+        { "start": 0, "speaker": "Driver", "line": "I am the last one.", "translation": "Soy el último." },
+        { "start": 0, "speaker": "Old man", "line": "Then I will wait for you.", "translation": "Entonces lo espero a usted." },
+        { "start": 0, "speaker": "Narrator", "line": "He says it as if it were obvious. As if waiting for a tram at midnight were a thing that people did every night of their lives.", "translation": "Lo dice como si fuera obvio. Como si esperar un tranvía a medianoche fuera algo que la gente hiciera todas las noches de su vida." },
+        { "start": 0, "speaker": "Driver", "line": "You will be here when I come back.", "translation": "Usted estará aquí cuando yo vuelva." },
+        { "start": 0, "speaker": "Old man", "line": "I will be here when you come back.", "translation": "Estaré aquí cuando usted vuelva." },
+        { "start": 0, "speaker": "Narrator", "line": "The doors close. The tram takes the square, and the two of them watch each other through the glass.", "translation": "Las puertas se cierran. El tranvía cruza la plaza y los dos se miran a través del vidrio." },
+        { "start": 0, "speaker": "Narrator", "line": "The square is empty again. But something in it has changed, and nobody will say what.", "translation": "La plaza vuelve a estar vacía. Pero algo en ella ha cambiado, y nadie dirá qué." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-lt-1",
+          "prompt": "¿Qué hora pasa el último tranvía?",
+          "options": [
+            { "id": "a", "text": "A las once y veinte." },
+            { "id": "b", "text": "A las once y cuarenta." },
+            { "id": "c", "text": "A medianoche." },
+            { "id": "d", "text": "El cortometraje no lo dice." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "La narración abre con «The last tram leaves the square at eleven forty»."
+        },
+        {
+          "id": "q-lt-2",
+          "prompt": "What does the old man say when the driver says he is the last one?",
+          "options": [
+            { "id": "a", "text": "\"I have been waiting all night.\"" },
+            { "id": "b", "text": "\"Then I will wait for you.\"" },
+            { "id": "c", "text": "\"The service is over.\"" },
+            { "id": "d", "text": "\"I will take the next one.\"" }
+          ],
+          "correctOptionId": "b",
+          "explanation": "El diálogo es: «You are the last one?» / «I am the last one.» / «Then I will wait for you.»"
+        },
+        {
+          "id": "q-lt-3",
+          "prompt": "¿Qué ha cambiado al final?",
+          "options": [
+            { "id": "a", "text": "La plaza queda vacía y nada más." },
+            { "id": "b", "text": "El tranvía vuelve con más pasajeros." },
+            { "id": "c", "text": "Algo en la plaza ha cambiado, aunque nadie puede decir qué." },
+            { "id": "d", "text": "El viejo se marcha corriendo." }
+          ],
+          "correctOptionId": "c",
+          "explanation": "«The square is empty again. But something in it has changed, and nobody will say what.»"
+        }
+      ],
+      "relatedActivityIds": ["act-listening-roads", "act-quiz-roads"]
+    },
+    {
+      "id": "paper-and-ink",
+      "title": "Paper and Ink",
+      "director": "The Cartilla Sessions",
+      "level": "B1",
+      "cover": "paper-and-ink",
+      "synopsis": "En el taller de una encuadernadora, un hombre trata de escribir una carta que nunca envía. Cortometraje sobre la distancia entre lo que se dice y lo que se escribe.",
+      "scenes": [
+        { "start": 0, "speaker": "Narrator", "line": "He has been coming to the workshop for eleven years. He brings the same book every time.", "translation": "Lleva once años viniendo al taller. Trae siempre el mismo libro." },
+        { "start": 0, "speaker": "Narrator", "line": "The book is called A Handbook of Correspondence. It was printed in nineteen fifty-four, and it is still, according to the owner, the only book about the subject that has ever been written.", "translation": "El libro se titula Manual de correspondencia. Se imprimió en mil novecientos cincuenta y cuatro y sigue siendo, según el dueño, el único libro sobre el tema que se ha escrito." },
+        { "start": 0, "speaker": "Binder", "line": "Ninety-one pages. Fifty-one of them are about envelopes.", "translation": "Noventa y una páginas. Cincuenta y una son sobre sobres." },
+        { "start": 0, "speaker": "Man", "line": "Envelopes are the difficult part. Paper is easy.", "translation": "Los sobres son la parte difícil. El papel es fácil." },
+        { "start": 0, "speaker": "Binder", "line": "You are not writing a letter. You are choosing a letter.", "translation": "Usted no está escribiendo una carta. Está eligiendo una carta." },
+        { "start": 0, "speaker": "Narrator", "line": "He says this without any weight. Then he looks at the book for a while, and corrects himself.", "translation": "Lo dice sin ninguna ironía. Luego mira el libro un rato y se corrige." },
+        { "start": 0, "speaker": "Man", "line": "You are not choosing a letter. You are choosing not to send one.", "translation": "Usted no está eligiendo una carta. Está eligiendo no enviar ninguna." },
+        { "start": 0, "speaker": "Narrator", "line": "The binder does not answer. She ties the pages, trims the edges, and sets the book on the shelf with the others, where it will wait.", "translation": "La encuadernadora no contesta. Ata las páginas, recorta los bordes y pone el libro en la estantería con los demás, donde esperará." },
+        { "start": 0, "speaker": "Narrator", "line": "He will be back on Thursday. He will bring the same book.", "translation": "Volverá el jueves. Traerá el mismo libro." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-pi-1",
+          "prompt": "¿Qué porcentaje del manual trata sobre sobres?",
+          "options": [
+            { "id": "a", "text": "La mitad, aproximadamente." },
+            { "id": "b", "text": "Una cuarta parte." },
+            { "id": "c", "text": "Casi todo." },
+            { "id": "d", "text": "Ninguna parte." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "«Ninety-one pages. Fifty-one of them are about envelopes.» Cincuenta y una de noventa y una: un poco más de la mitad."
+        },
+        {
+          "id": "q-pi-2",
+          "prompt": "What does the man finally say he is choosing?",
+          "options": [
+            { "id": "a", "text": "A letter to send." },
+            { "id": "b", "text": "The right envelope." },
+            { "id": "c", "text": "Not to send a letter." },
+            { "id": "d", "text": "A different book." }
+          ],
+          "correctOptionId": "c",
+          "explanation": "«You are not choosing a letter. You are choosing not to send one.»"
+        },
+        {
+          "id": "q-pi-3",
+          "prompt": "¿Qué le pasa al libro al final?",
+          "options": [
+            { "id": "a", "text": "Se lo lleva el hombre." },
+            { "id": "b", "text": "Lo guarda la encuadernadora en la estantería." },
+            { "id": "c", "text": "Lo quema." },
+            { "id": "d", "text": "Lo devuelve sin encuadernar." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "La encuadernadora lo pone en la estantería con los demás, donde esperará."
+        }
+      ],
+      "relatedActivityIds": ["act-reading-letters", "act-matching-market"]
+    },
+    {
+      "id": "night-shift-observatory",
+      "title": "Night Shift at the Observatory",
+      "director": "The Cartilla Sessions",
+      "level": "B2",
+      "cover": "night-shift-observatory",
+      "synopsis": "Una astrónoma sola en un observatorio, en una noche de enero, y una conversación con la radio de un interlocutor que no contestará.",
+      "scenes": [
+        { "start": 0, "speaker": "Narrator", "line": "The dome opens at sunset and closes at sunrise, and between those two events the observatory belongs to whoever is on shift.", "translation": "La cúpula se abre al atardecer y se cierra al amanecer, y entre esos dos hechos el observatorio pertenece a quien esté de turno." },
+        { "start": 0, "speaker": "Dr. Reyes", "line": "Meridian transit in forty minutes. Coffee number two is wrong, by the way. Somebody left the sugar out.", "translation": "Tránsito meridiano en cuarenta minutos. Por cierto, el café número dos está mal. Alguien dejó el azúcar fuera." },
+        { "start": 0, "speaker": "Narrator", "line": "Nobody answers. The radio on the desk is tuned to a frequency that stopped transmitting in nineteen ninety-eight, and she keeps it on because the static is easier to work with than silence.", "translation": "Nadie contesta. La radio del escritorio está sintonizada a una frecuencia que dejó de transmitir en mil novecientos noventa y ocho, y ella la deja encendida porque la estática es más fácil de trabajar que el silencio." },
+        { "start": 0, "speaker": "Dr. Reyes", "line": "Are you there?", "translation": "¿Está ahí?" },
+        { "start": 0, "speaker": "Narrator", "line": "The static does not answer either. But she asks again, and then again, because the question is not really for the radio.", "translation": "La estática tampoco contesta. Pero pregunta otra vez, y luego otra, porque la pregunta no es realmente para la radio." },
+        { "start": 0, "speaker": "Dr. Reyes", "line": "The plate is finished. One hundred and two exposures. It is the clearest night of the year so far, and there is nobody here to see it with.", "translation": "La placa está terminada. Ciento dos exposiciones. Es la noche más clara del año hasta ahora, y no hay nadie aquí para verlo con ella." },
+        { "start": 0, "speaker": "Narrator", "line": "She closes the dome at sunrise. It takes forty minutes and she does it alone, as she has done for six years.", "translation": "Cierra la cúpula al amanecer. Tarda cuarenta minutos y lo hace sola, como lleva haciendo seis años." },
+        { "start": 0, "speaker": "Dr. Reyes", "line": "Same frequency tomorrow?", "translation": "¿Misma frecuencia mañana?" },
+        { "start": 0, "speaker": "Narrator", "line": "The static keeps its shape. It is the only company that has never needed her to explain why she is still awake.", "translation": "La estática mantiene su forma. Es la única compañía que nunca ha necesitado que le explique por qué sigue despierta." }
+      ],
+      "comprehension": [
+        {
+          "id": "q-nso-1",
+          "prompt": "¿Por qué la doctora Reyes deja la radio encendida aunque nadie conteste?",
+          "options": [
+            { "id": "a", "text": "Porque funciona como despertador." },
+            { "id": "b", "text": "Porque la estática es más fácil de trabajar que el silencio." },
+            { "id": "c", "text": "Porque espera un mensaje urgente." },
+            { "id": "d", "text": "Porque no sabe apagarla." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "«The static is easier to work with than silence.»"
+        },
+        {
+          "id": "q-nso-2",
+          "prompt": "How many exposures does the plate have?",
+          "options": [
+            { "id": "a", "text": "Ninety-two." },
+            { "id": "b", "text": "One hundred and two." },
+            { "id": "c", "text": "Two hundred." },
+            { "id": "d", "text": "Forty." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "«One hundred and two exposures.»"
+        },
+        {
+          "id": "q-nso-3",
+          "prompt": "¿Qué dice la narración sobre la pregunta a la radio?",
+          "options": [
+            { "id": "a", "text": "Que la pregunta es para la radio." },
+            { "id": "b", "text": "Que la pregunta no es realmente para la radio." },
+            { "id": "c", "text": "Que la radio contestará por fin." },
+            { "id": "d", "text": "Que la pregunta es un protocolo del observatorio." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "«The question is not really for the radio.»"
+        }
+      ],
+      "relatedActivityIds": ["act-listening-roads", "act-quiz-roads", "act-reading-letters"]
+    }
+  ]
+}

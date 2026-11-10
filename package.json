@@ -1,0 +1,44 @@
+{
+  "name": "learn-sodium",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "La Cartilla — plataforma educativa con canciones, historias, podcast, cortiempres y actividades interactivas.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --port 4173",
+    "lint": "eslint .",
+    "typecheck": "tsc -b --pretty false",
+    "test:e2e": "node scripts/e2e.mjs",
+    "test:media": "node scripts/check-media.mjs",
+    "shots": "node scripts/shoot.mjs",
+    "media:generate": "python3 scripts/generate-media.py"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.70.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.1",
+    "@types/react-dom": "^19.3.1",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.14.0",
+    "playwright": "^1.64.1",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~5.9.0",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.7"
+  }
+}

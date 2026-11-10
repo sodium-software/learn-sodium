@@ -1,0 +1,607 @@
+{
+  "activities": [
+    {
+      "id": "act-vocab-roads",
+      "kind": "vocabulary",
+      "title": "Vocabulario del camino",
+      "tagline": "Tarjetas del viaje",
+      "description": "Ocho palabras de las canciones y las historias de carretera. Pasa la tarjeta, márcala como dominada y vuelve a ella cuando quieras.",
+      "icon": "Type",
+      "minutes": 6,
+      "level": "B1",
+      "relatedIds": ["counting-the-miles", "the-long-way-round", "cartographers-apprentice"],
+      "cards": [
+        { "id": "c1", "term": "mile", "translation": "milla", "definition": "Una unidad de distancia que equivale a 1,609 metros.", "example": "We drove three hundred miles before the rain started." },
+        { "id": "c2", "term": "horizon", "translation": "horizonte", "definition": "La línea donde la tierra se encuentra con el cielo.", "example": "The horizon disappeared behind the hills." },
+        { "id": "c3", "term": "to count on someone", "translation": "contar con alguien", "definition": "Confiar en una persona o en algo para que te ayude.", "example": "You can always count on your brother." },
+        { "id": "c4", "term": "to regret", "translation": "arrepentirse", "definition": "Sentirse mal por una decisión, sobre todo si se desea haber elegido distinto.", "example": "I don't regret learning to play the guitar." },
+        { "id": "c5", "term": "to lead somewhere", "translation": "llevar a", "definition": "Mostrar el camino hacia un lugar o hacia un resultado.", "example": "That decision led him to a job abroad." },
+        { "id": "c6", "term": "the long way round", "translation": "el camino largo", "definition": "Una ruta más larga en lugar de la directa.", "example": "We took the long way round to avoid the traffic." },
+        { "id": "c7", "term": "to survey", "translation": "levantar un plano", "definition": "Examinar una zona con cuidado para registrar sus características.", "example": "A team of engineers surveyed the valley in March." },
+        { "id": "c8", "term": "to run out", "translation": "agotarse", "definition": "Quedarse sin algo de lo que se usaba o se hacía.", "example": "We ran out of paper before the map was finished." }
+      ]
+    },
+    {
+      "id": "act-vocab-water",
+      "kind": "vocabulary",
+      "title": "Vocabulario del agua",
+      "tagline": "Tarjetas básicas",
+      "description": "Cuatro palabras sencillas de la canción más fácil del catálogo. Ideal para empezar por el principio y ganar confianza.",
+      "icon": "Type",
+      "minutes": 4,
+      "level": "A1",
+      "relatedIds": ["paper-boats", "the-night-the-river-froze"],
+      "cards": [
+        { "id": "c1", "term": "to fold", "translation": "doblar", "definition": "Doblar un papel o una tela para que una parte quede sobre otra.", "example": "Fold the letter before you put it in the envelope." },
+        { "id": "c2", "term": "to swell", "translation": "hincharse", "definition": "Hacerse más grande y redondo, en especial el agua.", "example": "The river swells after the heavy rain." },
+        { "id": "c3", "term": "worth a chance", "translation": "merecer la pena", "definition": "Expresión que significa que algo merece la pena intentarlo.", "example": "The exam was hard but it was worth a chance." },
+        { "id": "c4", "term": "to come again", "translation": "volver", "definition": "Regresar, en especial algo que ocurre una y otra vez.", "example": "The rain always comes again in November." }
+      ]
+    },
+    {
+      "id": "act-vocab-market",
+      "kind": "vocabulary",
+      "title": "Vocabulario del mercado",
+      "tagline": "Tarjetas del oficio",
+      "description": "Palabras de trabajo, dinero y producto. Se usan en la canción del mercado y en las preguntas del podcast del café.",
+      "icon": "Type",
+      "minutes": 5,
+      "level": "B1",
+      "relatedIds": ["morning-market", "el-sonido-del-cafe-ep1"],
+      "cards": [
+        { "id": "c1", "term": "crate", "translation": "caja", "definition": "Una caja grande, normalmente de madera, para llevar fruta u otros productos.", "example": "The crate of apples weighs twenty kilos." },
+        { "id": "c2", "term": "to stack", "translation": "apilar", "definition": "Poner cosas unas sobre otras formando una pila ordenada.", "example": "They stack the empty crates by the door." },
+        { "id": "c3", "term": "money changes hands", "translation": "el dinero cambia de manos", "definition": "Expresión que significa que se ha hecho un pago.", "example": "Money changes hands quickly at a busy market." },
+        { "id": "c4", "term": "to ripen", "translation": "madurar", "definition": "Llegar a estar maduro y listo para recogerse.", "example": "The cherries ripen slowly at high altitude." },
+        { "id": "c5", "term": "single-origin", "translation": "de origen único", "definition": "Café que viene de una sola finca o región en lugar de ser una mezcla.", "example": "This bag is a single-origin from Huila." },
+        { "id": "c6", "term": "humidity", "translation": "humedad", "definition": "La cantidad de vapor de agua que hay en el aire.", "example": "The humidity in the afternoon decides how they spread the beans." }
+      ]
+    },
+    {
+      "id": "act-quiz-roads",
+      "kind": "quiz",
+      "title": "Quiz delectura",
+      "tagline": "Comprueba lo que leíste",
+      "description": "Seis preguntas sobre las canciones y las historias de carretera. Retroalimentación inmediata y puntuación al final.",
+      "icon": "ListChecks",
+      "minutes": 7,
+      "level": "B1",
+      "relatedIds": ["counting-the-miles", "the-long-way-round", "cartographers-apprentice"],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "En «Counting the Miles», ¿qué se cuenta desde el asiento del acompañante?",
+          "options": [
+            { "id": "a", "text": "Las millas" },
+            { "id": "b", "text": "Las canciones" },
+            { "id": "c", "text": "Las puertas" },
+            { "id": "d", "text": "Las promesas" }
+          ],
+          "correctOptionId": "a",
+          "explanation": "El primer verso: «Counting the miles from the passenger seat»."
+        },
+        {
+          "id": "q2",
+          "prompt": "What does «the long way round» mean?",
+          "options": [
+            { "id": "a", "text": "A longer route taken instead of a direct one." },
+            { "id": "b", "text": "A short cut that skips the difficult part." },
+            { "id": "c", "text": "The road that everyone praises." },
+            { "id": "d", "text": "Going back to the beginning." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "El glosario lo define exactamente así: una ruta más larga en lugar de la directa."
+        },
+        {
+          "id": "q3",
+          "prompt": "En «The Long Way Round», ¿qué forma verbal aparece en «If you had asked me, I would have said no»?",
+          "options": [
+            { "id": "a", "text": "Presente simple" },
+            { "id": "b", "text": "Pasado simple" },
+            { "id": "c", "text": "Tercer condicional" },
+            { "id": "d", "text": "Futuro simple" }
+          ],
+          "correctOptionId": "c",
+          "explanation": "«If you had asked» + «I would have said» es la estructura completa del tercer condicional."
+        },
+        {
+          "id": "q4",
+          "prompt": "¿Qué representa el pequeño cuadrado junto a «el paso de la abuela»?",
+          "options": [
+            { "id": "a", "text": "Un lugar surveyed por el equipo." },
+            { "id": "b", "text": "Un topónimo que usa la gente del lugar." },
+            { "id": "c", "text": "Una medición que Nilo no pudo confirmar." },
+            { "id": "d", "text": "Un puente que había que construir." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Es la señal cartográfica de un topónimo local, el nombre que le da la gente al lugar."
+        },
+        {
+          "id": "q5",
+          "prompt": "Complete the lyric: «Every mile is a door I ___ opened».",
+          "options": [
+            { "id": "a", "text": "haven't" },
+            { "id": "b", "text": "didn't" },
+            { "id": "c", "text": "wasn't" },
+            { "id": "d", "text": "don't" }
+          ],
+          "correctOptionId": "a",
+          "explanation": "El verso es «Every mile is a door I haven't opened»."
+        },
+        {
+          "id": "q6",
+          "prompt": "¿Cuál es el mensaje central de «The Long Way Round»?",
+          "options": [
+            { "id": "a", "text": "Que la ruta obvia siempre es la mejor." },
+            { "id": "b", "text": "Que los desvíos a veces son el camino correcto." },
+            { "id": "c", "text": "Que hay que evitar los caminos Rurales." },
+            { "id": "d", "text": "Que la velocidad importa más que el destino." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "La canción convierte el desvío en la idea que da título al estribillo: el camino largo es el que se queda."
+        }
+      ]
+    },
+    {
+      "id": "act-quiz-water",
+      "kind": "quiz",
+      "title": "Quiz de la canción fácil",
+      "tagline": "Primer nivel",
+      "description": "Cuatro preguntas sobre «Paper Boats». Nivel A1, sin trampa: es la forma de comprobar que el reproductor y la letra funcionan.",
+      "icon": "ListChecks",
+      "minutes": 4,
+      "level": "A1",
+      "relatedIds": ["paper-boats"],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "¿Qué hay que hacer primero en la canción?",
+          "options": [
+            { "id": "a", "text": "Fold the paper." },
+            { "id": "b", "text": "Send the boat." },
+            { "id": "c", "text": "Take the hat off." },
+            { "id": "d", "text": "Read the lyrics." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "El primer verso es «Fold the paper, fold it twice»."
+        },
+        {
+          "id": "q2",
+          "prompt": "Complete: «Down the steps and down the ___».",
+          "options": [
+            { "id": "a", "text": "rain" },
+            { "id": "b", "text": "road" },
+            { "id": "c", "text": "river" },
+            { "id": "d", "text": "hill" }
+          ],
+          "correctOptionId": "a",
+          "explanation": "El estribillo dice «Down the steps and down the rain»."
+        },
+        {
+          "id": "q3",
+          "prompt": "What does «Little boats that come again» mean?",
+          "options": [
+            { "id": "a", "text": "Barcos que regresan una y otra vez." },
+            { "id": "b", "text": "Barcos que nunca se cansan." },
+            { "id": "c", "text": "Barcos que llegan por primera vez." },
+            { "id": "d", "text": "Barcos que se pierden." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "«Come again» significa volver, y aquí tiene un sentido repetido."
+        },
+        {
+          "id": "q4",
+          "prompt": "¿Cuál es el único mensaje explícito de la letra?",
+          "options": [
+            { "id": "a", "text": "Every child is worth a chance." },
+            { "id": "b", "text": "Fold the paper, fold it twice." },
+            { "id": "c", "text": "Take the page and fold it well." },
+            { "id": "d", "text": "Send it off where waters swell." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "Las demás líneas son imágenes; esa es la única afirmación."
+        }
+      ]
+    },
+    {
+      "id": "act-quiz-market",
+      "kind": "quiz",
+      "title": "Quiz del mercado",
+      "tagline": "Letra y podcast",
+      "description": "Cinco preguntas que mezclan la canción del mercado con el episodio del café. Para leer dos fuentes y cruzarlas.",
+      "icon": "ListChecks",
+      "minutes": 6,
+      "level": "B1",
+      "relatedIds": ["morning-market", "el-sonido-del-cafe-ep1"],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Complete the lyric: «___ for a pound and I'll take the whole crate».",
+          "options": [
+            { "id": "a", "text": "One" },
+            { "id": "b", "text": "Two" },
+            { "id": "c", "text": "Three" },
+            { "id": "d", "text": "Six" }
+          ],
+          "correctOptionId": "b",
+          "explanation": "«Two for a pound and I'll take the whole crate»."
+        },
+        {
+          "id": "q2",
+          "prompt": "¿Por qué las noches frías en las partes altas mejoran el café?",
+          "options": [
+            { "id": "a", "text": "Porque la semilla se mantiene pequeña y dulce." },
+            { "id": "b", "text": "Porque las plantas reciben más sol." },
+            { "id": "c", "text": "Porque el café se seca más rápido." },
+            { "id": "d", "text": "Porque los trabajadores pueden trabajar más rápido." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "El frío ralentiza la maduración: la semilla se queda pequeña y dulce."
+        },
+        {
+          "id": "q3",
+          "prompt": "Why is hand-picking better than machine harvesting?",
+          "options": [
+            { "id": "a", "text": "It is cheaper for the farm." },
+            { "id": "b", "text": "Machines take ripe and unripe cherries together." },
+            { "id": "c", "text": "Machines damage the branches." },
+            { "id": "d", "text": "It is faster in the dry season." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Una máquina quita las cerezas maduras y las verdes a la vez; quien recoge a mano escoge."
+        },
+        {
+          "id": "q4",
+          "prompt": "¿Qué ocurre si el sol es demasiado fuerte durante el secado?",
+          "options": [
+            { "id": "a", "text": "Los granos se cuecen." },
+            { "id": "b", "text": "Los granos se humedecen." },
+            { "id": "c", "text": "La capa queda demasiado fina." },
+            { "id": "d", "text": "Se pierde la mucílago." }
+          ],
+          "correctOptionId": "a",
+          "explanation": "«Too much sun and they bake.»"
+        },
+        {
+          "id": "q5",
+          "prompt": "What does «Money changes hands» mean?",
+          "options": [
+            { "id": "a", "text": "That people shake hands to agree." },
+            { "id": "b", "text": "That a payment is made." },
+            { "id": "c", "text": "That the money is stolen." },
+            { "id": "d", "text": "That the price changes." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Es una expresión para decir que se ha hecho un pago, de una persona a otra."
+        }
+      ]
+    },
+    {
+      "id": "act-matching-market",
+      "kind": "matching",
+      "title": "Relacionar palabras",
+      "tagline": "Seis pares del mercado",
+      "description": "Une cada palabra con su definición. Pulsa una palabra y luego su definición: la evaluación es automática.",
+      "icon": "Zap",
+      "minutes": 5,
+      "level": "B1",
+      "relatedIds": ["morning-market", "el-sonido-del-cafe-ep1"],
+      "pairs": [
+        { "id": "p1", "left": "crate", "right": "A large box used for carrying fruit or other goods." },
+        { "id": "p2", "left": "to stack", "right": "To put things on top of each other in an organised pile." },
+        { "id": "p3", "left": "to ripen", "right": "To become ripe and ready to be picked." },
+        { "id": "p4", "left": "humidity", "right": "The amount of water vapour in the air." },
+        { "id": "p5", "left": "single-origin", "right": "Coffee that comes from one farm or region rather than being blended." },
+        { "id": "p6", "left": "thin (light)", "right": "Describing light that is pale or weak, usually early in the morning." }
+      ]
+    },
+    {
+      "id": "act-matching-roads",
+      "kind": "matching",
+      "title": "Relacionar expresiones",
+      "tagline": "Seis pares del viaje",
+      "description": "Expresiones del catálogo de canciones y las historias. Más difícil que el anterior: las definiciones son indirectas.",
+      "icon": "Zap",
+      "minutes": 6,
+      "level": "B2",
+      "relatedIds": ["counting-the-miles", "the-long-way-round"],
+      "pairs": [
+        { "id": "p1", "left": "the horizon", "right": "The line where the earth meets the sky." },
+        { "id": "p2", "left": "to count on someone", "right": "To rely on a person to help you." },
+        { "id": "p3", "left": "to regret", "right": "To feel sorry about a choice because you wish you had chosen differently." },
+        { "id": "p4", "left": "to lead somewhere", "right": "To show the way to a place or to a result." },
+        { "id": "p5", "left": "the long way round", "right": "A longer route taken instead of a direct one." },
+        { "id": "p6", "left": "to run out", "right": "To have no more of something left to use." }
+      ]
+    },
+    {
+      "id": "act-fill-water",
+      "kind": "fill-blanks",
+      "title": "Completar oraciones",
+      "tagline": "Presente simple",
+      "description": "Cinco oraciones con un hueco y un banco de palabras. Las respuestas se validan al instante y se puede reintentar.",
+      "icon": "PenLine",
+      "minutes": 5,
+      "level": "A1",
+      "relatedIds": ["paper-boats"],
+      "blanks": [
+        {
+          "id": "b1",
+          "sentence": "Fold the paper and ___ the hat on top.",
+          "answer": "put",
+          "options": ["put", "puts", "putting", "putting on"],
+          "hint": "Después de «and» va el verbo en su forma base."
+        },
+        {
+          "id": "b2",
+          "sentence": "The little boat ___ down the steps.",
+          "answer": "goes",
+          "options": ["go", "goes", "going", "gone"],
+          "hint": "Tercera persona del singular en presente simple."
+        },
+        {
+          "id": "b3",
+          "sentence": "Every child ___ a chance.",
+          "answer": "is worth",
+          "options": ["is worth", "are worth", "was worth", "be worth"],
+          "hint": "«Every» lleva el verbo en singular."
+        },
+        {
+          "id": "b4",
+          "sentence": "The rain always ___ again in November.",
+          "answer": "comes",
+          "options": ["come", "comes", "coming", "came"],
+          "hint": "El sujeto es «the rain», en singular."
+        },
+        {
+          "id": "b5",
+          "sentence": "She ___ the letter before she put it in the envelope.",
+          "answer": "folded",
+          "options": ["fold", "folds", "folded", "folding"],
+          "hint": "Pasado simple: el verbo lleva -ed."
+        }
+      ]
+    },
+    {
+      "id": "act-fill-conditionals",
+      "kind": "fill-blanks",
+      "title": "Completar oraciones",
+      "tagline": "Condicionales y pasado",
+      "description": "Las estructuras del tercer condicional y del pasado mixto, con el banco de palabras en su forma correcta.",
+      "icon": "PenLine",
+      "minutes": 7,
+      "level": "B2",
+      "relatedIds": ["the-long-way-round"],
+      "blanks": [
+        {
+          "id": "b1",
+          "sentence": "If you ___ asked me, I would have said no.",
+          "answer": "had",
+          "options": ["have", "had", "would have", "has"],
+          "hint": "Tercer condicional: «If + pasado simple»."
+        },
+        {
+          "id": "b2",
+          "sentence": "I ___ taken the road that everyone praised.",
+          "answer": "had",
+          "options": ["have", "had", "was", "would"],
+          "hint": "Pastado perfecto: «had + participio»."
+        },
+        {
+          "id": "b3",
+          "sentence": "She was certain that she ___ left the book at home.",
+          "answer": "had",
+          "options": ["has", "have", "had", "was"],
+          "hint": "Una acción pasada anterior a otra pasada."
+        },
+        {
+          "id": "b4",
+          "sentence": "That decision ___ him to a job abroad.",
+          "answer": "led",
+          "options": ["lead", "leads", "led", "leading"],
+          "hint": "Pasado simple de «to lead»."
+        },
+        {
+          "id": "b5",
+          "sentence": "Nobody asked, and here I ___.",
+          "answer": "am",
+          "options": ["am", "was", "are", "been"],
+          "hint": "El presente simple de «to be» en primera persona."
+        }
+      ]
+    },
+    {
+      "id": "act-listening-roads",
+      "kind": "listening",
+      "title": "Práctica de escucha",
+      "tagline": "Fragmentos reales",
+      "description": "Cuatro fragmentos de audio del material de la plataforma. Escucha, responde y mira el resultado al terminar.",
+      "icon": "Headphones",
+      "minutes": 9,
+      "level": "B1",
+      "relatedIds": ["the-practice-room-ep1", "cosas-del-metro-ep1", "the-last-tram", "paper-and-ink"],
+      "listening": [
+        {
+          "id": "l1",
+          "audio": "/media/audio/clip-the-practice-room-ep1-1.m4a",
+          "question": {
+            "id": "lq1",
+            "prompt": "According to the fragment, what is the third step of the method?",
+            "options": [
+              { "id": "a", "text": "Read the lyrics with a finger under the line." },
+              { "id": "b", "text": "Sing, badly, for timing." },
+              { "id": "c", "text": "Follow the voice half a word behind." },
+              { "id": "d", "text": "Sing one line ten times." }
+            ],
+            "correctOptionId": "b",
+            "explanation": "El tercer paso es cantar: «Third, sing. Badly… You are singing for timing.»"
+          }
+        },
+        {
+          "id": "l2",
+          "audio": "/media/audio/clip-cosas-del-metro-ep1-1.m4a",
+          "question": {
+            "id": "lq2",
+            "prompt": "What does «Is it running?» mean in this context?",
+            "options": [
+              { "id": "a", "text": "Is the service operating?" },
+              { "id": "b", "text": "Is it moving again?" },
+              { "id": "c", "text": "Should I run?" },
+              { "id": "d", "text": "Is the train late?" }
+            ],
+            "correctOptionId": "b",
+            "explanation": "En el episodio, la frase significa «¿se mueve ya?»."
+          }
+        },
+        {
+          "id": "l3",
+          "audio": "/media/audio/clip-the-last-tram-1.m4a",
+          "question": {
+            "id": "lq3",
+            "prompt": "What time does the last tram leave?",
+            "options": [
+              { "id": "a", "text": "At eleven twenty." },
+              { "id": "b", "text": "At eleven forty." },
+              { "id": "c", "text": "At midnight." },
+              { "id": "d", "text": "It is never said." }
+            ],
+            "correctOptionId": "b",
+            "explanation": "«The last tram leaves the square at eleven forty.»"
+          }
+        },
+        {
+          "id": "l4",
+          "audio": "/media/audio/clip-paper-and-ink-1.m4a",
+          "question": {
+            "id": "lq4",
+            "prompt": "How many pages of the handbook are about envelopes?",
+            "options": [
+              { "id": "a", "text": "Nine." },
+              { "id": "b", "text": "Thirty-one." },
+              { "id": "c", "text": "Fifty-one." },
+              { "id": "d", "text": "Ninety-one." }
+            ],
+            "correctOptionId": "c",
+            "explanation": "«Ninety-one pages. Fifty-one of them are about envelopes.»"
+          }
+        }
+      ]
+    },
+    {
+      "id": "act-reading-letters",
+      "kind": "reading",
+      "title": "Comprensión lectora",
+      "tagline": "Dos textos cortos",
+      "description": "Lee dos passages breves y responde. Cada texto trae glosario para las palabras difíciles.",
+      "icon": "BookOpen",
+      "minutes": 10,
+      "level": "B1",
+      "relatedIds": ["letters-from-the-salt-road", "the-night-the-river-froze"],
+      "passage": {
+        "id": "p1",
+        "title": "The box under the bed",
+        "paragraphs": [
+          "Elena wrote her first letter when she was seventeen, and she never sent it. She wrote almost every week for thirty years, and she kept them in a banana box under her bed. She wrote on the backs of the delivery calendars from the shop on the corner, because paper cost money and her mother kept the calendars to wrap things in.",
+          "In 1994 the letter said: «Mara, today a man came to the house to ask for my hand and I said no. I do not know why I said no. Write and tell me if that was foolish.» By the time she was ready to send it, six months had passed and the question had become strange.",
+          "By the year thirty she had filled two boxes. The first held the years when she still believed she would send them. The second held the years when sending them had become a way of talking about herself."
+        ],
+        "questions": [
+          {
+            "id": "rq1",
+            "prompt": "Why did Elena write on the backs of the delivery calendars?",
+            "options": [
+              { "id": "a", "text": "Because paper was expensive and her mother reused the calendars." },
+              { "id": "b", "text": "Because the shop only gave her calendars." },
+              { "id": "c", "text": "Because she liked the numbers at the top." },
+              { "id": "d", "text": "Because Mara had asked her to." }
+            ],
+            "correctOptionId": "a",
+            "explanation": "«Paper cost money and her mother kept the calendars to wrap things in.»"
+          },
+          {
+            "id": "rq2",
+            "prompt": "What happened to the 1994 letter?",
+            "options": [
+              { "id": "a", "text": "Mara answered it the same week." },
+              { "id": "b", "text": "It was never sent, and six months later the question felt strange." },
+              { "id": "c", "text": "Elena burned it." },
+              { "id": "d", "text": "It was the first one she sent." }
+            ],
+            "correctOptionId": "b",
+            "explanation": "«By the time she was ready to send it, six months had passed and the question had become strange.»"
+          },
+          {
+            "id": "rq3",
+            "prompt": "What was the difference between the two boxes?",
+            "options": [
+              { "id": "a", "text": "One held letters from her husband and the other from Mara." },
+              { "id": "b", "text": "The first held years when she still believed she would send them; the second held years when sending had become talking about herself." },
+              { "id": "c", "text": "One was in the bedroom and the other in the kitchen." },
+              { "id": "d", "text": "They were both empty." }
+            ],
+            "correctOptionId": "b",
+            "explanation": "El último párrafo del texto distingue exactamente esos dos periodos."
+          }
+        ]
+      }
+    },
+    {
+      "id": "act-reading-night",
+      "kind": "reading",
+      "title": "Comprensión lectora",
+      "tagline": "El río congelado",
+      "description": "El texto más corto del catálogo, leído con atención. Tres preguntas sobre lo que pasa y lo que se siente.",
+      "icon": "BookOpen",
+      "minutes": 6,
+      "level": "A2",
+      "relatedIds": ["the-night-the-river-froze"],
+      "passage": {
+        "id": "p2",
+        "title": "Thursday",
+        "paragraphs": [
+          "On Thursday night the air was so still that the dogs did not bark. Tomás woke because the house was cold in a new way, and because he heard a sound he had never heard before: a long, thin crack, like a plate breaking in another room.",
+          "He went to the window. The river was white. Not white the way clouds are white, but white the way metal is white, and it was making that sound all along its length, from the bridge to the bend.",
+          "In the afternoon Tomás took his father's old skates and walked down to the bank. The ice was covered in a thin layer of snow, and where his foot landed the snow went under and the ice made a deep green sound under it, like a door. He stepped out. The first step was frightening. The second was not."
+        ],
+        "questions": [
+          {
+            "id": "rq1",
+            "prompt": "¿Qué anormalidad hubo en la noche del jueves?",
+            "options": [
+              { "id": "a", "text": "Los perros no ladraron y el río hizo un ruido que Tomás nunca había oído." },
+              { "id": "b", "text": "La casa estaba tibia y el río llevaba toda la noche seco." },
+              { "id": "c", "text": "Empezó a llover antes de tiempo." },
+              { "id": "d", "text": "El puente se cayó." }
+            ],
+            "correctOptionId": "a",
+            "explanation": "El primer párrafo describe el aire quieto, los perros silenciosos y el crujido desconocido."
+          },
+          {
+            "id": "rq2",
+            "prompt": "How does Tomás describe the white of the frozen river?",
+            "options": [
+              { "id": "a", "text": "White like clouds." },
+              { "id": "b", "text": "White like metal." },
+              { "id": "c", "text": "White like snow in the morning." },
+              { "id": "d", "text": "White like paper." }
+            ],
+            "correctOptionId": "b",
+            "explanation": "«Not white the way clouds are white, but white the way metal is white.»"
+          },
+          {
+            "id": "rq3",
+            "prompt": "¿Qué pasó con el primer paso sobre el hielo?",
+            "options": [
+              { "id": "a", "text": "Was easy, and the second was frightening." },
+              { "id": "b", "text": "Was frightening, and the second was not." },
+              { "id": "c", "text": "He fell into the water." },
+              { "id": "d", "text": "He could not take it." }
+            ],
+            "correctOptionId": "b",
+            "explanation": "«He stepped out. The first step was frightening. The second was not.»"
+          }
+        ]
+      }
+    }
+  ]
+}
