@@ -106,19 +106,16 @@ curl -sI https://learn.sodium.software/ | head -1
 
 ### Alternativa por API (si se tiene un token con DNS: Edit)
 
+El repositorio incluye un script que hace el paso y comprueba el resultado:
+
 ```bash
-curl -s -X POST \
-  "https://api.cloudflare.com/client/v4/zones/f2dca298e5367a3d738562f90b58bd09/dns_records" \
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "type": "CNAME",
-    "name": "learn",
-    "content": "learn-sodium.pages.dev",
-    "proxied": true,
-    "ttl": 1
-  }'
+CLOUDFLARE_API_TOKEN=xxxx bash scripts/add-dns.sh
 ```
+
+El token se crea en https://dash.cloudflare.com/profile/api-tokens con el
+permiso **Zone → DNS → Edit** sobre `sodium.software`. Ojo: el token OAuth de
+`wrangler login` **no** incluye `dns_records`, y por eso este paso no se puede
+automatizar con el token que se usó en el despliegue.
 
 ### Si el registro se creara a mano y hubiera que deshacerlo
 
