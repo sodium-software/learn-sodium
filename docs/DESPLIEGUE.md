@@ -25,7 +25,8 @@ export CLOUDFLARE_API_TOKEN="$(grep oauth_token ~/.config/.wrangler/config/defau
 ```
 
 > `wrangler login` (interactivo) también vale y es lo habitual en un
-> escritorio con navegador.
+> escritorio con navegador. El token OAuth caduca a la hora; para renovarlo sin
+> interacción: `bash scripts/refresh-token.sh`.
 
 ## 2. Publicar el proyecto
 
