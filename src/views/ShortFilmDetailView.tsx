@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Icon, LevelTag, ProgressBar } from '../components/ui'
 import { useProgress } from '../lib/progress-context'
 import { films, relatedContent } from '../content'
+import { activityDefinitions } from '../activities/registry'
 import { clsx } from '../lib/cn'
 import { formatTime } from '../lib/format'
 
@@ -81,6 +82,7 @@ export function ShortFilmDetailView() {
               <video
                 ref={videoRef}
                 src={`/media/video/${film.id}.mp4`}
+                poster={film.cover}
                 controls
                 preload="metadata"
                 className="block aspect-video w-full"
@@ -252,19 +254,23 @@ export function ShortFilmDetailView() {
                   Practica con esto
                 </h2>
                 <ul className="mt-3 divide-y divide-tint-deep">
-                  {film.relatedActivityIds.map((activityId) => (
-                    <li key={activityId}>
-                      <Link
-                        to={`/activities/${activityId}`}
-                        className="block py-3 text-sm text-ink transition-colors hover:text-accent"
-                      >
-                        {activityId.replace('act-', '').replace(/-/g, ' ')}
-                        <span className="mt-0.5 block text-xs text-ink-mute">
-                          Actividad relacionada
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
+                  {film.relatedActivityIds.map((activityId) => {
+                    const activity = activityDefinitions.find((entry) => entry.id === activityId)
+                    if (!activity) return null
+                    return (
+                      <li key={activityId}>
+                        <Link
+                          to={`/activities/${activityId}`}
+                          className="block py-3 text-sm text-ink transition-colors hover:text-accent"
+                        >
+                          {activity.title}
+                          <span className="mt-0.5 block text-xs text-ink-mute">
+                            {activity.tagline}
+                          </span>
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
               </section>
             ) : null}
