@@ -10,6 +10,10 @@ const OUT = process.argv[3] ?? '.taste-skill/shots'
 
 const ROUTES = [
   ['home', '/'],
+  ['introduccion', '/introduccion'],
+  ['biodata', '/biodata'],
+  ['activity-external', '/activities/ejemplo-wordwall'],
+  ['admin-login', '/admin'],
   ['song', '/song'],
   ['song-detail', '/song/counting-the-miles'],
   ['stories', '/storytelling'],
@@ -27,6 +31,9 @@ const ROUTES = [
   ['activity-reading', '/activities/act-reading-letters'],
   ['settings', '/settings'],
   ['notfound', '/no-existe'],
+  // Al final: la identidad elegida por URL se mantiene el resto de la pestaña.
+  ['home-recreo', '/?identidad=recreo'],
+  ['song-recreo', '/song'],
 ]
 
 const VIEWPORTS = [

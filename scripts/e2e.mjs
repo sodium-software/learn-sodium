@@ -156,6 +156,18 @@ check('ruta inexistente → 404 propio', (await page.getByText('Esta página no 
 // ── 15. Sin errores de consola ─────────────────────────────────────────────
 check('sin errores de consola', consoleErrors.length === 0, consoleErrors.slice(0, 3).join(' | '))
 
+// ── La API cae: la web sigue con la última versión vista o la empaquetada ──
+for (const [name, warm] of [['caché del navegador', true], ['copia empaquetada', false]]) {
+  const offline = await browser.newContext({ viewport: { width: 1280, height: 900 } })
+  const p2 = await offline.newPage()
+  if (warm) await p2.goto(`${BASE}/`, { waitUntil: 'networkidle' })
+  await offline.route('**/api/content', (route) => route.abort())
+  await p2.goto(`${BASE}/song`, { waitUntil: 'networkidle' })
+  const cards = await p2.locator('main a[href^="/song/"]').count()
+  check(`API caída → ${name}`, cards > 0, `${cards} canciones`)
+  await offline.close()
+}
+
 await browser.close()
 
 console.log('\n=== RESULTADOS ===')

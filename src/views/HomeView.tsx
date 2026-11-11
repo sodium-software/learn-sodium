@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { siteConfig } from '../config/site'
 import { useProgress } from '../lib/progress-context'
 import { Icon, LevelTag, Tag } from '../components/ui'
-import { Wordmark } from '../components/Sidebar'
 import { activityDefinitions, allContent, episodes, films, pages, songs, stories, type ContentItem } from '../content'
 
 /**
@@ -25,8 +24,8 @@ export function HomeView() {
       {/* ── Portada ────────────────────────────────────────────────────── */}
       <section className="frame grid-editorial items-center gap-y-10 py-10 lg:py-16">
         <div className="col-span-4 lg:col-span-7">
-          <Wordmark size="lg" />
-          <h1 className="mt-6 text-display font-display font-semibold leading-[1.02] tracking-[-0.03em] text-ink">
+          <p className="label text-accent">{siteConfig.tagline}</p>
+          <h1 className="mt-3 text-display font-display font-semibold leading-[1.02] tracking-[-0.03em] text-ink">
             {name ? `¡Hola, ${name}! ` : ''}
             {siteConfig.heroTitle}
           </h1>
@@ -49,27 +48,19 @@ export function HomeView() {
         </div>
 
         <div className="col-span-4 lg:col-span-5" aria-hidden="true">
-          <div className="grid grid-cols-6 grid-rows-6 gap-3 sm:h-[22rem] lg:h-[26rem]">
+          <div className="grid grid-cols-2 gap-3">
             {covers.map((item, index) => (
               <img
                 key={item.id}
                 src={item.cover}
                 alt=""
-                className={
-                  [
-                    'col-span-4 row-span-4 h-full w-full object-cover',
-                    'col-span-2 col-start-5 row-span-3 h-full w-full object-cover',
-                    'col-span-3 col-start-4 row-span-3 row-start-4 h-full w-full object-cover',
-                  ][index]
-                }
+                className={index === 0 ? 'col-span-2 aspect-[16/9] w-full object-cover' : 'aspect-[4/3] w-full object-cover'}
               />
             ))}
             {covers.length > 0 ? (
-              <div className="col-span-3 row-span-2 row-start-5 flex items-end bg-accent p-4 text-accent-ink">
-                <p className="font-display text-lg font-semibold leading-tight">
-                  {allContent.length + activityDefinitions.length} piezas para aprender
-                </p>
-              </div>
+              <p className="col-span-2 bg-accent px-4 py-3 font-display text-lg font-semibold text-accent-ink">
+                {allContent.length + activityDefinitions.length} piezas para aprender
+              </p>
             ) : null}
           </div>
         </div>

@@ -355,6 +355,55 @@
   }
 }
 
+/* ── Juego oculto ──────────────────────────────────────────────────────── */
+.game-btn {
+  min-height: 2.5rem;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.game-btn:hover:not(:disabled) {
+  background: rgb(255 255 255 / 0.12);
+}
+.game-btn:disabled {
+  opacity: 0.4;
+}
+.game-btn-primary {
+  min-height: 3rem;
+  padding: 0 1.75rem;
+  background: #ffd84d;
+  border-color: #ffd84d;
+  color: #1f1a3d;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+.game-btn-primary:hover:not(:disabled) {
+  background: #ffe27a;
+}
+.game :focus-visible {
+  outline: 3px solid #ffd84d;
+  outline-offset: 3px;
+}
+.game-jar {
+  touch-action: manipulation;
+}
+.game-confetti {
+  position: absolute;
+  top: -12px;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  animation: confetti 2.4s linear forwards;
+}
+@keyframes confetti {
+  to {
+    transform: translateY(105vh) rotate(540deg);
+  }
+}
+
 /* ── Accesibilidad del movimiento ──────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {

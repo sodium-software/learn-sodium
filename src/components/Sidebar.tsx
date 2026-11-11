@@ -9,22 +9,21 @@ import { Icon } from '../components/ui'
 import { navEntries } from './nav'
 
 /** Wordmark de la identidad activa (ver src/config/site.ts). */
-export function Wordmark({ size = 'md' }: { size?: 'md' | 'lg' }) {
-  const big = size === 'lg'
+export function Wordmark() {
   if (currentIdentity() === 'recreo') {
     return (
-      <span className={clsx('inline-flex items-center gap-2 font-display font-semibold text-ink', big ? 'text-3xl' : 'text-lg')}>
+      <span className={clsx('inline-flex items-center gap-2 font-display font-semibold text-ink', 'text-lg')}>
         <span aria-hidden="true" className="flex gap-1">
-          <span className={clsx('rounded-full bg-accent', big ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5')} />
-          <span className={clsx('rounded-full bg-ink', big ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5')} />
-          <span className={clsx('rounded-full bg-[#e9a23b]', big ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5')} />
+          <span className={clsx('rounded-full bg-accent', 'h-2.5 w-2.5')} />
+          <span className={clsx('rounded-full bg-ink', 'h-2.5 w-2.5')} />
+          <span className={clsx('rounded-full bg-[#e9a23b]', 'h-2.5 w-2.5')} />
         </span>
         {siteConfig.platformName}
       </span>
     )
   }
   return (
-    <span className={clsx('inline-flex items-baseline gap-2 font-display font-semibold lowercase tracking-[-0.03em] text-ink', big ? 'text-3xl' : 'text-lg')}>
+    <span className={clsx('inline-flex items-baseline gap-2 font-display font-semibold lowercase tracking-[-0.03em] text-ink', 'text-lg')}>
       <span className="border-b-[3px] border-double border-accent pb-0.5">{siteConfig.platformName}</span>
       <span aria-hidden="true" className="text-accent">
         abc
