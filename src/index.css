@@ -1,72 +1,88 @@
-@import '@fontsource-variable/bricolage-grotesque';
-@import '@fontsource-variable/newsreader';
-@import '@fontsource-variable/fredoka';
+@import '@fontsource/baloo-2/700.css';
+@import '@fontsource/baloo-2/800.css';
+@import '@fontsource/andika/400.css';
+@import '@fontsource/andika/700.css';
 @import 'tailwindcss';
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SISTEMA VISUAL — "La cartilla" (cuaderno de trabajo)
+   SISTEMA VISUAL: «La puerta de la nevera»
    ───────────────────────────────────────────────────────────────────────────
-   Un cuaderno impreso a una tinta. El suelo es papel; el texto es tinta; el
-   acento es la misma tinta en sólido. Una sola tinta, dos tonos de papel.
-   Sin degradados, sin sombras en reposo, sin esquinas blandas.
-
-   La direcciónHZlfds' de arte salió de una baraja: "the page is the object".
-   La idea: en esta plataforma, la pestaña del dividor de un cuaderno de
-   trabajo se convierte en el índice lateral, y cada sección es una página.
+   El sitio es la puerta de la nevera de casa: esmalte claro de suelo, papeles
+   blancos sujetos con imanes y letras-imán de plástico en cuatro colores.
+   Reglas fijas:
+   - Solo cuatro plásticos (rojo, azul, verde y amarillo), el esmalte, el papel
+     y la tinta. Nada más.
+   - La jerarquía la marcan el tamaño y el color del papel, no el peso.
+   - Lo pendiente se ve como un hueco que invita a completarlo.
+   - Retícula firme: solo los papeles decorativos se inclinan, y como mucho
+     2°. Los controles y el texto de lectura van siempre rectos.
+   Tipos: Baloo 2 para las letras-imán y los títulos; Andika para leer (la
+   diseñó SIL para lectores que empiezan). Ambas con licencia SIL OFL 1.1.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* — Papel: el suelo y sus dos escalones — */
-  --color-paper: #f1f2f1;
-  --color-sheet: #fafbf9;
-  --color-tint: #e6e8e6;
-  --color-tint-deep: #d5d8d5;
+  /* Esmalte (el suelo), el papel y sus escalones */
+  --color-paper: #eef1ee;
+  --color-sheet: #ffffff;
+  --color-tint: #e1e6e2;
+  --color-tint-deep: #c9d1cb;
 
-  /* — Tinta: una sola tinta azul-petróleo, con sus grises derivados — */
-  --color-ink: #123c40;
-  --color-ink-soft: #33565a;
-  --color-ink-mute: #4d6a6c;
-  --color-ink-faint: #4f6a6e;
+  /* Tinta */
+  --color-ink: #1b1d24;
+  --color-ink-soft: #2f3340;
+  --color-ink-mute: #464b59;
+  --color-ink-faint: #555b69;
 
-  /* — Acento: la misma tinta en sólido — */
-  --color-accent: #0e4f52;
-  --color-accent-hover: #0a3d40;
-  --color-accent-ink: #f1f2f1;
-  --color-accent-pale: #d6e4e2;
+  /* Los cuatro plásticos y su canto (la cara oscura del imán) */
+  --color-red: #d42a2f;
+  --color-red-deep: #9d1b1f;
+  --color-blue: #1f5fd0;
+  --color-blue-deep: #143f8e;
+  --color-green: #157a42;
+  --color-green-deep: #11633a;
+  --color-yellow: #f4b400;
+  --color-yellow-deep: #b98700;
+  --color-yellow-pale: #fdf0c4;
 
-  /* — Estado: sólo para estado, nunca para adorno — */
-  --color-wrong: #8f3b30;
-  --color-wrong-pale: #efdcda;
+  /* Acción: el plástico azul */
+  --color-accent: #1f5fd0;
+  --color-accent-hover: #143f8e;
+  --color-accent-ink: #ffffff;
+  --color-accent-pale: #dce7fb;
 
-  /* — Tipografía — */
-  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-text: 'Bricolage Grotesque Variable', system-ui, sans-serif;
-  --font-read: 'Newsreader Variable', 'Newsreader', Georgia, serif;
+  /* Estado */
+  --color-wrong: #b3261e;
+  --color-wrong-pale: #fbe1df;
+  --color-right: #11633a;
+  --color-right-pale: #dcf1e4;
 
-  /* — Radios: uno solo en toda la aplicación (cero) — */
-  --radius-none: 0px;
-  --radius-xs: 2px;
-  --radius-sm: 3px;
-  --radius-md: 4px;
+  --font-display: 'Baloo 2', 'Andika', system-ui, sans-serif;
+  --font-text: 'Andika', system-ui, sans-serif;
+  --font-read: 'Andika', system-ui, sans-serif;
 
-  /* — Medidas — */
+  /* Papel casi recto, plástico redondo */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+
   --spacing-gutter: 1.5rem;
-  --spacing-section: 6rem;
-  --spacing-section-mobile: 3.5rem;
+  --spacing-section: 7rem;
+  --spacing-section-mobile: 4rem;
 
-  --shadow-float: 0 12px 32px -8px rgb(18 60 64 / 0.18);
-  --shadow-menu: 0 6px 20px -6px rgb(18 60 64 / 0.22);
+  --shadow-float: 0 14px 34px -10px rgb(27 29 36 / 0.28);
+  --shadow-menu: 0 10px 30px -8px rgb(27 29 36 / 0.3);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-magnet: cubic-bezier(0.34, 1.4, 0.64, 1);
 
-  /* — Escala tipográfica fluida — */
-  --text-xs: 0.8125rem;
-  --text-sm: 0.875rem;
-  --text-base: 1.0625rem;
-  --text-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
-  --text-head: clamp(1.625rem, 1.35rem + 1.4vw, 2.25rem);
-  --text-display: clamp(1.875rem, 1.45rem + 2vw, 3.25rem);
-  --text-hero: clamp(2rem, 1.6rem + 2vw, 2.5rem);
+  /* Escala para lectores nuevos: nada de texto corrido por debajo de 17px */
+  --text-xs: 0.9375rem;
+  --text-sm: 1.0625rem;
+  --text-base: 1.1875rem;
+  --text-lead: clamp(1.25rem, 1.12rem + 0.5vw, 1.625rem);
+  --text-head: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  --text-display: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
+  --text-hero: clamp(2.75rem, 1.9rem + 3.6vw, 5rem);
 }
 
 @layer base {
@@ -86,8 +102,7 @@
     color: var(--color-ink);
     font-family: var(--font-text);
     font-size: var(--text-base);
-    line-height: 1.55;
-    font-synthesis-weight: none;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -97,9 +112,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
     text-wrap: balance;
     overflow-wrap: break-word;
   }
@@ -109,19 +124,68 @@
   }
 
   ::selection {
-    background-color: var(--color-accent);
-    color: var(--color-accent-ink);
+    background-color: var(--color-yellow);
+    color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
+    outline: 3px solid var(--color-blue);
+    outline-offset: 3px;
   }
 
-  /* Barras de desplazamiento discretas, del color del papel */
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--color-tint-deep) transparent;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+  }
+
+  /* Deslizadores: carril grueso y tirador grande, 48px de alto para el dedo. */
+  input[type='range'] {
+    appearance: none;
+    height: 3rem;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 0.625rem;
+    border-radius: 999px;
+    background: var(--color-tint-deep);
+  }
+
+  input[type='range']::-moz-range-track {
+    height: 0.625rem;
+    border-radius: 999px;
+    background: var(--color-tint-deep);
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-top: -0.5625rem;
+    border-radius: 999px;
+    background: var(--color-blue);
+    box-shadow: inset 0 -4px 0 var(--color-blue-deep);
+  }
+
+  input[type='range']::-moz-range-thumb {
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-blue);
+    box-shadow: inset 0 -4px 0 var(--color-blue-deep);
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    width: 1.5rem;
+    height: 1.5rem;
+    accent-color: var(--color-blue);
   }
 
   input,
@@ -130,47 +194,18 @@
   select {
     font: inherit;
     color: inherit;
+    caret-color: var(--color-blue);
   }
-}
-
-/* ── Identidad «Recreo» ────────────────────────────────────────────────────
-   Segunda propuesta: crema, índigo y rojo tomate, letra redondeada y esquinas
-   suaves. Se activa con data-identity="recreo" (ver src/config/site.ts). */
-:root[data-identity='recreo'] {
-  --color-paper: #fff8ec;
-  --color-sheet: #fffdf8;
-  --color-tint: #f6ead6;
-  --color-tint-deep: #e6d3b3;
-  --color-ink: #2a2350;
-  --color-ink-soft: #423b6b;
-  --color-ink-mute: #554e7e;
-  --color-ink-faint: #625b8a;
-  --color-accent: #b23722;
-  --color-accent-hover: #922c19;
-  --color-accent-ink: #ffffff;
-  --color-accent-pale: #fbdcd2;
-  --font-display: 'Fredoka Variable', 'Fredoka', system-ui, sans-serif;
-  --font-text: 'Fredoka Variable', system-ui, sans-serif;
-  --radius-xs: 14px;
-  --radius-sm: 14px;
-  --radius-md: 18px;
-}
-
-:root[data-identity='recreo'] img {
-  border-radius: 14px;
 }
 
 @layer components {
-  /* ── Utilidades de composición ─────────────────────────────────────────── */
+  /* ── Composición ───────────────────────────────────────────────────────── */
 
-  /* El margen exterior: uno solo, igual a ambos lados, en todo el ancho. */
+  /* Un solo margen exterior, igual a ambos lados. */
   .frame {
-    padding-inline: clamp(1rem, 0.6rem + 2vw, 3rem);
+    padding-inline: clamp(1rem, 0.5rem + 2.4vw, 3rem);
   }
 
-  /* Retícula editorial: 4 columnas en móvil, 12 en escritorio. Un solo
-     canalón por ancho, y los hijos pueden encogerse por debajo de su
-     contenido para que una palabra larga no desborde la página. */
   .grid-editorial {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -188,31 +223,31 @@
     }
   }
 
-  /* ── Botones: una sola forma (rectangular, sin radio) y un solo relleno ── */
+  /* ── Botones: plástico redondo, un relleno, 48px como mínimo ───────────── */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    min-height: 2.75rem;
-    padding-inline: 1.25rem;
-    font-family: var(--font-display);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    border: 1px solid transparent;
-    border-radius: var(--radius-xs);
+    min-height: 3rem;
+    min-width: 3rem;
+    padding-inline: 1.375rem;
+    font-family: var(--font-text);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.15;
+    border: 0;
+    border-radius: 999px;
     cursor: pointer;
     text-align: center;
     transition:
-      background-color 140ms var(--ease-out-soft),
-      color 140ms var(--ease-out-soft),
-      border-color 140ms var(--ease-out-soft),
-      transform 140ms var(--ease-out-soft);
+      background-color 160ms var(--ease-out-soft),
+      color 160ms var(--ease-out-soft),
+      transform 160ms var(--ease-out-soft);
   }
 
   .btn:active {
-    transform: translateY(1px);
+    transform: translateY(2px) scale(0.98);
   }
 
   .btn-primary {
@@ -225,9 +260,8 @@
   }
 
   .btn-secondary {
-    background-color: transparent;
+    background-color: var(--color-sheet);
     color: var(--color-ink);
-    border-color: var(--color-tint-deep);
   }
 
   .btn-secondary:hover {
@@ -237,7 +271,7 @@
   .btn-ghost {
     background-color: transparent;
     color: var(--color-ink-soft);
-    padding-inline: 0.625rem;
+    padding-inline: 0.875rem;
   }
 
   .btn-ghost:hover {
@@ -246,23 +280,22 @@
   }
 
   .btn:disabled {
-    opacity: 0.4;
+    opacity: 0.45;
     cursor: not-allowed;
     transform: none;
   }
 
-  /* ── Campos de formulario: líneas, porque son un formulario real ───────── */
+  /* ── Campos: llevan línea porque son formulario ────────────────────────── */
   .field {
     width: 100%;
+    min-height: 3rem;
     background-color: var(--color-sheet);
-    border: 1px solid var(--color-tint-deep);
-    border-radius: var(--radius-xs);
-    padding: 0.625rem 0.75rem;
-    font-size: 0.9375rem;
+    border: 2px solid var(--color-tint-deep);
+    border-radius: var(--radius-sm);
+    padding: 0.625rem 0.875rem;
+    font-size: 1.0625rem;
     color: var(--color-ink);
-    transition:
-      border-color 140ms var(--ease-out-soft),
-      background-color 140ms var(--ease-out-soft);
+    transition: border-color 160ms var(--ease-out-soft);
   }
 
   .field::placeholder {
@@ -275,16 +308,12 @@
 
   .field:focus {
     outline: none;
-    border-color: var(--color-accent);
-    /* taste-skill-ignore: el anillo de foco de un campo de formulario, no
-       una sombra de reposo. */
-    box-shadow: inset 0 0 0 1px var(--color-accent);
+    border-color: var(--color-blue);
   }
 
-  /* ── Superficies planas: separación por tono, nunca por sombra ────────── */
+  /* ── Papeles: separados del esmalte por el tono, sin sombra ni línea ─── */
   .panel {
     background-color: var(--color-sheet);
-    border: 1px solid var(--color-tint-deep);
     border-radius: var(--radius-xs);
   }
 
@@ -293,34 +322,64 @@
     border-radius: var(--radius-xs);
   }
 
-  /* ── Etiquetas: nunca en mayúsculas espaciadas ───────────────────────── */
-  .label {
+  /* El imán que sujeta un papel: un círculo de plástico con su canto. */
+  .magnet {
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-left: -0.875rem;
+    border-radius: 999px;
+    background: var(--m, var(--color-red));
+    box-shadow: inset 0 -4px 0 var(--md, var(--color-red-deep));
+    pointer-events: none;
+  }
+
+  /* Letra-imán: plástico de color con su canto inferior. */
+  .mag-letter {
+    display: inline-block;
     font-family: var(--font-display);
-    font-size: 0.8125rem;
-    font-weight: 500;
+    font-weight: 800;
+    color: var(--c, var(--color-red));
+    text-shadow: 0 0.05em 0 var(--d, var(--color-red-deep));
+  }
+
+  /* Inclinación de los papeles decorativos: como mucho 2°. */
+  .tilt-l {
+    rotate: -1.5deg;
+  }
+
+  .tilt-r {
+    rotate: 1.5deg;
+  }
+
+  .label {
+    font-family: var(--font-text);
+    font-size: 0.9375rem;
+    font-weight: 700;
     color: var(--color-ink-soft);
-    letter-spacing: 0;
   }
 
   .tnum {
     font-variant-numeric: tabular-nums;
   }
 
-  /* ── Texto de lectura larga (historias, transcripciones) ──────────────── */
+  /* ── Lectura larga: grande, con aire ───────────────────────────────────── */
   .prose-read {
     font-family: var(--font-read);
-    font-size: 1.1875rem;
-    line-height: 1.72;
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.4375rem);
+    line-height: 1.8;
     color: var(--color-ink);
+    max-width: 62ch;
   }
 
   .prose-read p + p {
-    margin-top: 1.15em;
+    margin-top: 1.1em;
   }
 
-  /* ── Anillo de progreso: trazo fino, sin relleno ───────────────────────── */
   .progress-track {
-    height: 6px;
+    height: 0.75rem;
     background-color: var(--color-tint);
     border-radius: 999px;
     overflow: hidden;
@@ -328,7 +387,7 @@
 
   .progress-fill {
     height: 100%;
-    background-color: var(--color-accent);
+    background-color: var(--color-green);
     border-radius: 999px;
     transition: width 420ms var(--ease-out-soft);
   }
@@ -339,14 +398,48 @@
     text-wrap: balance;
   }
 
+  /* Entrada: sube y aparece. El contenido es visible si no hay animación. */
   .animate-rise {
-    animation: rise 520ms var(--ease-out-soft) both;
+    animation: rise 560ms var(--ease-out-soft) both;
+  }
+
+  /* El momento de la página: las letras-imán caen y se pegan a la puerta. */
+  .animate-stick {
+    animation: stick 620ms var(--ease-magnet) both;
+  }
+
+  /* Letra equivocada: un temblor corto, sin color de error. */
+  .animate-wobble {
+    animation: wobble 360ms var(--ease-out-soft);
+  }
+
+  @keyframes wobble {
+    25% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
   }
 
   @keyframes rise {
     from {
       opacity: 0;
-      transform: translateY(14px);
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes stick {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5em) scale(1.12);
+    }
+    60% {
+      opacity: 1;
     }
     to {
       opacity: 1;

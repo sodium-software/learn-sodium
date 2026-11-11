@@ -1,39 +1,24 @@
-import type { IconName } from './icons'
+import type { DrawingName } from './Drawings'
 
 export interface NavEntry {
-  id: 'home' | 'introduccion' | 'song' | 'storytelling' | 'podcast' | 'short-film' | 'activities' | 'biodata'
+  id: 'home' | 'introduccion' | 'song' | 'storytelling' | 'podcast' | 'short-film' | 'activities' | 'biodata' | 'settings'
   label: string
   to: string
-  icon: IconName
-  hint: string
+  /** Dibujo de la sección (solo las secciones de contenido). */
+  drawing?: DrawingName
+  /** Las secciones para el adulto van agrupadas en «Para adultos». */
+  adult?: boolean
 }
 
 /** Las secciones de la plataforma, en el orden del menú. */
 export const navEntries: NavEntry[] = [
-  { id: 'home', label: 'Inicio', to: '/', icon: 'Home', hint: 'Portada' },
-  { id: 'introduccion', label: 'Introducción', to: '/introduccion', icon: 'Info', hint: 'Sobre el proyecto' },
-  { id: 'song', label: 'Canciones', to: '/song', icon: 'AudioLines', hint: 'Aprende con música' },
-  {
-    id: 'storytelling',
-    label: 'Historias',
-    to: '/storytelling',
-    icon: 'BookOpen',
-    hint: 'Lectura por capítulos',
-  },
-  { id: 'podcast', label: 'Podcast', to: '/podcast', icon: 'Mic', hint: 'Escucha y comprende' },
-  {
-    id: 'short-film',
-    label: 'Cortometrajes',
-    to: '/short-film',
-    icon: 'Clapperboard',
-    hint: 'Cine para aprender',
-  },
-  {
-    id: 'activities',
-    label: 'Actividades',
-    to: '/activities',
-    icon: 'Target',
-    hint: 'Practica y comprueba',
-  },
-  { id: 'biodata', label: 'Biodata', to: '/biodata', icon: 'UserRound', hint: 'Quién lo hizo' },
+  { id: 'home', label: 'Inicio', to: '/' },
+  { id: 'song', label: 'Canciones', to: '/song', drawing: 'song' },
+  { id: 'storytelling', label: 'Historias', to: '/storytelling', drawing: 'story' },
+  { id: 'podcast', label: 'Podcast', to: '/podcast', drawing: 'podcast' },
+  { id: 'short-film', label: 'Cortometrajes', to: '/short-film', drawing: 'film' },
+  { id: 'activities', label: 'Actividades', to: '/activities', drawing: 'activity' },
+  { id: 'introduccion', label: 'Introducción', to: '/introduccion', adult: true },
+  { id: 'biodata', label: 'Biodata', to: '/biodata', adult: true },
+  { id: 'settings', label: 'Ajustes', to: '/settings', adult: true },
 ]

@@ -61,9 +61,9 @@ export function Tag({
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-1.5 px-2 py-0.5 text-xs font-medium',
-        tone === 'quiet' && 'bg-tint text-ink-soft',
-        tone === 'solid' && 'bg-ink text-paper',
+        'inline-flex h-7 items-center gap-1.5 rounded-[4px] px-2 text-sm font-bold',
+        tone === 'quiet' && 'bg-yellow-pale text-ink',
+        tone === 'solid' && 'bg-ink text-white',
         tone === 'accent' && 'bg-accent text-accent-ink',
         className,
       )}
@@ -77,7 +77,7 @@ export function Tag({
 
 export function LevelTag({ level }: { level: string }) {
   return (
-    <span className="inline-flex h-5 min-w-8 items-center justify-center bg-ink px-1.5 text-xs font-semibold tracking-wide text-paper">
+    <span className="inline-flex h-7 min-w-9 items-center justify-center rounded-[4px] bg-ink px-2 text-sm font-bold text-white">
       {level}
     </span>
   )
@@ -122,7 +122,7 @@ export function EmptyState({
 }) {
   return (
     <div className="panel-quiet px-6 py-10 text-center">
-      <p className="font-display text-lg font-semibold text-ink">{title}</p>
+      <p className="font-display text-lg font-extrabold text-ink">{title}</p>
       <p className="mx-auto mt-2 max-w-md text-sm text-ink-soft">{description}</p>
       {action ? <div className="mt-5 flex justify-center">{action}</div> : null}
     </div>
@@ -171,7 +171,7 @@ export function Credits({ piece }: { piece: { example: boolean; rights: { source
   const { source, license, credits } = piece.rights
   if (!source && !license && !credits && !piece.example) return null
   return (
-    <section aria-label="Créditos" className="border-t border-tint-deep pt-5 text-sm text-ink-mute">
+    <section aria-label="Créditos" className="pt-5 text-sm text-ink-mute">
       <p className="flex flex-wrap items-center gap-2">
         <span className="font-medium text-ink-soft">Créditos</span>
         {piece.example ? <Tag>Ejemplo</Tag> : null}

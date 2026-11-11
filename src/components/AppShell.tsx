@@ -1,29 +1,23 @@
 import { useEffect, useState } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 
-import { MobileHeader, Sidebar } from './Sidebar'
+import { siteConfig } from '../config/site'
+import { MagnetWord, SiteHeader } from './SiteHeader'
 import { useProgress } from '../lib/progress-context'
 
 /**
- * Marco de la aplicación: barra superior en móvil, barra lateral en escritorio
- * y la vista actual.
- *
- * La columna de contenido y la barra lateral comparten una fila; la barra
- * superior de móvil va por encima, en su propia fila, para que el contenido
- * use todo el ancho en pantallas pequeñas.
+ * Marco de la aplicación: la barra superior y la vista actual.
  */
 export function AppShell() {
   const location = useLocation()
   const { addMinutes } = useProgress()
-  const [mobileOpen, setMobileOpen] = useState(false)
   const [lastPath, setLastPath] = useState(location.pathname)
 
-  // Al cambiar de sección se vuelve arriba y se cierra el menú de móvil.
+  // Al cambiar de sección se vuelve arriba.
   // El ajuste se hace durante el render y no en un efecto, para no provocar
   // una segunda pasada de dibujado.
   if (lastPath !== location.pathname) {
     setLastPath(location.pathname)
-    setMobileOpen(false)
     window.scrollTo({ top: 0, behavior: 'auto' })
   }
 
@@ -47,14 +41,26 @@ export function AppShell() {
   }, [location.pathname, addMinutes])
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
-      <MobileHeader onOpen={() => setMobileOpen(true)} />
-      <div className="flex flex-1 items-start">
-        <Sidebar mobileOpen={mobileOpen} onCloseMobile={() => setMobileOpen(false)} />
-        <main className="min-w-0 flex-1">
-          <Outlet />
-        </main>
-      </div>
+    <div className="flex min-h-dvh flex-col bg-paper">
+      <SiteHeader />
+      <main className="min-w-0 flex-1">
+        <Outlet />
+      </main>
+      <footer className="frame bg-sheet pb-10 pt-14">
+        <p className="text-[clamp(3rem,1.5rem+7vw,8rem)] leading-none" aria-hidden="true">
+          <MagnetWord text={siteConfig.platformName} />
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 text-base text-ink-soft">
+          <p className="max-w-[60ch]">
+            Sin cuentas, sin cookies de terceros y sin analítica. El progreso se guarda solo en este dispositivo.
+          </p>
+          <nav aria-label="Pie de página" className="flex flex-wrap gap-1">
+            <Link to="/introduccion" className="btn btn-ghost">Introducción</Link>
+            <Link to="/biodata" className="btn btn-ghost">Biodata</Link>
+            <Link to="/settings" className="btn btn-ghost">Ajustes</Link>
+          </nav>
+        </div>
+      </footer>
     </div>
   )
 }

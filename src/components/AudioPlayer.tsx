@@ -147,17 +147,17 @@ export function AudioPlayer({
   )
 
   return (
-    <div className={clsx('panel px-4 py-3', className)}>
+    <div className={clsx('panel px-4 py-4 sm:px-5', className)}>
       <audio ref={audioRef} src={src} preload="metadata" />
 
       <div className="flex items-center gap-4">
         <button
           type="button"
           onClick={toggle}
-          className="btn btn-primary h-11 w-11 shrink-0 p-0"
+          className="btn btn-primary h-14 w-14 shrink-0 p-0"
           aria-label={playing ? `Pausar ${label}` : `Reproducir ${label}`}
         >
-          <Icon name={playing ? 'Pause' : 'Play'} size={18} strokeWidth={2} />
+          <Icon name={playing ? 'Pause' : 'Play'} size={24} strokeWidth={2.25} />
         </button>
 
         <div className="min-w-0 flex-1">
@@ -172,18 +172,18 @@ export function AudioPlayer({
             step={0.05}
             value={played}
             onChange={onScrub}
-            className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-tint-deep accent-accent"
+            className="w-full"
           />
         </div>
 
-        <p className="tnum shrink-0 text-sm tabular-nums text-ink-soft">
+        <p className="tnum shrink-0 text-base font-bold tabular-nums text-ink">
           {formatTime(time)} / {formatTime(total)}
         </p>
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
-        <label className="flex items-center gap-2 text-xs text-ink-soft">
-          <Icon name="Volume2" size={15} />
+        <label className="flex items-center gap-2 text-ink-soft">
+          <Icon name="Volume2" size={20} />
           <span className="sr-only">Volumen</span>
           <input
             type="range"
@@ -192,7 +192,7 @@ export function AudioPlayer({
             step={0.05}
             value={volume}
             onChange={(event) => setVolume(Number(event.target.value))}
-            className="h-1 w-24 cursor-pointer appearance-none rounded-full bg-tint-deep accent-accent"
+            className="w-28"
           />
         </label>
 
@@ -203,10 +203,10 @@ export function AudioPlayer({
               type="button"
               onClick={() => setRate(option)}
               className={clsx(
-                'px-2 py-1 text-xs font-medium transition-colors',
+                'min-h-12 min-w-14 rounded-full px-3 font-bold transition-colors',
                 rate === option
-                  ? 'bg-ink text-paper'
-                  : 'bg-tint text-ink-soft hover:bg-tint-deep hover:text-ink',
+                  ? 'bg-ink text-white'
+                  : 'bg-tint text-ink hover:bg-tint-deep',
               )}
               aria-pressed={rate === option}
             >
@@ -215,7 +215,7 @@ export function AudioPlayer({
           ))}
         </div>
 
-        <p className="ml-auto text-xs text-ink-mute">
+        <p className="ml-auto text-sm text-ink-mute">
           {ready ? 'Material de demostración generado localmente' : 'Cargando…'}
         </p>
       </div>

@@ -18,11 +18,11 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
   const noteId = `aviso-${activity.id}`
 
   return (
-    <article className={clsx('panel flex flex-col overflow-hidden', done && 'border-accent')}>
+    <article className={clsx('panel flex flex-col overflow-hidden', done && 'bg-right-pale')}>
       {activity.cover ? <img src={activity.cover} alt="" className="aspect-[16/9] w-full object-cover" loading="lazy" /> : null}
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-soft">
+          <span className="inline-flex items-center gap-1.5 text-sm font-bold text-ink-soft">
             <Icon name="ExternalLink" size={14} />
             {toolName(activity.tool)}
           </span>
@@ -30,11 +30,11 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
           {activity.age ? <span className="text-xs text-ink-mute">{activity.age}</span> : null}
           {activity.example ? <Tag>Ejemplo</Tag> : null}
         </div>
-        <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-ink">{activity.title}</h3>
-        {activity.skill ? <p className="mt-1 text-sm text-ink-mute">{skillName(activity.skill)}</p> : null}
-        {activity.description ? <p className="mt-3 text-sm leading-relaxed text-ink-soft">{activity.description}</p> : null}
+        <h3 className="mt-3 font-display text-3xl font-extrabold leading-tight text-ink">{activity.title}</h3>
+        {activity.skill ? <p className="mt-1 text-base text-ink-mute">{skillName(activity.skill)}</p> : null}
+        {activity.description ? <p className="mt-3 text-base text-ink-soft">{activity.description}</p> : null}
         {activity.instructions ? (
-          <p className="mt-3 whitespace-pre-line border-l-2 border-accent pl-3 text-sm text-ink">{activity.instructions}</p>
+          <p className="mt-4 whitespace-pre-line rounded-[var(--radius-xs)] bg-yellow-pale px-4 py-3 text-base text-ink">{activity.instructions}</p>
         ) : null}
 
         <div className="mt-auto flex flex-wrap items-center gap-3 pt-5">
@@ -48,13 +48,13 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
             type="button"
             onClick={() => toggleDone(activity.id)}
             aria-pressed={done}
-            className="btn btn-secondary"
+            className="btn bg-tint text-ink hover:bg-tint-deep"
           >
-            <Icon name={done ? 'CircleCheck' : 'Circle'} size={16} className={done ? 'text-accent' : undefined} />
+            <Icon name={done ? 'CircleCheck' : 'Circle'} size={16} className={done ? 'text-green' : undefined} />
             {done ? 'Hecha' : 'Marcar como hecha'}
           </button>
         </div>
-        <p id={noteId} className="mt-2 text-xs text-ink-mute">
+        <p id={noteId} className="mt-3 text-sm text-ink-mute">
           Se abre en una pestaña nueva, fuera de La Cartilla.
         </p>
         {detailed ? (

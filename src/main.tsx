@@ -6,7 +6,6 @@ import { AppRoutes } from './App'
 import { ProgressProvider } from './lib/progress'
 import { activityDefinitions, syncActivityTools } from './activities/registry'
 import { loadContent } from './content/load'
-import { applyIdentity } from './config/site'
 import './index.css'
 
 const container = document.getElementById('root')
@@ -17,7 +16,6 @@ if (!container) {
 // La copia estática para abrir sin servidor (file://) usa rutas con #.
 const Router = import.meta.env.VITE_STATIC === '1' ? HashRouter : BrowserRouter
 
-applyIdentity()
 void loadContent().then(() => {
   syncActivityTools()
   createRoot(container).render(
