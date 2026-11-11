@@ -1,11 +1,47 @@
-# Despliegue en Cloudflare Pages — learn.sodium.software
+# Despliegue en Cloudflare Pages — La Cartilla
 
-**Estado actual: desplegado y verificado en `https://learn-sodium.pages.dev`.**
-Sólo falta un paso manual para que el subdominio `learn.sodium.software`
-responda (ver §4), porque el token de API disponible no tiene permiso de
-escritura en DNS.
+SPA (`dist/`) + Pages Functions (`functions/`) con D1 (contenido) y R2
+(archivos). Configuración en `wrangler.toml`: producción usa `learn-sodium` y
+`learn-sodium-media`; cualquier otra rama (previsualización) usa
+`learn-sodium-preview` y `learn-sodium-media-preview`.
+
+## Operación diaria
+
+```bash
+bash scripts/refresh-token.sh                       # token de wrangler (dura 1 h)
+export CLOUDFLARE_API_TOKEN="$(grep oauth_token ~/.config/.wrangler/config/default.toml | sed 's/.*= "//; s/"//')"
+npm run deploy:preview                              # https://preview.learn-sodium.pages.dev
+npm run deploy                                      # producción (solo con visto bueno)
+```
+
+Cuenta del panel (la contraseña se pide en el terminal y solo viaja su hash):
+
+```bash
+node scripts/admin-user.mjs correo@ejemplo.com --remote            # producción
+node scripts/admin-user.mjs correo@ejemplo.com --remote --env preview
+node scripts/admin-user.mjs correo@ejemplo.com --remote --delete   # borrar
+```
+
+El panel está en `/admin`. Pruebas: `scripts/e2e.mjs` (web pública),
+`scripts/e2e-admin.mjs` (panel de punta a punta), `scripts/e2e-game.mjs`
+(juego), `scripts/abuse-test.mjs` (seguridad), `scripts/shoot.mjs` (capturas
+390/768/1440), `node scripts/test-game.mjs` (lógica del juego).
+
+Base de datos nueva: `wrangler d1 migrations apply <db> --remote` y, para el
+contenido de ejemplo, `wrangler d1 execute <db> --remote --file seed/demo.sql`.
+
+## Fin del trabajo universitario
+
+1. `node scripts/package-handover.mjs` → `entrega/la-cartilla-entrega-AAAA-MM-DD.zip`
+   (contenido.json, medios y una copia de la web que abre sin servidor;
+   se comprueba con `node scripts/test-handover.mjs entrega/.../sitio`).
+2. `bash scripts/teardown.sh` lista lo que se borraría; `--ejecutar` pide una
+   frase y confirmación paso a paso. El borrado lo ordena el fundador.
 
 ---
+
+## Referencia anterior (despliegue inicial)
+
 
 ## 1. Qué hay que tener
 
