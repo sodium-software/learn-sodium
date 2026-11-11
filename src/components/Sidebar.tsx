@@ -1,31 +1,67 @@
-import { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
-import { siteConfig } from '../config/site'
+import { currentIdentity, siteConfig } from '../config/site'
+import { settings } from '../content'
 import { useProgress } from '../lib/progress-context'
 import { clsx } from '../lib/cn'
 import { Icon } from '../components/ui'
 import { navEntries } from './nav'
 
-/** La marca de la plataforma: monograma y nombre. */
-export function Brand({ compact = false }: { compact?: boolean }) {
+/** Wordmark de la identidad activa (ver src/config/site.ts). */
+export function Wordmark({ size = 'md' }: { size?: 'md' | 'lg' }) {
+  const big = size === 'lg'
+  if (currentIdentity() === 'recreo') {
+    return (
+      <span className={clsx('inline-flex items-center gap-2 font-display font-semibold text-ink', big ? 'text-3xl' : 'text-lg')}>
+        <span aria-hidden="true" className="flex gap-1">
+          <span className={clsx('rounded-full bg-accent', big ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5')} />
+          <span className={clsx('rounded-full bg-ink', big ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5')} />
+          <span className={clsx('rounded-full bg-[#e9a23b]', big ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5')} />
+        </span>
+        {siteConfig.platformName}
+      </span>
+    )
+  }
   return (
-    <div className="flex items-center gap-3">
-      <div
-        className="flex h-9 w-9 shrink-0 items-center justify-center bg-accent font-display text-base font-semibold text-accent-ink"
-        aria-hidden="true"
-      >
-        {siteConfig.shortName.slice(0, 2)}
-      </div>
-      {!compact ? (
-        <div className="min-w-0">
-          <p className="truncate font-display text-base font-semibold tracking-tight text-ink">
-            {siteConfig.platformName}
-          </p>
-          <p className="truncate text-xs text-ink-mute">Cuaderno de inglés</p>
-        </div>
-      ) : null}
-    </div>
+    <span className={clsx('inline-flex items-baseline gap-2 font-display font-semibold lowercase tracking-[-0.03em] text-ink', big ? 'text-3xl' : 'text-lg')}>
+      <span className="border-b-[3px] border-double border-accent pb-0.5">{siteConfig.platformName}</span>
+      <span aria-hidden="true" className="text-accent">
+        abc
+      </span>
+    </span>
+  )
+}
+
+/**
+ * La marca: enlaza a Inicio. Cinco toques seguidos abren el juego oculto
+ * (si está activado en el panel).
+ */
+export function Brand({ compact = false }: { compact?: boolean }) {
+  const navigate = useNavigate()
+  const taps = useRef<number[]>([])
+  const onClick = (event: React.MouseEvent) => {
+    const now = Date.now()
+    taps.current = [...taps.current.filter((t) => now - t < 2500), now]
+    if (taps.current.length >= 5 && settings.easterEgg) {
+      event.preventDefault()
+      taps.current = []
+      navigate('/juego')
+    }
+  }
+  return (
+    <Link to="/" onClick={onClick} className="flex min-w-0 items-center gap-3" aria-label={`${siteConfig.platformName}, ir a Inicio`}>
+      {compact ? (
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center bg-accent font-display text-base font-semibold text-accent-ink" aria-hidden="true">
+          {siteConfig.platformName.replace(/^La /, '').slice(0, 1)}
+        </span>
+      ) : (
+        <span className="min-w-0">
+          <Wordmark />
+          <span className="block truncate text-xs text-ink-mute">{siteConfig.tagline}</span>
+        </span>
+      )}
+    </Link>
   )
 }
 

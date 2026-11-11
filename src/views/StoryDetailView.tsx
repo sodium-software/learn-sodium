@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { Icon, LevelTag, ProgressBar } from '../components/ui'
+import { Icon, LevelTag, ProgressBar, Credits } from '../components/ui'
 import { useProgress } from '../lib/progress-context'
 import { relatedContent, stories } from '../content'
 import { clsx } from '../lib/cn'
@@ -297,6 +297,9 @@ export function StoryDetailView() {
             ) : null}
           </aside>
         </div>
+      </div>
+      <div className="frame pb-12">
+        <Credits piece={story} />
       </div>
     </div>
   )

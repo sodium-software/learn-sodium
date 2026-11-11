@@ -13,6 +13,8 @@ export interface ProgressContextValue {
   preferences: UserPreferences
   updatePreferences: (patch: Partial<UserPreferences>) => void
   recordActivity: (activityId: string, result: ActivityResult) => void
+  /** Marca o desmarca como hecha (actividades externas, marcado manual). */
+  toggleDone: (activityId: string) => void
   updateMedia: (mediaId: string, patch: Partial<MediaProgress>) => void
   toggleMastered: (term: string) => void
   addMinutes: (minutes: number) => void

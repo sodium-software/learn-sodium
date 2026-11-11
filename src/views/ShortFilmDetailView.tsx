@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { Icon, LevelTag, ProgressBar } from '../components/ui'
+import { Icon, LevelTag, ProgressBar, Credits } from '../components/ui'
 import { useProgress } from '../lib/progress-context'
 import { films, relatedContent } from '../content'
 import { activityDefinitions } from '../activities/registry'
@@ -79,20 +79,25 @@ export function ShortFilmDetailView() {
           <div className="min-w-0">
             {/* ── Reproductor ───────────────────────────────────────────── */}
             <div className="panel overflow-hidden bg-ink p-0">
-              <video
-                ref={videoRef}
-                src={`/media/video/${film.id}.mp4`}
-                poster={film.cover}
-                controls
-                preload="metadata"
-                className="block aspect-video w-full"
-                onTimeUpdate={(event) => setTime(event.currentTarget.currentTime)}
-              />
+              {film.video ? (
+                <video
+                  ref={videoRef}
+                  src={film.video}
+                  poster={film.cover}
+                  controls
+                  preload="metadata"
+                  className="block aspect-video w-full"
+                  onTimeUpdate={(event) => setTime(event.currentTarget.currentTime)}
+                />
+              ) : (
+                <img src={film.cover} alt="" className="block aspect-video w-full object-cover" />
+              )}
             </div>
 
             <p className="mt-3 text-xs text-ink-mute">
-              Cortometraje de demostración generado localmente: imágenes tipográficas con
-              la narración original en inglés.
+              {film.video
+                ? 'Pulsa una escena para saltar a ese momento del vídeo.'
+                : 'Este cortometraje todavía no tiene vídeo: puedes leer sus escenas.'}
             </p>
 
             {/* ── Escenas ───────────────────────────────────────────────── */}
@@ -304,6 +309,9 @@ export function ShortFilmDetailView() {
             </p>
           </aside>
         </div>
+      </div>
+      <div className="frame pb-12">
+        <Credits piece={film} />
       </div>
     </div>
   )

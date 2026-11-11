@@ -44,6 +44,15 @@ export function ProgressProvider({
     })
   }, [])
 
+  const toggleDone = useCallback((activityId: string) => {
+    setState((prev) => ({
+      ...prev,
+      completedActivityIds: prev.completedActivityIds.includes(activityId)
+        ? prev.completedActivityIds.filter((id) => id !== activityId)
+        : [...prev.completedActivityIds, activityId],
+    }))
+  }, [])
+
   const updateMedia = useCallback((mediaId: string, patch: Partial<MediaProgress>) => {
     setState((prev) => ({
       ...prev,
@@ -106,6 +115,7 @@ export function ProgressProvider({
       preferences: state.preferences,
       updatePreferences,
       recordActivity,
+      toggleDone,
       updateMedia,
       toggleMastered,
       addMinutes,
@@ -118,6 +128,7 @@ export function ProgressProvider({
       state,
       updatePreferences,
       recordActivity,
+      toggleDone,
       updateMedia,
       toggleMastered,
       addMinutes,

@@ -1,16 +1,17 @@
 import type { IconName } from './icons'
 
 export interface NavEntry {
-  id: 'home' | 'song' | 'storytelling' | 'podcast' | 'short-film' | 'activities'
+  id: 'home' | 'introduccion' | 'song' | 'storytelling' | 'podcast' | 'short-film' | 'activities' | 'biodata'
   label: string
   to: string
   icon: IconName
   hint: string
 }
 
-/** Las seis secciones de la plataforma, en orden de uso. */
+/** Las secciones de la plataforma, en el orden del menú. */
 export const navEntries: NavEntry[] = [
-  { id: 'home', label: 'Inicio', to: '/', icon: 'Home', hint: 'Tu cuaderno' },
+  { id: 'home', label: 'Inicio', to: '/', icon: 'Home', hint: 'Portada' },
+  { id: 'introduccion', label: 'Introducción', to: '/introduccion', icon: 'Info', hint: 'Sobre el proyecto' },
   { id: 'song', label: 'Canciones', to: '/song', icon: 'AudioLines', hint: 'Aprende con música' },
   {
     id: 'storytelling',
@@ -34,4 +35,5 @@ export const navEntries: NavEntry[] = [
     icon: 'Target',
     hint: 'Practica y comprueba',
   },
+  { id: 'biodata', label: 'Biodata', to: '/biodata', icon: 'UserRound', hint: 'Quién lo hizo' },
 ]

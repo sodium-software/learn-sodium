@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { Icon, LevelTag, ProgressBar } from '../components/ui'
+import { Credits, Icon, LevelTag, ProgressBar } from '../components/ui'
+import { ExternalActivityCard } from '../components/ExternalActivity'
 import { activityDefinitions, activityTools } from '../activities/registry'
 import { useProgress } from '../lib/progress-context'
 import { allContent } from '../content'
@@ -23,6 +24,20 @@ export function ActivityRunnerView() {
       .map((contentId) => allContent.find((item) => item.id === contentId))
       .filter((item): item is NonNullable<typeof item> => Boolean(item))
   }, [definition])
+
+  if (definition?.kind === 'external') {
+    return (
+      <div className="frame py-10 lg:py-14">
+        <Link to="/activities" className="mb-8 inline-flex items-center gap-1.5 text-sm text-ink-mute hover:text-accent">
+          <Icon name="ChevronLeft" size={15} />
+          Todas las actividades
+        </Link>
+        <div className="max-w-2xl">
+          <ExternalActivityCard activity={definition} detailed />
+        </div>
+      </div>
+    )
+  }
 
   if (!definition || !tool) {
     return (
@@ -121,6 +136,10 @@ export function ActivityRunnerView() {
           </div>
         </section>
       ) : null}
+
+      <div className="mt-12">
+        <Credits piece={definition} />
+      </div>
     </div>
   )
 }

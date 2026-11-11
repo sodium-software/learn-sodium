@@ -156,3 +156,41 @@ export function SectionHeading({
     </div>
   )
 }
+
+// ── Créditos de una pieza ───────────────────────────────────────────────────
+
+const LICENSE_TEXT: Record<string, string> = {
+  propio: 'Propio',
+  'dominio-publico': 'Dominio público',
+  cc: 'Creative Commons',
+  permiso: 'Con permiso del autor',
+}
+
+/** Fuente, licencia y créditos: van en la ficha de cada pieza. */
+export function Credits({ piece }: { piece: { example: boolean; rights: { source: string; license: string; credits: string } } }) {
+  const { source, license, credits } = piece.rights
+  if (!source && !license && !credits && !piece.example) return null
+  return (
+    <section aria-label="Créditos" className="border-t border-tint-deep pt-5 text-sm text-ink-mute">
+      <p className="flex flex-wrap items-center gap-2">
+        <span className="font-medium text-ink-soft">Créditos</span>
+        {piece.example ? <Tag>Ejemplo</Tag> : null}
+      </p>
+      <dl className="mt-2 grid gap-1 sm:grid-cols-[8rem_minmax(0,1fr)]">
+        {source ? (
+          <>
+            <dt>Fuente</dt>
+            <dd className="text-ink-soft">{source}</dd>
+          </>
+        ) : null}
+        {license ? (
+          <>
+            <dt>Licencia</dt>
+            <dd className="text-ink-soft">{LICENSE_TEXT[license] ?? license}</dd>
+          </>
+        ) : null}
+      </dl>
+      {credits ? <p className="mt-2 whitespace-pre-line">{credits}</p> : null}
+    </section>
+  )
+}

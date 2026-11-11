@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react'
 
 import { AudioPlayer } from '../components/AudioPlayer'
-import { Icon, LevelTag } from '../components/ui'
+import { Icon, LevelTag, Credits } from '../components/ui'
 import { useProgress } from '../lib/progress-context'
 import { relatedContent, songs } from '../content'
 import { formatDuration, formatTime } from '../lib/format'
@@ -277,6 +277,9 @@ export function SongDetailView() {
             ) : null}
           </aside>
         </div>
+      </div>
+      <div className="frame pb-12">
+        <Credits piece={song} />
       </div>
     </div>
   )

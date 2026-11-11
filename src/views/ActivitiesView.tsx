@@ -5,6 +5,8 @@ import { activityDefinitions, activityTools } from '../activities/registry'
 import { useProgress } from '../lib/progress-context'
 import { allContent } from '../content'
 import { clsx } from '../lib/cn'
+import { ExternalActivityCard, toolName } from '../components/ExternalActivity'
+import { EXTERNAL_TOOLS } from '../shared/schema'
 
 /**
  * Centro de herramientas pedagógicas.
@@ -47,7 +49,7 @@ export function ActivitiesView() {
         </div>
         <div className="col-span-4 lg:col-span-4 lg:col-start-9">
           <p className="text-lead text-ink-soft">
-            Seis herramientas que se corrigen solas y guardan lo que hiciste.
+            Ejercicios que se corrigen solos y actividades en otras plataformas. Lo que haces se guarda en este dispositivo.
           </p>
         </div>
       </header>
@@ -166,6 +168,31 @@ export function ActivitiesView() {
           </section>
         ))}
       </div>
+
+      {/* ── Actividades en otras plataformas ───────────────────────────── */}
+      {EXTERNAL_TOOLS.map(([tool]) => {
+        const external = activityDefinitions.filter(
+          (definition) => definition.kind === 'external' && (definition.tool ?? 'other') === tool,
+        )
+        if (external.length === 0) return null
+        return (
+          <section key={tool} className="mt-16" aria-labelledby={`tool-${tool}`}>
+            <div className="border-b border-tint-deep pb-4">
+              <h2 id={`tool-${tool}`} className="font-display text-2xl font-semibold tracking-tight text-ink">
+                En {toolName(tool)}
+              </h2>
+              <p className="mt-1 text-sm text-ink-mute">
+                Se abren fuera de La Cartilla. Al volver, márcalas como hechas.
+              </p>
+            </div>
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {external.map((definition) => (
+                <ExternalActivityCard key={definition.id} activity={definition} />
+              ))}
+            </div>
+          </section>
+        )
+      })}
 
       {/* ── Material relacionado ───────────────────────────────────────── */}
       <section className="mt-20" aria-labelledby="material-actividades">

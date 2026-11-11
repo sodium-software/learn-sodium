@@ -1,16 +1,15 @@
 /**
  * Registro de herramientas pedagógicas.
  *
- * Éste es el punto de extensión de la plataforma: para añadir una actividad
- * nueva basta con escribir su componente y añadir una línea a `tools` más su
- * entrada en `content/activities.json`. Ni la vista de actividades, ni el
- * enrutador, ni el resto de la aplicación necesitan cambios.
+ * Cada tipo de actividad interna tiene su componente. Las actividades vienen
+ * del contenido publicado (ver src/content); las externas no tienen
+ * componente: se abren en la plataforma donde viven.
  */
 
 import type { ComponentType } from 'react'
 
-import activitiesJson from '../../content/activities.json'
-import type { ActivityDefinition, ActivityKind, ActivityResult } from '../types'
+import { activityDefinitions } from '../content'
+import type { ActivityKind, ActivityResult } from '../types'
 import type { ActivityToolProps } from './shared'
 import { FillInBlanks } from './tools/FillInBlanks'
 import { ListeningPractice } from './tools/ListeningPractice'
@@ -19,73 +18,40 @@ import { ReadingComprehension } from './tools/ReadingComprehension'
 import { VocabularyBuilder } from './tools/VocabularyBuilder'
 import { WordMatching } from './tools/WordMatching'
 
+export { activityDefinitions }
+
 export interface ActivityTool {
-  /** Identificador único de la herramienta. */
   id: string
-  /** Tipo de actividad: determina qué componente la ejecuta. */
   kind: ActivityKind
-  /** Componente que implementa la actividad. */
   component: ComponentType<ActivityToolProps>
-  /** Etiqueta corta del tipo, para agrupar en el catálogo. */
   typeLabel: string
 }
 
-/**
- * Componentes disponibles por tipo. Una actividad nueva puede reutilizar uno
- * de estos o traer el suyo y registrarlo aquí.
- */
-const tools: Record<ActivityKind, ActivityTool> = {
-  vocabulary: {
-    id: 'vocabulary',
-    kind: 'vocabulary',
-    component: VocabularyBuilder,
-    typeLabel: 'Tarjetas',
-  },
-  quiz: {
-    id: 'quiz',
-    kind: 'quiz',
-    component: QuizTool,
-    typeLabel: 'Quiz',
-  },
-  matching: {
-    id: 'matching',
-    kind: 'matching',
-    component: WordMatching,
-    typeLabel: 'Relacionar',
-  },
-  'fill-blanks': {
-    id: 'fill-blanks',
-    kind: 'fill-blanks',
-    component: FillInBlanks,
-    typeLabel: 'Completar',
-  },
-  listening: {
-    id: 'listening',
-    kind: 'listening',
-    component: ListeningPractice,
-    typeLabel: 'Escucha',
-  },
-  reading: {
-    id: 'reading',
-    kind: 'reading',
-    component: ReadingComprehension,
-    typeLabel: 'Lectura',
-  },
+type InternalKind = Exclude<ActivityKind, 'external'>
+
+const tools: Record<InternalKind, Omit<ActivityTool, 'id'>> = {
+  vocabulary: { kind: 'vocabulary', component: VocabularyBuilder, typeLabel: 'Tarjetas' },
+  quiz: { kind: 'quiz', component: QuizTool, typeLabel: 'Quiz' },
+  matching: { kind: 'matching', component: WordMatching, typeLabel: 'Relacionar' },
+  'fill-blanks': { kind: 'fill-blanks', component: FillInBlanks, typeLabel: 'Completar' },
+  listening: { kind: 'listening', component: ListeningPractice, typeLabel: 'Escucha' },
+  reading: { kind: 'reading', component: ReadingComprehension, typeLabel: 'Lectura' },
 }
 
-/** Definiciones cargadas desde `content/activities.json`. */
-export const activityDefinitions: ActivityDefinition[] =
-  activitiesJson.activities as ActivityDefinition[]
+/** Herramientas de las actividades internas. Se rellena con `syncActivityTools` al cargar el contenido. */
+export const activityTools: ActivityTool[] = []
 
-export const activityTools: ActivityTool[] = activityDefinitions.map((definition) => {
-  const tool = tools[definition.kind]
-  if (!tool) {
-    throw new Error(`No hay herramienta registrada para el tipo "${definition.kind}"`)
-  }
-  return { ...tool, id: definition.id }
-})
+export function syncActivityTools(): void {
+  activityTools.splice(
+    0,
+    activityTools.length,
+    ...activityDefinitions
+      .filter((definition) => definition.kind !== 'external' && tools[definition.kind as InternalKind])
+      .map((definition) => ({ ...tools[definition.kind as InternalKind], id: definition.id })),
+  )
+}
 
-export function findActivity(id: string): ActivityDefinition | undefined {
+export function findActivity(id: string) {
   return activityDefinitions.find((definition) => definition.id === id)
 }
 
@@ -93,7 +59,6 @@ export function findTool(id: string): ActivityTool | undefined {
   return activityTools.find((tool) => tool.id === id)
 }
 
-/** Tipo de la actividad a partir de su id, para los enlaces cruzados. */
 export function activityKindOf(id: string): ActivityKind | undefined {
   return findActivity(id)?.kind
 }

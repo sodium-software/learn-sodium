@@ -1,5 +1,6 @@
 @import '@fontsource-variable/bricolage-grotesque';
 @import '@fontsource-variable/newsreader';
+@import '@fontsource-variable/fredoka';
 @import 'tailwindcss';
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -130,6 +131,33 @@
     font: inherit;
     color: inherit;
   }
+}
+
+/* ── Identidad «Recreo» ────────────────────────────────────────────────────
+   Segunda propuesta: crema, índigo y rojo tomate, letra redondeada y esquinas
+   suaves. Se activa con data-identity="recreo" (ver src/config/site.ts). */
+:root[data-identity='recreo'] {
+  --color-paper: #fff8ec;
+  --color-sheet: #fffdf8;
+  --color-tint: #f6ead6;
+  --color-tint-deep: #e6d3b3;
+  --color-ink: #2a2350;
+  --color-ink-soft: #423b6b;
+  --color-ink-mute: #554e7e;
+  --color-ink-faint: #625b8a;
+  --color-accent: #c23f28;
+  --color-accent-hover: #a3331f;
+  --color-accent-ink: #ffffff;
+  --color-accent-pale: #fbdcd2;
+  --font-display: 'Fredoka Variable', 'Fredoka', system-ui, sans-serif;
+  --font-text: 'Fredoka Variable', system-ui, sans-serif;
+  --radius-xs: 14px;
+  --radius-sm: 14px;
+  --radius-md: 18px;
+}
+
+:root[data-identity='recreo'] img {
+  border-radius: 14px;
 }
 
 @layer components {

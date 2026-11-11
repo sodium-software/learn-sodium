@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { AudioPlayer } from '../components/AudioPlayer'
-import { Icon, LevelTag, ProgressBar } from '../components/ui'
+import { Icon, LevelTag, ProgressBar, Credits } from '../components/ui'
 import { useProgress } from '../lib/progress-context'
 import { episodes, relatedContent } from '../content'
 import { clsx } from '../lib/cn'
@@ -43,7 +43,7 @@ export function PodcastDetailView() {
   const jumpTo = (start: number) => {
     setTime(start)
     const audio = document.querySelector<HTMLAudioElement>(
-      `audio[src="/media/audio/${episode.id}.mp3"]`,
+      `audio[src="${episode.audio}"]`,
     )
     if (audio) {
       audio.currentTime = start
@@ -77,7 +77,7 @@ export function PodcastDetailView() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="min-w-0">
             <AudioPlayer
-              src={`/media/audio/${episode.id}.mp3`}
+              src={episode.audio}
               time={time}
               onTimeChange={setTime}
               label={episode.title}
@@ -283,6 +283,9 @@ export function PodcastDetailView() {
             ) : null}
           </aside>
         </div>
+      </div>
+      <div className="frame pb-12">
+        <Credits piece={episode} />
       </div>
     </div>
   )

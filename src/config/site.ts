@@ -1,49 +1,61 @@
 /**
- * Configuración de la plataforma — el único lugar donde se personaliza la marca.
+ * Configuración de la plataforma: nombre, textos de portada e identidad visual.
  *
- * Cambia aquí el nombre de la plataforma, el nombre de la persona, el mensaje de
- * bienvenida y los colores. Todo lo demás (vistas, actividades, navegación) lee
- * de este objeto.
+ * `identity` elige una de las dos identidades propuestas (sus colores y
+ * tipografías están en src/index.css). Para comparar sin tocar código basta
+ * con abrir cualquier página con `?identidad=cuaderno` o `?identidad=recreo`:
+ * la elección se mantiene mientras dure la pestaña.
  */
 
+export type Identity = 'cuaderno' | 'recreo'
+
+export const IDENTITIES: Record<Identity, { label: string; description: string }> = {
+  cuaderno: {
+    label: 'Cuaderno',
+    description: 'Papel claro, tinta azul petróleo y esquinas rectas: un cuaderno de clase ordenado.',
+  },
+  recreo: {
+    label: 'Recreo',
+    description: 'Crema, índigo y rojo tomate, letra redondeada y esquinas suaves: patio de colegio.',
+  },
+}
+
 export interface SiteConfig {
-  /** Nombre de la plataforma. */
   platformName: string
-  /** Nombre corto para el lateral y la pestaña del navegador. */
   shortName: string
-  /** Nombre de la persona que aprende. */
-  learnerName: string
-  /** Nombre de la persona que greeting. */
-  welcomeMessage: string
-  /** Frase que acompaña al saludo. */
-  welcomeSubtitle: string
-  /** Paleta: una sola tinta y dos papeles. */
-  colors: {
-    paper: string
-    sheet: string
-    ink: string
-    accent: string
-  }
-  /** Tono de voz de la interfaz. */
+  /** Lema bajo el nombre. */
   tagline: string
-  /** Objetivo pedagógico de la plataforma. */
-  purpose: string
+  /** Portada: titular y texto de apoyo. */
+  heroTitle: string
+  heroText: string
+  identity: Identity
 }
 
 export const siteConfig: SiteConfig = {
   platformName: 'La Cartilla',
   shortName: 'Cartilla',
-  learnerName: 'Julián',
-  welcomeMessage: 'Qué gusto verte',
-  welcomeSubtitle:
-    'Tu cuaderno de trabajo: canciones, historias, podcasts y cortometrajes para aprender en inglés.',
-  tagline: 'Aprende inglés con material que se puede escuchar, leer y practicar',
-  purpose:
-    'Reunir recursos pedagógicos en un mismo cuaderno: material real, actividades que se corrigen solas y un registro de lo que ya avanzaste.',
-  colors: {
-    paper: '#f5f3ec',
-    sheet: '#fbfaf6',
-    ink: '#123c40',
-    accent: '#0e4f52',
-  },
+  tagline: 'Inglés para niños',
+  heroTitle: 'Aprende inglés cantando, leyendo y jugando',
+  heroText:
+    'Canciones, cuentos, podcasts y cortometrajes en inglés, con actividades para practicar a tu ritmo.',
+  identity: 'cuaderno',
+}
+
+const STORAGE_KEY = 'la-cartilla:identidad'
+
+export function currentIdentity(): Identity {
+  const isIdentity = (value: unknown): value is Identity => value === 'cuaderno' || value === 'recreo'
+  try {
+    const fromUrl = new URLSearchParams(window.location.search).get('identidad')
+    if (isIdentity(fromUrl)) window.sessionStorage.setItem(STORAGE_KEY, fromUrl)
+    const stored = window.sessionStorage.getItem(STORAGE_KEY)
+    if (isIdentity(stored)) return stored
+  } catch {
+    /* almacenamiento bloqueado */
+  }
+  return siteConfig.identity
+}
+
+export function applyIdentity(): void {
+  document.documentElement.dataset.identity = currentIdentity()
 }

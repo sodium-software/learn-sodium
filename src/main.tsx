@@ -1,10 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 
 import { AppRoutes } from './App'
 import { ProgressProvider } from './lib/progress'
-import { activityDefinitions } from './activities/registry'
+import { activityDefinitions, syncActivityTools } from './activities/registry'
+import { loadContent } from './content/load'
+import { applyIdentity } from './config/site'
 import './index.css'
 
 const container = document.getElementById('root')
@@ -12,12 +14,19 @@ if (!container) {
   throw new Error('No se encontró el contenedor #root')
 }
 
-createRoot(container).render(
-  <StrictMode>
-    <BrowserRouter>
-      <ProgressProvider activityCount={activityDefinitions.length}>
-        <AppRoutes />
-      </ProgressProvider>
-    </BrowserRouter>
-  </StrictMode>,
-)
+// La copia estática para abrir sin servidor (file://) usa rutas con #.
+const Router = import.meta.env.VITE_STATIC === '1' ? HashRouter : BrowserRouter
+
+applyIdentity()
+void loadContent().then(() => {
+  syncActivityTools()
+  createRoot(container).render(
+    <StrictMode>
+      <Router>
+        <ProgressProvider activityCount={activityDefinitions.length}>
+          <AppRoutes />
+        </ProgressProvider>
+      </Router>
+    </StrictMode>,
+  )
+})

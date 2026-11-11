@@ -35,3 +35,6 @@ dist-ssr
 !.dev.vars.example
 !.env.example
 __pycache__/
+dist-static
+entrega
+evidencia

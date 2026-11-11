@@ -3,6 +3,21 @@
 
 export type SectionId = 'home' | 'song' | 'storytelling' | 'podcast' | 'short-film' | 'activities'
 
+/** Fuente, licencia y créditos de una pieza (se muestran en su ficha). */
+export interface Rights {
+  source: string
+  license: string
+  credits: string
+}
+
+/** Lo que comparten todas las piezas editables desde el panel. */
+export interface PieceMeta {
+  /** Pieza de demostración: se muestra con la etiqueta «Ejemplo». */
+  example: boolean
+  rights: Rights
+  age?: string
+}
+
 export type Level = 'A1' | 'A2' | 'B1' | 'B2' | 'C1'
 
 /** Un fragmento de letra o transcripción con marca de tiempo. */
@@ -26,7 +41,7 @@ export interface GlossEntry {
   translation: string
 }
 
-export interface Song {
+export interface Song extends PieceMeta {
   id: string
   title: string
   /** Nombre del artista o del proyecto de demostración. */
@@ -55,7 +70,7 @@ export interface StoryChapter {
   paragraphs: string[]
 }
 
-export interface Story {
+export interface Story extends PieceMeta {
   id: string
   title: string
   author: string
@@ -81,8 +96,9 @@ export interface PodcastSegment {
   note?: string
 }
 
-export interface PodcastEpisode {
+export interface PodcastEpisode extends PieceMeta {
   id: string
+  audio: string
   title: string
   show: string
   level: Level
@@ -107,8 +123,9 @@ export interface FilmScene {
   translation: string
 }
 
-export interface ShortFilm {
+export interface ShortFilm extends PieceMeta {
   id: string
+  video?: string
   title: string
   director: string
   level: Level
@@ -144,6 +161,7 @@ export type ActivityKind =
   | 'fill-blanks'
   | 'listening'
   | 'reading'
+  | 'external'
 
 export interface VocabularyCard {
   id: string
@@ -187,7 +205,7 @@ export interface ReadingPassage {
 
 /** Definición de una herramienta pedagógica: la actividad se registra aquí y
  *  la vista genérica la monta sin conocer su implementación. */
-export interface ActivityDefinition {
+export interface ActivityDefinition extends PieceMeta {
   id: string
   kind: ActivityKind
   title: string
@@ -207,6 +225,12 @@ export interface ActivityDefinition {
   questions?: QuizQuestion[]
   /** Contenido multimedia al que se relaciona (ids de canciones, historias...). */
   relatedIds: string[]
+  skill?: string
+  cover?: string
+  instructions?: string
+  /** Solo actividades externas: plataforma y enlace. */
+  tool?: string
+  url?: string
 }
 
 // ─── Estado persistente ─────────────────────────────────────────────────────

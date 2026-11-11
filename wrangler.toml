@@ -1,0 +1,27 @@
+# Cloudflare Pages: SPA en dist/ + Pages Functions (functions/) con D1 y R2.
+# Producción usa la configuración de arriba; las ramas de previsualización, [env.preview].
+name = "learn-sodium"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "learn-sodium"
+database_id = "608942a2-572e-48b9-ab63-12aac7db45ea"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "learn-sodium-media"
+
+[env.preview]
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "learn-sodium-preview"
+database_id = "fb43fb84-23a3-48ae-b78e-bd805097f92f"
+migrations_dir = "migrations"
+
+[[env.preview.r2_buckets]]
+binding = "MEDIA"
+bucket_name = "learn-sodium-media-preview"

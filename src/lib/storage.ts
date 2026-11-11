@@ -11,7 +11,7 @@ const STORAGE_KEY = 'la-cartilla:state:v1'
 const SCHEMA_VERSION = 1
 
 export const defaultPreferences: UserPreferences = {
-  displayName: 'Julián',
+  displayName: '',
   dailyGoalMinutes: 20,
   sidebarCollapsed: false,
   showTranslations: true,
