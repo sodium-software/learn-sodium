@@ -49,7 +49,7 @@ async function readPassword() {
     if (text.includes('Contraseña')) process.stdout.write(text)
   }
   const ask = (prompt) => new Promise((resolve) => rl.question(prompt, resolve))
-  const first = await ask('Contraseña (mín. 12 caracteres): ')
+  const first = await ask('Contraseña (mín. 14 caracteres; mejor una frase): ')
   process.stdout.write('\n')
   const second = await ask('Repítela: ')
   process.stdout.write('\n')
@@ -59,8 +59,8 @@ async function readPassword() {
 }
 
 const password = await readPassword()
-if (password.length < 12) {
-  console.error('La contraseña debe tener al menos 12 caracteres.')
+if (password.length < 14) {
+  console.error('La contraseña debe tener al menos 14 caracteres.')
   process.exit(1)
 }
 

@@ -10,9 +10,9 @@ import {
   createSession,
   destroySession,
   getSession,
-  isLockedOut,
+  claimAttempt,
   passesCsrf,
-  recordFailure,
+  releaseAttempt,
   verifyPassword,
   type Env,
   type Session,
@@ -128,17 +128,14 @@ async function login(request: Request, env: Env): Promise<Response> {
   const password = String(body.password ?? '').slice(0, 200)
   const ip = request.headers.get('CF-Connecting-IP') ?? 'local'
 
-  if (await isLockedOut(env, ip, email)) {
-    return fail(429, 'Demasiados intentos. Espera 15 minutos y vuelve a probar.')
-  }
+  const attempt = await claimAttempt(env, ip, email)
+  if (attempt === null) return fail(429, 'Demasiados intentos. Espera 15 minutos y vuelve a probar.')
   const admin = await env.DB.prepare('SELECT email, password FROM admins WHERE email = ?')
     .bind(email)
     .first<{ email: string; password: string }>()
   const ok = await verifyPassword(password, admin?.password ?? DUMMY_HASH)
-  if (!admin || !ok) {
-    await recordFailure(env, ip, email)
-    return fail(401, 'Correo o contraseña incorrectos.')
-  }
+  if (!admin || !ok) return fail(401, 'Correo o contraseña incorrectos.')
+  await releaseAttempt(env, attempt)
   const { cookie, csrf } = await createSession(env, admin.email)
   return json({ email: admin.email, csrf }, 200, { 'Set-Cookie': cookie })
 }
@@ -292,7 +289,22 @@ async function admin(request: Request, env: Env, session: Session, parts: string
 async function upload(request: Request, env: Env): Promise<Response> {
   const declared = Number(request.headers.get('Content-Length') ?? 0)
   if (declared > MAX_BYTES.video) return fail(413, 'Archivo demasiado grande')
-  const bytes = new Uint8Array(await request.arrayBuffer())
+  // Se lee con contador: Content-Length puede faltar (transfer chunked).
+  const chunks: Uint8Array[] = []
+  let total = 0
+  const reader = request.body?.getReader()
+  for (;;) {
+    const part = reader ? await reader.read() : { done: true as const, value: undefined }
+    if (part.done) break
+    total += part.value.length
+    if (total > MAX_BYTES.video) {
+      await reader?.cancel()
+      return fail(413, 'Archivo demasiado grande')
+    }
+    chunks.push(part.value)
+  }
+  const bytes = new Uint8Array(total)
+  chunks.reduce((offset, chunk) => (bytes.set(chunk, offset), offset + chunk.length), 0)
   const kind = sniff(bytes)
   if (!kind) return fail(415, 'Tipo de archivo no permitido. Usa JPG, PNG, WebP, MP3, M4A, OGG, WAV, MP4 o WebM.')
   const expected = request.headers.get('X-Media-Category') as MediaCategory | null
@@ -306,9 +318,13 @@ async function upload(request: Request, env: Env): Promise<Response> {
   const key = wanted && MEDIA_KEY.test(wanted) && wanted.endsWith(`.${kind.ext}`) ? wanted : `${crypto.randomUUID()}.${kind.ext}`
   const name = decodeURIComponent(request.headers.get('X-File-Name') ?? 'archivo').replace(/[^\w.\- ]/g, '').slice(0, 120)
 
+  // Nunca se sobrescribe un archivo existente (un respaldo manipulado podría cambiar medios publicados).
+  if (await env.DB.prepare('SELECT 1 FROM media WHERE key = ?').bind(key).first()) {
+    return json({ key, url: `/files/${key}`, type: kind.mime, existing: true }, 200)
+  }
   await env.MEDIA.put(key, bytes, { httpMetadata: { contentType: kind.mime } })
   await env.DB.prepare(
-    'INSERT INTO media (key, type, size, name, is_public, created_at) VALUES (?, ?, ?, ?, 0, ?) ON CONFLICT(key) DO NOTHING',
+    'INSERT INTO media (key, type, size, name, is_public, created_at) VALUES (?, ?, ?, ?, 0, ?) ',
   )
     .bind(key, kind.mime, bytes.length, name || 'archivo', now())
     .run()
@@ -333,7 +349,7 @@ async function importBackup(request: Request, env: Env): Promise<Response> {
     }
     const draft = sanitize(SCHEMAS[item.kind as Kind], item.draft)
     const published = item.published ? sanitize(SCHEMAS[item.kind as Kind], item.published) : null
-    errors.push(...draft.errors.map((error) => `${id}: ${error}`))
+    errors.push(...[...draft.errors, ...(published?.errors ?? [])].map((error) => `${id}: ${error}`))
     statements.push(
       env.DB.prepare(
         'INSERT INTO items (id, kind, position, draft, published, is_example, updated_at, published_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',

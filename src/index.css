@@ -26,7 +26,7 @@
   --color-ink: #123c40;
   --color-ink-soft: #33565a;
   --color-ink-mute: #4d6a6c;
-  --color-ink-faint: #577175;
+  --color-ink-faint: #4f6a6e;
 
   /* — Acento: la misma tinta en sólido — */
   --color-accent: #0e4f52;
@@ -145,8 +145,8 @@
   --color-ink-soft: #423b6b;
   --color-ink-mute: #554e7e;
   --color-ink-faint: #625b8a;
-  --color-accent: #c23f28;
-  --color-accent-hover: #a3331f;
+  --color-accent: #b23722;
+  --color-accent-hover: #922c19;
   --color-accent-ink: #ffffff;
   --color-accent-pale: #fbdcd2;
   --font-display: 'Fredoka Variable', 'Fredoka', system-ui, sans-serif;

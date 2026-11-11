@@ -128,6 +128,30 @@ for (const [name, body, headers] of [
   report('fuerza bruta: 7 intentos seguidos', statuses.slice(0, 5).every((s) => s === 401) && statuses.slice(5).every((s) => s === 429), `estados: ${statuses.join(', ')}`)
 }
 
+// 5b. Ráfaga en paralelo desde una IP: no más de 5 llegan a comprobar la contraseña.
+//     (En local todas las peticiones comparten IP; la prueba anterior ya gastó el cupo,
+//      así que aquí se espera 429 en todas.)
+{
+  const fake = `rafaga-${Date.now()}@example.invalid`
+  const statuses = await Promise.all(
+    Array.from({ length: 20 }, (_, i) =>
+      fetch(`${BASE}/api/admin/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: fake, password: `x${i}` }) }).then((r) => r.status),
+    ),
+  )
+  const verified = statuses.filter((s) => s === 401).length
+  report('fuerza bruta en paralelo: 20 a la vez', verified <= 5, `401: ${verified}, 429: ${statuses.filter((s) => s === 429).length}`)
+}
+
+// 5c. Sobrescribir un archivo existente con X-Media-Key no cambia su contenido.
+{
+  const jpg = Buffer.from('ffd8ffe000104a46494600010100000100010000ffd9', 'hex')
+  const up = await (await fetch(`${BASE}/api/admin/upload`, { method: 'POST', headers: auth, body: jpg })).json()
+  const other = Buffer.concat([jpg, Buffer.from('distinto')])
+  await fetch(`${BASE}/api/admin/upload`, { method: 'POST', headers: { ...auth, 'X-Media-Key': up.key }, body: other })
+  const back = Buffer.from(await (await fetch(`${BASE}${up.url}`, { headers: { Cookie: cookie } })).arrayBuffer())
+  report('sobrescribir un archivo existente', back.equals(jpg), `tamaño original ${jpg.length}, servido ${back.length}`)
+}
+
 // 6. Archivo de borrador no accesible sin sesión.
 {
   const list = await (await fetch(`${BASE}/api/admin/export`, { headers: auth })).json()

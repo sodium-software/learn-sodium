@@ -18,7 +18,6 @@ export const COOKIE = '__Host-lc_session'
 const SESSION_SECONDS = 8 * 60 * 60
 const WINDOW_MS = 15 * 60 * 1000
 export const MAX_FAILURES_IP = 5
-const MAX_FAILURES_EMAIL = 10
 
 const enc = new TextEncoder()
 const b64 = (bytes: ArrayBuffer | Uint8Array) =>
@@ -100,23 +99,27 @@ export async function destroySession(request: Request, env: Env): Promise<string
   return `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0`
 }
 
-/** true si la IP o el correo superaron el límite de fallos en la ventana. */
-export async function isLockedOut(env: Env, ip: string, email: string): Promise<boolean> {
-  const since = Date.now() - WINDOW_MS
-  const row = await env.DB.prepare(
-    `SELECT (SELECT COUNT(*) FROM login_failures WHERE ip = ?1 AND at > ?3) AS byIp,
-            (SELECT COUNT(*) FROM login_failures WHERE email = ?2 AND at > ?3) AS byEmail`,
-  )
-    .bind(ip, email, since)
-    .first<{ byIp: number; byEmail: number }>()
-  return (row?.byIp ?? 0) >= MAX_FAILURES_IP || (row?.byEmail ?? 0) >= MAX_FAILURES_EMAIL
+/**
+ * Anota el intento ANTES de comprobar la contraseña y cuenta en la misma
+ * transacción: así las peticiones en paralelo no se cuelan (cada una ve las
+ * anteriores). El límite es solo por IP para que nadie pueda bloquear a la
+ * autora conociendo su correo. Devuelve el id del intento, o null si la IP
+ * ya superó el límite.
+ */
+export async function claimAttempt(env: Env, ip: string, email: string): Promise<number | null> {
+  const now = Date.now()
+  const [, inserted, counted] = await env.DB.batch([
+    env.DB.prepare('DELETE FROM login_failures WHERE at < ?').bind(now - WINDOW_MS),
+    env.DB.prepare('INSERT INTO login_failures (ip, email, at) VALUES (?, ?, ?) RETURNING rowid AS id').bind(ip, email, now),
+    env.DB.prepare('SELECT COUNT(*) AS n FROM login_failures WHERE ip = ? AND at > ?').bind(ip, now - WINDOW_MS),
+  ])
+  const n = (counted.results[0] as { n: number }).n
+  return n > MAX_FAILURES_IP ? null : (inserted.results[0] as { id: number }).id
 }
 
-export async function recordFailure(env: Env, ip: string, email: string): Promise<void> {
-  await env.DB.batch([
-    env.DB.prepare('DELETE FROM login_failures WHERE at < ?').bind(Date.now() - WINDOW_MS),
-    env.DB.prepare('INSERT INTO login_failures (ip, email, at) VALUES (?, ?, ?)').bind(ip, email, Date.now()),
-  ])
+/** Un acceso correcto no cuenta como intento fallido. */
+export async function releaseAttempt(env: Env, id: number): Promise<void> {
+  await env.DB.prepare('DELETE FROM login_failures WHERE rowid = ?').bind(id).run()
 }
 
 /** Escrituras: mismo origen y token CSRF de la sesión. */

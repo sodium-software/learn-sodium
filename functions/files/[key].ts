@@ -26,7 +26,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
   headers.set('X-Content-Type-Options', 'nosniff')
   headers.set('Content-Security-Policy', "default-src 'none'; sandbox")
   headers.set('Content-Disposition', 'inline')
-  headers.set('Cache-Control', isPublic ? 'public, max-age=3600' : 'private, no-store')
+  headers.set('Cache-Control', isPublic ? 'public, max-age=300' : 'private, no-store')
 
   if (!('body' in object)) return new Response(null, { status: 304, headers })
   const range = object.range as { offset?: number; length?: number } | undefined
