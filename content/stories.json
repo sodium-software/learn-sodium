@@ -7,8 +7,8 @@
       "level": "B1",
       "readingTime": 7,
       "cover": "cartographers-apprentice",
-      "summary": "Un aprendiz de cartógrafo recibe la tarea imposible de dibujar un lugar que todavía no existe. Una historia sobre mapas, errores y la diferencia entre medir y comprender.",
-      "intro": "En el taller de cartografía de la calle Aldana, los mapas se dibujaban a mano y cada error se corregía con tinta roja. A los diecisiete años, Nilo creyó que corregir era la única manera de dibujar bien.",
+      "summary": "A young mapmaker gets an impossible job: to draw a place that does not exist yet. A story about maps, mistakes and the difference between measuring and understanding.",
+      "intro": "In the map workshop on Aldana Street, every map was drawn by hand and every mistake was fixed in red ink. At seventeen, Nilo believed that fixing mistakes was the only way to draw well.",
       "chapters": [
         {
           "id": "ch-1",
@@ -52,15 +52,15 @@
       "comprehension": [
         {
           "id": "q-ca-1",
-          "prompt": "¿Por qué Doña guardaba los mapas rechazados en un cajón que nadie podía abrir?",
+          "prompt": "Why did Doña Irene keep the rejected maps in a drawer that nobody could open?",
           "options": [
-            { "id": "a", "text": "Porque eran los mapas que ella había dibujado." },
-            { "id": "b", "text": "Porque eran mapas equivocados que sin embargo le sirvieron a alguien." },
-            { "id": "c", "text": "Porque Nilo los había tirado." },
-            { "id": "d", "text": "Porque los planos de Puerto Alegre estaban en ese cajón." }
+            { "id": "a", "text": "Because they were the maps she had drawn." },
+            { "id": "b", "text": "Because they were wrong maps that still helped someone." },
+            { "id": "c", "text": "Because Nilo had thrown them away." },
+            { "id": "d", "text": "Because the plans of Puerto Alegre were in that drawer." }
           ],
           "correctOptionId": "b",
-          "explanation": "Al final del tercer capítulo Doña explica que todos esos mapas estaban mal, pero fueron más útiles que los perfectos porque alguien confió en ellos lo suficiente para caminar hasta allí."
+          "explanation": "At the end of chapter three, Doña Irene explains that all those maps were wrong, but they were more useful than perfect ones, because someone trusted them enough to walk there."
         },
         {
           "id": "q-ca-2",
@@ -72,19 +72,19 @@
             { "id": "d", "text": "A measurement that Nilo could not confirm." }
           ],
           "correctOptionId": "a",
-          "explanation": "La cartografía usa ese cuadrado para marcar un topónimo local, el nombre que usa la gente, no el nombre oficial."
+          "explanation": "Mapmakers use that square to mark a local place name: the name people really use, not the official one."
         },
         {
           "id": "q-ca-3",
-          "prompt": "¿Cuál es la diferencia entre «medir» y «comprender» según el final de la historia?",
+          "prompt": "What is the difference between \"measuring\" and \"understanding\" at the end of the story?",
           "options": [
-            { "id": "a", "text": "Medir es más difícil que comprender." },
-            { "id": "b", "text": "Son la misma cosa con dos nombres." },
-            { "id": "c", "text": "Medir es la mitad fácil; comprender es elegir qué mediciones importan." },
-            { "id": "d", "text": "Comprender solo sirve para los mapas antiguos." }
+            { "id": "a", "text": "Measuring is harder than understanding." },
+            { "id": "b", "text": "They are the same thing with two names." },
+            { "id": "c", "text": "Measuring is the easy half; understanding is choosing which measurements matter." },
+            { "id": "d", "text": "Understanding is only useful for old maps." }
           ],
           "correctOptionId": "c",
-          "explanation": "La última frase lo dice literalmente: medir es la mitad fácil, y lo difícil es saber qué mediciones merecen escribirse."
+          "explanation": "The last sentence says it: measuring is the easy half, and the hard half is knowing which measurements are worth writing down."
         },
         {
           "id": "q-ca-4",
@@ -96,7 +96,7 @@
             { "id": "d", "text": "Forty years." }
           ],
           "correctOptionId": "b",
-          "explanation": "El texto dice que los aldeanos habían caminado hasta un lugar de cruce distinto durante once meses."
+          "explanation": "The story says the villagers had been walking to a different crossing place for eleven months."
         }
       ]
     },
@@ -107,8 +107,8 @@
       "level": "B2",
       "readingTime": 9,
       "cover": "letters-from-the-salt-road",
-      "summary": "Durante treinta años, una mujer escribió cartas a su hermana que nunca envió. Cuando por fin decidió mandarlas, descubre que las cartas ya no dicen lo que ella creía.",
-      "intro": "Elena escribió su primera carta a las diecisiete y no la envió. Escribió casi todas las semanas durante treinta años, y las guardó en una caja de bananas. Cuando por fin decidió mandarlas, ya no las escribía ella.",
+      "summary": "For thirty years, a woman wrote letters to her sister and never sent them. When she finally decides to send them, she finds that the letters no longer say what she thought.",
+      "intro": "Elena wrote her first letter at seventeen and did not send it. She wrote almost every week for thirty years and kept the letters in a banana box. When she finally decided to send them, she was no longer the person who wrote them.",
       "chapters": [
         {
           "id": "ch-1",
@@ -149,15 +149,15 @@
       "comprehension": [
         {
           "id": "q-lsr-1",
-          "prompt": "¿Por qué Elena escribía las cartas en el reverso de los calendarios?",
+          "prompt": "Why did Elena write her letters on the backs of calendars?",
           "options": [
-            { "id": "a", "text": "Porque era más fácil escribir en un calendario que en una hoja." },
-            { "id": "b", "text": "Porque el papel costaba dinero y su madre reutilizaba los calendarios." },
-            { "id": "c", "text": "Porque las cartas tenían que parecer listas de compras." },
-            { "id": "d", "text": "Porque Mara le había pedido que lo hiciera." }
+            { "id": "a", "text": "Because it was easier to write on a calendar than on a sheet of paper." },
+            { "id": "b", "text": "Because paper cost money and her mother reused the calendars." },
+            { "id": "c", "text": "Because the letters had to look like shopping lists." },
+            { "id": "d", "text": "Because Mara had asked her to." }
           ],
           "correctOptionId": "b",
-          "explanation": "El primer párrafo lo explica: el papel era caro y su madre guardaba los calendarios para envolver cosas, así que ahí escribía ella."
+          "explanation": "The first paragraph explains it: paper was expensive and her mother kept the calendars to wrap things in, so Elena wrote on them."
         },
         {
           "id": "q-lsr-2",
@@ -169,7 +169,7 @@
             { "id": "d", "text": "That she was planning to move north." }
           ],
           "correctOptionId": "b",
-          "explanation": "El capítulo dos dice exactamente eso: se sentía sola, había elegido mal y pensaba en el camino más que en su marido."
+          "explanation": "Chapter two says exactly that: she was lonely, she had chosen wrong, and she thought about the road more than about her husband."
         },
         {
           "id": "q-lsr-3",
@@ -181,7 +181,7 @@
             { "id": "d", "text": "She did not know the box existed." }
           ],
           "correctOptionId": "b",
-          "explanation": "Because había dedicado su vida a que ninguna de sus cartas se quedara sin respuesta."
+          "explanation": "Because she had spent her life making sure that no letter of hers was left without an answer."
         },
         {
           "id": "q-lsr-4",
@@ -193,7 +193,7 @@
             { "id": "d", "text": "To sell the house." }
           ],
           "correctOptionId": "b",
-          "explanation": "La frase final: no necesitaba que llegaran; necesitaba saber qué había dicho."
+          "explanation": "The last sentence: she did not need them to arrive; she needed to know what she had said."
         }
       ]
     },
@@ -204,7 +204,7 @@
       "level": "A2",
       "readingTime": 5,
       "cover": "the-night-the-river-froze",
-      "summary": "La historia más corta y clara del catálogo: un niño ve el río congelarse por primera vez y decide cruzarlo. Vocabulario del clima, del frío y de la sorpresa.",
+      "summary": "The shortest and easiest story here: a boy sees the river freeze for the first time and decides to cross it. Words about weather, cold and surprise.",
       "intro": "Tomás had been told the river never froze. He had lived on its bank for eleven years and had only ever seen it move.",
       "chapters": [
         {
@@ -236,15 +236,15 @@
       "comprehension": [
         {
           "id": "q-nrf-1",
-          "prompt": "¿Qué oyó Tomás la noche del jueves?",
+          "prompt": "What did Tomás hear on Thursday night?",
           "options": [
-            { "id": "a", "text": "Un perro ladrando." },
-            { "id": "b", "text": "Un crujido largo y delgado, como un plato rompiéndose." },
-            { "id": "c", "text": "La voz de su madre." },
-            { "id": "d", "text": "El sonido de un tren." }
+            { "id": "a", "text": "A dog barking." },
+            { "id": "b", "text": "A long, thin crack, like a plate breaking." },
+            { "id": "c", "text": "His mother's voice." },
+            { "id": "d", "text": "The sound of a train." }
           ],
           "correctOptionId": "b",
-          "explanation": "El primer párrafo describe un crack largo y delgado, como un plato que se rompe en otra habitación."
+          "explanation": "The first paragraph describes a long, thin crack, like a plate breaking in another room."
         },
         {
           "id": "q-nrf-2",
@@ -256,7 +256,7 @@
             { "id": "d", "text": "Because he dropped the skates." }
           ],
           "correctOptionId": "c",
-          "explanation": "El hielo era más delgado en ese punto y veía el agua negra moviéndose debajo."
+          "explanation": "The ice was thinner there, and he could see the black water moving under it."
         },
         {
           "id": "q-nrf-3",
@@ -268,7 +268,7 @@
             { "id": "d", "text": "\"Nothing.\"" }
           ],
           "correctOptionId": "b",
-          "explanation": "Dijo: \"Una hoja.\" Y ésa fue la respuesta que había preparado camino a casa."
+          "explanation": "He said: \"A leaf.\" That was the answer he had prepared on the way home."
         }
       ]
     }

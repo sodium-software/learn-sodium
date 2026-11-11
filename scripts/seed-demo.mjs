@@ -16,9 +16,9 @@ const marks = (key) => (Array.isArray(timings[key]) ? timings[key] : [])
 const round = (n) => Math.round(n * 100) / 100
 
 const demo = (cover) => ({
-  source: 'La Cartilla — pieza de demostración generada para el prototipo',
+  source: 'La Cartilla — demo piece made for the prototype',
   license: 'propio',
-  credits: `Texto y audio de demostración. Portada: ${credits[cover] ?? 'sin datos'}.`,
+  credits: `Demo text and audio. Cover: ${credits[cover] ?? 'no data'}.`,
 })
 const question = (q) => ({
   prompt: q.prompt,
@@ -80,7 +80,7 @@ for (const a of read('content/activities.json').activities) {
     listening: a.listening?.map((l) => ({ audio: l.audio, ...question(l.question) })),
     passageTitle: a.passage?.title, passage: a.passage?.paragraphs,
     relatedIds: a.relatedIds,
-    source: 'La Cartilla — actividad de demostración', license: 'propio',
+    source: 'La Cartilla — demo activity', license: 'propio',
   })
 }
 // Una actividad externa de ejemplo por herramienta: enlazan a la portada de cada plataforma.
@@ -91,25 +91,25 @@ for (const [tool, name, url, skill] of [
   ['canva', 'Canva', 'https://www.canva.com/', 'speaking'],
 ]) {
   add('activity', `ejemplo-${tool}`, {
-    type: 'external', tool, url, skill, level: 'A1', age: '7 a 10 años', minutes: 10,
-    title: `Ejemplo: actividad en ${name}`,
-    summary: `Tarjeta de ejemplo. Aquí irá el enlace a una actividad creada en ${name}.`,
-    instructions: 'Abre la actividad, hazla con calma y, al volver, márcala como hecha.',
-    source: name, license: 'permiso', credits: `Actividad alojada en ${name}.`,
+    type: 'external', tool, url, skill, level: 'A1', age: '7 to 10 years', minutes: 10,
+    title: `Example: activity on ${name}`,
+    summary: `Example card. A link to an activity made on ${name} will go here.`,
+    instructions: 'Open the activity, take your time, and when you come back, mark it as done.',
+    source: name, license: 'permiso', credits: `Activity hosted on ${name}.`,
   })
 }
 add('page', 'introduccion', {
-  title: 'Introducción',
-  summary: 'Texto de ejemplo: aquí va la presentación del proyecto.',
+  title: 'Introduction',
+  summary: 'Example text: the introduction to the project goes here.',
   body: [
-    'Este es un texto de ejemplo. Desde el panel se reemplaza por la introducción del trabajo: a quién va dirigido, qué se espera que aprendan los niños y cómo usar cada sección.',
-    'Cada sección reúne material para escuchar, leer, ver y practicar inglés a su ritmo.',
+    'This is example text. From the panel it is replaced with the introduction to the project: who it is for, what the children should learn and how to use each section.',
+    'Each section brings together material to listen to, read, watch and practise English at your own pace.',
   ],
 })
 add('page', 'biodata', {
-  title: 'Biodata',
-  summary: 'Texto de ejemplo: aquí va la presentación de la autora.',
-  body: ['Este es un texto de ejemplo. Desde el panel se escribe la biodata: formación, intereses y el porqué de este proyecto.'],
+  title: 'Bio',
+  summary: 'Example text: the author introduces herself here.',
+  body: ['This is example text. From the panel the author writes her bio: studies, interests and why she made this project.'],
 })
 
 // Validar con el mismo esquema que la API.

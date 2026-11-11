@@ -6,7 +6,7 @@
       "director": "The Cartilla Sessions",
       "level": "A2",
       "cover": "the-last-tram",
-      "synopsis": "El último tranvía de la noche pasa por una calle donde nadie baja. Un cortometraje de 4 minutos sobre las horas en que una ciudad deja de ser pública.",
+      "synopsis": "The last tram of the night goes down a street where nobody gets off. A 4-minute short film about the hours when a city becomes quiet and empty.",
       "scenes": [
         { "start": 0, "speaker": "Narrator", "line": "The last tram leaves the square at eleven forty.", "translation": "El último tranvía sale de la plaza a las once y cuarenta." },
         { "start": 0, "speaker": "Narrator", "line": "By then the shops have closed and the square belongs to the people who have nowhere else to be.", "translation": "Para entonces las tiendas han cerrado y la plaza es de quienes no tienen otro sitio donde estar." },
@@ -22,15 +22,15 @@
       "comprehension": [
         {
           "id": "q-lt-1",
-          "prompt": "¿Qué hora pasa el último tranvía?",
+          "prompt": "What time does the last tram leave?",
           "options": [
-            { "id": "a", "text": "A las once y veinte." },
-            { "id": "b", "text": "A las once y cuarenta." },
-            { "id": "c", "text": "A medianoche." },
-            { "id": "d", "text": "El cortometraje no lo dice." }
+            { "id": "a", "text": "At eleven twenty." },
+            { "id": "b", "text": "At eleven forty." },
+            { "id": "c", "text": "At midnight." },
+            { "id": "d", "text": "The film does not say." }
           ],
           "correctOptionId": "b",
-          "explanation": "La narración abre con «The last tram leaves the square at eleven forty»."
+          "explanation": "The narrator starts with \"The last tram leaves the square at eleven forty.\""
         },
         {
           "id": "q-lt-2",
@@ -42,16 +42,16 @@
             { "id": "d", "text": "\"I will take the next one.\"" }
           ],
           "correctOptionId": "b",
-          "explanation": "El diálogo es: «You are the last one?» / «I am the last one.» / «Then I will wait for you.»"
+          "explanation": "The dialogue is: \"You are the last one?\" / \"I am the last one.\" / \"Then I will wait for you.\""
         },
         {
           "id": "q-lt-3",
-          "prompt": "¿Qué ha cambiado al final?",
+          "prompt": "What has changed at the end?",
           "options": [
-            { "id": "a", "text": "La plaza queda vacía y nada más." },
-            { "id": "b", "text": "El tranvía vuelve con más pasajeros." },
-            { "id": "c", "text": "Algo en la plaza ha cambiado, aunque nadie puede decir qué." },
-            { "id": "d", "text": "El viejo se marcha corriendo." }
+            { "id": "a", "text": "The square is empty, and nothing else." },
+            { "id": "b", "text": "The tram comes back with more passengers." },
+            { "id": "c", "text": "Something in the square has changed, but nobody can say what." },
+            { "id": "d", "text": "The old man runs away." }
           ],
           "correctOptionId": "c",
           "explanation": "«The square is empty again. But something in it has changed, and nobody will say what.»"
@@ -65,7 +65,7 @@
       "director": "The Cartilla Sessions",
       "level": "B1",
       "cover": "paper-and-ink",
-      "synopsis": "En el taller de una encuadernadora, un hombre trata de escribir una carta que nunca envía. Cortometraje sobre la distancia entre lo que se dice y lo que se escribe.",
+      "synopsis": "In a bookbinder's workshop, a man tries to write a letter he never sends. A short film about the gap between what we say and what we write.",
       "scenes": [
         { "start": 0, "speaker": "Narrator", "line": "He has been coming to the workshop for eleven years. He brings the same book every time.", "translation": "Lleva once años viniendo al taller. Trae siempre el mismo libro." },
         { "start": 0, "speaker": "Narrator", "line": "The book is called A Handbook of Correspondence. It was printed in nineteen fifty-four, and it is still, according to the owner, the only book about the subject that has ever been written.", "translation": "El libro se titula Manual de correspondencia. Se imprimió en mil novecientos cincuenta y cuatro y sigue siendo, según el dueño, el único libro sobre el tema que se ha escrito." },
@@ -80,15 +80,15 @@
       "comprehension": [
         {
           "id": "q-pi-1",
-          "prompt": "¿Qué porcentaje del manual trata sobre sobres?",
+          "prompt": "How much of the handbook is about envelopes?",
           "options": [
-            { "id": "a", "text": "La mitad, aproximadamente." },
-            { "id": "b", "text": "Una cuarta parte." },
-            { "id": "c", "text": "Casi todo." },
-            { "id": "d", "text": "Ninguna parte." }
+            { "id": "a", "text": "About half." },
+            { "id": "b", "text": "A quarter." },
+            { "id": "c", "text": "Almost all of it." },
+            { "id": "d", "text": "None of it." }
           ],
           "correctOptionId": "a",
-          "explanation": "«Ninety-one pages. Fifty-one of them are about envelopes.» Cincuenta y una de noventa y una: un poco más de la mitad."
+          "explanation": "\"Ninety-one pages. Fifty-one of them are about envelopes.\" Fifty-one out of ninety-one is a little more than half."
         },
         {
           "id": "q-pi-2",
@@ -104,15 +104,15 @@
         },
         {
           "id": "q-pi-3",
-          "prompt": "¿Qué le pasa al libro al final?",
+          "prompt": "What happens to the book at the end?",
           "options": [
-            { "id": "a", "text": "Se lo lleva el hombre." },
-            { "id": "b", "text": "Lo guarda la encuadernadora en la estantería." },
-            { "id": "c", "text": "Lo quema." },
-            { "id": "d", "text": "Lo devuelve sin encuadernar." }
+            { "id": "a", "text": "The man takes it away." },
+            { "id": "b", "text": "The bookbinder puts it on the shelf." },
+            { "id": "c", "text": "She burns it." },
+            { "id": "d", "text": "She gives it back without binding it." }
           ],
           "correctOptionId": "b",
-          "explanation": "La encuadernadora lo pone en la estantería con los demás, donde esperará."
+          "explanation": "The bookbinder puts it on the shelf with the others, where it will wait."
         }
       ],
       "relatedActivityIds": ["act-reading-letters", "act-matching-market"]
@@ -123,7 +123,7 @@
       "director": "The Cartilla Sessions",
       "level": "B2",
       "cover": "night-shift-observatory",
-      "synopsis": "Una astrónoma sola en un observatorio, en una noche de enero, y una conversación con la radio de un interlocutor que no contestará.",
+      "synopsis": "An astronomer alone in an observatory on a January night, talking to a radio that will never answer.",
       "scenes": [
         { "start": 0, "speaker": "Narrator", "line": "The dome opens at sunset and closes at sunrise, and between those two events the observatory belongs to whoever is on shift.", "translation": "La cúpula se abre al atardecer y se cierra al amanecer, y entre esos dos hechos el observatorio pertenece a quien esté de turno." },
         { "start": 0, "speaker": "Dr. Reyes", "line": "Meridian transit in forty minutes. Coffee number two is wrong, by the way. Somebody left the sugar out.", "translation": "Tránsito meridiano en cuarenta minutos. Por cierto, el café número dos está mal. Alguien dejó el azúcar fuera." },
@@ -138,12 +138,12 @@
       "comprehension": [
         {
           "id": "q-nso-1",
-          "prompt": "¿Por qué la doctora Reyes deja la radio encendida aunque nadie conteste?",
+          "prompt": "Why does Dr. Reyes leave the radio on, even though nobody answers?",
           "options": [
-            { "id": "a", "text": "Porque funciona como despertador." },
-            { "id": "b", "text": "Porque la estática es más fácil de trabajar que el silencio." },
-            { "id": "c", "text": "Porque espera un mensaje urgente." },
-            { "id": "d", "text": "Porque no sabe apagarla." }
+            { "id": "a", "text": "Because it works as an alarm clock." },
+            { "id": "b", "text": "Because the static is easier to work with than silence." },
+            { "id": "c", "text": "Because she is waiting for an urgent message." },
+            { "id": "d", "text": "Because she does not know how to turn it off." }
           ],
           "correctOptionId": "b",
           "explanation": "«The static is easier to work with than silence.»"
@@ -162,12 +162,12 @@
         },
         {
           "id": "q-nso-3",
-          "prompt": "¿Qué dice la narración sobre la pregunta a la radio?",
+          "prompt": "What does the narrator say about her question to the radio?",
           "options": [
-            { "id": "a", "text": "Que la pregunta es para la radio." },
-            { "id": "b", "text": "Que la pregunta no es realmente para la radio." },
-            { "id": "c", "text": "Que la radio contestará por fin." },
-            { "id": "d", "text": "Que la pregunta es un protocolo del observatorio." }
+            { "id": "a", "text": "That the question is for the radio." },
+            { "id": "b", "text": "That the question is not really for the radio." },
+            { "id": "c", "text": "That the radio will finally answer." },
+            { "id": "d", "text": "That the question is an observatory rule." }
           ],
           "correctOptionId": "b",
           "explanation": "«The question is not really for the radio.»"

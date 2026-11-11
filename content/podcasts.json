@@ -6,7 +6,7 @@
       "show": "The Practice Room",
       "level": "A2",
       "cover": "the-practice-room",
-      "summary": "El episodio piloto: por qué cantarle una canción en inglés funciona mejor que repetirla en silencio, y cómo hacer shadowing en cinco pasos que aguantan quince minutos.",
+      "summary": "The first episode: why singing along to an English song works better than repeating it in silence, and how to do shadowing in five steps that take fifteen minutes.",
       "segments": [
         { "speaker": "Nina", "start": 0, "text": "Welcome to The Practice Room. I'm Nina. Today we are going to do something that looks lazy and is not: we are going to sing along with a song in English, badly, and that is the point." },
         { "speaker": "Nina", "start": 0, "text": "Most learners try to understand a song first. They listen, they look up every word, they try to translate the whole thing, and by the time they have understood it, they have lost the thread. Understanding a song is not the first step. Singing it is." },
@@ -27,15 +27,15 @@
       "comprehension": [
         {
           "id": "q-pr1-1",
-          "prompt": "¿Cuál es el error más común según el episodio?",
+          "prompt": "What is the most common mistake, according to the episode?",
           "options": [
-            { "id": "a", "text": "Cantar en voz baja." },
-            { "id": "b", "text": "Intentar entender la canción antes de cantarla." },
-            { "id": "c", "text": "Escucharla demasiadas veces." },
-            { "id": "d", "text": "Usar un diccionario." }
+            { "id": "a", "text": "Singing quietly." },
+            { "id": "b", "text": "Trying to understand the song before singing it." },
+            { "id": "c", "text": "Listening to it too many times." },
+            { "id": "d", "text": "Using a dictionary." }
           ],
           "correctOptionId": "b",
-          "explanation": "El episodio dice que entender una canción no es el primer paso: cantarla es el primero."
+          "explanation": "The episode says understanding a song is not the first step. Singing it is."
         },
         {
           "id": "q-pr1-2",
@@ -47,19 +47,19 @@
             { "id": "d", "text": "To find out who wrote the song." }
           ],
           "correctOptionId": "b",
-          "explanation": "Dice: «You are singing for timing. You are training your mouth to arrive at the same moment as the singer.»"
+          "explanation": "Nina says: “You are singing for timing. You are training your mouth to arrive at the same moment as the singer.”"
         },
         {
           "id": "q-pr1-3",
-          "prompt": "¿Qué se trabaja en el cuarto paso, el shadowing?",
+          "prompt": "What do you practise in the fourth step, shadowing?",
           "options": [
-            { "id": "a", "text": "Solo el oído." },
-            { "id": "b", "text": "Solo la pronunciación." },
-            { "id": "c", "text": "El oído y la boca a la vez." },
-            { "id": "d", "text": "La gramática y el vocabulario." }
+            { "id": "a", "text": "Only your ears." },
+            { "id": "b", "text": "Only pronunciation." },
+            { "id": "c", "text": "Your ears and your mouth at the same time." },
+            { "id": "d", "text": "Grammar and vocabulary." }
           ],
           "correctOptionId": "c",
-          "explanation": "«It trains your ear and your mouth at the same time.»"
+          "explanation": "“It trains your ear and your mouth at the same time.”"
         }
       ]
     },
@@ -69,7 +69,7 @@
       "show": "El Sonido del Café",
       "level": "B1",
       "cover": "el-sonido-del-cafe",
-      "summary": "Un episodio de historia del café: por qué el sabor de una taza depende de la altura, el clima y las manos que la cosechan, contado desde una finca en el eje cafetero.",
+      "summary": "An episode about the story of coffee: why the taste of a cup depends on how high it grows, the weather and the hands that pick it, told from a farm in Colombia's coffee region.",
       "segments": [
         { "speaker": "Lucía", "start": 0, "text": "Hello, and welcome to El Sonido del Café. I'm Lucía, and today we are going to taste a place without tasting it. We are going to talk about how a coffee bean can taste of the hill it grew on." },
         { "speaker": "Lucía", "start": 0, "text": "Picture a farm in the coffee-growing region of Colombia. The farm is not flat. It is a set of steep green slopes, and at the top of each slope the temperature is a little cooler than at the bottom." },
@@ -91,15 +91,15 @@
       "comprehension": [
         {
           "id": "q-sdc-1",
-          "prompt": "¿Por qué las noches frías en las partes altas mejoran el café?",
+          "prompt": "Why do cold nights high on the hills make the coffee better?",
           "options": [
-            { "id": "a", "text": "Porque la semilla se mantiene pequeña y dulce." },
-            { "id": "b", "text": "Porque las plantas reciben más sol." },
-            { "id": "c", "text": "Porque el café se seca más rápido." },
-            { "id": "d", "text": "Porque los trabajadores pueden trabajar más rápido." }
+            { "id": "a", "text": "Because the seed stays small and sweet." },
+            { "id": "b", "text": "Because the plants get more sun." },
+            { "id": "c", "text": "Because the coffee dries faster." },
+            { "id": "d", "text": "Because the workers can work faster." }
           ],
           "correctOptionId": "a",
-          "explanation": "El frío ralentiza la maduración, así que la semilla se queda pequeña y dulce."
+          "explanation": "The cold makes the fruit ripen slowly, so the seed stays small and sweet."
         },
         {
           "id": "q-sdc-2",
@@ -111,19 +111,19 @@
             { "id": "d", "text": "Machines damage the branches." }
           ],
           "correctOptionId": "c",
-          "explanation": "Una máquina quita los cerezas maduras y las verdes a la vez; quien recoge a mano escoge."
+          "explanation": "A machine takes the ripe cherries and the green ones together. A person picking by hand can choose."
         },
         {
           "id": "q-sdc-3",
-          "prompt": "¿Qué problema produce demasiado sol durante el secado?",
+          "prompt": "What happens if there is too much sun while the beans dry?",
           "options": [
-            { "id": "a", "text": "Que los granos se cuecen." },
-            { "id": "b", "text": "Que los granos se humedecen." },
-            { "id": "c", "text": "Que la capa queda demasiado fina." },
-            { "id": "d", "text": "Que se pierde la mucílago." }
+            { "id": "a", "text": "The beans bake." },
+            { "id": "b", "text": "The beans get wet." },
+            { "id": "c", "text": "The layer gets too thin." },
+            { "id": "d", "text": "The sticky layer is lost." }
           ],
           "correctOptionId": "a",
-          "explanation": "«Too much sun and they bake.» Demasiado sol y se hornean."
+          "explanation": "“Too much sun and they bake.”"
         }
       ]
     },
@@ -133,7 +133,7 @@
       "show": "The Practice Room",
       "level": "B2",
       "cover": "focus-and-noise",
-      "summary": "Un episodio sobre el ruido: por qué las oficinas abiertas inspiran a algunas personas y las destruyen a otras, y qué hacer cuando no puedes cambiar de sitio.",
+      "summary": "An episode about noise: why busy, open rooms help some people focus and make it hard for others, and what to do when you cannot move somewhere quieter.",
       "segments": [
         { "speaker": "Nina", "start": 0, "text": "This is episode two of The Practice Room, and today we are talking about noise, which is either the best thing that has ever happened to your focus or the worst." },
         { "speaker": "Nina", "start": 0, "text": "There is a well-known experiment from the nineties about this. Two groups of people did the same task. One group worked in silence and one worked with noise. The noisy group performed better on dull tasks and much worse on tasks that needed thought." },
@@ -153,15 +153,15 @@
       "comprehension": [
         {
           "id": "q-fn-1",
-          "prompt": "¿Cuál fue el hallazgo del experimento de los noventa?",
+          "prompt": "What did the experiment from the nineties find?",
           "options": [
-            { "id": "a", "text": "El ruido mejoraba todas las tareas." },
-            { "id": "b", "text": "El ruido ayudaba en tareas mecánicas y perjudicaba en las que exigían pensar." },
-            { "id": "c", "text": "El silencio siempre era mejor." },
-            { "id": "d", "text": "El ruido mejoraba sólo a los estudiantes." }
+            { "id": "a", "text": "Noise made every task better." },
+            { "id": "b", "text": "Noise helped with simple, repetitive tasks and hurt tasks that needed thinking." },
+            { "id": "c", "text": "Silence was always better." },
+            { "id": "d", "text": "Noise only helped students." }
           ],
           "correctOptionId": "b",
-          "explanation": "El grupo ruidoso rindió mejor en tareas mecánicas y mucho peor en las que necesitaban pensamiento."
+          "explanation": "The noisy group did better on dull tasks and much worse on tasks that needed thought."
         },
         {
           "id": "q-fn-2",
@@ -173,19 +173,19 @@
             { "id": "d", "text": "They block all sounds completely." }
           ],
           "correctOptionId": "a",
-          "explanation": "«Even headphones with no music playing will cut the sharp edges.»"
+          "explanation": "“Even headphones with no music playing will cut the sharp edges.”"
         },
         {
           "id": "q-fn-3",
-          "prompt": "¿Por qué conviene un sonido distinto para estudiar y para descansar?",
+          "prompt": "Why is it good to have a different sound for studying and for resting?",
           "options": [
-            { "id": "a", "text": "Porque si no, dejas de aprender qué significa ese sonido." },
-            { "id": "b", "text": "Porque el descansar necesita música lenta." },
-            { "id": "c", "text": "Porque las oraciones duran menos con ruido." },
-            { "id": "d", "text": "Porque el cerebro olvida los sonidos en dos semanas." }
+            { "id": "a", "text": "Because if not, you stop learning what that sound means." },
+            { "id": "b", "text": "Because resting needs slow music." },
+            { "id": "c", "text": "Because sentences are shorter with noise." },
+            { "id": "d", "text": "Because your brain forgets sounds after two weeks." }
           ],
           "correctOptionId": "a",
-          "explanation": "«If the same music plays while you write and while you rest, you stop learning what it means.»"
+          "explanation": "“If the same music plays while you write and while you rest, you stop learning what it means.”"
         }
       ]
     },
@@ -195,7 +195,7 @@
       "show": "Cosas del Metro",
       "level": "A2",
       "cover": "cosas-del-metro",
-      "summary": "Un episodio sobre el transporte público como aula accidental: las palabras que sólo aprendes cuando viajas todos los días, y por qué una frase said on a platform is easier to remember than one in a textbook.",
+      "summary": "An episode about the metro as a surprise classroom: the words you only learn when you travel every day, and why a sentence you hear on a platform is easier to remember than one in a textbook.",
       "segments": [
         { "speaker": "Andrés", "start": 0, "text": "Welcome to Cosas del Metro. I am Andrés, and this week: the words you only learn when you travel. Every day, for a year, on the same line." },
         { "speaker": "Andrés", "start": 0, "text": "Nobody teaches you the vocabulary of a station. You learn it because you need it. The announcement says the name of the next station and you want to know whether you have to get up now or two stops later." },
@@ -223,7 +223,7 @@
             { "id": "d", "text": "Because it is written on the walls." }
           ],
           "correctOptionId": "b",
-          "explanation": "«Nobody teaches you the vocabulary of a station. You learn it because you need it.»"
+          "explanation": "“Nobody teaches you the vocabulary of a station. You learn it because you need it.”"
         },
         {
           "id": "q-cm-2",
@@ -235,19 +235,19 @@
             { "id": "d", "text": "Is the train late?" }
           ],
           "correctOptionId": "b",
-          "explanation": "En el episodio, 'Is it running' significa «¿se mueve ya?», no «¿funciona el servicio?»."
+          "explanation": "In the episode, 'Is it running?' means “Is it moving again?”, not “Is the service operating?”."
         },
         {
           "id": "q-cm-3",
-          "prompt": "¿Cuál es el ejercicio de la semana?",
+          "prompt": "What is the exercise for this week?",
           "options": [
-            { "id": "a", "text": "Leer un texto en voz alta." },
-            { "id": "b", "text": "Escribir diez palabras desconocidas y usar cinco mal a propósito." },
-            { "id": "c", "text": "Grabar un podcast propio." },
-            { "id": "d", "text": "Repetir el episodio cinco veces." }
+            { "id": "a", "text": "Read a text out loud." },
+            { "id": "b", "text": "Write down ten new words and use five of them, even if you make mistakes." },
+            { "id": "c", "text": "Record your own podcast." },
+            { "id": "d", "text": "Listen to the episode five times." }
           ],
           "correctOptionId": "b",
-          "explanation": "«Write down ten words you did not know on Monday... Then use five of them badly tonight, in a sentence about your day.»"
+          "explanation": "“Write down ten words you did not know on Monday... Then use five of them badly tonight, in a sentence about your day.”"
         }
       ]
     }

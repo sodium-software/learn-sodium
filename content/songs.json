@@ -5,8 +5,8 @@
       "title": "Counting the Miles",
       "artist": "The Cartilla Sessions",
       "level": "A2",
-      "mood": "Ruta larga, ventanas abiertas, melancolía que avanza",
-      "summary": "Una canción sobre viajes por carretera y todo lo que uno cuenta en el camino. El vocabulario gira en torno a distancias, velocidad y las decisiones que se toman mirando el horizonte.",
+      "mood": "A long road, open windows, a little bit sad but always moving",
+      "summary": "A song about road trips and all the things you count along the way. The words are about distance, speed and the choices you make while looking at the horizon.",
       "cover": "counting-the-miles",
       "audio": "/media/audio/counting-the-miles.mp3",
       "bed": "route",
@@ -142,19 +142,19 @@
           "label": "The horizon leans",
           "start": 0,
           "end": 0,
-          "note": "La imagen central de la canción: la ligera movimiento del mundo mientras el carro avanza."
+          "note": "The main picture of the song: the world seems to tilt a little as the car moves along."
         },
         {
           "id": "h-ctm-2",
           "label": "Every mile is a door",
           "start": 0,
           "end": 0,
-          "note": "El final convierte la distancia en posibilidades, no en kilómetros perdidos."
+          "note": "The ending turns distance into new chances, not lost kilometres."
         },
         {
           "id": "h-ctm-3",
           "label": "A pocket full of nowhere",
-          "note": "Expresión útil: hablar de propósito sin decirlo directamente."
+          "note": "A useful phrase: a way to talk about having no plan without saying it directly."
         }
       ],
       "relatedActivityIds": [
@@ -168,8 +168,8 @@
       "title": "Paper Boats",
       "artist": "The Cartilla Sessions",
       "level": "A1",
-      "mood": "Infantil, limpio, con agua debajo",
-      "summary": "La letra más sencilla del catálogo y la mejor puerta de entrada: verbos básicos del agua, objetos de una mesa y una sola idea repetida con variaciones.",
+      "mood": "Playful and simple, with water all around",
+      "summary": "The easiest lyrics in the collection and the best place to start: simple water verbs, things you find on a table and one idea that repeats in different ways.",
       "cover": "paper-boats",
       "audio": "/media/audio/paper-boats.mp3",
       "bed": "water",
@@ -279,12 +279,12 @@
         {
           "id": "h-pb-1",
           "label": "Fold the paper, fold it twice",
-          "note": "El motivo que se repite: dos acciones simples que se vuelven canción."
+          "note": "The part that repeats: two simple actions that become a song."
         },
         {
           "id": "h-pb-2",
           "label": "Every child is worth a chance",
-          "note": "El único mensaje explícito de la letra. Buen fragmento para leer en voz alta."
+          "note": "The only line that says its message clearly. A great line to read out loud."
         }
       ],
       "relatedActivityIds": [
@@ -298,8 +298,8 @@
       "title": "Morning Market",
       "artist": "The Cartilla Sessions",
       "level": "B1",
-      "mood": "Rápido, bullicioso, con el golpe de las cajas",
-      "summary": "Una canción de mercado: precios, cantidades, negotiaciones y el ritmo de una jornada que empieza antes que el sol.",
+      "mood": "Fast and busy, with the thump of wooden crates",
+      "summary": "A market song: prices, amounts, bargaining and the rhythm of a day that starts before the sun comes up.",
       "cover": "morning-market",
       "audio": "/media/audio/morning-market.mp3",
       "bed": "market",
@@ -427,12 +427,12 @@
         {
           "id": "h-mm-1",
           "label": "Two for a pound",
-          "note": "El núcleo negociador de la letra: precio, cantidad y decisión en una línea."
+          "note": "The bargaining heart of the song: price, amount and a decision, all in one line."
         },
         {
           "id": "h-mm-2",
           "label": "Everything here has a story to sell",
-          "note": "Metáfora comercial: el producto también vende un relato."
+          "note": "A market metaphor: every product also sells a story."
         }
       ],
       "relatedActivityIds": [
@@ -446,8 +446,8 @@
       "title": "The Long Way Round",
       "artist": "The Cartilla Sessions",
       "level": "B2",
-      "mood": "Contemplativo, con resignación y un fondo de esperanza",
-      "summary": "La pieza más demanding del catálogo. Trabaja tiempos verbales, conectores y un contenido abstracto: los desvíos que termina siendo el camino correcto.",
+      "mood": "Thoughtful and calm, with a quiet hope underneath",
+      "summary": "The most challenging song in the collection. It practises verb tenses, linking words and a big idea: the detours that turn out to be the right path.",
       "cover": "the-long-way-round",
       "audio": "/media/audio/the-long-way-round.mp3",
       "bed": "longway",
@@ -567,12 +567,12 @@
         {
           "id": "h-lwr-1",
           "label": "If you had asked me",
-          "note": "Tercer condicional completo en dos versos consecutivos. Fragmento clave para la práctica de condicionales."
+          "note": "A full third conditional in two lines in a row. A key part for practising conditionals."
         },
         {
           "id": "h-lwr-2",
           "label": "The long way round is the way that stays",
-          "note": "El estribillo: la idea que da nombre a la canción."
+          "note": "The chorus: the idea that gives the song its name."
         }
       ],
       "relatedActivityIds": [
