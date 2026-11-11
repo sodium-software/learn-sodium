@@ -107,5 +107,5 @@ personales en este paquete.
 )
 
 if (existsSync(`${out}.zip`)) console.log(`(se sobrescribe ${out}.zip)`)
-execFileSync('zip', ['-qr', `${out}.zip`, `la-cartilla-entrega-${day}`], { cwd: 'entrega' })
+execFileSync('zip', ['-qr', `la-cartilla-entrega-${day}.zip`, `la-cartilla-entrega-${day}`], { cwd: 'entrega' })
 console.log(`Listo: ${out}/ y ${out}.zip`)
