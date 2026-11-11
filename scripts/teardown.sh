@@ -9,10 +9,7 @@
 # (node scripts/package-handover.mjs). Nada se borra sin confirmación.
 set -euo pipefail
 
-ACCOUNT="27a1784f9b6d99639db1e2ac1288cb26"
-ZONE="f2dca298e5367a3d738562f90b58bd09"
 PROJECT="learn-sodium"
-DOMAIN="learn.sodium.software"
 DATABASES=("learn-sodium" "learn-sodium-preview")
 BUCKETS=("learn-sodium-media" "learn-sodium-media-preview")
 REPO="sodium-software/learn-sodium"
@@ -39,17 +36,6 @@ accion() {
   else
     echo "    omitido"
   fi
-}
-
-cf_api() { # cf_api <método> <ruta>
-  curl -fsS -X "$1" "https://api.cloudflare.com/client/v4$2" -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN:?Falta CLOUDFLARE_API_TOKEN}"
-}
-
-delete_dns_record() {
-  local id
-  id="$(cf_api GET "/zones/${ZONE}/dns_records?type=CNAME&name=${DOMAIN}" | python3 -c 'import json,sys; r=json.load(sys.stdin)["result"]; print(r[0]["id"] if r else "")')"
-  [ -z "$id" ] && { echo "    no hay registro CNAME ${DOMAIN}"; return 0; }
-  cf_api DELETE "/zones/${ZONE}/dns_records/${id}" >/dev/null
 }
 
 empty_bucket() { # borra todos los objetos (R2 no deja borrar un bucket con contenido)
@@ -81,10 +67,7 @@ if [ "$MODE" = "ejecutar" ]; then
   [ "$typed" = "$PHRASE" ] || { echo "Frase incorrecta. No se hizo nada."; exit 1; }
 fi
 
-accion "Quitar el dominio ${DOMAIN} del proyecto de Pages" \
-  cf_api DELETE "/accounts/${ACCOUNT}/pages/projects/${PROJECT}/domains/${DOMAIN}"
-accion "Borrar el registro DNS CNAME ${DOMAIN} (necesita un token con DNS: Edit; si no, a mano en el panel de Cloudflare)" \
-  delete_dns_record
+# Sin dominio propio desde el 2026-11-11 (se quitó learn.sodium.software y nunca hubo CNAME).
 accion "Borrar el proyecto de Pages ${PROJECT} (web y todas sus versiones)" \
   npx wrangler pages project delete "$PROJECT" --yes
 # R2 antes que D1: la lista de archivos a vaciar sale de la base de datos.
