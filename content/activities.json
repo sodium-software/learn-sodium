@@ -60,7 +60,7 @@
     {
       "id": "act-quiz-roads",
       "kind": "quiz",
-      "title": "Quiz delectura",
+      "title": "Quiz de lectura",
       "tagline": "Comprueba lo que leíste",
       "description": "Seis preguntas sobre las canciones y las historias de carretera. Retroalimentación inmediata y puntuación al final.",
       "icon": "ListChecks",
