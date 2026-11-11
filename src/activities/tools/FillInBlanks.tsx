@@ -118,7 +118,7 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
           {parts[0]}
           <span
             className={clsx(
-              'mx-1 inline-block min-w-[5.5rem] border-b-2 px-2 text-center font-semibold',
+              'mx-1 inline-block min-w-[5.5rem] border-b-2 px-2 text-center font-bold',
               revealed ? (ok ? 'border-accent text-accent' : 'border-wrong text-wrong') : 'border-ink-mute',
             )}
           >
@@ -153,10 +153,10 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
                 disabled={revealed}
                 aria-pressed={isSelected}
                 className={clsx(
-                  'border px-3 py-2 text-sm transition-colors',
+                  'min-h-12 rounded-full border-2 px-5 text-lg font-bold transition-colors',
                   isSelected
                     ? 'border-accent bg-accent text-accent-ink'
-                    : 'border-tint-deep bg-sheet text-ink hover:border-ink-mute',
+                    : 'border-transparent bg-tint text-ink hover:bg-tint-deep',
                   revealed && !isSelected && 'opacity-45',
                 )}
               >

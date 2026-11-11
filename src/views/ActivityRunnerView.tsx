@@ -28,8 +28,8 @@ export function ActivityRunnerView() {
   if (definition?.kind === 'external') {
     return (
       <div className="frame py-10 lg:py-14">
-        <Link to="/activities" className="mb-8 inline-flex items-center gap-1.5 text-sm text-ink-mute hover:text-accent">
-          <Icon name="ChevronLeft" size={15} />
+        <Link to="/activities" className="btn btn-secondary mb-8">
+          <Icon name="ChevronLeft" size={20} />
           Todas las actividades
         </Link>
         <div className="max-w-2xl">
@@ -63,21 +63,21 @@ export function ActivityRunnerView() {
       <nav aria-label="Ruta de navegación" className="mb-8">
         <Link
           to="/activities"
-          className="inline-flex items-center gap-1.5 text-sm text-ink-mute transition-colors hover:text-accent"
+          className="btn btn-secondary"
         >
-          <Icon name="ChevronLeft" size={15} />
+          <Icon name="ChevronLeft" size={20} />
           Todas las actividades
         </Link>
       </nav>
 
-      <header className="grid-editorial items-end gap-y-6 border-b border-tint-deep pb-8">
+      <header className="grid-editorial items-end gap-y-6 pb-8">
         <div className="col-span-4 lg:col-span-7">
           <div className="flex flex-wrap items-center gap-3">
             <LevelTag level={definition.level} />
             <span className="text-sm text-ink-mute">{tool.typeLabel}</span>
             <span className="text-sm text-ink-mute tnum">{definition.minutes} min</span>
           </div>
-          <h1 className="mt-4 text-display font-display font-semibold leading-[0.98] tracking-[-0.04em] text-ink">
+          <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
             {definition.title}
           </h1>
           <p className="mt-4 max-w-2xl text-lead text-ink-soft">{definition.description}</p>
@@ -87,7 +87,7 @@ export function ActivityRunnerView() {
           {result ? (
             <div className="panel px-5 py-4">
               <p className="label">Última vez</p>
-              <p className="mt-1 font-display text-3xl font-semibold text-ink tnum">
+              <p className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                 {result.score}
                 <span className="text-base text-ink-mute">/100</span>
               </p>
@@ -115,8 +115,8 @@ export function ActivityRunnerView() {
       </div>
 
       {relatedContent.length > 0 ? (
-        <section className="mt-16 border-t border-tint-deep pt-8" aria-labelledby="relacionado">
-          <h2 id="relacionado" className="font-display text-xl font-semibold tracking-tight text-ink">
+        <section className="mt-16 pt-8" aria-labelledby="relacionado">
+          <h2 id="relacionado" className="font-display text-xl font-extrabold text-ink">
             Material relacionado
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -124,7 +124,7 @@ export function ActivityRunnerView() {
               <Link
                 key={item.id}
                 to={item.route}
-                className="flex min-w-0 items-center gap-4 border border-tint-deep bg-sheet px-4 py-3 transition-colors hover:border-ink-mute"
+                className="flex min-w-0 items-center gap-4 border-2 border-transparent bg-sheet px-4 py-3 transition-colors hover:border-ink-mute"
               >
                 <img src={item.cover} alt="" className="h-12 w-16 shrink-0 object-cover" loading="lazy" />
                 <span className="min-w-0">

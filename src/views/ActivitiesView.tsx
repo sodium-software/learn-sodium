@@ -1,3 +1,4 @@
+import { SectionHeader } from '../components/SectionHeader'
 import { Link } from 'react-router-dom'
 
 import { Icon, LevelTag, ProgressBar } from '../components/ui'
@@ -40,46 +41,32 @@ export function ActivitiesView() {
   }
 
   return (
-    <div className="frame py-10 lg:py-16">
-      <header className="grid-editorial items-end gap-y-6">
-        <div className="col-span-4 lg:col-span-7">
-          <h1 className="text-hero font-display font-semibold leading-[0.96] tracking-[-0.04em] text-ink">
-            Actividades
-          </h1>
-        </div>
-        <div className="col-span-4 lg:col-span-4 lg:col-start-9">
-          <p className="text-lead text-ink-soft">
-            Ejercicios que se corrigen solos y actividades en otras plataformas. Lo que haces se guarda en este dispositivo.
-          </p>
-        </div>
-      </header>
-
-      {/* ── Resumen ────────────────────────────────────────────────────── */}
-      <section className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-5 border-y border-tint-deep py-7">
-        <div>
-          <p className="label">Completadas</p>
-          <p className="mt-1 font-display text-3xl font-semibold text-ink tnum">
+    <div className="pb-24">
+      <SectionHeader
+        kind="activity"
+        title="Actividades"
+        description="Juegos que se corrigen solos y actividades en otras plataformas."
+      >
+        <div className="mt-6 flex max-w-md items-center gap-4">
+          <p className="shrink-0 font-display text-3xl font-extrabold tnum">
             {done}
-            <span className="text-base text-ink-mute"> / {total}</span>
+            <span className="text-xl"> de {total}</span>
           </p>
+          <div className="flex-1 rounded-full bg-white/25 p-1">
+            <ProgressBar value={overallProgress} max={100} label="Actividades completadas" />
+          </div>
         </div>
-        <div className="min-w-[12rem] flex-1">
-          <ProgressBar value={overallProgress} max={100} label="Avance total" />
-          <p className="mt-2 text-xs text-ink-mute">
-            {overallProgress}% del cuaderno de actividades
-          </p>
-        </div>
-      </section>
-
+      </SectionHeader>
+      <div className="frame">
       {/* ── Catálogo por tipo ──────────────────────────────────────────── */}
       <div className="mt-16 space-y-16">
         {Object.entries(byKind).map(([kind, definitions]) => (
           <section key={kind} aria-labelledby={`kind-${kind}`}>
-            <div className="flex flex-wrap items-end justify-between gap-4 border-b border-tint-deep pb-4">
+            <div className="flex flex-wrap items-end justify-between gap-4 pb-4">
               <div>
                 <h2
                   id={`kind-${kind}`}
-                  className="font-display text-2xl font-semibold tracking-tight text-ink"
+                  className="text-head text-ink"
                 >
                   {kindLabels[kind] ?? kind}
                 </h2>
@@ -100,7 +87,7 @@ export function ActivitiesView() {
                   <Link
                     key={definition.id}
                     to={`/activities/${definition.id}`}
-                    className="group flex flex-col border border-tint-deep bg-sheet px-5 py-5 transition-colors hover:border-ink-mute"
+                    className="group flex flex-col rounded-[var(--radius-xs)] bg-sheet px-6 py-6 transition-transform hover:-translate-y-1"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span className="inline-flex items-center gap-2 text-xs font-medium text-ink-soft">
@@ -124,7 +111,7 @@ export function ActivitiesView() {
                       <LevelTag level={definition.level} />
                     </div>
 
-                    <h3 className="mt-4 font-display text-xl font-semibold tracking-tight text-ink">
+                    <h3 className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink group-hover:text-blue">
                       {definition.title}
                     </h3>
                     <p className="mt-1 text-sm text-ink-mute">{definition.tagline}</p>
@@ -132,14 +119,14 @@ export function ActivitiesView() {
                       {definition.description}
                     </p>
 
-                    <div className="mt-5 border-t border-tint-deep pt-4">
+                    <div className="mt-5 pt-4">
                       {result ? (
                         <>
                           <div className="flex items-center justify-between gap-3">
                             <span className="text-xs text-ink-mute">Última vez</span>
                             <span
                               className={clsx(
-                                'font-display text-lg font-semibold tnum',
+                                'font-display text-lg font-extrabold tnum',
                                 result.score >= 70 ? 'text-accent' : 'text-ink',
                               )}
                             >
@@ -177,8 +164,8 @@ export function ActivitiesView() {
         if (external.length === 0) return null
         return (
           <section key={tool} className="mt-16" aria-labelledby={`tool-${tool}`}>
-            <div className="border-b border-tint-deep pb-4">
-              <h2 id={`tool-${tool}`} className="font-display text-2xl font-semibold tracking-tight text-ink">
+            <div className="pb-4">
+              <h2 id={`tool-${tool}`} className="text-head text-ink">
                 En {toolName(tool)}
               </h2>
               <p className="mt-1 text-sm text-ink-mute">
@@ -204,7 +191,7 @@ export function ActivitiesView() {
           quieres llegar a la actividad con el contexto.
         </p>
 
-        <div className="mt-8 divide-y divide-tint-deep border-y border-tint-deep">
+        <div className="mt-8">
           {allContent.map((item) => {
             const linked = activityDefinitions.filter((definition) =>
               definition.relatedIds.includes(item.id),
@@ -224,7 +211,7 @@ export function ActivitiesView() {
                 <div className="min-w-0 flex-1">
                   <Link
                     to={item.route}
-                    className="font-display text-lg font-semibold tracking-tight text-ink hover:text-accent"
+                    className="inline-flex min-h-12 items-center font-display text-2xl font-extrabold text-ink hover:text-blue"
                   >
                     {item.title}
                   </Link>
@@ -238,7 +225,7 @@ export function ActivitiesView() {
                     <Link
                       key={definition.id}
                       to={`/activities/${definition.id}`}
-                      className="border border-tint-deep px-3 py-1.5 text-xs text-ink-soft transition-colors hover:border-accent hover:text-accent"
+                      className="inline-flex min-h-12 items-center rounded-full bg-sheet px-5 text-base font-bold text-ink transition-colors hover:bg-tint-deep"
                     >
                       {definition.title}
                     </Link>
@@ -249,6 +236,7 @@ export function ActivitiesView() {
           })}
         </div>
       </section>
+      </div>
     </div>
   )
 }

@@ -85,7 +85,7 @@ export function ResultPanel({
   return (
     <div className="panel px-6 py-8 text-center">
       <p className="label">Resultado</p>
-      <p className="mt-3 font-display text-6xl font-semibold tracking-tight text-ink tnum">
+      <p className="mt-3 font-display text-6xl font-extrabold text-ink tnum">
         {score}
         <span className="text-2xl text-ink-mute">/100</span>
       </p>
@@ -127,14 +127,14 @@ export function Feedback({
   return (
     <div
       className={clsx(
-        'mt-4 border-l-2 px-4 py-3',
+        'mt-4 px-4 py-3',
         correct ? 'border-accent bg-accent-pale/40' : 'border-wrong bg-wrong-pale/50',
       )}
       role="status"
     >
       <p
         className={clsx(
-          'font-display text-sm font-semibold',
+          'font-display text-sm font-extrabold',
           correct ? 'text-accent' : 'text-wrong',
         )}
       >

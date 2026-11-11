@@ -86,14 +86,14 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
             {flipped ? 'Definición' : 'Pulsa para voltear'}
           </span>
 
-          <p className="mt-5 font-display text-4xl font-semibold tracking-tight text-ink">
+          <p className="mt-5 font-display text-4xl font-extrabold text-ink">
             {card.term}
           </p>
 
           {flipped ? (
             <div className="mt-6">
               <p className="text-lg text-ink">{card.definition}</p>
-              <p className="mt-4 border-l-2 border-tint-deep pl-4 font-read text-base italic text-ink-soft">
+              <p className="mt-4 font-read text-base italic text-ink-soft">
                 {card.example}
               </p>
               <p className="mt-4 text-sm text-ink-mute">Traducción: {card.translation}</p>
@@ -113,7 +113,7 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
         <div className="flex flex-col gap-3">
           <div className="panel-quiet px-4 py-3">
             <p className="label">Tu avance</p>
-            <p className="mt-1 font-display text-2xl font-semibold text-ink tnum">
+            <p className="mt-1 font-display text-2xl font-extrabold text-ink tnum">
               {Object.values(known).filter(Boolean).length}
               <span className="text-base text-ink-mute"> / {cards.length}</span>
             </p>

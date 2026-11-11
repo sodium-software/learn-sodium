@@ -17,7 +17,7 @@ export function SettingsView() {
     <div className="frame py-10 lg:py-16">
       <header className="grid-editorial items-end gap-y-6">
         <div className="col-span-4 lg:col-span-7">
-          <h1 className="text-hero font-display font-semibold leading-[0.96] tracking-[-0.04em] text-ink">
+          <h1 className="text-hero font-display font-extrabold leading-[0.96] text-ink">
             Ajustes
           </h1>
         </div>
@@ -31,7 +31,7 @@ export function SettingsView() {
       <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
         {/* ── Preferencias ─────────────────────────────────────────────── */}
         <section>
-          <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
+          <h2 className="font-display text-2xl font-extrabold text-ink">
             Preferencias
           </h2>
 
@@ -59,7 +59,7 @@ export function SettingsView() {
               onChange={(event) =>
                 updatePreferences({ dailyGoalMinutes: Number(event.target.value) })
               }
-              className="mt-3 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-tint-deep accent-accent"
+              className="mt-1 w-full"
             />
 
             <label className="mt-6 flex cursor-pointer items-start gap-3">
@@ -69,7 +69,7 @@ export function SettingsView() {
                 onChange={(event) =>
                   updatePreferences({ showTranslations: event.target.checked })
                 }
-                className="mt-0.5 h-4 w-4 accent-accent"
+                className="mt-0.5 h-6 w-6 shrink-0"
               />
               <span>
                 <span className="block text-sm text-ink">
@@ -81,28 +81,12 @@ export function SettingsView() {
               </span>
             </label>
 
-            <label className="mt-4 flex cursor-pointer items-start gap-3">
-              <input
-                type="checkbox"
-                checked={preferences.sidebarCollapsed}
-                onChange={(event) =>
-                  updatePreferences({ sidebarCollapsed: event.target.checked })
-                }
-                className="mt-0.5 h-4 w-4 accent-accent"
-              />
-              <span>
-                <span className="block text-sm text-ink">Barra lateral plegada</span>
-                <span className="mt-1 block text-xs text-ink-mute">
-                  Muestra sólo los iconos en escritorio.
-                </span>
-              </span>
-            </label>
           </div>
         </section>
 
         {/* ── Progreso ─────────────────────────────────────────────────── */}
         <section>
-          <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
+          <h2 className="font-display text-2xl font-extrabold text-ink">
             Tu progreso
           </h2>
 
@@ -110,7 +94,7 @@ export function SettingsView() {
             <dl className="grid grid-cols-2 gap-6">
               <div>
                 <dt className="label">Actividades completadas</dt>
-                <dd className="mt-1 font-display text-3xl font-semibold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {state.completedActivityIds.length}
                   <span className="text-base text-ink-mute">
                     /{activityDefinitions.length}
@@ -119,27 +103,27 @@ export function SettingsView() {
               </div>
               <div>
                 <dt className="label">Media de aciertos</dt>
-                <dd className="mt-1 font-display text-3xl font-semibold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {average}
                   <span className="text-base text-ink-mute">/100</span>
                 </dd>
               </div>
               <div>
                 <dt className="label">Minutos hoy</dt>
-                <dd className="mt-1 font-display text-3xl font-semibold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {minutesToday}
                 </dd>
               </div>
               <div>
                 <dt className="label">Racha</dt>
-                <dd className="mt-1 font-display text-3xl font-semibold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {streak}
                   <span className="text-base text-ink-mute"> días</span>
                 </dd>
               </div>
             </dl>
 
-            <div className="mt-6 border-t border-tint-deep pt-5">
+            <div className="mt-6 pt-5">
               <p className="label">Vocabulario dominado</p>
               <p className="mt-1 text-sm text-ink-soft">
                 {state.masteredTerms.length} palabras marcadas
@@ -158,7 +142,7 @@ export function SettingsView() {
               ) : null}
             </div>
 
-            <div className="mt-6 border-t border-tint-deep pt-5">
+            <div className="mt-6 pt-5">
               <button
                 type="button"
                 onClick={() => {
@@ -181,8 +165,8 @@ export function SettingsView() {
       </div>
 
       {/* ── Estado técnico ─────────────────────────────────────────────── */}
-      <section className="mt-16 border-t border-tint-deep pt-8">
-        <h2 className="font-display text-xl font-semibold tracking-tight text-ink">
+      <section className="mt-16 pt-8">
+        <h2 className="font-display text-xl font-extrabold text-ink">
           Sobre este cuaderno
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-ink-soft">

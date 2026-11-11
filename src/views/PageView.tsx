@@ -11,7 +11,7 @@ export function PageView({ id }: { id: 'introduccion' | 'biodata' }) {
       <div className="grid-editorial gap-y-8">
         <header className="col-span-4 lg:col-span-8">
           {page.example ? <Tag>Ejemplo</Tag> : null}
-          <h1 className="mt-3 text-hero font-display font-semibold leading-[0.98] tracking-[-0.04em] text-ink">{page.title}</h1>
+          <h1 className="mt-3 text-hero font-display font-extrabold leading-[0.98] text-ink">{page.title}</h1>
           {page.summary ? <p className="mt-5 max-w-2xl text-lead text-ink-soft">{page.summary}</p> : null}
         </header>
         <div className="prose-read col-span-4 max-w-[65ch] lg:col-span-7">

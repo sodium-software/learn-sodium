@@ -42,7 +42,7 @@ export function StoryDetailView() {
 
   return (
     <div>
-      <header className="border-b border-tint-deep bg-sheet">
+      <header className="bg-sheet">
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
           <img
             src={story.cover}
@@ -55,7 +55,7 @@ export function StoryDetailView() {
               <span className="text-sm text-ink-mute">{story.author}</span>
               <span className="text-sm text-ink-mute tnum">{story.readingTime} min</span>
             </div>
-            <h1 className="mt-4 text-display font-display font-semibold leading-[0.98] tracking-[-0.04em] text-ink">
+            <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
               {story.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lead text-ink-soft">{story.summary}</p>
@@ -65,7 +65,7 @@ export function StoryDetailView() {
 
       <div className="frame py-12">
         {/* ── Introducción ─────────────────────────────────────────────── */}
-        <p className="max-w-3xl border-l-2 border-accent pl-5 font-read text-xl leading-relaxed text-ink">
+        <p className="max-w-3xl border-accent font-read text-xl leading-relaxed text-ink">
           {story.intro}
         </p>
 
@@ -80,10 +80,10 @@ export function StoryDetailView() {
                   onClick={() => setChapterIndex(index)}
                   aria-current={index === chapterIndex}
                   className={clsx(
-                    'border px-3 py-2 text-sm transition-colors',
+                    'min-h-12 rounded-full px-5 text-base font-bold transition-colors',
                     index === chapterIndex
-                      ? 'border-accent bg-accent text-accent-ink'
-                      : 'border-tint-deep text-ink-soft hover:border-ink-mute hover:text-ink',
+                      ? 'bg-ink text-white'
+                      : 'bg-sheet text-ink hover:bg-tint-deep',
                   )}
                 >
                   {entry.title}
@@ -92,7 +92,7 @@ export function StoryDetailView() {
             </nav>
 
             <article className="panel px-6 py-8 sm:px-10 sm:py-10">
-              <h2 className="font-display text-2xl font-semibold tracking-tight text-ink">
+              <h2 className="font-display text-2xl font-extrabold text-ink">
                 {chapter.title}
               </h2>
               <div className="prose-read mt-6">
@@ -152,7 +152,7 @@ export function StoryDetailView() {
                       <p className="text-base font-medium text-ink">{question.prompt}</p>
 
                       <div className="mt-4 space-y-2">
-                        {question.options.map((option) => {
+                        {question.options.map((option, optionIndex) => {
                           const isChosen = chosen === option.id
                           const isAnswer = option.id === question.correctOptionId
                           const showState = checked && (isChosen || isAnswer)
@@ -166,23 +166,23 @@ export function StoryDetailView() {
                               disabled={checked}
                               aria-pressed={isChosen}
                               className={clsx(
-                                'flex w-full items-start gap-3 border px-4 py-2.5 text-left transition-colors',
+                                'flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-sm)] border-2 px-4 py-2.5 text-left text-lg transition-colors',
                                 showState && isAnswer
                                   ? 'border-accent bg-accent-pale/40'
                                   : showState && isChosen
                                     ? 'border-wrong bg-wrong-pale/50'
-                                    : 'border-tint-deep bg-sheet hover:border-ink-mute',
+                                    : 'border-transparent bg-tint hover:bg-tint-deep',
                                 checked && !showState && 'opacity-55',
                               )}
                             >
                               <span
                                 className={clsx(
-                                  'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border text-[0.6875rem] font-semibold',
+                                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base font-bold',
                                   showState && isAnswer
                                     ? 'border-accent bg-accent text-accent-ink'
                                     : showState && isChosen
                                       ? 'border-wrong bg-wrong text-white'
-                                      : 'border-tint-deep text-ink-mute',
+                                      : 'border-transparent bg-sheet text-ink',
                                 )}
                               >
                                 {showState && isAnswer ? (
@@ -190,7 +190,7 @@ export function StoryDetailView() {
                                 ) : showState && isChosen ? (
                                   <Icon name="X" size={11} strokeWidth={3} />
                                 ) : (
-                                  option.id.toUpperCase()
+                                  String.fromCharCode(65 + optionIndex)
                                 )}
                               </span>
                               <span className="text-sm leading-relaxed text-ink">
@@ -204,7 +204,7 @@ export function StoryDetailView() {
                       {checked ? (
                         <p
                           className={clsx(
-                            'mt-3 border-l-2 pl-4 text-sm',
+                            'mt-3 text-sm',
                             isCorrect
                               ? 'border-accent text-ink-soft'
                               : 'border-wrong text-ink-soft',
@@ -243,7 +243,7 @@ export function StoryDetailView() {
           {/* ── Glosario ─────────────────────────────────────────────────── */}
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
-              <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
+              <h2 className="font-display text-lg font-extrabold text-ink">
                 Vocabulario
               </h2>
               <dl className="mt-4 space-y-4">
@@ -258,8 +258,8 @@ export function StoryDetailView() {
                           onClick={() => toggleMastered(entry.term)}
                           aria-pressed={isMastered}
                           className={clsx(
-                            'shrink-0 text-xs transition-colors',
-                            isMastered ? 'text-accent' : 'text-ink-faint hover:text-ink',
+                            'shrink-0 min-h-12 rounded-full px-4 text-base font-bold transition-colors',
+                            isMastered ? 'bg-green text-white' : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
                           {isMastered ? 'Dominada' : 'Marcar'}
@@ -275,10 +275,10 @@ export function StoryDetailView() {
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
-                <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
+                <h2 className="font-display text-lg font-extrabold text-ink">
                   Sigue con
                 </h2>
-                <ul className="mt-3 divide-y divide-tint-deep">
+                <ul className="mt-3">
                   {related.map((item) => (
                     <li key={item.id}>
                       <Link

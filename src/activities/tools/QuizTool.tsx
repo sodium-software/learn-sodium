@@ -104,7 +104,7 @@ export function QuizTool({ definition, onComplete }: ActivityToolProps) {
         <p className="text-lg font-medium text-ink">{question.prompt}</p>
 
         <div className="mt-5 space-y-2">
-          {question.options.map((option) => {
+          {question.options.map((option, optionIndex) => {
             const isChosen = chosen === option.id
             const isAnswer = option.id === question.correctOptionId
             const showState = answered && (isChosen || isAnswer)
@@ -117,23 +117,23 @@ export function QuizTool({ definition, onComplete }: ActivityToolProps) {
                 disabled={answered}
                 aria-pressed={isChosen}
                 className={clsx(
-                  'flex w-full items-center gap-3 border px-4 py-3 text-left transition-colors',
+                  'flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-sm)] border-2 px-4 py-3 text-left text-lg transition-colors',
                   showState && isAnswer
                     ? 'border-accent bg-accent-pale/40'
                     : showState && isChosen
                       ? 'border-wrong bg-wrong-pale/50'
-                      : 'border-tint-deep bg-sheet hover:border-ink-mute',
+                      : 'border-transparent bg-tint hover:bg-tint-deep',
                   answered && !showState && 'opacity-55',
                 )}
               >
                 <span
                   className={clsx(
-                    'flex h-6 w-6 shrink-0 items-center justify-center border text-xs font-semibold',
+                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base font-bold',
                     showState && isAnswer
                       ? 'border-accent bg-accent text-accent-ink'
                       : showState && isChosen
                         ? 'border-wrong bg-wrong text-white'
-                        : 'border-tint-deep text-ink-mute',
+                        : 'border-transparent bg-sheet text-ink',
                   )}
                 >
                   {showState && isAnswer ? (
@@ -141,7 +141,7 @@ export function QuizTool({ definition, onComplete }: ActivityToolProps) {
                   ) : showState && isChosen ? (
                     <Icon name="X" size={13} strokeWidth={2.5} />
                   ) : (
-                    option.id.toUpperCase()
+                    String.fromCharCode(65 + optionIndex)
                   )}
                 </span>
                 <span className="text-base text-ink">{option.text}</span>

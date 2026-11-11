@@ -53,7 +53,7 @@ export function PodcastDetailView() {
 
   return (
     <div>
-      <header className="border-b border-tint-deep bg-sheet">
+      <header className="bg-sheet">
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
           <img
             src={episode.cover}
@@ -65,7 +65,7 @@ export function PodcastDetailView() {
               <LevelTag level={episode.level} />
               <span className="text-sm text-ink-mute">{episode.show}</span>
             </div>
-            <h1 className="mt-4 text-display font-display font-semibold leading-[0.98] tracking-[-0.04em] text-ink">
+            <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
               {episode.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lead text-ink-soft">{episode.summary}</p>
@@ -93,7 +93,7 @@ export function PodcastDetailView() {
                 resalta.
               </p>
 
-              <div className="mt-6 divide-y divide-tint-deep border-y border-tint-deep">
+              <div className="mt-6">
                 {episode.segments.map((segment, index) => {
                   const isActive = index === activeSegment
                   return (
@@ -147,7 +147,7 @@ export function PodcastDetailView() {
                     <div key={question.id} className="panel px-5 py-5">
                       <p className="text-base font-medium text-ink">{question.prompt}</p>
                       <div className="mt-4 space-y-2">
-                        {question.options.map((option) => {
+                        {question.options.map((option, optionIndex) => {
                           const isChosen = chosen === option.id
                           const isAnswer = option.id === question.correctOptionId
                           const showState = checked && (isChosen || isAnswer)
@@ -161,23 +161,23 @@ export function PodcastDetailView() {
                               disabled={checked}
                               aria-pressed={isChosen}
                               className={clsx(
-                                'flex w-full items-start gap-3 border px-4 py-2.5 text-left transition-colors',
+                                'flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-sm)] border-2 px-4 py-2.5 text-left text-lg transition-colors',
                                 showState && isAnswer
                                   ? 'border-accent bg-accent-pale/40'
                                   : showState && isChosen
                                     ? 'border-wrong bg-wrong-pale/50'
-                                    : 'border-tint-deep bg-sheet hover:border-ink-mute',
+                                    : 'border-transparent bg-tint hover:bg-tint-deep',
                                 checked && !showState && 'opacity-55',
                               )}
                             >
                               <span
                                 className={clsx(
-                                  'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border text-[0.6875rem] font-semibold',
+                                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base font-bold',
                                   showState && isAnswer
                                     ? 'border-accent bg-accent text-accent-ink'
                                     : showState && isChosen
                                       ? 'border-wrong bg-wrong text-white'
-                                      : 'border-tint-deep text-ink-mute',
+                                      : 'border-transparent bg-sheet text-ink',
                                 )}
                               >
                                 {showState && isAnswer ? (
@@ -185,7 +185,7 @@ export function PodcastDetailView() {
                                 ) : showState && isChosen ? (
                                   <Icon name="X" size={11} strokeWidth={3} />
                                 ) : (
-                                  option.id.toUpperCase()
+                                  String.fromCharCode(65 + optionIndex)
                                 )}
                               </span>
                               <span className="text-sm leading-relaxed text-ink">
@@ -196,7 +196,7 @@ export function PodcastDetailView() {
                         })}
                       </div>
                       {checked ? (
-                        <p className="mt-3 border-l-2 border-tint-deep pl-4 text-sm text-ink-soft">
+                        <p className="mt-3 text-sm text-ink-soft">
                           {isCorrect ? 'Correcto. ' : 'No es correcto. '}
                           {question.explanation}
                         </p>
@@ -229,7 +229,7 @@ export function PodcastDetailView() {
 
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
-              <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
+              <h2 className="font-display text-lg font-extrabold text-ink">
                 Palabras clave
               </h2>
               <dl className="mt-4 space-y-4">
@@ -244,8 +244,8 @@ export function PodcastDetailView() {
                           onClick={() => toggleMastered(entry.term)}
                           aria-pressed={isMastered}
                           className={clsx(
-                            'shrink-0 text-xs transition-colors',
-                            isMastered ? 'text-accent' : 'text-ink-faint hover:text-ink',
+                            'shrink-0 min-h-12 rounded-full px-4 text-base font-bold transition-colors',
+                            isMastered ? 'bg-green text-white' : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
                           {isMastered ? 'Dominada' : 'Marcar'}
@@ -261,10 +261,10 @@ export function PodcastDetailView() {
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
-                <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
+                <h2 className="font-display text-lg font-extrabold text-ink">
                   Sigue con
                 </h2>
-                <ul className="mt-3 divide-y divide-tint-deep">
+                <ul className="mt-3">
                   {related.map((item) => (
                     <li key={item.id}>
                       <Link

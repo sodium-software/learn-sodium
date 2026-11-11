@@ -115,12 +115,12 @@ export function WordMatching({ definition, onComplete }: ActivityToolProps) {
                 onClick={() => !done && setSelectedWord(pair.id)}
                 disabled={done}
                 className={clsx(
-                  'flex w-full items-center justify-between gap-3 border px-4 py-3 text-left transition-colors',
+                  'flex w-full items-center justify-between gap-3 border-2 px-4 py-3 text-left transition-colors',
                   done
                     ? 'border-accent bg-accent-pale/30 text-ink-mute'
                     : active
                       ? 'border-accent bg-accent-pale/40'
-                      : 'border-tint-deep bg-sheet hover:border-ink-mute',
+                      : 'border-transparent bg-tint hover:bg-tint-deep',
                 )}
               >
                 <span className={clsx('text-base', done && 'line-through')}>{pair.left}</span>
@@ -141,12 +141,12 @@ export function WordMatching({ definition, onComplete }: ActivityToolProps) {
                 onClick={() => chooseDefinition(pair.id)}
                 disabled={done}
                 className={clsx(
-                  'flex w-full items-start gap-3 border px-4 py-3 text-left transition-colors',
+                  'flex w-full items-start gap-3 border-2 px-4 py-3 text-left transition-colors',
                   done
                     ? 'border-accent bg-accent-pale/30 text-ink-mute'
                     : isWrong
                       ? 'border-wrong bg-wrong-pale/50'
-                      : 'border-tint-deep bg-sheet hover:border-ink-mute',
+                      : 'border-transparent bg-tint hover:bg-tint-deep',
                 )}
               >
                 <span className="mt-1.5 h-2 w-2 shrink-0 bg-tint-deep" aria-hidden="true" />

@@ -56,7 +56,7 @@ export function SongDetailView() {
   return (
     <div>
       {/* ── Cabecera ───────────────────────────────────────────────────── */}
-      <header className="border-b border-tint-deep bg-sheet">
+      <header className="bg-sheet">
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
           <img
             src={song.cover}
@@ -73,13 +73,13 @@ export function SongDetailView() {
               </span>
             </div>
 
-            <h1 className="mt-4 text-display font-display font-semibold leading-[0.98] tracking-[-0.04em] text-ink">
+            <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
               {song.title}
             </h1>
 
             <p className="mt-5 max-w-2xl text-lead text-ink-soft">{song.summary}</p>
 
-            <p className="mt-4 max-w-2xl border-l-2 border-tint-deep pl-4 text-sm italic text-ink-mute">
+            <p className="mt-4 max-w-2xl text-sm italic text-ink-mute">
               {song.mood}
             </p>
           </div>
@@ -111,7 +111,7 @@ export function SongDetailView() {
                 </div>
               </div>
 
-              <ol className="mt-6 divide-y divide-tint-deep border-y border-tint-deep">
+              <ol className="mt-6">
                 {song.lyrics.map((line, index) => {
                   const isActive = index === activeLine
                   const keywordHit = line.keywords?.some((word) =>
@@ -175,8 +175,8 @@ export function SongDetailView() {
                     <div
                       key={highlight.id}
                       className={clsx(
-                        'flex flex-col gap-4 border px-5 py-4 sm:flex-row sm:items-start',
-                        isOn ? 'border-accent bg-accent-pale/30' : 'border-tint-deep bg-sheet',
+                        'flex flex-col gap-4 border-2 px-5 py-4 sm:flex-row sm:items-start',
+                        isOn ? 'border-accent bg-accent-pale' : 'border-transparent bg-sheet',
                       )}
                     >
                       <button
@@ -185,7 +185,7 @@ export function SongDetailView() {
                         className="shrink-0 text-left"
                         aria-label={`Reproducir desde ${highlight.label}`}
                       >
-                        <span className="flex items-center gap-2 font-display text-base font-semibold text-ink">
+                        <span className="flex items-center gap-2 font-display text-base font-extrabold text-ink">
                           <Icon name="Play" size={15} />
                           {highlight.label}
                         </span>
@@ -201,10 +201,10 @@ export function SongDetailView() {
                         onClick={() => toggleHighlight(highlight.id)}
                         aria-pressed={isOn}
                         className={clsx(
-                          'shrink-0 border px-3 py-1.5 text-xs font-medium transition-colors',
+                          'shrink-0 min-h-12 rounded-full px-5 text-base font-bold transition-colors',
                           isOn
-                            ? 'border-accent bg-accent text-accent-ink'
-                            : 'border-tint-deep text-ink-soft hover:border-ink-mute hover:text-ink',
+                            ? 'bg-accent text-accent-ink'
+                            : 'bg-tint text-ink hover:bg-tint-deep',
                         )}
                       >
                         {isOn ? 'Guardado' : 'Guardar'}
@@ -219,7 +219,7 @@ export function SongDetailView() {
           {/* ── Columna lateral ──────────────────────────────────────────── */}
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
-              <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
+              <h2 className="font-display text-lg font-extrabold text-ink">
                 Vocabulario
               </h2>
               <dl className="mt-4 space-y-4">
@@ -234,10 +234,10 @@ export function SongDetailView() {
                           onClick={() => toggleMastered(entry.term)}
                           aria-pressed={isMastered}
                           className={clsx(
-                            'shrink-0 text-xs transition-colors',
+                            'shrink-0 min-h-12 rounded-full px-4 text-base font-bold transition-colors',
                             isMastered
-                              ? 'text-accent'
-                              : 'text-ink-faint hover:text-ink',
+                              ? 'bg-green text-white'
+                              : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
                           {isMastered ? 'Dominada' : 'Marcar'}
@@ -255,10 +255,10 @@ export function SongDetailView() {
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
-                <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
+                <h2 className="font-display text-lg font-extrabold text-ink">
                   Sigue con
                 </h2>
-                <ul className="mt-3 divide-y divide-tint-deep">
+                <ul className="mt-3">
                   {related.map((item) => (
                     <li key={item.id}>
                       <Link

@@ -109,7 +109,7 @@ export function ReadingComprehension({ definition, onComplete }: ActivityToolPro
           <p className="text-base font-medium text-ink">{question.prompt}</p>
 
           <div className="mt-4 space-y-2">
-            {question.options.map((option) => {
+            {question.options.map((option, optionIndex) => {
               const isChosen = chosen === option.id
               const isAnswer = option.id === question.correctOptionId
               const showState = answered && (isChosen || isAnswer)
@@ -122,23 +122,23 @@ export function ReadingComprehension({ definition, onComplete }: ActivityToolPro
                   disabled={answered}
                   aria-pressed={isChosen}
                   className={clsx(
-                    'flex w-full items-start gap-3 border px-3 py-2.5 text-left transition-colors',
+                    'flex w-full items-start gap-3 border-2 px-3 py-2.5 text-left transition-colors',
                     showState && isAnswer
                       ? 'border-accent bg-accent-pale/40'
                       : showState && isChosen
                         ? 'border-wrong bg-wrong-pale/50'
-                        : 'border-tint-deep bg-sheet hover:border-ink-mute',
+                        : 'border-transparent bg-tint hover:bg-tint-deep',
                     answered && !showState && 'opacity-55',
                   )}
                 >
                   <span
                     className={clsx(
-                      'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border text-[0.6875rem] font-semibold',
+                      'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border-2 text-[0.6875rem] font-bold',
                       showState && isAnswer
                         ? 'border-accent bg-accent text-accent-ink'
                         : showState && isChosen
                           ? 'border-wrong bg-wrong text-white'
-                          : 'border-tint-deep text-ink-mute',
+                          : 'border-transparent bg-sheet text-ink',
                     )}
                   >
                     {showState && isAnswer ? (
@@ -146,7 +146,7 @@ export function ReadingComprehension({ definition, onComplete }: ActivityToolPro
                     ) : showState && isChosen ? (
                       <Icon name="X" size={11} strokeWidth={3} />
                     ) : (
-                      option.id.toUpperCase()
+                      String.fromCharCode(65 + optionIndex)
                     )}
                   </span>
                   <span className="text-sm leading-relaxed text-ink">{option.text}</span>
