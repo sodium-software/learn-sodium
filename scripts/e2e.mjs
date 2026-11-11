@@ -24,7 +24,7 @@ const consoleErrors = []
 page.on('console', (m) => m.type() === 'error' && consoleErrors.push(m.text()))
 page.on('pageerror', (e) => consoleErrors.push(`pageerror: ${e.message}`))
 
-// ── 1. Navegación por la barra lateral ─────────────────────────────────────
+// ── 1. Navegación por la barra superior ─────────────────────────────────────
 await page.goto(BASE, { waitUntil: 'networkidle' })
 for (const [label, expectPath] of [
   ['Canciones', '/song'],
@@ -40,13 +40,11 @@ for (const [label, expectPath] of [
   check(`nav → ${label}`, url === expectPath, ` landed en ${url}`)
 }
 
-// ── 2. La barra lateral se pliega ──────────────────────────────────────────
-await page.getByRole('button', { name: 'Plegar la barra lateral' }).click()
+// ── 2. El menú «Para adultos» se abre y lleva a sus páginas ───────────────
+await page.getByRole('button', { name: 'Para adultos' }).click()
+await page.getByRole('link', { name: 'Biodata', exact: true }).first().click()
 await page.waitForTimeout(300)
-const collapsed = await page.getByRole('button', { name: 'Expandir la barra lateral' }).count()
-check('sidebar plegable', collapsed === 1)
-await page.getByRole('button', { name: 'Expandir la barra lateral' }).click()
-await page.waitForTimeout(250)
+check('menú para adultos', new URL(page.url()).pathname === '/biodata')
 
 // ── 3. El reproductor de audio carga y avanza ──────────────────────────────
 await page.goto(`${BASE}/song/counting-the-miles`, { waitUntil: 'networkidle' })

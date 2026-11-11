@@ -31,9 +31,6 @@ const ROUTES = [
   ['activity-reading', '/activities/act-reading-letters'],
   ['settings', '/settings'],
   ['notfound', '/no-existe'],
-  // Al final: la identidad elegida por URL se mantiene el resto de la pestaña.
-  ['home-recreo', '/?identidad=recreo'],
-  ['song-recreo', '/song'],
 ]
 
 const VIEWPORTS = [

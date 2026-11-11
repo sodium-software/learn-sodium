@@ -29,7 +29,7 @@ const check = (name, ok, detail = '') => {
 
 await page.goto(`file://${site}/index.html`)
 await page.waitForTimeout(1200)
-check('portada carga', (await page.locator('main').innerText()).includes('Qué hay dentro'))
+check('portada carga', (await page.locator('main').innerText()).includes('Elige qué hacer hoy'))
 for (const [label, hash] of [['Introducción', '#/introduccion'], ['Canciones', '#/song'], ['Historias', '#/storytelling'], ['Podcast', '#/podcast'], ['Cortometrajes', '#/short-film'], ['Actividades', '#/activities'], ['Biodata', '#/biodata']]) {
   await page.getByRole('link', { name: new RegExp(`^${label}`) }).first().click()
   await page.waitForTimeout(300)
