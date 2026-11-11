@@ -96,10 +96,10 @@ export function WordMatching({ definition, onComplete }: ActivityToolProps) {
     <div>
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <p className="label">
-          {pairedIds.size} de {pairs.length} pares relacionados
+          {pairedIds.size} of {pairs.length} pairs matched
         </p>
         <p className="text-sm text-ink-soft">
-          {selectedWord ? 'Ahora elige su definición' : 'Elige una palabra para empezar'}
+          {selectedWord ? 'Now pick its meaning' : 'Pick a word to start'}
         </p>
       </div>
 
@@ -160,7 +160,7 @@ export function WordMatching({ definition, onComplete }: ActivityToolProps) {
       {pairedIds.size > 0 && !finished ? (
         <div className="mt-6 flex justify-end">
           <Button variant="ghost" onClick={() => setSelectedWord(null)}>
-            Cancelar selección
+            Clear choice
           </Button>
         </div>
       ) : null}

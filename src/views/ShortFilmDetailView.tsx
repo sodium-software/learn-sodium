@@ -23,9 +23,9 @@ export function ShortFilmDetailView() {
   if (!film) {
     return (
       <div className="frame py-16">
-        <h1 className="text-head text-ink">No encontramos ese cortometraje</h1>
+        <h1 className="text-head text-ink">We can't find that short film</h1>
         <Link to="/short-film" className="btn btn-primary mt-6">
-          Volver al catálogo
+          Back to the list
         </Link>
       </div>
     )
@@ -55,7 +55,7 @@ export function ShortFilmDetailView() {
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
           <img
             src={film.cover}
-            alt={`Portada de ${film.title}`}
+            alt={`Cover of ${film.title}`}
             className="aspect-[4/3] w-full object-cover lg:aspect-square"
           />
           <div className="flex flex-col justify-center">
@@ -96,17 +96,17 @@ export function ShortFilmDetailView() {
 
             <p className="mt-3 text-xs text-ink-mute">
               {film.video
-                ? 'Pulsa una escena para saltar a ese momento del vídeo.'
-                : 'Este cortometraje todavía no tiene vídeo: puedes leer sus escenas.'}
+                ? 'Tap a scene to jump to that moment in the video.'
+                : 'This short film has no video yet: you can read its scenes.'}
             </p>
 
             {/* ── Escenas ───────────────────────────────────────────────── */}
             <section className="mt-12" aria-labelledby="escenas">
               <h2 id="escenas" className="text-head text-ink">
-                Las escenas
+                The scenes
               </h2>
               <p className="mt-2 text-sm text-ink-soft">
-                Diálogo con traducción. Pulsa una escena para saltar a ese momento.
+                What they say, with a translation. Tap a scene to jump to that moment.
               </p>
 
               <ol className="mt-6">
@@ -153,7 +153,7 @@ export function ShortFilmDetailView() {
             {/* ── Comprensión ──────────────────────────────────────────── */}
             <section className="mt-16" aria-labelledby="comprension-film">
               <h2 id="comprension-film" className="text-head text-ink">
-                Preguntas de comprensión
+                Questions
               </h2>
 
               <div className="mt-6 space-y-4">
@@ -214,7 +214,7 @@ export function ShortFilmDetailView() {
                       </div>
                       {checked ? (
                         <p className="mt-3 text-sm text-ink-soft">
-                          {isCorrect ? 'Correcto. ' : 'No es correcto. '}
+                          {isCorrect ? 'Correct. ' : 'Not quite. '}
                           {question.explanation}
                         </p>
                       ) : null}
@@ -230,13 +230,13 @@ export function ShortFilmDetailView() {
                   disabled={!allAnswered}
                   className="btn btn-primary"
                 >
-                  Comprobar respuestas
+                  Check answers
                 </button>
                 {checked ? (
                   <div className="flex items-center gap-3">
                     <ProgressBar value={correct} max={film.comprehension.length} />
                     <p className="text-sm text-ink-soft tnum">
-                      {correct} de {film.comprehension.length}
+                      {correct} of {film.comprehension.length}
                     </p>
                   </div>
                 ) : null}
@@ -246,7 +246,7 @@ export function ShortFilmDetailView() {
                   className="btn btn-secondary ml-auto"
                 >
                   <Icon name="Check" size={16} />
-                  Marcar como visto
+                  Mark as watched
                 </button>
               </div>
             </section>
@@ -256,7 +256,7 @@ export function ShortFilmDetailView() {
             {film.relatedActivityIds.length > 0 ? (
               <section className="panel px-5 py-5">
                 <h2 className="font-display text-lg font-extrabold text-ink">
-                  Practica con esto
+                  Practice with this
                 </h2>
                 <ul className="mt-3">
                   {film.relatedActivityIds.map((activityId) => {
@@ -283,7 +283,7 @@ export function ShortFilmDetailView() {
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
                 <h2 className="font-display text-lg font-extrabold text-ink">
-                  Sigue con
+                  Try next
                 </h2>
                 <ul className="mt-3">
                   {related.map((item) => (
@@ -304,8 +304,8 @@ export function ShortFilmDetailView() {
             ) : null}
 
             <p className="mt-6 text-xs text-ink-mute">
-              Progreso guardado:{' '}
-              {state.mediaProgress[film.id]?.completed ? 'visto' : 'pendiente'}.
+              Saved progress:{' '}
+              {state.mediaProgress[film.id]?.completed ? 'watched' : 'not yet'}.
             </p>
           </aside>
         </div>

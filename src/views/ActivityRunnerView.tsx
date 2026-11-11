@@ -30,7 +30,7 @@ export function ActivityRunnerView() {
       <div className="frame py-10 lg:py-14">
         <Link to="/activities" className="btn btn-secondary mb-8">
           <Icon name="ChevronLeft" size={20} />
-          Todas las actividades
+          All activities
         </Link>
         <div className="max-w-2xl">
           <ExternalActivityCard activity={definition} detailed />
@@ -42,12 +42,12 @@ export function ActivityRunnerView() {
   if (!definition || !tool) {
     return (
       <div className="frame py-16">
-        <h1 className="text-head text-ink">No encontramos esa actividad</h1>
+        <h1 className="text-head text-ink">We can't find that activity</h1>
         <p className="mt-3 text-ink-soft">
-          Puede que el enlace esté mal escrito o que la actividad se haya retirado.
+          The link may have a typo, or the activity was removed.
         </p>
         <Link to="/activities" className="btn btn-primary mt-6">
-          Volver a las actividades
+          Back to activities
         </Link>
       </div>
     )
@@ -60,13 +60,13 @@ export function ActivityRunnerView() {
 
   return (
     <div className="frame py-10 lg:py-14">
-      <nav aria-label="Ruta de navegación" className="mb-8">
+      <nav aria-label="Breadcrumb" className="mb-8">
         <Link
           to="/activities"
           className="btn btn-secondary"
         >
           <Icon name="ChevronLeft" size={20} />
-          Todas las actividades
+          All activities
         </Link>
       </nav>
 
@@ -86,24 +86,24 @@ export function ActivityRunnerView() {
         <div className="col-span-4 lg:col-span-4 lg:col-start-9">
           {result ? (
             <div className="panel px-5 py-4">
-              <p className="label">Última vez</p>
+              <p className="label">Last time</p>
               <p className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                 {result.score}
                 <span className="text-base text-ink-mute">/100</span>
               </p>
               <div className="mt-3">
-                <ProgressBar value={result.score} max={100} label="Última puntuación" />
+                <ProgressBar value={result.score} max={100} label="Last score" />
               </div>
               <p className="mt-2 text-xs text-ink-mute">
-                {result.correct} de {result.total} correctas
-                {isDone ? ' · completada' : ''}
+                {result.correct} of {result.total} correct
+                {isDone ? ' · completed' : ''}
               </p>
             </div>
           ) : (
             <div className="panel-quiet px-5 py-4">
-              <p className="label">Sin registros todavía</p>
+              <p className="label">No results yet</p>
               <p className="mt-2 text-sm text-ink-soft">
-                Al terminar, el resultado se guarda en este navegador.
+                When you finish, your result is saved in this browser.
               </p>
             </div>
           )}
@@ -117,7 +117,7 @@ export function ActivityRunnerView() {
       {relatedContent.length > 0 ? (
         <section className="mt-16 pt-8" aria-labelledby="relacionado">
           <h2 id="relacionado" className="font-display text-xl font-extrabold text-ink">
-            Material relacionado
+            Related pieces
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {relatedContent.map((item) => (

@@ -46,7 +46,7 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
   }
 
   if (!card) {
-    return <p className="text-ink-soft">Esta actividad no tiene tarjetas cargadas.</p>
+    return <p className="text-ink-soft">This activity has no cards yet.</p>
   }
 
   const mastered = known[card.id] === true
@@ -83,7 +83,7 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
           aria-pressed={flipped}
         >
           <span className="label">
-            {flipped ? 'Definición' : 'Pulsa para voltear'}
+            {flipped ? 'Meaning' : 'Tap to flip'}
           </span>
 
           <p className="mt-5 font-display text-4xl font-extrabold text-ink">
@@ -96,12 +96,12 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
               <p className="mt-4 font-read text-base italic text-ink-soft">
                 {card.example}
               </p>
-              <p className="mt-4 text-sm text-ink-mute">Traducción: {card.translation}</p>
+              <p className="mt-4 text-sm text-ink-mute">Translation: {card.translation}</p>
             </div>
           ) : (
             <p className="mt-6 max-w-sm text-ink-soft">
-              Piensa en la palabra. Si te la sabes, dilo abajo. Si no, voltea la tarjeta y
-              vuelve a intentarla dentro de un rato.
+              Think of the word. If you know it, tap below. If not, flip the card and
+              try again in a little while.
             </p>
           )}
 
@@ -112,24 +112,24 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
 
         <div className="flex flex-col gap-3">
           <div className="panel-quiet px-4 py-3">
-            <p className="label">Tu avance</p>
+            <p className="label">Your progress</p>
             <p className="mt-1 font-display text-2xl font-extrabold text-ink tnum">
               {Object.values(known).filter(Boolean).length}
               <span className="text-base text-ink-mute"> / {cards.length}</span>
             </p>
-            <p className="mt-1 text-xs text-ink-mute">tarjetas dominadas</p>
+            <p className="mt-1 text-xs text-ink-mute">cards learned</p>
           </div>
 
           <Button variant="primary" onClick={() => advance(true)}>
             <Icon name="Check" size={16} />
-            La sé
+            I know it
           </Button>
           <Button variant="secondary" onClick={() => advance(false)}>
-            Todavía no
+            Not yet
           </Button>
 
           {mastered ? (
-            <p className="text-xs text-accent">Esta tarjeta ya está marcada.</p>
+            <p className="text-xs text-accent">This card is already marked.</p>
           ) : null}
         </div>
       </div>

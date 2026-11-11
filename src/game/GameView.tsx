@@ -74,7 +74,7 @@ export default function GameView() {
   const stuck = !solved && !hasMoves(jars)
 
   useEffect(() => {
-    document.title = 'Frascos de colores · La Cartilla'
+    document.title = 'Color Jars · La Cartilla'
   }, [])
 
   const startLevel = useCallback((next: number) => {
@@ -113,7 +113,7 @@ export default function GameView() {
       setSelected(null)
       if (isComplete(next[index])) {
         const color = COLORS[next[index][0]]
-        setNamed(`${color.name.toUpperCase()}! · ${color.es}`)
+        setNamed(`${color.name.toUpperCase()}!`)
         play(isSolved(next) ? [523, 659, 784, 1047] : [660, 880], isSolved(next) ? 0.14 : 0.1)
       } else {
         play([392, 330], 0.07)
@@ -155,22 +155,22 @@ export default function GameView() {
     <div className="game fixed inset-0 flex flex-col overflow-hidden bg-[#1f1a3d] text-white" style={{ height: '100dvh' }}>
       <header className="flex flex-wrap items-center gap-2 px-3 py-2 sm:px-5">
         <Link to="/" className="game-btn">
-          ← Volver
+          ← Back
         </Link>
         <p className="mr-auto font-display text-lg font-semibold">
-          Frascos de colores <span className="text-white/70">· nivel {level}</span>
+          Color Jars <span className="text-white/70">· level {level}</span>
         </p>
         <button type="button" className="game-btn" onClick={undo} disabled={history.length < 2 || !started} aria-keyshortcuts="Z">
-          Deshacer
+          Undo
         </button>
         <button type="button" className="game-btn" onClick={restart} disabled={!started} aria-keyshortcuts="R">
-          Reiniciar
+          Restart
         </button>
         <button type="button" className="game-btn" onClick={() => setSound((s) => !s)} aria-pressed={sound}>
-          {sound ? 'Sonido: sí' : 'Sonido: no'}
+          {sound ? 'Sound: on' : 'Sound: off'}
         </button>
         <button type="button" className="game-btn" onClick={fullscreen}>
-          Pantalla completa
+          Full screen
         </button>
       </header>
 
@@ -181,21 +181,21 @@ export default function GameView() {
             <JarArt jar={[1, 2, 3]} complete={false} />
             <JarArt jar={[4, 4]} complete={false} />
           </div>
-          <h1 className="mt-4 font-display text-3xl font-semibold">Frascos de colores</h1>
+          <h1 className="mt-4 font-display text-3xl font-semibold">Color Jars</h1>
           {settings.dedication ? <p className="mt-4 whitespace-pre-line text-lg text-white/90">{settings.dedication}</p> : null}
           <p className="mt-5 text-white/80">
-            Toca un frasco y luego otro para pasar el color de arriba. Solo cae sobre el mismo color o en un frasco vacío. Deja cada
-            frasco de un solo color.
+            Tap a jar, then another, to pour the top color. It only goes onto the same color or into an empty jar. Make every
+            jar one single color.
           </p>
-          <p className="mt-2 text-sm text-white/60">Teclado: números 1–9 para elegir frasco, Z deshace, R reinicia.</p>
+          <p className="mt-2 text-sm text-white/60">Keyboard: numbers 1–9 pick a jar, Z undoes, R restarts.</p>
           <button type="button" className="game-btn game-btn-primary mt-6" onClick={() => setStarted(true)} autoFocus>
-            Jugar
+            Play
           </button>
         </section>
       ) : (
         <main className="flex flex-1 flex-col items-center justify-center gap-6 px-3 pb-6">
           <p className="h-7 font-display text-xl font-semibold text-[#ffd84d]" role="status" aria-live="polite">
-            {solved ? '¡Lo lograste! · Well done!' : named}
+            {solved ? 'You did it! Well done!' : named}
           </p>
           <div className="flex max-w-3xl flex-wrap justify-center gap-x-3 gap-y-8 sm:gap-x-5">
             {jars.map((jar, index) => (
@@ -204,7 +204,7 @@ export default function GameView() {
                 type="button"
                 onClick={() => choose(index)}
                 aria-pressed={selected === index}
-                aria-label={`Frasco ${index + 1}: ${jar.length ? jar.map((c) => COLORS[c].es).join(', ') : 'vacío'}`}
+                aria-label={`Jar ${index + 1}: ${jar.length ? jar.map((c) => COLORS[c].name).join(', ') : 'empty'}`}
                 className="game-jar rounded-b-[1.4rem] rounded-t-md transition-transform duration-150"
                 style={{ transform: selected === index ? 'translateY(-14px)' : undefined }}
               >
@@ -217,11 +217,11 @@ export default function GameView() {
           </div>
           {solved ? (
             <button type="button" className="game-btn game-btn-primary" onClick={() => startLevel(level + 1)} autoFocus>
-              Siguiente nivel
+              Next level
             </button>
           ) : stuck ? (
             <p className="text-white/80" role="status">
-              No quedan jugadas: deshaz o reinicia.
+              No moves left. Undo or restart.
             </p>
           ) : null}
           {solved ? <Confetti /> : null}

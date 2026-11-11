@@ -18,12 +18,12 @@ export function SettingsView() {
       <header className="grid-editorial items-end gap-y-6">
         <div className="col-span-4 lg:col-span-7">
           <h1 className="text-hero font-display font-extrabold leading-[0.96] text-ink">
-            Ajustes
+            Settings
           </h1>
         </div>
         <div className="col-span-4 lg:col-span-4 lg:col-start-9">
           <p className="text-lead text-ink-soft">
-            Todo se guarda en este navegador. No hay cuentas ni servidores.
+            Everything is saved in this browser. No accounts, no servers.
           </p>
         </div>
       </header>
@@ -32,12 +32,12 @@ export function SettingsView() {
         {/* ── Preferencias ─────────────────────────────────────────────── */}
         <section>
           <h2 className="font-display text-2xl font-extrabold text-ink">
-            Preferencias
+            Preferences
           </h2>
 
           <div className="panel mt-5 px-6 py-6">
             <label className="label block" htmlFor="settings-name">
-              Tu nombre
+              Your name
             </label>
             <input
               id="settings-name"
@@ -47,7 +47,7 @@ export function SettingsView() {
             />
 
             <label className="label mt-6 block" htmlFor="settings-goal">
-              Objetivo diario: {preferences.dailyGoalMinutes} minutos
+              Daily goal: {preferences.dailyGoalMinutes} minutes
             </label>
             <input
               id="settings-goal"
@@ -73,10 +73,10 @@ export function SettingsView() {
               />
               <span>
                 <span className="block text-sm text-ink">
-                  Mostrar las traducciones al español
+                  Show Spanish translations
                 </span>
                 <span className="mt-1 block text-xs text-ink-mute">
-                  Afecta a las tarjetas de vocabulario y a las pistas de las oraciones.
+                  Used in word cards and in sentence hints.
                 </span>
               </span>
             </label>
@@ -87,13 +87,13 @@ export function SettingsView() {
         {/* ── Progreso ─────────────────────────────────────────────────── */}
         <section>
           <h2 className="font-display text-2xl font-extrabold text-ink">
-            Tu progreso
+            Your progress
           </h2>
 
           <div className="panel mt-5 px-6 py-6">
             <dl className="grid grid-cols-2 gap-6">
               <div>
-                <dt className="label">Actividades completadas</dt>
+                <dt className="label">Activities completed</dt>
                 <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {state.completedActivityIds.length}
                   <span className="text-base text-ink-mute">
@@ -102,31 +102,31 @@ export function SettingsView() {
                 </dd>
               </div>
               <div>
-                <dt className="label">Media de aciertos</dt>
+                <dt className="label">Average score</dt>
                 <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {average}
                   <span className="text-base text-ink-mute">/100</span>
                 </dd>
               </div>
               <div>
-                <dt className="label">Minutos hoy</dt>
+                <dt className="label">Minutes today</dt>
                 <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {minutesToday}
                 </dd>
               </div>
               <div>
-                <dt className="label">Racha</dt>
+                <dt className="label">Streak</dt>
                 <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
                   {streak}
-                  <span className="text-base text-ink-mute"> días</span>
+                  <span className="text-base text-ink-mute"> days</span>
                 </dd>
               </div>
             </dl>
 
             <div className="mt-6 pt-5">
-              <p className="label">Vocabulario dominado</p>
+              <p className="label">Words learned</p>
               <p className="mt-1 text-sm text-ink-soft">
-                {state.masteredTerms.length} palabras marcadas
+                {state.masteredTerms.length} words marked
               </p>
               {state.masteredTerms.length > 0 ? (
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -148,7 +148,7 @@ export function SettingsView() {
                 onClick={() => {
                   if (
                     window.confirm(
-                      'Esto borra todo tu progreso guardado en este navegador. ¿Continuar?',
+                      'This deletes all the progress saved in this browser. Continue?',
                     )
                   ) {
                     resetAll()
@@ -157,7 +157,7 @@ export function SettingsView() {
                 className="btn btn-secondary"
               >
                 <Icon name="RotateCcw" size={15} />
-                Borrar todo el progreso
+                Delete all progress
               </button>
             </div>
           </div>
@@ -167,17 +167,16 @@ export function SettingsView() {
       {/* ── Estado técnico ─────────────────────────────────────────────── */}
       <section className="mt-16 pt-8">
         <h2 className="font-display text-xl font-extrabold text-ink">
-          Sobre este cuaderno
+          About this notebook
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-ink-soft">
-          La Cartilla es una aplicación estática: todo el material (canciones, podcasts,
-          cortiempres y sus imágenes) se genera localmente y se sirve desde el mismo
-          sitio. No hay backend, ni cuentas, ni servicios externos. Tu progreso vive en
-          el almacenamiento local de este navegador.
+          La Cartilla is a static site: all the songs, podcasts, short films and their
+          pictures are served from this same site. There is no backend, no accounts and
+          no outside services. Your progress lives in this browser's local storage.
         </p>
         <p className="mt-3 max-w-3xl text-sm text-ink-mute">
-          Última visita:{' '}
-          {new Date(state.lastVisit).toLocaleDateString('es', {
+          Last visit:{' '}
+          {new Date(state.lastVisit).toLocaleDateString('en', {
             day: 'numeric',
             month: 'long',
             year: 'numeric',
@@ -185,7 +184,7 @@ export function SettingsView() {
         </p>
         <div className="mt-5">
           <Link to="/activities" className="btn btn-secondary">
-            Volver a las actividades
+            Back to activities
             <Icon name="ArrowRight" size={16} />
           </Link>
         </div>

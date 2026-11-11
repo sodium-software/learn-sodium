@@ -52,12 +52,12 @@ export function AppShell() {
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 text-base text-ink-soft">
           <p className="max-w-[60ch]">
-            Sin cuentas, sin cookies de terceros y sin analítica. El progreso se guarda solo en este dispositivo.
+            No accounts, no third-party cookies and no analytics. Progress is saved only on this device.
           </p>
-          <nav aria-label="Pie de página" className="flex flex-wrap gap-1">
-            <Link to="/introduccion" className="btn btn-ghost">Introducción</Link>
-            <Link to="/biodata" className="btn btn-ghost">Biodata</Link>
-            <Link to="/settings" className="btn btn-ghost">Ajustes</Link>
+          <nav aria-label="Footer" className="flex flex-wrap gap-1">
+            <Link to="/introduccion" className="btn btn-ghost">Introduction</Link>
+            <Link to="/biodata" className="btn btn-ghost">Bio</Link>
+            <Link to="/settings" className="btn btn-ghost">Settings</Link>
           </nav>
         </div>
       </footer>

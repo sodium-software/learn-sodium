@@ -4,7 +4,7 @@ import { useProgress } from '../lib/progress-context'
 import { clsx } from '../lib/cn'
 import { Credits, Icon, LevelTag, Tag } from './ui'
 
-export const toolName = (tool?: string) => EXTERNAL_TOOLS.find(([id]) => id === tool)?.[1] ?? 'Otra plataforma'
+export const toolName = (tool?: string) => EXTERNAL_TOOLS.find(([id]) => id === tool)?.[1] ?? 'Other platform'
 export const skillName = (skill?: string) => SKILLS.find(([id]) => id === skill)?.[1] ?? ''
 
 /**
@@ -28,7 +28,7 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
           </span>
           <LevelTag level={activity.level} />
           {activity.age ? <span className="text-xs text-ink-mute">{activity.age}</span> : null}
-          {activity.example ? <Tag>Ejemplo</Tag> : null}
+          {activity.example ? <Tag>Example</Tag> : null}
         </div>
         <h3 className="mt-3 font-display text-3xl font-extrabold leading-tight text-ink">{activity.title}</h3>
         {activity.skill ? <p className="mt-1 text-base text-ink-mute">{skillName(activity.skill)}</p> : null}
@@ -40,7 +40,7 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
         <div className="mt-auto flex flex-wrap items-center gap-3 pt-5">
           {activity.url ? (
             <a href={activity.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-describedby={noteId}>
-              Abrir en {toolName(activity.tool)}
+              Open in {toolName(activity.tool)}
               <Icon name="ExternalLink" size={15} />
             </a>
           ) : null}
@@ -51,11 +51,11 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
             className="btn bg-tint text-ink hover:bg-tint-deep"
           >
             <Icon name={done ? 'CircleCheck' : 'Circle'} size={16} className={done ? 'text-green' : undefined} />
-            {done ? 'Hecha' : 'Marcar como hecha'}
+            {done ? 'Done' : 'Mark as done'}
           </button>
         </div>
         <p id={noteId} className="mt-3 text-sm text-ink-mute">
-          Se abre en una pestaña nueva, fuera de La Cartilla.
+          Opens in a new tab, outside La Cartilla.
         </p>
         {detailed ? (
           <div className="mt-6">

@@ -21,7 +21,7 @@ export function formatDuration(seconds: number): string {
 export function formatDate(iso: string): string {
   const date = new Date(iso)
   if (Number.isNaN(date.getTime())) return ''
-  return new Intl.DateTimeFormat('es', { day: 'numeric', month: 'long' }).format(date)
+  return new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'long' }).format(date)
 }
 
 /** Limpia un texto para usarlo como clave o id. */

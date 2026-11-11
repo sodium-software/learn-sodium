@@ -50,7 +50,7 @@ export function QuizTool({ definition, onComplete }: ActivityToolProps) {
 
         {missed.length > 0 ? (
           <div className="panel px-5 py-4">
-            <p className="label">Repasa estas</p>
+            <p className="label">Review these</p>
             <ul className="mt-3 space-y-3">
               {missed.map((q) => (
                 <li key={q.id}>
@@ -66,7 +66,7 @@ export function QuizTool({ definition, onComplete }: ActivityToolProps) {
   }
 
   if (!question) {
-    return <p className="text-ink-soft">Esta actividad no tiene preguntas cargadas.</p>
+    return <p className="text-ink-soft">This activity has no questions yet.</p>
   }
 
   const answered = chosen !== null
@@ -154,7 +154,7 @@ export function QuizTool({ definition, onComplete }: ActivityToolProps) {
 
         <div className="mt-6 flex justify-end">
           <Button variant="primary" onClick={next} disabled={!answered}>
-            {index + 1 >= questions.length ? 'Ver resultado' : 'Siguiente'}
+            {index + 1 >= questions.length ? 'See result' : 'Next'}
             <Icon name="ChevronRight" size={16} />
           </Button>
         </div>

@@ -29,8 +29,8 @@ const check = (name, ok, detail = '') => {
 
 await page.goto(`file://${site}/index.html`)
 await page.waitForTimeout(1200)
-check('portada carga', (await page.locator('main').innerText()).includes('Elige qué hacer hoy'))
-for (const [label, hash] of [['Introducción', '#/introduccion'], ['Canciones', '#/song'], ['Historias', '#/storytelling'], ['Podcast', '#/podcast'], ['Cortometrajes', '#/short-film'], ['Actividades', '#/activities'], ['Biodata', '#/biodata']]) {
+check('portada carga', (await page.locator('main').innerText()).includes('Pick something to do'))
+for (const [label, hash] of [['Introduction', '#/introduccion'], ['Songs', '#/song'], ['Stories', '#/storytelling'], ['Podcast', '#/podcast'], ['Short films', '#/short-film'], ['Activities', '#/activities'], ['Bio', '#/biodata']]) {
   await page.getByRole('link', { name: new RegExp(`^${label}`) }).first().click()
   await page.waitForTimeout(300)
   check(`navega a ${label}`, page.url().endsWith(hash), page.url())

@@ -21,10 +21,10 @@ export function SongDetailView() {
   if (!song) {
     return (
       <div className="frame py-16">
-        <h1 className="text-head text-ink">No encontramos esa canción</h1>
-        <p className="mt-3 text-ink-soft">Vuelve al catálogo para elegir otra.</p>
+        <h1 className="text-head text-ink">We can't find that song</h1>
+        <p className="mt-3 text-ink-soft">Go back to the list and pick another one.</p>
         <Link to="/song" className="btn btn-primary mt-6">
-          Volver al catálogo
+          Back to the list
         </Link>
       </div>
     )
@@ -60,7 +60,7 @@ export function SongDetailView() {
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
           <img
             src={song.cover}
-            alt={`Portada de ${song.title}`}
+            alt={`Cover of ${song.title}`}
             className="aspect-[4/3] w-full object-cover lg:aspect-square"
           />
 
@@ -102,11 +102,11 @@ export function SongDetailView() {
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <h2 id="letra" className="text-head text-ink">
-                    La letra
+                    The words
                   </h2>
                   <p className="mt-2 text-sm text-ink-soft">
-                    La línea activa se resalta mientras suena. Pulsa una línea para
-                    saltar a ese punto.
+                    The line you hear lights up. Tap a line to
+                    jump to that part.
                   </p>
                 </div>
               </div>
@@ -161,11 +161,11 @@ export function SongDetailView() {
             {/* ── Fragmentos destacables ────────────────────────────────── */}
             <section className="mt-14" aria-labelledby="fragmentos">
               <h2 id="fragmentos" className="text-head text-ink">
-                Fragmentos para volver
+                Parts to come back to
               </h2>
               <p className="mt-2 max-w-2xl text-sm text-ink-soft">
-                Marca las líneas que quieres tener a mano. Quedan guardadas en este
-                navegador.
+                Save the lines you want to keep close. They stay saved in this
+                browser.
               </p>
 
               <div className="mt-6 space-y-3">
@@ -183,7 +183,7 @@ export function SongDetailView() {
                         type="button"
                         onClick={() => jumpTo(highlight.start)}
                         className="shrink-0 text-left"
-                        aria-label={`Reproducir desde ${highlight.label}`}
+                        aria-label={`Play from ${highlight.label}`}
                       >
                         <span className="flex items-center gap-2 font-display text-base font-extrabold text-ink">
                           <Icon name="Play" size={15} />
@@ -207,7 +207,7 @@ export function SongDetailView() {
                             : 'bg-tint text-ink hover:bg-tint-deep',
                         )}
                       >
-                        {isOn ? 'Guardado' : 'Guardar'}
+                        {isOn ? 'Saved' : 'Save'}
                       </button>
                     </div>
                   )
@@ -220,7 +220,7 @@ export function SongDetailView() {
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
               <h2 className="font-display text-lg font-extrabold text-ink">
-                Vocabulario
+                Words
               </h2>
               <dl className="mt-4 space-y-4">
                 {song.glossary.map((entry) => {
@@ -240,7 +240,7 @@ export function SongDetailView() {
                               : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
-                          {isMastered ? 'Dominada' : 'Marcar'}
+                          {isMastered ? 'Learned' : 'Mark as learned'}
                         </button>
                       </dt>
                       <dd className="mt-1 text-sm text-ink-soft">{entry.definition}</dd>
@@ -256,7 +256,7 @@ export function SongDetailView() {
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
                 <h2 className="font-display text-lg font-extrabold text-ink">
-                  Sigue con
+                  Try next
                 </h2>
                 <ul className="mt-3">
                   {related.map((item) => (

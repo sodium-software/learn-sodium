@@ -55,7 +55,7 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
         />
         {missed.length > 0 ? (
           <div className="panel px-5 py-4">
-            <p className="label">Oraciones por repasar</p>
+            <p className="label">Sentences to review</p>
             <ul className="mt-3 space-y-3">
               {missed.map((item) => (
                 <li key={item.id}>
@@ -71,7 +71,7 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
   }
 
   if (!blank) {
-    return <p className="text-ink-soft">Esta actividad no tiene oraciones cargadas.</p>
+    return <p className="text-ink-soft">This activity has no sentences yet.</p>
   }
 
   const check = () => {
@@ -110,7 +110,7 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
   return (
     <div>
       <p className="label mb-4">
-        Oración {current + 1} de {blanks.length}
+        Sentence {current + 1} of {blanks.length}
       </p>
 
       <div className="panel px-6 py-6">
@@ -129,19 +129,19 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
 
         {revealed && !ok ? (
           <p className="mt-4 text-sm text-ink-soft">
-            La respuesta correcta es <strong className="text-ink">{blank.answer}</strong>.
+            The right answer is <strong className="text-ink">{blank.answer}</strong>.
           </p>
         ) : null}
         {revealed && ok ? (
-          <p className="mt-4 text-sm text-accent">Correcto.</p>
+          <p className="mt-4 text-sm text-accent">Correct!</p>
         ) : null}
         {!revealed && blank.hint ? (
-          <p className="mt-4 text-sm text-ink-mute">Pista: {blank.hint}</p>
+          <p className="mt-4 text-sm text-ink-mute">Hint: {blank.hint}</p>
         ) : null}
       </div>
 
       <div className="mt-6">
-        <p className="label mb-3">Banco de palabras</p>
+        <p className="label mb-3">Word bank</p>
         <div className="flex flex-wrap gap-2">
           {bank.map((word) => {
             const isSelected = selected === word
@@ -170,12 +170,12 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
       <div className="mt-6 flex justify-end gap-3">
         {revealed ? (
           <Button variant="primary" onClick={advance}>
-            {current + 1 >= blanks.length ? 'Ver resultado' : 'Siguiente oración'}
+            {current + 1 >= blanks.length ? 'See result' : 'Next sentence'}
             <Icon name="ChevronRight" size={16} />
           </Button>
         ) : (
           <Button variant="primary" onClick={check} disabled={!selected}>
-            Comprobar
+            Check
           </Button>
         )}
       </div>

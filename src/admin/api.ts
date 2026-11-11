@@ -41,9 +41,9 @@ export interface ItemSummary {
 }
 
 export const STATUS_LABEL: Record<ItemSummary['status'], string> = {
-  draft: 'Borrador',
-  published: 'Publicado',
-  changed: 'Publicado · cambios sin publicar',
+  draft: 'Draft',
+  published: 'Published',
+  changed: 'Published · unpublished changes',
 }
 
 /** Ruta pública de cada pieza, para la vista previa. */

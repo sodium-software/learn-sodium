@@ -23,9 +23,9 @@ export function PodcastDetailView() {
   if (!episode) {
     return (
       <div className="frame py-16">
-        <h1 className="text-head text-ink">No encontramos ese episodio</h1>
+        <h1 className="text-head text-ink">We can't find that episode</h1>
         <Link to="/podcast" className="btn btn-primary mt-6">
-          Volver al catálogo
+          Back to the list
         </Link>
       </div>
     )
@@ -57,7 +57,7 @@ export function PodcastDetailView() {
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
           <img
             src={episode.cover}
-            alt={`Portada de ${episode.title}`}
+            alt={`Cover of ${episode.title}`}
             className="aspect-[4/3] w-full object-cover lg:aspect-square"
           />
           <div className="flex flex-col justify-center">
@@ -86,11 +86,11 @@ export function PodcastDetailView() {
             {/* ── Transcripción ────────────────────────────────────────── */}
             <section className="mt-12" aria-labelledby="transcripcion">
               <h2 id="transcripcion" className="text-head text-ink">
-                Transcripción
+                What they say
               </h2>
               <p className="mt-2 text-sm text-ink-soft">
-                Pulsa un párrafo para saltar a ese momento. El que está sonando se
-                resalta.
+                Tap a part to jump to that moment. The part you hear
+                lights up.
               </p>
 
               <div className="mt-6">
@@ -136,7 +136,7 @@ export function PodcastDetailView() {
             {/* ── Comprensión ──────────────────────────────────────────── */}
             <section className="mt-16" aria-labelledby="comprension-podcast">
               <h2 id="comprension-podcast" className="text-head text-ink">
-                Comprensión del episodio
+                Questions
               </h2>
 
               <div className="mt-6 space-y-4">
@@ -197,7 +197,7 @@ export function PodcastDetailView() {
                       </div>
                       {checked ? (
                         <p className="mt-3 text-sm text-ink-soft">
-                          {isCorrect ? 'Correcto. ' : 'No es correcto. '}
+                          {isCorrect ? 'Correct. ' : 'Not quite. '}
                           {question.explanation}
                         </p>
                       ) : null}
@@ -213,13 +213,13 @@ export function PodcastDetailView() {
                   disabled={!allAnswered}
                   className="btn btn-primary"
                 >
-                  Comprobar respuestas
+                  Check answers
                 </button>
                 {checked ? (
                   <div className="flex items-center gap-3">
                     <ProgressBar value={correct} max={episode.comprehension.length} />
                     <p className="text-sm text-ink-soft tnum">
-                      {correct} de {episode.comprehension.length}
+                      {correct} of {episode.comprehension.length}
                     </p>
                   </div>
                 ) : null}
@@ -230,7 +230,7 @@ export function PodcastDetailView() {
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
               <h2 className="font-display text-lg font-extrabold text-ink">
-                Palabras clave
+                Key words
               </h2>
               <dl className="mt-4 space-y-4">
                 {episode.keyTerms.map((entry) => {
@@ -248,7 +248,7 @@ export function PodcastDetailView() {
                             isMastered ? 'bg-green text-white' : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
-                          {isMastered ? 'Dominada' : 'Marcar'}
+                          {isMastered ? 'Learned' : 'Mark as learned'}
                         </button>
                       </dt>
                       <dd className="mt-1 text-sm text-ink-soft">{entry.definition}</dd>
@@ -262,7 +262,7 @@ export function PodcastDetailView() {
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
                 <h2 className="font-display text-lg font-extrabold text-ink">
-                  Sigue con
+                  Try next
                 </h2>
                 <ul className="mt-3">
                   {related.map((item) => (

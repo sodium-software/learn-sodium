@@ -23,7 +23,7 @@ export default function AdminApp() {
       .catch(() => setSession(null))
   }, [])
 
-  if (session === undefined) return <p className="frame py-16 text-ink-mute">Cargando…</p>
+  if (session === undefined) return <p className="frame py-16 text-ink-mute">Loading…</p>
   if (session === null) {
     return (
       <Login
@@ -40,22 +40,22 @@ export default function AdminApp() {
       <aside className="border-b border-tint-deep bg-sheet px-4 py-4 lg:sticky lg:top-0 lg:h-screen lg:w-60 lg:shrink-0 lg:border-r lg:border-b-0">
         <p className="font-display text-lg font-semibold text-ink">Panel</p>
         <p className="truncate text-xs text-ink-mute">{session.email}</p>
-        <nav className="mt-4 flex flex-wrap gap-1 lg:flex-col" aria-label="Secciones del panel">
+        <nav className="mt-4 flex flex-wrap gap-1 lg:flex-col" aria-label="Panel sections">
           <AdminLink to="/admin" end>
-            Resumen
+            Overview
           </AdminLink>
           {KINDS.map((kind) => (
             <AdminLink key={kind} to={`/admin/${kind}`}>
               {KIND_LABELS[kind]}
             </AdminLink>
           ))}
-          <AdminLink to="/admin/ajustes">Juego y dedicatoria</AdminLink>
-          <AdminLink to="/admin/respaldo">Respaldo</AdminLink>
+          <AdminLink to="/admin/ajustes">Game and dedication</AdminLink>
+          <AdminLink to="/admin/respaldo">Backup</AdminLink>
         </nav>
         <div className="mt-4 flex flex-wrap gap-2 lg:flex-col">
           <a href="/" target="_blank" rel="noopener noreferrer" className="btn btn-ghost justify-start text-sm">
             <Icon name="ExternalLink" size={15} />
-            Ver la web
+            View site
           </a>
           <button
             type="button"
@@ -66,7 +66,7 @@ export default function AdminApp() {
             }}
           >
             <Icon name="LogOut" size={15} />
-            Cerrar sesión
+            Sign out
           </button>
         </div>
       </aside>
@@ -125,14 +125,14 @@ function Login({ onDone }: { onDone: (email: string, csrf: string) => void }) {
           }
         }}
       >
-        <h1 className="font-display text-2xl font-semibold text-ink">Panel de La Cartilla</h1>
-        <p className="mt-1 text-sm text-ink-mute">Acceso solo para la autora.</p>
+        <h1 className="font-display text-2xl font-semibold text-ink">La Cartilla panel</h1>
+        <p className="mt-1 text-sm text-ink-mute">For the author only.</p>
         <label className="label mt-6 block" htmlFor="email">
-          Correo
+          Email
         </label>
         <input id="email" name="email" type="email" autoComplete="username" required className="field mt-1.5" />
         <label className="label mt-4 block" htmlFor="password">
-          Contraseña
+          Password
         </label>
         <input id="password" name="password" type="password" autoComplete="current-password" required className="field mt-1.5" />
         {error ? (
@@ -141,7 +141,7 @@ function Login({ onDone }: { onDone: (email: string, csrf: string) => void }) {
           </p>
         ) : null}
         <button type="submit" className="btn btn-primary mt-6 w-full" disabled={busy}>
-          Entrar
+          Sign in
         </button>
       </form>
     </main>
@@ -170,7 +170,7 @@ function Overview() {
 
   return (
     <div>
-      <h1 className="text-head text-ink">Resumen</h1>
+      <h1 className="text-head text-ink">Overview</h1>
       <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
         {KINDS.map((kind) => {
           const own = items?.filter((item) => item.kind === kind) ?? []
@@ -178,7 +178,7 @@ function Overview() {
             <Link key={kind} to={`/admin/${kind}`} className="panel p-4 hover:border-ink-mute">
               <p className="font-display text-lg font-semibold text-ink">{KIND_LABELS[kind]}</p>
               <p className="mt-1 text-sm text-ink-mute">
-                {own.filter((item) => item.status !== 'draft').length} publicadas · {own.length} en total
+                {own.filter((item) => item.status !== 'draft').length} published · {own.length} total
               </p>
             </Link>
           )
@@ -186,34 +186,34 @@ function Overview() {
       </div>
 
       <section className="mt-10 panel-quiet p-5">
-        <h2 className="font-display text-xl font-semibold text-ink">Piezas de ejemplo</h2>
+        <h2 className="font-display text-xl font-semibold text-ink">Example pieces</h2>
         <p className="mt-1 text-sm text-ink-soft">
-          Hay {examples} piezas marcadas como «Ejemplo». Cuando tengas tu propio material, bórralas todas de una vez.
+          There are {examples} pieces marked “Example”. Once you have your own material, delete them all at once.
         </p>
         {examples > 0 ? (
           confirm ? (
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <span className="text-sm text-ink">¿Borrar las {examples} piezas de ejemplo? No se puede deshacer.</span>
+              <span className="text-sm text-ink">Delete the {examples} example pieces? This can't be undone.</span>
               <button
                 type="button"
                 className="btn btn-primary"
                 onClick={async () => {
                   const result = await api<{ deleted: number }>('examples', { method: 'DELETE' })
-                  setNote(`Se borraron ${result.deleted} piezas de ejemplo.`)
+                  setNote(`Deleted ${result.deleted} example pieces.`)
                   setConfirm(false)
                   reload()
                 }}
               >
-                Sí, borrar
+                Yes, delete
               </button>
               <button type="button" className="btn btn-secondary" onClick={() => setConfirm(false)}>
-                Cancelar
+                Cancel
               </button>
             </div>
           ) : (
             <button type="button" className="btn btn-secondary mt-4" onClick={() => setConfirm(true)}>
               <Icon name="Trash2" size={15} />
-              Borrar todos los ejemplos
+              Delete all examples
             </button>
           )
         ) : null}
@@ -235,7 +235,7 @@ function ItemList() {
   const [pendingDelete, setPendingDelete] = useState<string | null>(null)
   const [actionError, setActionError] = useState('')
 
-  if (!kind || !KINDS.includes(kind)) return <p>Sección desconocida.</p>
+  if (!kind || !KINDS.includes(kind)) return <p>Unknown section.</p>
   const own = items?.filter((item) => item.kind === kind) ?? []
 
   const run = async (task: () => Promise<unknown>) => {
@@ -263,7 +263,7 @@ function ItemList() {
         {kind !== 'page' ? (
           <Link to={`/admin/${kind}/nuevo`} className="btn btn-primary">
             <Icon name="Plus" size={16} />
-            Nueva
+            New
           </Link>
         ) : null}
       </div>
@@ -272,17 +272,17 @@ function ItemList() {
           {error || actionError}
         </p>
       ) : null}
-      {items === null ? <p className="mt-6 text-ink-mute">Cargando…</p> : null}
-      {items && own.length === 0 ? <p className="mt-6 text-ink-mute">Todavía no hay nada aquí.</p> : null}
+      {items === null ? <p className="mt-6 text-ink-mute">Loading…</p> : null}
+      {items && own.length === 0 ? <p className="mt-6 text-ink-mute">Nothing here yet.</p> : null}
 
       <ol className="mt-6 divide-y divide-tint-deep border-y border-tint-deep">
         {own.map((item, index) => (
           <li key={item.id} className="flex flex-col gap-3 py-4 md:flex-row md:items-center">
             <div className="flex shrink-0 gap-1">
-              <button type="button" className="btn btn-ghost min-h-9 px-2" disabled={index === 0} onClick={() => move(index, index - 1)} aria-label={`Subir ${item.title}`}>
+              <button type="button" className="btn btn-ghost min-h-9 px-2" disabled={index === 0} onClick={() => move(index, index - 1)} aria-label={`Move up ${item.title}`}>
                 <Icon name="ArrowUp" size={15} />
               </button>
-              <button type="button" className="btn btn-ghost min-h-9 px-2" disabled={index === own.length - 1} onClick={() => move(index, index + 1)} aria-label={`Bajar ${item.title}`}>
+              <button type="button" className="btn btn-ghost min-h-9 px-2" disabled={index === own.length - 1} onClick={() => move(index, index + 1)} aria-label={`Move down ${item.title}`}>
                 <Icon name="ArrowDown" size={15} />
               </button>
             </div>
@@ -292,24 +292,24 @@ function ItemList() {
               </Link>
               <p className="mt-0.5 flex flex-wrap gap-2 text-xs text-ink-mute">
                 <span className={item.status === 'draft' ? '' : 'text-accent'}>{STATUS_LABEL[item.status]}</span>
-                {item.example ? <span>· Ejemplo</span> : null}
+                {item.example ? <span>· Example</span> : null}
                 <span>· {item.id}</span>
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
               <Link to={`/admin/${kind}/${item.id}`} className="btn btn-secondary min-h-9 text-sm">
-                Editar
+                Edit
               </Link>
               {item.status === 'draft' ? (
                 <button type="button" className="btn btn-secondary min-h-9 text-sm" onClick={() => void run(() => api(`items/${item.id}/publish`, { method: 'POST' }))}>
-                  Publicar
+                  Publish
                 </button>
               ) : (
                 <button type="button" className="btn btn-secondary min-h-9 text-sm" onClick={() => void run(() => api(`items/${item.id}/unpublish`, { method: 'POST' }))}>
-                  Despublicar
+                  Unpublish
                 </button>
               )}
-              <a href={`${publicRoute(kind, item.id)}?preview=1`} target="_blank" rel="noopener noreferrer" className="btn btn-ghost min-h-9 text-sm" aria-label={`Vista previa de ${item.title}`}>
+              <a href={`${publicRoute(kind, item.id)}?preview=1`} target="_blank" rel="noopener noreferrer" className="btn btn-ghost min-h-9 text-sm" aria-label={`Preview ${item.title}`}>
                 <Icon name="Eye" size={15} />
               </a>
               {pendingDelete === item.id ? (
@@ -322,14 +322,14 @@ function ItemList() {
                       void run(() => api(`items/${item.id}`, { method: 'DELETE' }))
                     }}
                   >
-                    Confirmar borrado
+                    Confirm delete
                   </button>
                   <button type="button" className="btn btn-ghost min-h-9 text-sm" onClick={() => setPendingDelete(null)}>
-                    Cancelar
+                    Cancel
                   </button>
                 </>
               ) : (
-                <button type="button" className="btn btn-ghost min-h-9 text-sm text-wrong" onClick={() => setPendingDelete(item.id)} aria-label={`Borrar ${item.title}`}>
+                <button type="button" className="btn btn-ghost min-h-9 text-sm text-wrong" onClick={() => setPendingDelete(item.id)} aria-label={`Delete ${item.title}`}>
                   <Icon name="Trash2" size={15} />
                 </button>
               )}
@@ -349,7 +349,7 @@ function SettingsForm() {
   useEffect(() => {
     api<{ easterEgg: string; dedication: string }>('settings').then(setForm, (err: Error) => setNote(err.message))
   }, [])
-  if (!form) return <p className="text-ink-mute">{note || 'Cargando…'}</p>
+  if (!form) return <p className="text-ink-mute">{note || 'Loading…'}</p>
   return (
     <form
       className="max-w-xl space-y-5"
@@ -357,23 +357,23 @@ function SettingsForm() {
         event.preventDefault()
         try {
           await api('settings', { method: 'PUT', json: form })
-          setNote('Guardado. Se aplica al recargar la web.')
+          setNote('Saved. It applies when the site is reloaded.')
         } catch (err) {
           setNote((err as Error).message)
         }
       }}
     >
-      <h1 className="text-head text-ink">Juego y dedicatoria</h1>
+      <h1 className="text-head text-ink">Game and dedication</h1>
       <p className="text-sm text-ink-soft">
-        El juego se abre tocando cinco veces seguidas el nombre de la web, arriba a la izquierda. Puedes ocultarlo
-        mientras dure la evaluación.
+        The game opens by tapping the site name, top left, five times in a row. You can hide it
+        while the evaluation lasts.
       </p>
       <fieldset>
-        <legend className="label">Juego oculto</legend>
+        <legend className="label">Hidden game</legend>
         <div className="mt-2 flex gap-6">
           {[
-            ['on', 'Activado'],
-            ['off', 'Desactivado'],
+            ['on', 'On'],
+            ['off', 'Off'],
           ].map(([value, label]) => (
             <label key={value} className="flex items-center gap-2 text-sm">
               <input type="radio" name="easterEgg" value={value} checked={form.easterEgg === value} onChange={() => setForm({ ...form, easterEgg: value })} />
@@ -384,12 +384,12 @@ function SettingsForm() {
       </fieldset>
       <div>
         <label className="label block" htmlFor="dedication">
-          Dedicatoria (aparece al empezar el juego)
+          Dedication (shown when the game starts)
         </label>
         <textarea id="dedication" className="field mt-1.5" rows={4} maxLength={600} value={form.dedication} onChange={(event) => setForm({ ...form, dedication: event.target.value })} />
       </div>
       <button type="submit" className="btn btn-primary">
-        Guardar
+        Save
       </button>
       {note ? (
         <p role="status" className="text-sm text-ink-soft">
@@ -415,7 +415,7 @@ function Backup() {
 
   async function exportZip() {
     setBusy(true)
-    setNote('Preparando el respaldo…')
+    setNote('Preparing the backup…')
     try {
       const backup = await api<BackupFile>('export')
       const files: Record<string, Uint8Array> = { 'backup.json': strToU8(JSON.stringify(backup, null, 2)) }
@@ -426,10 +426,10 @@ function Backup() {
       const blob = new Blob([zipSync(files, { level: 0 }) as Uint8Array<ArrayBuffer>], { type: 'application/zip' })
       const link = document.createElement('a')
       link.href = URL.createObjectURL(blob)
-      link.download = `la-cartilla-respaldo-${new Date().toISOString().slice(0, 10)}.zip`
+      link.download = `la-cartilla-backup-${new Date().toISOString().slice(0, 10)}.zip`
       link.click()
       URL.revokeObjectURL(link.href)
-      setNote(`Respaldo descargado: ${backup.media.length} archivos.`)
+      setNote(`Backup downloaded: ${backup.media.length} files.`)
     } catch (err) {
       setNote((err as Error).message)
     } finally {
@@ -440,11 +440,11 @@ function Backup() {
   async function importZip() {
     if (!file) return
     setBusy(true)
-    setNote('Importando…')
+    setNote('Importing…')
     try {
       const entries = unzipSync(new Uint8Array(await file.arrayBuffer()))
       const json = entries['backup.json']
-      if (!json) throw new Error('El archivo no contiene backup.json')
+      if (!json) throw new Error('The file does not contain backup.json')
       const backup = JSON.parse(strFromU8(json)) as BackupFile
       for (const [path, bytes] of Object.entries(entries)) {
         if (!path.startsWith('files/') || path.endsWith('/')) continue
@@ -452,7 +452,7 @@ function Backup() {
         await api('upload', { method: 'POST', headers: { 'X-Media-Key': key, 'X-File-Name': key }, body: bytes as Uint8Array<ArrayBuffer> })
       }
       const result = await api<{ imported: number }>('import', { method: 'POST', json: backup })
-      setNote(`Importadas ${result.imported} piezas.`)
+      setNote(`Imported ${result.imported} pieces.`)
       setFile(null)
     } catch (err) {
       setNote(err instanceof ApiError && err.details.length ? `${err.message} ${err.details.slice(0, 5).join('; ')}` : (err as Error).message)
@@ -463,23 +463,23 @@ function Backup() {
 
   return (
     <div className="max-w-xl space-y-8">
-      <h1 className="text-head text-ink">Respaldo</h1>
+      <h1 className="text-head text-ink">Backup</h1>
       <section>
-        <h2 className="font-display text-xl font-semibold text-ink">Exportar</h2>
-        <p className="mt-1 text-sm text-ink-soft">Descarga un .zip con todo el contenido (borradores y publicado) y los archivos subidos.</p>
+        <h2 className="font-display text-xl font-semibold text-ink">Export</h2>
+        <p className="mt-1 text-sm text-ink-soft">Downloads a .zip with all the content (drafts and published) and the uploaded files.</p>
         <button type="button" className="btn btn-primary mt-3" onClick={() => void exportZip()} disabled={busy}>
           <Icon name="Download" size={16} />
-          Descargar respaldo
+          Download backup
         </button>
       </section>
       <section>
-        <h2 className="font-display text-xl font-semibold text-ink">Importar</h2>
-        <p className="mt-1 text-sm text-ink-soft">Sustituye todo el contenido actual por el de un respaldo. Exporta antes uno nuevo por si acaso.</p>
-        <input type="file" accept=".zip,application/zip" className="mt-3 block text-sm" onChange={(event) => setFile(event.target.files?.[0] ?? null)} aria-label="Archivo de respaldo" />
+        <h2 className="font-display text-xl font-semibold text-ink">Import</h2>
+        <p className="mt-1 text-sm text-ink-soft">Replaces all current content with the content of a backup. Export a new one first, just in case.</p>
+        <input type="file" accept=".zip,application/zip" className="mt-3 block text-sm" onChange={(event) => setFile(event.target.files?.[0] ?? null)} aria-label="Backup file" />
         {file ? (
           <button type="button" className="btn btn-secondary mt-3" onClick={() => void importZip()} disabled={busy}>
             <Icon name="Upload" size={16} />
-            Sustituir todo por «{file.name}»
+            Replace everything with “{file.name}”
           </button>
         ) : null}
       </section>

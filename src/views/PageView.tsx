@@ -10,7 +10,7 @@ export function PageView({ id }: { id: 'introduccion' | 'biodata' }) {
     <article className="frame py-10 lg:py-16">
       <div className="grid-editorial gap-y-8">
         <header className="col-span-4 lg:col-span-8">
-          {page.example ? <Tag>Ejemplo</Tag> : null}
+          {page.example ? <Tag>Example</Tag> : null}
           <h1 className="mt-3 text-hero font-display font-extrabold leading-[0.98] text-ink">{page.title}</h1>
           {page.summary ? <p className="mt-5 max-w-2xl text-lead text-ink-soft">{page.summary}</p> : null}
         </header>

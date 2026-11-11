@@ -8,7 +8,7 @@ import { MEDIA_KEY } from '../../server/media'
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env, params }) => {
   const key = String(params.key ?? '')
-  const notFound = () => new Response('No encontrado', { status: 404 })
+  const notFound = () => new Response('Not found', { status: 404 })
   if (!MEDIA_KEY.test(key)) return notFound()
 
   const row = await env.DB.prepare('SELECT is_public FROM media WHERE key = ?').bind(key).first<{ is_public: number }>()

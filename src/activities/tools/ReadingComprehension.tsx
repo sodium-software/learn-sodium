@@ -50,7 +50,7 @@ export function ReadingComprehension({ definition, onComplete }: ActivityToolPro
   }
 
   if (!passage) {
-    return <p className="text-ink-soft">Esta actividad no tiene textos cargados.</p>
+    return <p className="text-ink-soft">This activity has no texts yet.</p>
   }
 
   const question = passage.questions[0]
@@ -159,7 +159,7 @@ export function ReadingComprehension({ definition, onComplete }: ActivityToolPro
 
           <div className="mt-5 flex justify-end">
             <Button variant="primary" onClick={next} disabled={!answered}>
-              Siguiente
+              Next
               <Icon name="ChevronRight" size={16} />
             </Button>
           </div>

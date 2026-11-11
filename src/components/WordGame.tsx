@@ -76,16 +76,16 @@ export function WordGame() {
       <div className="flex items-start gap-4">
         <div className="min-w-0 flex-1">
           <h2 id="arma-la-palabra" className="font-display text-3xl font-extrabold text-ink">
-            Arma la palabra
+            Build the word
           </h2>
           <p className="mt-1 text-lg text-ink">
-            ¿Cómo se dice <strong>«{word.es}»</strong> en inglés? Toca las letras en orden.
+            What is this in English? Tap the letters in order.
           </p>
         </div>
         <Drawing name={word.drawing} className="h-20 w-24 shrink-0 rounded-[var(--radius-sm)] bg-sheet p-1.5" />
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2" aria-label={`Tu palabra: ${placed.map((i) => tiles[i]).join('') || 'vacía'}`}>
+      <div className="mt-5 flex flex-wrap gap-2" aria-label={`Your word: ${placed.map((i) => tiles[i]).join('') || 'empty'}`}>
         {[...word.en].map((_, slot) => (
           <span
             key={slot}
@@ -106,15 +106,15 @@ export function WordGame() {
       {done ? (
         <div className="mt-5 flex flex-wrap items-center gap-3" role="status">
           <p className="mr-auto text-lg font-bold text-ink">
-            ¡Muy bien! <span lang="en">{word.en}</span> es {word.es}.
+            Well done! <span lang="en">{word.en}</span>
           </p>
           {voice ? (
             <button type="button" className="btn btn-secondary" onClick={say}>
-              Escuchar
+              Listen
             </button>
           ) : null}
           <button type="button" className="btn btn-primary" onClick={next}>
-            Otra palabra
+            Another word
           </button>
         </div>
       ) : (
@@ -126,7 +126,7 @@ export function WordGame() {
                 type="button"
                 onClick={() => tap(i)}
                 disabled={placed.includes(i)}
-                aria-label={`Letra ${letter}`}
+                aria-label={`Letter ${letter}`}
                 className={clsx(
                   'grid h-16 w-14 place-items-center rounded-[var(--radius-sm)] bg-sheet text-[2.75rem] leading-none transition-transform active:scale-95 disabled:opacity-25',
                   miss === i && 'animate-wobble',
@@ -139,7 +139,7 @@ export function WordGame() {
             ))}
           </div>
           <p className="mt-3 min-h-7 text-base text-ink" aria-live="polite">
-            {miss !== null ? 'Esa no va ahí. Prueba otra letra.' : ''}
+            {miss !== null ? 'Not that one. Try another letter.' : ''}
           </p>
         </>
       )}

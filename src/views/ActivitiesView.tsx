@@ -1,7 +1,7 @@
 import { SectionHeader } from '../components/SectionHeader'
 import { Link } from 'react-router-dom'
 
-import { Icon, LevelTag, ProgressBar } from '../components/ui'
+import { Icon, LevelTag, ProgressBar, type IconName } from '../components/ui'
 import { activityDefinitions, activityTools } from '../activities/registry'
 import { useProgress } from '../lib/progress-context'
 import { allContent } from '../content'
@@ -15,6 +15,15 @@ import { EXTERNAL_TOOLS } from '../shared/schema'
  * El catálogo se arma desde el registro, así que añadir una herramienta nueva
  * no obliga a tocar esta vista.
  */
+const KIND_ICONS: Record<string, IconName> = {
+  vocabulary: 'Type',
+  quiz: 'ListChecks',
+  matching: 'Zap',
+  'fill-blanks': 'PenLine',
+  listening: 'Headphones',
+  reading: 'BookOpen',
+}
+
 export function ActivitiesView() {
   const { state, overallProgress } = useProgress()
 
@@ -32,28 +41,28 @@ export function ActivitiesView() {
   )
 
   const kindLabels: Record<string, string> = {
-    vocabulary: 'Tarjetas de vocabulario',
-    quiz: 'Cuestionarios',
-    matching: 'Relacionar y emparejar',
-    'fill-blanks': 'Completar oraciones',
-    listening: 'Práctica de escucha',
-    reading: 'Comprensión lectora',
+    vocabulary: 'Word cards',
+    quiz: 'Quizzes',
+    matching: 'Match the pairs',
+    'fill-blanks': 'Fill in the blanks',
+    listening: 'Listening practice',
+    reading: 'Reading practice',
   }
 
   return (
     <div className="pb-24">
       <SectionHeader
         kind="activity"
-        title="Actividades"
-        description="Juegos que se corrigen solos y actividades en otras plataformas."
+        title="Activities"
+        description="Games that check your answers, and activities on other websites."
       >
         <div className="mt-6 flex max-w-md items-center gap-4">
           <p className="shrink-0 font-display text-3xl font-extrabold tnum">
             {done}
-            <span className="text-xl"> de {total}</span>
+            <span className="text-xl"> of {total}</span>
           </p>
           <div className="flex-1 rounded-full bg-white/25 p-1">
-            <ProgressBar value={overallProgress} max={100} label="Actividades completadas" />
+            <ProgressBar value={overallProgress} max={100} label="Activities completed" />
           </div>
         </div>
       </SectionHeader>
@@ -72,7 +81,7 @@ export function ActivitiesView() {
                 </h2>
                 <p className="mt-1 text-sm text-ink-mute">
                   {definitions.length}{' '}
-                  {definitions.length === 1 ? 'herramienta' : 'herramientas'}
+                  {definitions.length === 1 ? 'activity' : 'activities'}
                 </p>
               </div>
             </div>
@@ -92,17 +101,7 @@ export function ActivitiesView() {
                     <div className="flex items-center justify-between gap-3">
                       <span className="inline-flex items-center gap-2 text-xs font-medium text-ink-soft">
                         <Icon
-                          name={(tool?.typeLabel === 'Quiz'
-                            ? 'ListChecks'
-                            : tool?.typeLabel === 'Tarjetas'
-                              ? 'Type'
-                              : tool?.typeLabel === 'Relacionar'
-                                ? 'Zap'
-                                : tool?.typeLabel === 'Completar'
-                                  ? 'PenLine'
-                                  : tool?.typeLabel === 'Escucha'
-                                    ? 'Headphones'
-                                    : 'BookOpen') as 'ListChecks'}
+                          name={KIND_ICONS[tool?.kind ?? ''] ?? 'BookOpen'}
                           size={15}
                           strokeWidth={1.75}
                         />
@@ -123,7 +122,7 @@ export function ActivitiesView() {
                       {result ? (
                         <>
                           <div className="flex items-center justify-between gap-3">
-                            <span className="text-xs text-ink-mute">Última vez</span>
+                            <span className="text-xs text-ink-mute">Last time</span>
                             <span
                               className={clsx(
                                 'font-display text-lg font-extrabold tnum',
@@ -136,16 +135,16 @@ export function ActivitiesView() {
                           <ProgressBar
                             value={result.score}
                             max={100}
-                            label={`Puntuación de ${definition.title}`}
+                            label={`Score for ${definition.title}`}
                           />
                         </>
                       ) : (
                         <p className="text-xs text-ink-mute">
-                          {definition.minutes} min · sin empezar
+                          {definition.minutes} min · not started
                         </p>
                       )}
                       {isDone ? (
-                        <p className="mt-2 text-xs text-accent">Completada</p>
+                        <p className="mt-2 text-xs text-accent">Completed</p>
                       ) : null}
                     </div>
                   </Link>
@@ -166,10 +165,10 @@ export function ActivitiesView() {
           <section key={tool} className="mt-16" aria-labelledby={`tool-${tool}`}>
             <div className="pb-4">
               <h2 id={`tool-${tool}`} className="text-head text-ink">
-                En {toolName(tool)}
+                In {toolName(tool)}
               </h2>
               <p className="mt-1 text-sm text-ink-mute">
-                Se abren fuera de La Cartilla. Al volver, márcalas como hechas.
+                These open outside La Cartilla. When you come back, mark them as done.
               </p>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -184,11 +183,11 @@ export function ActivitiesView() {
       {/* ── Material relacionado ───────────────────────────────────────── */}
       <section className="mt-20" aria-labelledby="material-actividades">
         <h2 id="material-actividades" className="text-head text-ink">
-          Material con el que practicar
+          Things to practice with
         </h2>
         <p className="mt-3 max-w-2xl text-base text-ink-soft">
-          Cada actividad se apoya en material concreto del catálogo. Ábrelo primero si
-          quieres llegar a la actividad con el contexto.
+          Each activity goes with a song, story or film. Open it first if
+          you want to know the words before you play.
         </p>
 
         <div className="mt-8">
@@ -217,7 +216,7 @@ export function ActivitiesView() {
                   </Link>
                   <p className="mt-1 text-sm text-ink-mute">
                     {linked.length}{' '}
-                    {linked.length === 1 ? 'actividad relacionada' : 'actividades relacionadas'}
+                    {linked.length === 1 ? 'related activity' : 'related activities'}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">

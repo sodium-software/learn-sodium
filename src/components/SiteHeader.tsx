@@ -75,7 +75,7 @@ export function Brand() {
       to="/"
       onClick={onClick}
       className="flex min-h-12 items-center rounded-full pr-2 text-[1.75rem] leading-none"
-      aria-label={`${siteConfig.platformName}, ir a Inicio`}
+      aria-label={`${siteConfig.platformName}, go to Home`}
     >
       <MagnetWord text={siteConfig.platformName} />
     </Link>
@@ -133,7 +133,7 @@ export function SiteHeader() {
       <div className="flex items-center gap-3">
         <Brand />
 
-        <nav className="ml-auto hidden items-center gap-1 xl:flex" aria-label="Secciones">
+        <nav className="ml-auto hidden items-center gap-1 xl:flex" aria-label="Sections">
           {kids.map((entry) => (
             <NavLink key={entry.id} to={entry.to} end={entry.to === '/'} className={linkClass}>
               {entry.label}
@@ -150,7 +150,7 @@ export function SiteHeader() {
               aria-controls="menu-adultos"
               onClick={() => setAdultOpen((open) => !open)}
             >
-              Para adultos
+              For grown-ups
               <Icon name="ChevronDown" size={18} className={clsx('transition-transform', adultOpen && 'rotate-180')} />
             </button>
             {adultOpen ? (
@@ -182,21 +182,21 @@ export function SiteHeader() {
           onClick={() => setMenuOpen(true)}
         >
           <Icon name="LayoutGrid" size={20} />
-          Menú
+          Menu
         </button>
       </div>
 
       {menuOpen ? (
-        <div className="fixed inset-0 z-40 xl:hidden" role="dialog" aria-modal="true" aria-label="Menú">
-          <button type="button" className="absolute inset-0 bg-ink/50" onClick={() => setMenuOpen(false)} aria-label="Cerrar el menú" />
+        <div className="fixed inset-0 z-40 xl:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+          <button type="button" className="absolute inset-0 bg-ink/50" onClick={() => setMenuOpen(false)} aria-label="Close menu" />
           <div id="menu-movil" className="absolute inset-y-0 right-0 flex w-[22rem] max-w-[90vw] flex-col overflow-y-auto bg-paper p-4 shadow-menu">
             <div className="flex items-center justify-between">
-              <span className="font-display text-2xl font-extrabold">Menú</span>
-              <button type="button" className="btn btn-secondary" onClick={() => setMenuOpen(false)} aria-label="Cerrar el menú">
+              <span className="font-display text-2xl font-extrabold">Menu</span>
+              <button type="button" className="btn btn-secondary" onClick={() => setMenuOpen(false)} aria-label="Close menu">
                 <Icon name="X" size={20} />
               </button>
             </div>
-            <nav className="mt-4 flex flex-col gap-2" aria-label="Secciones">
+            <nav className="mt-4 flex flex-col gap-2" aria-label="Sections">
               {kids.map((entry) => (
                 <NavLink
                   key={entry.id}
@@ -213,8 +213,8 @@ export function SiteHeader() {
                 </NavLink>
               ))}
             </nav>
-            <p className="mt-8 px-1 font-bold text-ink-mute">Para adultos</p>
-            <nav className="mt-2 flex flex-col gap-1" aria-label="Para adultos">
+            <p className="mt-8 px-1 font-bold text-ink-mute">For grown-ups</p>
+            <nav className="mt-2 flex flex-col gap-1" aria-label="For grown-ups">
               {adults.map((entry) => (
                 <NavLink key={entry.id} to={entry.to} className={linkClass}>
                   {entry.label}

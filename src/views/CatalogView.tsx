@@ -36,7 +36,7 @@ export function CatalogView({
       <SectionHeader kind={kind} title={title} description={description} />
       <div className="frame">
         <p className="mt-10 max-w-[60ch] text-lg text-ink-soft">{intro}</p>
-        <PieceGrid items={items} done={(id) => state.mediaProgress[id]?.completed ?? false} doneLabel="Completado" />
+        <PieceGrid items={items} done={(id) => state.mediaProgress[id]?.completed ?? false} doneLabel="Done" />
       </div>
     </div>
   )
@@ -49,9 +49,9 @@ export function StoryCatalogView() {
 
   return (
     <div className="pb-24">
-      <SectionHeader kind="story" title="Historias" description="Cuentos para leer en inglés, capítulo a capítulo." />
+      <SectionHeader kind="story" title="Stories" description="Stories to read in English, one chapter at a time." />
       <div className="frame">
-        <PieceGrid items={items} done={(id) => state.mediaProgress[id]?.completed ?? false} doneLabel="Leído" reading />
+        <PieceGrid items={items} done={(id) => state.mediaProgress[id]?.completed ?? false} doneLabel="Read" reading />
       </div>
     </div>
   )
@@ -78,7 +78,7 @@ function PieceGrid({
           >
             <span className="magnet" style={magnet(i)} />
             <span className="relative block">
-              <Cover src={item.cover} kind={item.kind} alt={`Portada de ${item.title}`} className="aspect-[4/3] rounded-[4px]" />
+              <Cover src={item.cover} kind={item.kind} alt={`Cover of ${item.title}`} className="aspect-[4/3] rounded-[4px]" />
               {done(item.id) ? (
                 <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-green px-3 py-1 text-sm font-bold text-white">
                   <Icon name="Check" size={16} strokeWidth={3} />
@@ -93,14 +93,14 @@ function PieceGrid({
               <span className="mt-2 flex flex-wrap items-center gap-2">
                 <LevelTag level={item.level} />
                 <span className="text-sm text-ink-mute tnum">
-                  {item.minutes} min{reading ? ' de lectura' : ''}
+                  {item.minutes} min{reading ? ' read' : ''}
                 </span>
-                {item.example ? <Tag>Ejemplo</Tag> : null}
+                {item.example ? <Tag>Example</Tag> : null}
               </span>
               <span className="mt-1 text-base text-ink-mute">{item.subtitle}</span>
               <span className="mt-3 line-clamp-4 flex-1 text-base text-ink-soft">{item.summary}</span>
               <span className="mt-5 inline-flex items-center gap-2 font-bold text-blue">
-                Abrir
+                Open
                 <Icon name="ArrowRight" size={20} className="transition-transform group-hover:translate-x-1" />
               </span>
             </span>

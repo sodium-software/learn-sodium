@@ -63,8 +63,8 @@ export function ItemForm() {
     }
   }, [id, fields])
 
-  if (!kind || !fields) return <p>Tipo desconocido.</p>
-  if (!form) return <p className="text-ink-mute">{message?.text ?? 'Cargando…'}</p>
+  if (!kind || !fields) return <p>Unknown type.</p>
+  if (!form) return <p className="text-ink-mute">{message?.text ?? 'Loading…'}</p>
 
   async function save(publish: boolean) {
     setBusy(true)
@@ -78,7 +78,7 @@ export function ItemForm() {
       }
       if (publish) await api(`items/${itemId}/publish`, { method: 'POST' })
       setStatus(publish ? 'published' : status === null ? 'draft' : status === 'draft' ? 'draft' : 'changed')
-      const text = publish ? 'Guardado y publicado.' : 'Borrador guardado.'
+      const text = publish ? 'Saved and published.' : 'Draft saved.'
       setMessage({ tone: 'ok', text })
       if (!id) navigate(`/admin/${kind}/${itemId}`, { replace: true, state: { saved: text } })
     } catch (error) {
@@ -96,9 +96,9 @@ export function ItemForm() {
         {KIND_LABELS[kind]}
       </Link>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <h1 className="text-head text-ink">{id ? String(form.title || 'Sin título') : 'Nueva pieza'}</h1>
+        <h1 className="text-head text-ink">{id ? String(form.title || 'Untitled') : 'New piece'}</h1>
         {status ? <span className="bg-tint px-2 py-0.5 text-xs text-ink-soft">{STATUS_LABEL[status]}</span> : null}
-        {example ? <span className="bg-tint px-2 py-0.5 text-xs text-ink-soft">Ejemplo</span> : null}
+        {example ? <span className="bg-tint px-2 py-0.5 text-xs text-ink-soft">Example</span> : null}
       </div>
 
       <form
@@ -126,16 +126,16 @@ export function ItemForm() {
         <div className="sticky bottom-0 -mx-4 flex flex-wrap gap-3 border-t border-tint-deep bg-paper px-4 py-4">
           <button type="submit" className="btn btn-secondary" disabled={busy}>
             <Icon name="Save" size={16} />
-            Guardar borrador
+            Save draft
           </button>
           <button type="button" className="btn btn-primary" disabled={busy} onClick={() => void save(true)}>
             <Icon name="Upload" size={16} />
-            Guardar y publicar
+            Save and publish
           </button>
           {id ? (
             <a href={`${publicRoute(kind, id)}?preview=1`} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
               <Icon name="Eye" size={16} />
-              Vista previa
+              Preview
             </a>
           ) : null}
         </div>
@@ -201,7 +201,7 @@ function FieldInput({ field, value, onChange }: { field: Field; value: unknown; 
         <div>
           {label}
           <select id={id} className="field mt-1.5" value={text} onChange={(event) => onChange(event.target.value)}>
-            <option value="">Elige…</option>
+            <option value="">Choose…</option>
             {field.options?.map(([option, optionLabel]) => (
               <option key={option} value={option}>
                 {optionLabel}
@@ -233,7 +233,7 @@ function FieldInput({ field, value, onChange }: { field: Field; value: unknown; 
             className="field mt-1.5"
             value={text}
             maxLength={field.type === 'text' ? field.max : undefined}
-            placeholder={field.type === 'url' ? 'https://' : field.type === 'tags' ? 'separa con comas' : undefined}
+            placeholder={field.type === 'url' ? 'https://' : field.type === 'tags' ? 'separate with commas' : undefined}
             onChange={(event) => onChange(event.target.value)}
           />
           {help}
@@ -263,7 +263,7 @@ function MediaInput({ field, id, label, value, onChange }: { field: Field; id: s
             <video src={value} controls preload="none" className="h-24 max-w-full" />
           )
         ) : (
-          <span className="text-sm text-ink-mute">Sin archivo</span>
+          <span className="text-sm text-ink-mute">No file</span>
         )}
         <input
           id={id}
@@ -286,11 +286,11 @@ function MediaInput({ field, id, label, value, onChange }: { field: Field; id: s
         />
         {value ? (
           <button type="button" className="btn btn-ghost text-sm" onClick={() => onChange('')}>
-            Quitar
+            Remove
           </button>
         ) : null}
       </div>
-      {state.busy ? <p className="mt-1 text-xs text-ink-mute" role="status">Subiendo…</p> : null}
+      {state.busy ? <p className="mt-1 text-xs text-ink-mute" role="status">Uploading…</p> : null}
       {state.error ? <p className="mt-1 text-xs text-wrong" role="alert">{state.error}</p> : null}
     </div>
   )
@@ -313,13 +313,13 @@ function ListInput({ field, value, onChange }: { field: Field; value: FormData[]
           <li key={index} className="border-l-2 border-tint-deep pl-4">
             <div className="mb-2 flex flex-wrap items-center gap-1">
               <span className="mr-2 text-xs font-medium text-ink-mute">#{index + 1}</span>
-              <button type="button" className="btn btn-ghost min-h-8 px-2" disabled={index === 0} onClick={() => move(index, index - 1)} aria-label={`Subir ${index + 1}`}>
+              <button type="button" className="btn btn-ghost min-h-8 px-2" disabled={index === 0} onClick={() => move(index, index - 1)} aria-label={`Move up ${index + 1}`}>
                 <Icon name="ArrowUp" size={14} />
               </button>
-              <button type="button" className="btn btn-ghost min-h-8 px-2" disabled={index === value.length - 1} onClick={() => move(index, index + 1)} aria-label={`Bajar ${index + 1}`}>
+              <button type="button" className="btn btn-ghost min-h-8 px-2" disabled={index === value.length - 1} onClick={() => move(index, index + 1)} aria-label={`Move down ${index + 1}`}>
                 <Icon name="ArrowDown" size={14} />
               </button>
-              <button type="button" className="btn btn-ghost min-h-8 px-2 text-wrong" onClick={() => onChange(value.filter((_, i) => i !== index))} aria-label={`Quitar ${index + 1}`}>
+              <button type="button" className="btn btn-ghost min-h-8 px-2 text-wrong" onClick={() => onChange(value.filter((_, i) => i !== index))} aria-label={`Remove ${index + 1}`}>
                 <Icon name="Trash2" size={14} />
               </button>
             </div>
@@ -340,7 +340,7 @@ function ListInput({ field, value, onChange }: { field: Field; value: FormData[]
         onClick={() => onChange([...value, toForm(field.fields ?? [], {})])}
       >
         <Icon name="Plus" size={15} />
-        Añadir
+        Add
       </button>
     </fieldset>
   )

@@ -12,13 +12,13 @@ export interface NavEntry {
 
 /** Las secciones de la plataforma, en el orden del menú. */
 export const navEntries: NavEntry[] = [
-  { id: 'home', label: 'Inicio', to: '/' },
-  { id: 'song', label: 'Canciones', to: '/song', drawing: 'song' },
-  { id: 'storytelling', label: 'Historias', to: '/storytelling', drawing: 'story' },
+  { id: 'home', label: 'Home', to: '/' },
+  { id: 'song', label: 'Songs', to: '/song', drawing: 'song' },
+  { id: 'storytelling', label: 'Stories', to: '/storytelling', drawing: 'story' },
   { id: 'podcast', label: 'Podcast', to: '/podcast', drawing: 'podcast' },
-  { id: 'short-film', label: 'Cortometrajes', to: '/short-film', drawing: 'film' },
-  { id: 'activities', label: 'Actividades', to: '/activities', drawing: 'activity' },
-  { id: 'introduccion', label: 'Introducción', to: '/introduccion', adult: true },
-  { id: 'biodata', label: 'Biodata', to: '/biodata', adult: true },
-  { id: 'settings', label: 'Ajustes', to: '/settings', adult: true },
+  { id: 'short-film', label: 'Short films', to: '/short-film', drawing: 'film' },
+  { id: 'activities', label: 'Activities', to: '/activities', drawing: 'activity' },
+  { id: 'introduccion', label: 'Introduction', to: '/introduccion', adult: true },
+  { id: 'biodata', label: 'Bio', to: '/biodata', adult: true },
+  { id: 'settings', label: 'Settings', to: '/settings', adult: true },
 ]

@@ -27,12 +27,12 @@ page.on('pageerror', (e) => consoleErrors.push(`pageerror: ${e.message}`))
 // ── 1. Navegación por la barra superior ─────────────────────────────────────
 await page.goto(BASE, { waitUntil: 'networkidle' })
 for (const [label, expectPath] of [
-  ['Canciones', '/song'],
-  ['Historias', '/storytelling'],
+  ['Songs', '/song'],
+  ['Stories', '/storytelling'],
   ['Podcast', '/podcast'],
-  ['Cortometrajes', '/short-film'],
-  ['Actividades', '/activities'],
-  ['Inicio', '/'],
+  ['Short films', '/short-film'],
+  ['Activities', '/activities'],
+  ['Home', '/'],
 ]) {
   await page.getByRole('link', { name: new RegExp(`^${label}`) }).first().click()
   await page.waitForTimeout(350)
@@ -41,8 +41,8 @@ for (const [label, expectPath] of [
 }
 
 // ── 2. El menú «Para adultos» se abre y lleva a sus páginas ───────────────
-await page.getByRole('button', { name: 'Para adultos' }).click()
-await page.getByRole('link', { name: 'Biodata', exact: true }).first().click()
+await page.getByRole('button', { name: 'For grown-ups' }).click()
+await page.getByRole('link', { name: 'Bio', exact: true }).first().click()
 await page.waitForTimeout(300)
 check('menú para adultos', new URL(page.url()).pathname === '/biodata')
 
@@ -52,7 +52,7 @@ await page.waitForTimeout(1200)
 const durationText = await page.locator('.panel:has(audio) .tnum').first().innerText()
 check('audio con duración', /\/\s*0:3\d/.test(durationText.replace(/\s+/g, ' ')), durationText)
 
-await page.getByRole('button', { name: /^Reproducir Counting/ }).click()
+await page.getByRole('button', { name: /^Play Counting/ }).click()
 await page.waitForTimeout(1600)
 const playing = await page.evaluate(() => {
   const a = document.querySelector('audio')
@@ -65,21 +65,21 @@ const activeLines = await page.locator('ol button.bg-accent-pale\\/40').count()
 check('la letra sigue al audio', activeLines >= 1, `${activeLines} líneas activas`)
 
 // ── 4. Destacar un fragmento y comprobar que se guarda ────────────────────
-await page.getByRole('button', { name: 'Guardar' }).first().click()
+await page.getByRole('button', { name: 'Save' }).first().click()
 await page.waitForTimeout(400)
-const savedLabel = await page.getByRole('button', { name: 'Guardado' }).count()
+const savedLabel = await page.getByRole('button', { name: 'Saved' }).count()
 check('destacar fragmento', savedLabel >= 1)
 
 // ── 5. El salto a un fragmento mueve el audio ──────────────────────────────
-await page.getByRole('button', { name: /Reproducir desde/ }).first().click()
+await page.getByRole('button', { name: /Play from/ }).first().click()
 await page.waitForTimeout(600)
 const jumped = await page.evaluate(() => document.querySelector('audio')?.currentTime ?? 0)
 check('saltar a un fragmento', jumped > 0.5, `t=${jumped.toFixed(2)}`)
 
 // ── 6. Vocabulario: marcar como dominada ──────────────────────────────────
-await page.getByRole('button', { name: 'Marcar' }).first().click()
+await page.getByRole('button', { name: 'Mark as learned' }).first().click()
 await page.waitForTimeout(300)
-check('marcar vocabulario', (await page.getByText('Dominada').count()) >= 1)
+check('marcar vocabulario', (await page.getByText('Learned', { exact: true }).count()) >= 1)
 
 // ── 7. Quiz: responder y comprobar ────────────────────────────────────────
 await page.goto(`${BASE}/activities/act-quiz-roads`, { waitUntil: 'networkidle' })
@@ -87,17 +87,17 @@ await page.waitForTimeout(400)
 const quizOptions = page.locator('button[aria-pressed]')
 await quizOptions.first().click()
 await page.waitForTimeout(300)
-check('el quiz retroalimenta', (await page.getByText('Correcto').count() + await page.getByText('No es correcto').count()) >= 1)
-await page.getByRole('button', { name: /Siguiente|Ver resultado/ }).click()
+check('el quiz retroalimenta', (await page.getByText('Correct', { exact: true }).count() + await page.getByText('Not quite').count()) >= 1)
+await page.getByRole('button', { name: /^(Next|See result)/ }).click()
 await page.waitForTimeout(300)
-check('el quiz avanza', (await page.getByText(/paso 2 de/).count()) >= 1)
+check('el quiz avanza', (await page.getByText(/step 2 of/).count()) >= 1)
 
 // ── 8. Tarjetas de vocabulario: voltear ────────────────────────────────────
 await page.goto(`${BASE}/activities/act-vocab-roads`, { waitUntil: 'networkidle' })
 await page.waitForTimeout(400)
-await page.getByRole('button', { name: /Pulsa para voltear|Definición/ }).click()
+await page.getByRole('button', { name: /Tap to flip|Meaning/ }).click()
 await page.waitForTimeout(300)
-check('la tarjeta se voltea', (await page.getByText('Traducción:').count()) >= 1)
+check('la tarjeta se voltea', (await page.getByText('Translation:').count()) >= 1)
 
 // ── 9. Relacionar: clic en palabra y en definición ─────────────────────────
 await page.goto(`${BASE}/activities/act-matching-market`, { waitUntil: 'networkidle' })
@@ -107,16 +107,16 @@ await wordButtons.click()
 await page.waitForTimeout(250)
 await page.locator('button:has-text("A large box used for carrying")').first().click()
 await page.waitForTimeout(400)
-check('relacionar par correcto', (await page.getByText(/de 6 pares/).innerText()).includes('1'))
+check('relacionar par correcto', (await page.getByText(/of 6 pairs/).innerText()).includes('1'))
 
 // ── 10. Completar oraciones ────────────────────────────────────────────────
 await page.goto(`${BASE}/activities/act-fill-water`, { waitUntil: 'networkidle' })
 await page.waitForTimeout(400)
 await page.getByRole('button', { name: 'put', exact: true }).click()
 await page.waitForTimeout(200)
-await page.getByRole('button', { name: 'Comprobar' }).click()
+await page.getByRole('button', { name: 'Check' }).click()
 await page.waitForTimeout(400)
-check('completar oración valida', (await page.getByText(/La respuesta correcta es|Correcto/).count()) >= 1)
+check('completar oración valida', (await page.getByText(/The right answer is|Correct/).count()) >= 1)
 
 // ── 11. Práctica de escucha: el clip se carga ──────────────────────────────
 await page.goto(`${BASE}/activities/act-listening-roads`, { waitUntil: 'networkidle' })
@@ -149,7 +149,7 @@ check('el estado está en localStorage', Boolean(stored && stored.includes('Zabd
 // ── 14. Vista de error ─────────────────────────────────────────────────────
 await page.goto(`${BASE}/ruta-que-no-existe`, { waitUntil: 'networkidle' })
 await page.waitForTimeout(300)
-check('ruta inexistente → 404 propio', (await page.getByText('Esta página no existe').count()) === 1)
+check('ruta inexistente → 404 propio', (await page.getByText("This page doesn't exist").count()) === 1)
 
 // ── 15. Sin errores de consola ─────────────────────────────────────────────
 check('sin errores de consola', consoleErrors.length === 0, consoleErrors.slice(0, 3).join(' | '))

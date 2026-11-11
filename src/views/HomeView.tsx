@@ -35,17 +35,17 @@ export function HomeView() {
             <MagnetWord text={siteConfig.platformName} animate />
           </h1>
           <p className="mt-8 max-w-[30ch] text-lead text-ink animate-rise [animation-delay:500ms]">
-            {name ? <strong>¡Hola, {name}! </strong> : null}
+            {name ? <strong>Hi, {name}! </strong> : null}
             {siteConfig.heroText}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4 animate-rise [animation-delay:600ms]">
             <Link to="/activities" className="btn btn-primary min-h-16 px-8 text-xl">
-              Empezar a jugar
+              Start playing
               <Icon name="ArrowRight" size={22} />
             </Link>
             {done > 0 ? (
               <p className="text-base font-bold text-ink-soft">
-                Llevas {done} {done === 1 ? 'actividad hecha' : 'actividades hechas'}.
+                You have done {done} {done === 1 ? 'activity' : 'activities'}.
               </p>
             ) : null}
           </div>
@@ -65,14 +65,14 @@ export function HomeView() {
       {/* ── Secciones: papeles de distinto tamaño y color ──────────────── */}
       <section className="frame pb-24" aria-labelledby="secciones">
         <h2 id="secciones" className="text-display">
-          Elige qué hacer hoy
+          Pick something to do
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
-          <SectionPaper to="/song" kind="song" title="Canciones" body="Escucha, sigue la letra y canta." count={songs.length} unit={['canción', 'canciones']} className="lg:col-span-5 lg:row-span-2" large />
-          <SectionPaper to="/storytelling" kind="story" title="Historias" body="Cuentos por capítulos con palabras nuevas." count={stories.length} unit={['historia', 'historias']} className="lg:col-span-4" />
-          <SectionPaper to="/podcast" kind="podcast" title="Podcast" body="Escucha conversaciones cortas." count={episodes.length} unit={['episodio', 'episodios']} className="lg:col-span-3" />
-          <SectionPaper to="/short-film" kind="film" title="Cortometrajes" body="Películas cortas con preguntas al final." count={films.length} unit={['corto', 'cortos']} className="lg:col-span-3" />
-          <SectionPaper to="/activities" kind="activity" title="Actividades" body="Juegos para practicar lo que aprendiste." count={activityDefinitions.length} unit={['juego', 'juegos']} className="lg:col-span-4" />
+          <SectionPaper to="/song" kind="song" title="Songs" body="Listen, follow the words and sing." count={songs.length} unit={['song', 'songs']} className="lg:col-span-5 lg:row-span-2" large />
+          <SectionPaper to="/storytelling" kind="story" title="Stories" body="Stories in chapters with new words." count={stories.length} unit={['story', 'stories']} className="lg:col-span-4" />
+          <SectionPaper to="/podcast" kind="podcast" title="Podcast" body="Listen to short talks." count={episodes.length} unit={['episode', 'episodes']} className="lg:col-span-3" />
+          <SectionPaper to="/short-film" kind="film" title="Short films" body="Little movies with questions at the end." count={films.length} unit={['short film', 'short films']} className="lg:col-span-3" />
+          <SectionPaper to="/activities" kind="activity" title="Activities" body="Games to practice what you learned." count={activityDefinitions.length} unit={['game', 'games']} className="lg:col-span-4" />
         </div>
       </section>
 
@@ -81,7 +81,7 @@ export function HomeView() {
         <section className="bg-tint py-20" aria-labelledby="empezar">
           <div className="frame">
             <h2 id="empezar" className="text-display">
-              Para empezar
+              Start here
             </h2>
             <ul className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-3">
               {featured.map((item, i) => (
@@ -94,7 +94,7 @@ export function HomeView() {
                       <span className="mt-2 flex flex-wrap items-center gap-2">
                         <LevelTag level={item.level} />
                         <span className="text-sm text-ink-mute">{item.minutes} min</span>
-                        {item.example ? <Tag>Ejemplo</Tag> : null}
+                        {item.example ? <Tag>Example</Tag> : null}
                       </span>
                       <span className="mt-2 line-clamp-3 text-base text-ink-soft">{item.summary}</span>
                     </span>
@@ -106,18 +106,18 @@ export function HomeView() {
         </section>
       ) : null}
 
-      {/* ── Para las familias ──────────────────────────────────────────── */}
+      {/* ── For families ──────────────────────────────────────────── */}
       <section className="frame grid-editorial gap-y-10 py-24" aria-labelledby="familias">
         <div className="col-span-4 lg:col-span-6">
           <h2 id="familias" className="text-display">
-            Para las familias
+            For families
           </h2>
           <p className="mt-6 max-w-[46ch] text-lead text-ink">
-            {siteConfig.platformName} no pide cuentas, no usa cookies de terceros ni analítica, y no tiene
-            publicidad. El progreso y el nombre del niño se guardan solo en este dispositivo.
+            {siteConfig.platformName} needs no accounts. It uses no third-party cookies, no analytics and
+            no ads. Your child's progress and name are saved only on this device.
           </p>
           <p className="mt-4 max-w-[46ch] text-base text-ink-soft">
-            Cada canción, cuento y película lleva en su ficha la fuente, la licencia y los créditos.
+            Every song, story and film page shows its source, license and credits.
           </p>
         </div>
         <div className="col-span-4 flex flex-col gap-5 lg:col-span-5 lg:col-start-8">

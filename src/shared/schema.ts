@@ -35,39 +35,39 @@ export type Kind = 'song' | 'story' | 'podcast' | 'film' | 'activity' | 'page'
 export const KINDS: Kind[] = ['song', 'story', 'podcast', 'film', 'activity', 'page']
 
 export const KIND_LABELS: Record<Kind, string> = {
-  song: 'Canciones',
-  story: 'Historias',
+  song: 'Songs',
+  story: 'Stories',
   podcast: 'Podcast',
-  film: 'Cortometrajes',
-  activity: 'Actividades',
-  page: 'Páginas',
+  film: 'Short films',
+  activity: 'Activities',
+  page: 'Pages',
 }
 
 export const LEVELS: [string, string][] = [
-  ['A1', 'A1 · Inicial'],
-  ['A2', 'A2 · Básico'],
-  ['B1', 'B1 · Intermedio'],
-  ['B2', 'B2 · Intermedio alto'],
-  ['C1', 'C1 · Avanzado'],
+  ['A1', 'A1 · Beginner'],
+  ['A2', 'A2 · Elementary'],
+  ['B1', 'B1 · Intermediate'],
+  ['B2', 'B2 · Upper intermediate'],
+  ['C1', 'C1 · Advanced'],
 ]
 
 export const LICENSES: [string, string][] = [
-  ['propio', 'Propio'],
-  ['dominio-publico', 'Dominio público'],
+  ['propio', 'Own work'],
+  ['dominio-publico', 'Public domain'],
   ['cc', 'Creative Commons'],
-  ['permiso', 'Con permiso del autor'],
+  ['permiso', 'Used with permission'],
 ]
 
 export const LICENSE_LABEL = Object.fromEntries(LICENSES) as Record<string, string>
 
 export const ACTIVITY_TYPES: [string, string][] = [
-  ['external', 'Externa (enlace a otra plataforma)'],
-  ['vocabulary', 'Tarjetas de vocabulario'],
+  ['external', 'External (link to another platform)'],
+  ['vocabulary', 'Vocabulary cards'],
   ['quiz', 'Quiz'],
-  ['matching', 'Relacionar parejas'],
-  ['fill-blanks', 'Completar huecos'],
-  ['listening', 'Escucha'],
-  ['reading', 'Lectura'],
+  ['matching', 'Match the pairs'],
+  ['fill-blanks', 'Fill in the blanks'],
+  ['listening', 'Listening'],
+  ['reading', 'Reading'],
 ]
 
 export const EXTERNAL_TOOLS: [string, string][] = [
@@ -75,52 +75,52 @@ export const EXTERNAL_TOOLS: [string, string][] = [
   ['educaplay', 'Educaplay'],
   ['wordwall', 'Wordwall'],
   ['liveworksheets', 'Liveworksheets'],
-  ['other', 'Otra plataforma'],
+  ['other', 'Other platform'],
 ]
 
 export const SKILLS: [string, string][] = [
-  ['listening', 'Escuchar'],
-  ['reading', 'Leer'],
-  ['speaking', 'Hablar'],
-  ['writing', 'Escribir'],
-  ['vocabulary', 'Vocabulario'],
-  ['grammar', 'Gramática'],
+  ['listening', 'Listening'],
+  ['reading', 'Reading'],
+  ['speaking', 'Speaking'],
+  ['writing', 'Writing'],
+  ['vocabulary', 'Vocabulary'],
+  ['grammar', 'Grammar'],
 ]
 
 // ── Bloques reutilizables ───────────────────────────────────────────────────
 
 const meta: Field[] = [
-  { name: 'title', label: 'Título', type: 'text', required: true, max: 120 },
-  { name: 'summary', label: 'Resumen', type: 'textarea', max: 600 },
-  { name: 'level', label: 'Nivel', type: 'select', options: LEVELS, required: true },
-  { name: 'age', label: 'Edad recomendada', type: 'text', max: 40, help: 'Por ejemplo: 7 a 9 años' },
-  { name: 'cover', label: 'Portada o miniatura', type: 'media', accept: 'image' },
+  { name: 'title', label: 'Title', type: 'text', required: true, max: 120 },
+  { name: 'summary', label: 'Summary', type: 'textarea', max: 600 },
+  { name: 'level', label: 'Level', type: 'select', options: LEVELS, required: true },
+  { name: 'age', label: 'Recommended age', type: 'text', max: 40, help: 'For example: 7 to 9 years' },
+  { name: 'cover', label: 'Cover or thumbnail', type: 'media', accept: 'image' },
 ]
 
 const rights: Field[] = [
-  { name: 'source', label: 'Fuente', type: 'text', max: 200, required: true, help: 'De dónde sale la pieza (autor, sitio, libro).' },
-  { name: 'license', label: 'Licencia', type: 'select', options: LICENSES, required: true },
-  { name: 'credits', label: 'Créditos', type: 'textarea', max: 1000, help: 'Se muestran en la ficha pública.' },
+  { name: 'source', label: 'Source', type: 'text', max: 200, required: true, help: 'Where the piece comes from (author, website, book).' },
+  { name: 'license', label: 'License', type: 'select', options: LICENSES, required: true },
+  { name: 'credits', label: 'Credits', type: 'textarea', max: 1000, help: 'Shown on the public page.' },
 ]
 
 const glossary: Field = {
   name: 'glossary',
-  label: 'Glosario',
+  label: 'Glossary',
   type: 'list',
   max: 60,
   fields: [
-    { name: 'term', label: 'Palabra', type: 'text', required: true, max: 80 },
-    { name: 'translation', label: 'Traducción', type: 'text', max: 120 },
-    { name: 'definition', label: 'Definición', type: 'text', max: 300 },
-    { name: 'example', label: 'Ejemplo', type: 'text', max: 300 },
+    { name: 'term', label: 'Word', type: 'text', required: true, max: 80 },
+    { name: 'translation', label: 'Translation', type: 'text', max: 120 },
+    { name: 'definition', label: 'Definition', type: 'text', max: 300 },
+    { name: 'example', label: 'Example', type: 'text', max: 300 },
   ],
 }
 
 const questionFields: Field[] = [
-  { name: 'prompt', label: 'Pregunta', type: 'text', required: true, max: 300 },
-  { name: 'options', label: 'Opciones (una por línea)', type: 'lines', required: true, max: 200 },
-  { name: 'correct', label: 'Número de la opción correcta', type: 'number', min: 1, max: 8, required: true },
-  { name: 'explanation', label: 'Explicación', type: 'text', max: 400 },
+  { name: 'prompt', label: 'Question', type: 'text', required: true, max: 300 },
+  { name: 'options', label: 'Options (one per line)', type: 'lines', required: true, max: 200 },
+  { name: 'correct', label: 'Number of the correct option', type: 'number', min: 1, max: 8, required: true },
+  { name: 'explanation', label: 'Explanation', type: 'text', max: 400 },
 ]
 
 const questions = (name: string, label: string, showIf?: Field['showIf']): Field => ({
@@ -139,164 +139,164 @@ const onlyFor = (...types: string[]) => ({ field: 'type', in: types })
 export const SCHEMAS: Record<Kind, Field[]> = {
   song: [
     ...meta,
-    { name: 'artist', label: 'Intérprete', type: 'text', max: 120 },
-    { name: 'mood', label: 'Tono o tema', type: 'text', max: 160 },
+    { name: 'artist', label: 'Performer', type: 'text', max: 120 },
+    { name: 'mood', label: 'Mood or theme', type: 'text', max: 160 },
     { name: 'audio', label: 'Audio', type: 'media', accept: 'audio', required: true },
     {
       name: 'lyrics',
-      label: 'Letra',
+      label: 'Lyrics',
       type: 'list',
       max: 200,
       fields: [
-        { name: 'start', label: 'Segundo', type: 'number', min: 0, max: 36000 },
-        { name: 'text', label: 'Verso en inglés', type: 'text', required: true, max: 300 },
-        { name: 'note', label: 'Traducción', type: 'text', max: 300 },
-        { name: 'keywords', label: 'Palabras clave', type: 'tags', max: 80 },
+        { name: 'start', label: 'Second', type: 'number', min: 0, max: 36000 },
+        { name: 'text', label: 'Line in English', type: 'text', required: true, max: 300 },
+        { name: 'note', label: 'Translation', type: 'text', max: 300 },
+        { name: 'keywords', label: 'Key words', type: 'tags', max: 80 },
       ],
     },
     glossary,
     {
       name: 'highlights',
-      label: 'Fragmentos destacados',
+      label: 'Highlights',
       type: 'list',
       max: 20,
       fields: [
-        { name: 'label', label: 'Nombre', type: 'text', required: true, max: 120 },
-        { name: 'start', label: 'Desde (s)', type: 'number', min: 0, max: 36000 },
-        { name: 'end', label: 'Hasta (s)', type: 'number', min: 0, max: 36000 },
-        { name: 'note', label: 'Nota', type: 'text', max: 300 },
+        { name: 'label', label: 'Name', type: 'text', required: true, max: 120 },
+        { name: 'start', label: 'From (s)', type: 'number', min: 0, max: 36000 },
+        { name: 'end', label: 'To (s)', type: 'number', min: 0, max: 36000 },
+        { name: 'note', label: 'Note', type: 'text', max: 300 },
       ],
     },
     ...rights,
   ],
   story: [
     ...meta,
-    { name: 'author', label: 'Autor', type: 'text', max: 120 },
-    { name: 'readingTime', label: 'Minutos de lectura', type: 'number', min: 1, max: 240 },
-    { name: 'intro', label: 'Introducción', type: 'textarea', max: 1500 },
+    { name: 'author', label: 'Author', type: 'text', max: 120 },
+    { name: 'readingTime', label: 'Reading minutes', type: 'number', min: 1, max: 240 },
+    { name: 'intro', label: 'Introduction', type: 'textarea', max: 1500 },
     {
       name: 'chapters',
-      label: 'Capítulos',
+      label: 'Chapters',
       type: 'list',
       max: 40,
       fields: [
-        { name: 'title', label: 'Título del capítulo', type: 'text', required: true, max: 160 },
-        { name: 'paragraphs', label: 'Texto (deja una línea en blanco entre párrafos)', type: 'paragraphs', required: true, max: 4000 },
+        { name: 'title', label: 'Chapter title', type: 'text', required: true, max: 160 },
+        { name: 'paragraphs', label: 'Text (leave a blank line between paragraphs)', type: 'paragraphs', required: true, max: 4000 },
       ],
     },
     glossary,
-    questions('comprehension', 'Preguntas de comprensión'),
+    questions('comprehension', 'Comprehension questions'),
     ...rights,
   ],
   podcast: [
     ...meta,
-    { name: 'show', label: 'Programa', type: 'text', max: 120 },
+    { name: 'show', label: 'Show', type: 'text', max: 120 },
     { name: 'audio', label: 'Audio', type: 'media', accept: 'audio', required: true },
     {
       name: 'segments',
-      label: 'Transcripción',
+      label: 'Transcript',
       type: 'list',
       max: 300,
       fields: [
-        { name: 'start', label: 'Segundo', type: 'number', min: 0, max: 36000 },
-        { name: 'speaker', label: 'Quién habla', type: 'text', max: 60 },
-        { name: 'text', label: 'Texto en inglés', type: 'text', required: true, max: 600 },
-        { name: 'note', label: 'Traducción', type: 'text', max: 600 },
+        { name: 'start', label: 'Second', type: 'number', min: 0, max: 36000 },
+        { name: 'speaker', label: 'Speaker', type: 'text', max: 60 },
+        { name: 'text', label: 'Text in English', type: 'text', required: true, max: 600 },
+        { name: 'note', label: 'Translation', type: 'text', max: 600 },
       ],
     },
-    { ...glossary, name: 'keyTerms', label: 'Palabras clave' },
-    questions('comprehension', 'Preguntas de comprensión'),
+    { ...glossary, name: 'keyTerms', label: 'Key words' },
+    questions('comprehension', 'Comprehension questions'),
     ...rights,
   ],
   film: [
     ...meta,
-    { name: 'director', label: 'Dirección', type: 'text', max: 120 },
-    { name: 'video', label: 'Vídeo', type: 'media', accept: 'video' },
+    { name: 'director', label: 'Director', type: 'text', max: 120 },
+    { name: 'video', label: 'Video', type: 'media', accept: 'video' },
     {
       name: 'scenes',
-      label: 'Escenas',
+      label: 'Scenes',
       type: 'list',
       max: 200,
       fields: [
-        { name: 'start', label: 'Segundo', type: 'number', min: 0, max: 36000 },
-        { name: 'speaker', label: 'Quién habla', type: 'text', max: 60 },
-        { name: 'line', label: 'Frase en inglés', type: 'text', required: true, max: 400 },
-        { name: 'translation', label: 'Traducción', type: 'text', max: 400 },
+        { name: 'start', label: 'Second', type: 'number', min: 0, max: 36000 },
+        { name: 'speaker', label: 'Speaker', type: 'text', max: 60 },
+        { name: 'line', label: 'Line in English', type: 'text', required: true, max: 400 },
+        { name: 'translation', label: 'Translation', type: 'text', max: 400 },
       ],
     },
-    questions('comprehension', 'Preguntas de comprensión'),
-    { name: 'relatedActivityIds', label: 'Actividades relacionadas (identificadores)', type: 'tags', max: 80 },
+    questions('comprehension', 'Comprehension questions'),
+    { name: 'relatedActivityIds', label: 'Related activities (IDs)', type: 'tags', max: 80 },
     ...rights,
   ],
   activity: [
-    { name: 'type', label: 'Tipo de actividad', type: 'select', options: ACTIVITY_TYPES, required: true },
+    { name: 'type', label: 'Activity type', type: 'select', options: ACTIVITY_TYPES, required: true },
     ...meta.map((field) =>
-      field.name === 'summary' ? { ...field, label: 'Descripción' } : field.name === 'cover' ? { ...field, label: 'Miniatura' } : field,
+      field.name === 'summary' ? { ...field, label: 'Description' } : field.name === 'cover' ? { ...field, label: 'Thumbnail' } : field,
     ),
-    { name: 'tagline', label: 'Subtítulo corto', type: 'text', max: 80 },
-    { name: 'skill', label: 'Habilidad', type: 'select', options: SKILLS, required: true },
-    { name: 'minutes', label: 'Minutos estimados', type: 'number', min: 1, max: 120 },
-    { name: 'tool', label: 'Herramienta', type: 'select', options: EXTERNAL_TOOLS, required: true, showIf: onlyFor('external') },
-    { name: 'url', label: 'Enlace a la actividad', type: 'url', required: true, showIf: onlyFor('external') },
-    { name: 'instructions', label: 'Instrucciones para el niño', type: 'textarea', max: 1500 },
+    { name: 'tagline', label: 'Short subtitle', type: 'text', max: 80 },
+    { name: 'skill', label: 'Skill', type: 'select', options: SKILLS, required: true },
+    { name: 'minutes', label: 'Estimated minutes', type: 'number', min: 1, max: 120 },
+    { name: 'tool', label: 'Tool', type: 'select', options: EXTERNAL_TOOLS, required: true, showIf: onlyFor('external') },
+    { name: 'url', label: 'Link to the activity', type: 'url', required: true, showIf: onlyFor('external') },
+    { name: 'instructions', label: 'Instructions for the child', type: 'textarea', max: 1500 },
     {
       name: 'cards',
-      label: 'Tarjetas',
+      label: 'Cards',
       type: 'list',
       max: 60,
       showIf: onlyFor('vocabulary'),
       fields: glossary.fields,
     },
-    questions('questions', 'Preguntas', onlyFor('quiz', 'reading')),
+    questions('questions', 'Questions', onlyFor('quiz', 'reading')),
     {
       name: 'pairs',
-      label: 'Parejas',
+      label: 'Pairs',
       type: 'list',
       max: 30,
       showIf: onlyFor('matching'),
       fields: [
-        { name: 'left', label: 'Izquierda', type: 'text', required: true, max: 120 },
-        { name: 'right', label: 'Derecha', type: 'text', required: true, max: 120 },
+        { name: 'left', label: 'Left', type: 'text', required: true, max: 120 },
+        { name: 'right', label: 'Right', type: 'text', required: true, max: 120 },
       ],
     },
     {
       name: 'blanks',
-      label: 'Oraciones con hueco',
+      label: 'Sentences with a blank',
       type: 'list',
       max: 40,
       showIf: onlyFor('fill-blanks'),
       fields: [
-        { name: 'sentence', label: 'Oración (usa ___ para el hueco)', type: 'text', required: true, max: 300 },
-        { name: 'answer', label: 'Respuesta', type: 'text', required: true, max: 80 },
-        { name: 'options', label: 'Banco de palabras', type: 'tags', max: 80 },
-        { name: 'hint', label: 'Pista', type: 'text', max: 200 },
+        { name: 'sentence', label: 'Sentence (use ___ for the blank)', type: 'text', required: true, max: 300 },
+        { name: 'answer', label: 'Answer', type: 'text', required: true, max: 80 },
+        { name: 'options', label: 'Word bank', type: 'tags', max: 80 },
+        { name: 'hint', label: 'Hint', type: 'text', max: 200 },
       ],
     },
     {
       name: 'listening',
-      label: 'Fragmentos de escucha',
+      label: 'Listening clips',
       type: 'list',
       max: 20,
       showIf: onlyFor('listening'),
       fields: [{ name: 'audio', label: 'Audio', type: 'media', accept: 'audio', required: true }, ...questionFields],
     },
-    { name: 'passageTitle', label: 'Título del texto', type: 'text', max: 160, showIf: onlyFor('reading') },
-    { name: 'passage', label: 'Texto para leer', type: 'paragraphs', max: 8000, showIf: onlyFor('reading') },
-    { name: 'relatedIds', label: 'Contenido relacionado (identificadores)', type: 'tags', max: 80 },
+    { name: 'passageTitle', label: 'Text title', type: 'text', max: 160, showIf: onlyFor('reading') },
+    { name: 'passage', label: 'Text to read', type: 'paragraphs', max: 8000, showIf: onlyFor('reading') },
+    { name: 'relatedIds', label: 'Related content (IDs)', type: 'tags', max: 80 },
     ...rights,
   ],
   page: [
-    { name: 'title', label: 'Título', type: 'text', required: true, max: 120 },
-    { name: 'summary', label: 'Entradilla', type: 'textarea', max: 600 },
-    { name: 'body', label: 'Texto (deja una línea en blanco entre párrafos)', type: 'paragraphs', max: 12000 },
-    { name: 'cover', label: 'Foto', type: 'media', accept: 'image' },
-    { name: 'credits', label: 'Créditos de la foto', type: 'textarea', max: 600 },
+    { name: 'title', label: 'Title', type: 'text', required: true, max: 120 },
+    { name: 'summary', label: 'Lead', type: 'textarea', max: 600 },
+    { name: 'body', label: 'Text (leave a blank line between paragraphs)', type: 'paragraphs', max: 12000 },
+    { name: 'cover', label: 'Photo', type: 'media', accept: 'image' },
+    { name: 'credits', label: 'Photo credits', type: 'textarea', max: 600 },
   ],
 }
 
 export const SETTINGS_SCHEMA: Field[] = [
-  { name: 'easterEgg', label: 'Juego oculto', type: 'select', options: [['on', 'Activado'], ['off', 'Desactivado']], required: true },
-  { name: 'dedication', label: 'Dedicatoria del juego', type: 'textarea', max: 600 },
+  { name: 'easterEgg', label: 'Hidden game', type: 'select', options: [['on', 'On'], ['off', 'Off']], required: true },
+  { name: 'dedication', label: 'Game dedication', type: 'textarea', max: 600 },
 ]
 
 // ── Saneado ─────────────────────────────────────────────────────────────────
@@ -343,7 +343,7 @@ export function sanitize(fields: Field[], input: unknown, path = ''): { data: Da
         const n = raw === '' || raw === null || raw === undefined ? NaN : Number(raw)
         if (Number.isFinite(n)) {
           if ((field.min !== undefined && n < field.min) || (field.max !== undefined && n > field.max)) {
-            errors.push(`${at}: fuera de rango`)
+            errors.push(`${at}: out of range`)
           }
           value = n
         }
@@ -352,7 +352,7 @@ export function sanitize(fields: Field[], input: unknown, path = ''): { data: Da
       case 'select':
         value = cleanText(raw, 60)
         if (value && !field.options?.some(([option]) => option === value)) {
-          errors.push(`${at}: opción no válida`)
+          errors.push(`${at}: invalid option`)
           value = ''
         }
         break
@@ -364,14 +364,14 @@ export function sanitize(fields: Field[], input: unknown, path = ''): { data: Da
             if (url.protocol !== 'https:' && url.protocol !== 'http:') throw new Error()
             value = url.toString()
           } catch {
-            errors.push(`${at}: el enlace debe empezar por https://`)
+            errors.push(`${at}: the link must start with https://`)
           }
         }
         break
       }
       case 'media': {
         const text = cleanText(raw, 300)
-        if (text && (!MEDIA_PATH.test(text) || text.includes('..'))) errors.push(`${at}: archivo no válido`)
+        if (text && (!MEDIA_PATH.test(text) || text.includes('..'))) errors.push(`${at}: invalid file`)
         else value = text
         break
       }
@@ -406,7 +406,7 @@ export function sanitize(fields: Field[], input: unknown, path = ''): { data: Da
 
     const empty =
       value === undefined || value === '' || (Array.isArray(value) && value.length === 0)
-    if (field.required && empty) errors.push(`${at}: obligatorio`)
+    if (field.required && empty) errors.push(`${at}: required`)
     if (!empty) data[field.name] = value
   }
 

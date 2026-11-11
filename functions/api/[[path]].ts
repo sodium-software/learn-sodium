@@ -67,13 +67,13 @@ class HttpError extends Error {
 }
 
 async function readJson(request: Request): Promise<unknown> {
-  if (!(request.headers.get('Content-Type') ?? '').startsWith('application/json')) throw new HttpError(415, 'Se esperaba JSON')
+  if (!(request.headers.get('Content-Type') ?? '').startsWith('application/json')) throw new HttpError(415, 'Expected JSON')
   const text = await request.text()
-  if (text.length > MAX_JSON) throw new HttpError(413, 'Demasiado grande')
+  if (text.length > MAX_JSON) throw new HttpError(413, 'Too large')
   try {
     return JSON.parse(text)
   } catch {
-    throw new HttpError(400, 'JSON no válido')
+    throw new HttpError(400, 'Invalid JSON')
   }
 }
 
@@ -114,9 +114,9 @@ async function refreshPublicMedia(env: Env) {
 }
 
 function validate(kind: unknown, data: unknown) {
-  if (!KINDS.includes(kind as Kind)) throw new HttpError(400, 'Tipo no válido')
+  if (!KINDS.includes(kind as Kind)) throw new HttpError(400, 'Invalid type')
   const result = sanitize(SCHEMAS[kind as Kind], data)
-  if (result.errors.length) throw new HttpError(422, 'Revisa los campos', result.errors)
+  if (result.errors.length) throw new HttpError(422, 'Please check the fields', result.errors)
   return result.data
 }
 
@@ -129,12 +129,12 @@ async function login(request: Request, env: Env): Promise<Response> {
   const ip = request.headers.get('CF-Connecting-IP') ?? 'local'
 
   const attempt = await claimAttempt(env, ip, email)
-  if (attempt === null) return fail(429, 'Demasiados intentos. Espera 15 minutos y vuelve a probar.')
+  if (attempt === null) return fail(429, 'Too many attempts. Wait 15 minutes and try again.')
   const admin = await env.DB.prepare('SELECT email, password FROM admins WHERE email = ?')
     .bind(email)
     .first<{ email: string; password: string }>()
   const ok = await verifyPassword(password, admin?.password ?? DUMMY_HASH)
-  if (!admin || !ok) return fail(401, 'Correo o contraseña incorrectos.')
+  if (!admin || !ok) return fail(401, 'Wrong email or password.')
   await releaseAttempt(env, attempt)
   const { cookie, csrf } = await createSession(env, admin.email)
   return json({ email: admin.email, csrf }, 200, { 'Set-Cookie': cookie })
@@ -145,7 +145,7 @@ async function admin(request: Request, env: Env, session: Session, parts: string
   const [section, id, action] = parts
 
   if (method !== 'GET' && method !== 'HEAD' && !passesCsrf(request, session)) {
-    return fail(403, 'Token CSRF no válido')
+    return fail(403, 'Invalid CSRF token')
   }
 
   if (section === 'session' && method === 'GET') return json(session)
@@ -189,9 +189,9 @@ async function admin(request: Request, env: Env, session: Session, parts: string
   }
 
   if (section === 'items' && id) {
-    if (!ID_PATTERN.test(id)) return fail(400, 'Identificador no válido')
+    if (!ID_PATTERN.test(id)) return fail(400, 'Invalid ID')
     const row = await env.DB.prepare('SELECT * FROM items WHERE id = ?').bind(id).first<Row>()
-    if (!row) return fail(404, 'No existe')
+    if (!row) return fail(404, 'Not found')
 
     if (!action && method === 'GET') {
       return json({
@@ -243,7 +243,7 @@ async function admin(request: Request, env: Env, session: Session, parts: string
 
   if (section === 'settings' && method === 'PUT') {
     const result = sanitize(SETTINGS_SCHEMA, await readJson(request))
-    if (result.errors.length) return fail(422, 'Revisa los campos', result.errors)
+    if (result.errors.length) return fail(422, 'Please check the fields', result.errors)
     await env.DB.batch(
       Object.entries(result.data).map(([key, value]) =>
         env.DB.prepare('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value').bind(key, String(value)),
@@ -283,12 +283,12 @@ async function admin(request: Request, env: Env, session: Session, parts: string
 
   if (section === 'import' && method === 'POST') return importBackup(request, env)
 
-  return fail(404, 'Ruta no encontrada')
+  return fail(404, 'Route not found')
 }
 
 async function upload(request: Request, env: Env): Promise<Response> {
   const declared = Number(request.headers.get('Content-Length') ?? 0)
-  if (declared > MAX_BYTES.video) return fail(413, 'Archivo demasiado grande')
+  if (declared > MAX_BYTES.video) return fail(413, 'File too large')
   // Se lee con contador: Content-Length puede faltar (transfer chunked).
   const chunks: Uint8Array[] = []
   let total = 0
@@ -299,18 +299,18 @@ async function upload(request: Request, env: Env): Promise<Response> {
     total += part.value.length
     if (total > MAX_BYTES.video) {
       await reader?.cancel()
-      return fail(413, 'Archivo demasiado grande')
+      return fail(413, 'File too large')
     }
     chunks.push(part.value)
   }
   const bytes = new Uint8Array(total)
   chunks.reduce((offset, chunk) => (bytes.set(chunk, offset), offset + chunk.length), 0)
   const kind = sniff(bytes)
-  if (!kind) return fail(415, 'Tipo de archivo no permitido. Usa JPG, PNG, WebP, MP3, M4A, OGG, WAV, MP4 o WebM.')
+  if (!kind) return fail(415, 'File type not allowed. Use JPG, PNG, WebP, MP3, M4A, OGG, WAV, MP4 or WebM.')
   const expected = request.headers.get('X-Media-Category') as MediaCategory | null
-  if (expected && expected !== kind.category) return fail(415, `Se esperaba un archivo de ${expected}`)
+  if (expected && expected !== kind.category) return fail(415, `Expected a ${expected} file`)
   if (bytes.length > MAX_BYTES[kind.category]) {
-    return fail(413, `Máximo ${MAX_BYTES[kind.category] / 1024 / 1024} MB para este tipo de archivo`)
+    return fail(413, `Maximum ${MAX_BYTES[kind.category] / 1024 / 1024} MB for this file type`)
   }
 
   // Al importar un respaldo se conserva la clave original para que las referencias sigan valiendo.
@@ -337,14 +337,14 @@ async function importBackup(request: Request, env: Env): Promise<Response> {
     items?: { id?: unknown; kind?: unknown; position?: unknown; example?: unknown; draft?: unknown; published?: unknown }[]
     settings?: { easterEgg?: boolean; dedication?: string }
   }
-  if (body.format !== 'la-cartilla-backup' || !Array.isArray(body.items)) return fail(400, 'No es un respaldo de La Cartilla')
+  if (body.format !== 'la-cartilla-backup' || !Array.isArray(body.items)) return fail(400, 'This is not a La Cartilla backup')
 
   const statements = [env.DB.prepare('DELETE FROM items')]
   const errors: string[] = []
   for (const item of body.items.slice(0, 2000)) {
     const id = String(item.id ?? '')
     if (!ID_PATTERN.test(id) || !KINDS.includes(item.kind as Kind)) {
-      errors.push(`Pieza con identificador o tipo no válido: ${id.slice(0, 40)}`)
+      errors.push(`Piece with an invalid ID or type: ${id.slice(0, 40)}`)
       continue
     }
     const draft = sanitize(SCHEMAS[item.kind as Kind], item.draft)
@@ -365,7 +365,7 @@ async function importBackup(request: Request, env: Env): Promise<Response> {
       ),
     )
   }
-  if (errors.length) return fail(422, 'El respaldo tiene errores; no se importó nada.', errors.slice(0, 50))
+  if (errors.length) return fail(422, 'The backup has errors; nothing was imported.', errors.slice(0, 50))
 
   const settings = sanitize(SETTINGS_SCHEMA, {
     easterEgg: body.settings?.easterEgg === false ? 'off' : 'on',
@@ -396,13 +396,13 @@ export const onRequest: PagesFunction<Env> = async ({ request, env, params }) =>
       if (parts[1] === 'session' && parts.length === 2 && request.method === 'GET') {
         return json(session ?? { email: null, csrf: null })
       }
-      if (!session) return fail(401, 'Inicia sesión')
+      if (!session) return fail(401, 'Please sign in')
       return await admin(request, env, session, parts.slice(1))
     }
-    return fail(404, 'Ruta no encontrada')
+    return fail(404, 'Route not found')
   } catch (error) {
     if (error instanceof HttpError) return fail(error.status, error.message, error.details)
     console.error(error)
-    return fail(500, 'Error interno')
+    return fail(500, 'Internal error')
   }
 }

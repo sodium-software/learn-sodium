@@ -52,7 +52,7 @@ export function ListeningPractice({ definition, onComplete }: ActivityToolProps)
   }
 
   if (!item) {
-    return <p className="text-ink-soft">Esta actividad no tiene fragmentos cargados.</p>
+    return <p className="text-ink-soft">This activity has no clips yet.</p>
   }
 
   const question = item.question
@@ -92,7 +92,7 @@ export function ListeningPractice({ definition, onComplete }: ActivityToolProps)
         src={item.audio}
         time={time}
         onTimeChange={setTime}
-        label={`fragmento ${index + 1}`}
+        label={`clip ${index + 1}`}
       />
 
       <div className="panel mt-6 px-6 py-6">
@@ -149,7 +149,7 @@ export function ListeningPractice({ definition, onComplete }: ActivityToolProps)
 
         <div className="mt-6 flex justify-end">
           <Button variant="primary" onClick={next} disabled={!answered}>
-            {index + 1 >= items.length ? 'Ver resultado' : 'Siguiente fragmento'}
+            {index + 1 >= items.length ? 'See result' : 'Next clip'}
             <Icon name="ChevronRight" size={16} />
           </Button>
         </div>

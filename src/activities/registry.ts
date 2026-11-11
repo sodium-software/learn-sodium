@@ -30,12 +30,12 @@ export interface ActivityTool {
 type InternalKind = Exclude<ActivityKind, 'external'>
 
 const tools: Record<InternalKind, Omit<ActivityTool, 'id'>> = {
-  vocabulary: { kind: 'vocabulary', component: VocabularyBuilder, typeLabel: 'Tarjetas' },
+  vocabulary: { kind: 'vocabulary', component: VocabularyBuilder, typeLabel: 'Cards' },
   quiz: { kind: 'quiz', component: QuizTool, typeLabel: 'Quiz' },
-  matching: { kind: 'matching', component: WordMatching, typeLabel: 'Relacionar' },
-  'fill-blanks': { kind: 'fill-blanks', component: FillInBlanks, typeLabel: 'Completar' },
-  listening: { kind: 'listening', component: ListeningPractice, typeLabel: 'Escucha' },
-  reading: { kind: 'reading', component: ReadingComprehension, typeLabel: 'Lectura' },
+  matching: { kind: 'matching', component: WordMatching, typeLabel: 'Matching' },
+  'fill-blanks': { kind: 'fill-blanks', component: FillInBlanks, typeLabel: 'Fill in' },
+  listening: { kind: 'listening', component: ListeningPractice, typeLabel: 'Listening' },
+  reading: { kind: 'reading', component: ReadingComprehension, typeLabel: 'Reading' },
 }
 
 /** Herramientas de las actividades internas. Se rellena con `syncActivityTools` al cargar el contenido. */

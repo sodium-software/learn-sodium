@@ -19,7 +19,7 @@ import { StoryDetailView } from './views/StoryDetailView'
 const AdminApp = import.meta.env.VITE_STATIC === '1' ? () => null : lazy(() => import('./admin/AdminApp'))
 const GameView = lazy(() => import('./game/GameView'))
 
-const loading = <div className="frame py-16 text-ink-mute">Cargando…</div>
+const loading = <div className="frame py-16 text-ink-mute">Loading…</div>
 
 export function AppRoutes() {
   return (
@@ -53,9 +53,9 @@ export function AppRoutes() {
           element={
             <CatalogView
               kind="song"
-              title="Canciones"
-              description="Escucha, sigue la letra y aprende palabras nuevas."
-              intro="Cada canción trae la letra con su traducción y un reproductor que marca la línea que suena. Puedes guardar tus partes favoritas: se quedan en este dispositivo."
+              title="Songs"
+              description="Listen, follow the words and learn new ones."
+              intro="Each song has the words with a translation, and a player that lights up the line you hear. You can save your favorite parts: they stay on this device."
             />
           }
         />
@@ -68,8 +68,8 @@ export function AppRoutes() {
             <CatalogView
               kind="podcast"
               title="Podcast"
-              description="Conversaciones cortas con la transcripción a la vista."
-              intro="Cada episodio tiene la transcripción con marcas de tiempo y unas preguntas para comprobar lo que entendiste."
+              description="Short talks with the words on screen."
+              intro="Each episode has the full text with times, and a few questions to check what you understood."
             />
           }
         />
@@ -79,9 +79,9 @@ export function AppRoutes() {
           element={
             <CatalogView
               kind="film"
-              title="Cortometrajes"
-              description="Historias en vídeo con escenas y preguntas."
-              intro="Cortometrajes breves en inglés con la traducción de cada escena. Al terminar, unas preguntas para ver qué entendiste."
+              title="Short films"
+              description="Video stories with scenes and questions."
+              intro="Short films in English with a translation for each scene. At the end, a few questions to see what you understood."
             />
           }
         />

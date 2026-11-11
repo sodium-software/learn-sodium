@@ -155,14 +155,14 @@ export function AudioPlayer({
           type="button"
           onClick={toggle}
           className="btn btn-primary h-14 w-14 shrink-0 p-0"
-          aria-label={playing ? `Pausar ${label}` : `Reproducir ${label}`}
+          aria-label={playing ? `Pause ${label}` : `Play ${label}`}
         >
           <Icon name={playing ? 'Pause' : 'Play'} size={24} strokeWidth={2.25} />
         </button>
 
         <div className="min-w-0 flex-1">
           <label className="sr-only" htmlFor={`scrub-${src}`}>
-            Posición de {label}
+            Position in {label}
           </label>
           <input
             id={`scrub-${src}`}
@@ -184,7 +184,7 @@ export function AudioPlayer({
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
         <label className="flex items-center gap-2 text-ink-soft">
           <Icon name="Volume2" size={20} />
-          <span className="sr-only">Volumen</span>
+          <span className="sr-only">Volume</span>
           <input
             type="range"
             min={0}
@@ -216,7 +216,7 @@ export function AudioPlayer({
         </div>
 
         <p className="ml-auto text-sm text-ink-mute">
-          {ready ? 'Material de demostración generado localmente' : 'Cargando…'}
+          {ready ? 'Demo material made on this device' : 'Loading…'}
         </p>
       </div>
     </div>

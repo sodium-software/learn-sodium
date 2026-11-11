@@ -21,9 +21,9 @@ export function StoryDetailView() {
   if (!story) {
     return (
       <div className="frame py-16">
-        <h1 className="text-head text-ink">No encontramos esa historia</h1>
+        <h1 className="text-head text-ink">We can't find that story</h1>
         <Link to="/storytelling" className="btn btn-primary mt-6">
-          Volver al catálogo
+          Back to the list
         </Link>
       </div>
     )
@@ -46,7 +46,7 @@ export function StoryDetailView() {
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
           <img
             src={story.cover}
-            alt={`Portada de ${story.title}`}
+            alt={`Cover of ${story.title}`}
             className="aspect-[4/3] w-full object-cover lg:aspect-square"
           />
           <div className="flex flex-col justify-center">
@@ -72,7 +72,7 @@ export function StoryDetailView() {
         {/* ── Capítulos ────────────────────────────────────────────────── */}
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="min-w-0">
-            <nav className="mb-8 flex flex-wrap gap-2" aria-label="Capítulos">
+            <nav className="mb-8 flex flex-wrap gap-2" aria-label="Chapters">
               {story.chapters.map((entry, index) => (
                 <button
                   key={entry.id}
@@ -110,7 +110,7 @@ export function StoryDetailView() {
                   className="btn btn-secondary"
                 >
                   <Icon name="ChevronLeft" size={16} />
-                  Capítulo anterior
+                  Previous chapter
                 </button>
               ) : null}
               {chapterIndex < story.chapters.length - 1 ? (
@@ -119,7 +119,7 @@ export function StoryDetailView() {
                   onClick={() => setChapterIndex(chapterIndex + 1)}
                   className="btn btn-secondary"
                 >
-                  Capítulo siguiente
+                  Next chapter
                   <Icon name="ChevronRight" size={16} />
                 </button>
               ) : null}
@@ -129,18 +129,18 @@ export function StoryDetailView() {
                 className="btn btn-primary ml-auto"
               >
                 <Icon name="Check" size={16} />
-                Marcar como leída
+                Mark as read
               </button>
             </div>
 
             {/* ── Comprensión lectora ──────────────────────────────────── */}
             <section className="mt-16" aria-labelledby="comprension">
               <h2 id="comprension" className="text-head text-ink">
-                Preguntas de comprensión
+                Questions
               </h2>
               <p className="mt-2 max-w-2xl text-sm text-ink-soft">
-                Responde todas y comprueba. No hay penalización: volver a leer es parte
-                del método.
+                Answer them all, then check. It's fine to get some wrong: reading again
+                is part of learning.
               </p>
 
               <div className="mt-6 space-y-4">
@@ -210,7 +210,7 @@ export function StoryDetailView() {
                               : 'border-wrong text-ink-soft',
                           )}
                         >
-                          {isCorrect ? 'Correcto. ' : 'No es correcto. '}
+                          {isCorrect ? 'Correct. ' : 'Not quite. '}
                           {question.explanation}
                         </p>
                       ) : null}
@@ -226,13 +226,13 @@ export function StoryDetailView() {
                   disabled={!allAnswered}
                   className="btn btn-primary"
                 >
-                  Comprobar respuestas
+                  Check answers
                 </button>
                 {checked ? (
                   <div className="flex items-center gap-3">
                     <ProgressBar value={correct} max={story.comprehension.length} />
                     <p className="text-sm text-ink-soft tnum">
-                      {correct} de {story.comprehension.length}
+                      {correct} of {story.comprehension.length}
                     </p>
                   </div>
                 ) : null}
@@ -244,7 +244,7 @@ export function StoryDetailView() {
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
               <h2 className="font-display text-lg font-extrabold text-ink">
-                Vocabulario
+                Words
               </h2>
               <dl className="mt-4 space-y-4">
                 {story.glossary.map((entry) => {
@@ -262,7 +262,7 @@ export function StoryDetailView() {
                             isMastered ? 'bg-green text-white' : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
-                          {isMastered ? 'Dominada' : 'Marcar'}
+                          {isMastered ? 'Learned' : 'Mark as learned'}
                         </button>
                       </dt>
                       <dd className="mt-1 text-sm text-ink-soft">{entry.definition}</dd>
@@ -276,7 +276,7 @@ export function StoryDetailView() {
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
                 <h2 className="font-display text-lg font-extrabold text-ink">
-                  Sigue con
+                  Try next
                 </h2>
                 <ul className="mt-3">
                   {related.map((item) => (
