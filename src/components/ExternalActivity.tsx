@@ -30,11 +30,11 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
           {activity.age ? <span className="text-xs text-ink-mute">{activity.age}</span> : null}
           {activity.example ? <Tag>Example</Tag> : null}
         </div>
-        <h3 className="mt-3 font-display text-3xl font-extrabold leading-tight text-ink">{activity.title}</h3>
+        <h3 className="mt-3 font-display text-3xl leading-tight text-ink">{activity.title}</h3>
         {activity.skill ? <p className="mt-1 text-base text-ink-mute">{skillName(activity.skill)}</p> : null}
         {activity.description ? <p className="mt-3 text-base text-ink-soft">{activity.description}</p> : null}
         {activity.instructions ? (
-          <p className="mt-4 whitespace-pre-line rounded-[var(--radius-xs)] bg-yellow-pale px-4 py-3 text-base text-ink">{activity.instructions}</p>
+          <p className="mt-4 whitespace-pre-line bg-yellow-pale px-4 py-3 text-base text-ink">{activity.instructions}</p>
         ) : null}
 
         <div className="mt-auto flex flex-wrap items-center gap-3 pt-5">

@@ -49,7 +49,7 @@ export function ActivitiesView() {
       <Link
         key={definition.id}
         to={`/activities/${definition.id}`}
-        className="group flex flex-col rounded-[var(--radius-xs)] bg-sheet px-6 py-6 transition-transform hover:-translate-y-1"
+        className="group flex flex-col bg-sheet px-6 py-6 transition-transform hover:-translate-y-1"
       >
         <div className="flex items-center justify-between gap-3">
           <span className="inline-flex items-center gap-2 text-sm font-bold text-ink-soft">
@@ -59,7 +59,7 @@ export function ActivitiesView() {
           </span>
           <LevelTag level={definition.level} />
         </div>
-        <h3 className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink group-hover:text-blue">
+        <h3 className="mt-4 font-display text-3xl leading-tight text-ink group-hover:text-blue">
           {definition.title}
         </h3>
         <p className="mt-1 text-base text-ink-mute">{definition.tagline}</p>
@@ -69,7 +69,7 @@ export function ActivitiesView() {
             <>
               <div className="flex items-center justify-between gap-3">
                 <span className="text-sm text-ink-mute">Last time</span>
-                <span className={clsx('font-display text-lg font-extrabold tnum', result.score >= 70 ? 'text-green' : 'text-ink')}>
+                <span className={clsx('font-display text-lg tnum', result.score >= 70 ? 'text-green' : 'text-ink')}>
                   {result.score}/100
                 </span>
               </div>
@@ -92,11 +92,11 @@ export function ActivitiesView() {
         description="Games that check your answers, and activities on other websites."
       >
         <div className="mt-6 flex max-w-md items-center gap-4">
-          <p className="shrink-0 font-display text-3xl font-extrabold tnum">
+          <p className="shrink-0 font-display text-3xl tnum">
             {done}
             <span className="text-xl"> of {total}</span>
           </p>
-          <div className="flex-1 rounded-full bg-white/25 p-1">
+          <div className="flex-1 bg-white/25 p-1">
             <ProgressBar value={overallProgress} max={100} label="Activities completed" />
           </div>
         </div>
@@ -106,7 +106,7 @@ export function ActivitiesView() {
         <section key={piece.id} className="mt-16" aria-labelledby={`grupo-${piece.id}`}>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="flex min-w-0 items-center gap-4">
-              <span className="block h-16 w-20 shrink-0 overflow-hidden rounded-[4px]">
+              <span className="block h-16 w-20 shrink-0 overflow-hidden">
                 <Cover src={piece.cover} kind={piece.kind} alt="" className="h-full" />
               </span>
               <div className="min-w-0">

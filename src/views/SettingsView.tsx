@@ -17,7 +17,7 @@ export function SettingsView() {
     <div className="frame py-10 lg:py-16">
       <header className="grid-editorial items-end gap-y-6">
         <div className="col-span-4 lg:col-span-7">
-          <h1 className="text-hero font-display font-extrabold leading-[0.96] text-ink">
+          <h1 className="text-hero font-display leading-[0.96] text-ink">
             Settings
           </h1>
         </div>
@@ -31,7 +31,7 @@ export function SettingsView() {
       <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
         {/* ── Preferencias ─────────────────────────────────────────────── */}
         <section>
-          <h2 className="font-display text-2xl font-extrabold text-ink">
+          <h2 className="font-display text-2xl text-ink">
             Preferences
           </h2>
 
@@ -62,7 +62,7 @@ export function SettingsView() {
               className="mt-1 w-full"
             />
 
-            <label className="mt-6 flex cursor-pointer items-start gap-3">
+            <label className="mt-6 flex min-h-12 cursor-pointer items-start gap-3">
               <input
                 type="checkbox"
                 checked={preferences.showTranslations}
@@ -86,7 +86,7 @@ export function SettingsView() {
 
         {/* ── Progreso ─────────────────────────────────────────────────── */}
         <section>
-          <h2 className="font-display text-2xl font-extrabold text-ink">
+          <h2 className="font-display text-2xl text-ink">
             Your progress
           </h2>
 
@@ -94,7 +94,7 @@ export function SettingsView() {
             <dl className="grid grid-cols-2 gap-6">
               <div>
                 <dt className="label">Activities completed</dt>
-                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl text-ink tnum">
                   {state.completedActivityIds.length}
                   <span className="text-base text-ink-mute">
                     /{activityDefinitions.length}
@@ -103,20 +103,20 @@ export function SettingsView() {
               </div>
               <div>
                 <dt className="label">Average score</dt>
-                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl text-ink tnum">
                   {average}
                   <span className="text-base text-ink-mute">/100</span>
                 </dd>
               </div>
               <div>
                 <dt className="label">Minutes today</dt>
-                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl text-ink tnum">
                   {minutesToday}
                 </dd>
               </div>
               <div>
                 <dt className="label">Streak</dt>
-                <dd className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
+                <dd className="mt-1 font-display text-3xl text-ink tnum">
                   {streak}
                   <span className="text-base text-ink-mute"> days</span>
                 </dd>
@@ -166,7 +166,7 @@ export function SettingsView() {
 
       {/* ── Estado técnico ─────────────────────────────────────────────── */}
       <section className="mt-16 pt-8">
-        <h2 className="font-display text-xl font-extrabold text-ink">
+        <h2 className="font-display text-xl text-ink">
           About this notebook
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-ink-soft">

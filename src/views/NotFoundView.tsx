@@ -6,7 +6,7 @@ import { Icon } from '../components/ui'
 export function NotFoundView() {
   return (
     <div className="frame py-24">
-      <h1 className="text-display font-display font-extrabold leading-[0.98] text-ink">
+      <h1 className="text-display font-display leading-[0.98] text-ink">
         This page doesn't exist
       </h1>
       <p className="mt-5 max-w-xl text-lead text-ink-soft">

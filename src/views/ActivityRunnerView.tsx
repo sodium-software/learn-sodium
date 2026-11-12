@@ -83,7 +83,7 @@ export function ActivityRunnerView() {
             <span className="text-sm text-ink-mute">{tool.typeLabel}</span>
             <span className="text-sm text-ink-mute tnum">{definition.minutes} min</span>
           </div>
-          <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
+          <h1 className="mt-4 text-display font-display leading-[0.98] text-ink">
             {definition.title}
           </h1>
           <p className="mt-4 max-w-2xl text-lead text-ink-soft">{definition.description}</p>
@@ -93,7 +93,7 @@ export function ActivityRunnerView() {
           {result ? (
             <div className="panel px-5 py-4">
               <p className="label">Last time</p>
-              <p className="mt-1 font-display text-3xl font-extrabold text-ink tnum">
+              <p className="mt-1 font-display text-3xl text-ink tnum">
                 {result.score}
                 <span className="text-base text-ink-mute">/100</span>
               </p>
@@ -127,7 +127,7 @@ export function ActivityRunnerView() {
 
       {relatedContent.length > 0 ? (
         <section className="mt-16 pt-8" aria-labelledby="relacionado">
-          <h2 id="relacionado" className="font-display text-xl font-extrabold text-ink">
+          <h2 id="relacionado" className="font-display text-xl text-ink">
             Related pieces
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

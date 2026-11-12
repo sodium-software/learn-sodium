@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 
-import { siteConfig } from '../config/site'
-import { MagnetWord, SiteHeader } from './SiteHeader'
+import { SiteHeader, Wordmark } from './SiteHeader'
 import { useProgress } from '../lib/progress-context'
 
 /**
@@ -20,6 +19,30 @@ export function AppShell() {
     setLastPath(location.pathname)
     window.scrollTo({ top: 0, behavior: 'auto' })
   }
+
+  // Entrada escalonada de secciones, tarjetas y titulares al hacer scroll.
+  // Sin JavaScript o con movimiento reducido, todo se ve desde el principio.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return
+    const targets = [...document.querySelectorAll<HTMLElement>('main h2, main li, main article, main section > p')]
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          entry.target.classList.add('is-in')
+          observer.unobserve(entry.target)
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px' },
+    )
+    targets.forEach((el, i) => {
+      if (el.getBoundingClientRect().top < window.innerHeight) return
+      el.classList.add('reveal')
+      el.style.transitionDelay = `${(i % 3) * 70}ms`
+      observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [location.pathname])
 
   // Registrar minutos de práctica: se cuenta el tiempo que la persona pasa
   // con una actividad abierta.
@@ -48,7 +71,7 @@ export function AppShell() {
       </main>
       <footer className="frame bg-sheet pb-10 pt-14">
         <p className="text-[clamp(3rem,1.5rem+7vw,8rem)] leading-none" aria-hidden="true">
-          <MagnetWord text={siteConfig.platformName} />
+          <Wordmark />
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 text-base text-ink-soft">
           <p className="max-w-[60ch]">

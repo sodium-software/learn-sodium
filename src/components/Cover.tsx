@@ -1,10 +1,10 @@
 import { clsx } from '../lib/cn'
-import { Drawing } from './Drawings'
-import { SECTION_COLORS } from './sections'
+import { SECTION_COLORS, SECTION_NAMES, halftone } from './sections'
 
 /**
- * Portada de una pieza. Si la pieza no trae imagen, se muestra el dibujo de
- * su sección sobre su color, para que nunca quede un hueco gris.
+ * Portada de una pieza. Si la pieza no trae imagen, se muestra una página
+ * fotocopiada del color de su sección con su nombre, para que nunca quede un
+ * hueco gris.
  */
 export function Cover({
   src,
@@ -18,12 +18,9 @@ export function Cover({
   className?: string
 }) {
   if (src) return <img src={src} alt={alt} loading="lazy" className={clsx('w-full object-cover', className)} />
-  const section = SECTION_COLORS[kind]
   return (
-    <div role="img" aria-label={alt} className={clsx('grid w-full place-items-center', section.bg, className)}>
-      <span className="grid aspect-square w-2/5 place-items-center rounded-full bg-sheet p-3">
-        <Drawing name={section.drawing} className="w-full" />
-      </span>
+    <div role="img" aria-label={alt} className={clsx('halftone grid w-full place-items-center p-4', className)} style={halftone(kind)}>
+      <span className="bg-sheet px-3 py-1 font-display text-2xl uppercase text-ink">{SECTION_NAMES[kind]}</span>
     </div>
   )
 }

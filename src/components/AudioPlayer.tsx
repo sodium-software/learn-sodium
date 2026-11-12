@@ -203,7 +203,7 @@ export function AudioPlayer({
               type="button"
               onClick={() => setRate(option)}
               className={clsx(
-                'min-h-12 min-w-14 rounded-full px-3 font-bold transition-colors',
+                'min-h-12 min-w-14 px-3 font-bold transition-colors',
                 rate === option
                   ? 'bg-ink text-white'
                   : 'bg-tint text-ink hover:bg-tint-deep',

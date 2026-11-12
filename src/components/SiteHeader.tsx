@@ -7,49 +7,11 @@ import { clsx } from '../lib/cn'
 import { Icon } from './ui'
 import { navEntries } from './nav'
 
-/** Colores de las letras-imán del nombre, en orden. */
-const LETTER_COLORS = [
-  ['var(--color-red)', 'var(--color-red-deep)'],
-  ['var(--color-blue)', 'var(--color-blue-deep)'],
-  ['var(--color-green)', 'var(--color-green-deep)'],
-] as const
-
-/**
- * El nombre hecho de letras-imán. `animate` las deja caer una a una sobre la
- * puerta (solo en la portada); sin animación ya están en su sitio.
- */
-export function MagnetWord({
-  text,
-  className,
-  animate = false,
-  offset = 0,
-}: {
-  text: string
-  className?: string
-  animate?: boolean
-  offset?: number
-}) {
-  let index = offset
+/** El nombre como tira de tóner recortada (la cabecera del fanzine). */
+export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={clsx('inline-flex flex-wrap gap-x-[0.28em]', className)}>
-      {text.split(' ').map((word, w) => (
-        <span key={w} className="inline-flex">
-          {[...word].map((char, c) => {
-            const [color, deep] = LETTER_COLORS[index % LETTER_COLORS.length]
-            const style = {
-              '--c': color,
-              '--d': deep,
-              animationDelay: animate ? `${index * 55}ms` : undefined,
-            } as React.CSSProperties
-            index += 1
-            return (
-              <span key={c} className={clsx('mag-letter', animate && 'animate-stick')} style={style}>
-                {char}
-              </span>
-            )
-          })}
-        </span>
-      ))}
+    <span className={clsx('inline-block bg-ink px-[0.3em] py-[0.08em] font-display uppercase leading-none text-sheet tilt-l', className)}>
+      {siteConfig.platformName}
     </span>
   )
 }
@@ -74,17 +36,17 @@ export function Brand() {
     <Link
       to="/"
       onClick={onClick}
-      className="flex min-h-12 items-center rounded-full pr-2 text-[1.75rem] leading-none"
+      className="flex min-h-12 items-center pr-2 text-[1.625rem] leading-none"
       aria-label={`${siteConfig.platformName}, go to Home`}
     >
-      <MagnetWord text={siteConfig.platformName} />
+      <Wordmark />
     </Link>
   )
 }
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   clsx(
-    'inline-flex min-h-12 items-center rounded-full px-4 font-bold transition-colors',
+    'inline-flex min-h-12 items-center px-4 font-bold transition-colors',
     isActive ? 'bg-ink text-white' : 'text-ink hover:bg-tint',
   )
 
@@ -143,25 +105,25 @@ export function SiteHeader() {
             <button
               type="button"
               className={clsx(
-                'inline-flex min-h-12 items-center gap-1.5 rounded-full px-4 font-bold transition-colors',
+                'inline-flex min-h-12 items-center gap-1.5 px-4 font-bold transition-colors',
                 adultActive ? 'bg-ink text-white' : 'bg-sheet text-ink hover:bg-tint',
               )}
               aria-expanded={adultOpen}
               aria-controls="menu-adultos"
               onClick={() => setAdultOpen((open) => !open)}
             >
-              For grown-ups
+              About
               <Icon name="ChevronDown" size={18} className={clsx('transition-transform', adultOpen && 'rotate-180')} />
             </button>
             {adultOpen ? (
-              <div id="menu-adultos" className="absolute right-0 top-full mt-2 w-60 rounded-[var(--radius-md)] bg-sheet p-2 shadow-menu">
+              <div id="menu-adultos" className="absolute right-0 top-full mt-2 w-60 bg-sheet p-2 shadow-menu">
                 {adults.map((entry) => (
                   <NavLink
                     key={entry.id}
                     to={entry.to}
                     className={({ isActive }) =>
                       clsx(
-                        'flex min-h-12 items-center rounded-[var(--radius-sm)] px-4 font-bold',
+                        'flex min-h-12 items-center px-4 font-bold',
                         isActive ? 'bg-ink text-white' : 'text-ink hover:bg-tint',
                       )
                     }
@@ -191,7 +153,7 @@ export function SiteHeader() {
           <button type="button" className="absolute inset-0 bg-ink/50" onClick={() => setMenuOpen(false)} aria-label="Close menu" />
           <div id="menu-movil" className="absolute inset-y-0 right-0 flex w-[22rem] max-w-[90vw] flex-col overflow-y-auto bg-paper p-4 shadow-menu">
             <div className="flex items-center justify-between">
-              <span className="font-display text-2xl font-extrabold">Menu</span>
+              <span className="font-display text-2xl">Menu</span>
               <button type="button" className="btn btn-secondary" onClick={() => setMenuOpen(false)} aria-label="Close menu">
                 <Icon name="X" size={20} />
               </button>
@@ -204,7 +166,7 @@ export function SiteHeader() {
                   end={entry.to === '/'}
                   className={({ isActive }) =>
                     clsx(
-                      'flex min-h-14 items-center rounded-[var(--radius-md)] px-5 font-display text-2xl font-extrabold',
+                      'flex min-h-14 items-center px-5 font-display text-2xl',
                       isActive ? 'bg-ink text-white' : 'bg-sheet text-ink',
                     )
                   }
@@ -213,8 +175,8 @@ export function SiteHeader() {
                 </NavLink>
               ))}
             </nav>
-            <p className="mt-8 px-1 font-bold text-ink-mute">For grown-ups</p>
-            <nav className="mt-2 flex flex-col gap-1" aria-label="For grown-ups">
+            <p className="mt-8 px-1 font-bold text-ink-mute">About</p>
+            <nav className="mt-2 flex flex-col gap-1" aria-label="About">
               {adults.map((entry) => (
                 <NavLink key={entry.id} to={entry.to} className={linkClass}>
                   {entry.label}

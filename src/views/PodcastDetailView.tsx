@@ -65,7 +65,7 @@ export function PodcastDetailView() {
               <LevelTag level={episode.level} />
               <span className="text-sm text-ink-mute">{episode.show}</span>
             </div>
-            <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
+            <h1 className="mt-4 text-display font-display leading-[0.98] text-ink">
               {episode.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lead text-ink-soft">{episode.summary}</p>
@@ -166,7 +166,7 @@ export function PodcastDetailView() {
                               disabled={checked}
                               aria-pressed={isChosen}
                               className={clsx(
-                                'flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-sm)] border-2 px-4 py-2.5 text-left text-lg transition-colors',
+                                'flex min-h-14 w-full items-center gap-3 border-2 px-4 py-2.5 text-left text-lg transition-colors',
                                 showState && isAnswer
                                   ? 'border-accent bg-accent-pale/40'
                                   : showState && isChosen
@@ -177,7 +177,7 @@ export function PodcastDetailView() {
                             >
                               <span
                                 className={clsx(
-                                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base font-bold',
+                                  'flex h-9 w-9 shrink-0 items-center justify-center border-2 text-base font-bold',
                                   showState && isAnswer
                                     ? 'border-accent bg-accent text-accent-ink'
                                     : showState && isChosen
@@ -235,7 +235,7 @@ export function PodcastDetailView() {
 
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
-              <h2 className="font-display text-lg font-extrabold text-ink">
+              <h2 className="font-display text-lg text-ink">
                 Key words
               </h2>
               <dl className="mt-4 space-y-4">
@@ -250,7 +250,7 @@ export function PodcastDetailView() {
                           onClick={() => toggleMastered(entry.term)}
                           aria-pressed={isMastered}
                           className={clsx(
-                            'shrink-0 min-h-12 rounded-full px-4 text-base font-bold transition-colors',
+                            'shrink-0 min-h-12 px-4 text-base font-bold transition-colors',
                             isMastered ? 'bg-green text-white' : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
@@ -267,7 +267,7 @@ export function PodcastDetailView() {
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
-                <h2 className="font-display text-lg font-extrabold text-ink">
+                <h2 className="font-display text-lg text-ink">
                   Try next
                 </h2>
                 <ul className="mt-3">

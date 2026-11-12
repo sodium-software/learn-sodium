@@ -61,7 +61,7 @@ export function Tag({
   return (
     <span
       className={clsx(
-        'inline-flex h-7 items-center gap-1.5 rounded-[4px] px-2 text-sm font-bold',
+        'inline-flex h-7 items-center gap-1.5 px-2 text-sm font-bold',
         tone === 'quiet' && 'bg-yellow-pale text-ink',
         tone === 'solid' && 'bg-ink text-white',
         tone === 'accent' && 'bg-accent text-accent-ink',
@@ -77,7 +77,7 @@ export function Tag({
 
 export function LevelTag({ level }: { level: string }) {
   return (
-    <span className="inline-flex h-7 min-w-9 items-center justify-center rounded-[4px] bg-ink px-2 text-sm font-bold text-white">
+    <span className="inline-flex h-7 min-w-9 items-center justify-center bg-ink px-2 text-sm font-bold text-white">
       {level}
     </span>
   )
@@ -122,7 +122,7 @@ export function EmptyState({
 }) {
   return (
     <div className="panel-quiet px-6 py-10 text-center">
-      <p className="font-display text-lg font-extrabold text-ink">{title}</p>
+      <p className="font-display text-lg text-ink">{title}</p>
       <p className="mx-auto mt-2 max-w-md text-sm text-ink-soft">{description}</p>
       {action ? <div className="mt-5 flex justify-center">{action}</div> : null}
     </div>

@@ -4,133 +4,116 @@ import { siteConfig } from '../config/site'
 import { useProgress } from '../lib/progress-context'
 import { clsx } from '../lib/cn'
 import { Cover } from '../components/Cover'
-import { Drawing, type DrawingName } from '../components/Drawings'
-import { SECTION_COLORS } from '../components/sections'
-import { MagnetWord } from '../components/SiteHeader'
-import { Icon, LevelTag, Tag } from '../components/ui'
+import { SECTION_COLORS, SECTION_NAMES } from '../components/sections'
+import { Icon } from '../components/ui'
 import { WordGame } from '../components/WordGame'
-import { activityDefinitions, allContent, episodes, films, pages, songs, stories, type ContentItem } from '../content'
+import { activityDefinitions, episodes, films, pages, songs, stories } from '../content'
 
 /**
- * Inicio: la puerta de la nevera. El nombre en letras-imán, el juego de armar
- * palabras y, debajo, las secciones como papeles de distintos tamaños y
- * colores. El nombre del niño, si lo escribió en Ajustes, solo vive en su
- * navegador.
+ * Inicio: la portada del fanzine. El titular recortado en tiras, el juego de
+ * armar palabras pegado con cinta y, debajo, las cuatro historias como
+ * páginas de distinto tamaño. El nombre del estudiante, si lo escribió en
+ * Ajustes, solo vive en su navegador.
  */
 export function HomeView() {
   const { preferences, state } = useProgress()
   const name = preferences.displayName.trim()
   const done = state.completedActivityIds.length
-  const featured = [songs[0], stories[0], films[0]]
-    .filter(Boolean)
-    .map((piece) => allContent.find((item) => item.id === piece.id))
-    .filter((item): item is ContentItem => Boolean(item))
 
   return (
     <div>
       {/* ── Portada ────────────────────────────────────────────────────── */}
-      <section className="frame grid-editorial items-center gap-y-12 pb-20 pt-8 lg:min-h-[calc(100dvh-4.5rem)] lg:pb-24">
+      <section className="frame grid-editorial items-center gap-y-12 pb-20 pt-10 lg:min-h-[calc(100dvh-4.5rem)] lg:pb-24">
         <div className="col-span-4 lg:col-span-7">
-          <h1 className="text-[clamp(4.25rem,2rem+10vw,11.5rem)] leading-[0.86] tracking-[-0.02em]">
-            <MagnetWord text={siteConfig.platformName} animate />
+          <h1 className="text-[clamp(4rem,1.6rem+9vw,10.5rem)]">
+            <span className="strip animate-stick">Stories</span>
+            <br />
+            <span className="strip animate-stick [--strip:var(--color-ink)] [--strip-ink:var(--color-sheet)] [animation-delay:90ms]">in</span>{' '}
+            <span className="strip animate-stick [--strip:var(--color-yellow)] [animation-delay:180ms]">English</span>
           </h1>
-          <p className="mt-8 max-w-[30ch] text-lead text-ink animate-rise [animation-delay:500ms]">
+          <p className="mt-8 max-w-[38ch] text-lead animate-rise [animation-delay:300ms]">
             {name ? <strong>Hi, {name}! </strong> : null}
             {siteConfig.heroText}
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4 animate-rise [animation-delay:600ms]">
-            <Link to="/activities" className="btn btn-primary min-h-16 px-8 text-xl">
-              Start playing
-              <Icon name="ArrowRight" size={22} />
+          <div className="mt-8 flex flex-wrap items-center gap-4 animate-rise [animation-delay:380ms]">
+            <Link to="/song" className="btn btn-primary min-h-14 px-7 text-lg">
+              Start with the song
+              <Icon name="ArrowRight" size={20} />
             </Link>
             {done > 0 ? (
-              <p className="text-base font-bold text-ink-soft">
+              <p className="text-base font-bold">
                 You have done {done} {done === 1 ? 'activity' : 'activities'}.
               </p>
             ) : null}
           </div>
         </div>
 
-        <div className="relative col-span-4 lg:col-span-5">
-          <div className="relative animate-rise [animation-delay:350ms]">
-            <WordGame />
-          </div>
-          <div className="mt-8 hidden justify-end gap-6 pr-4 sm:flex">
-            <DecorPaper drawing="sun" word="sun" className="tilt-l relative w-36" />
-            <DecorPaper drawing="boat" word="boat" className="tilt-r relative mt-6 w-40" />
-          </div>
+        <div className="col-span-4 lg:col-span-5 animate-rise [animation-delay:250ms]">
+          <WordGame />
         </div>
       </section>
 
-      {/* ── Secciones: papeles de distinto tamaño y color ──────────────── */}
-      <section className="frame pb-24" aria-labelledby="secciones">
-        <h2 id="secciones" className="text-display">
-          Pick something to do
+      {/* ── Las cuatro historias ───────────────────────────────────────── */}
+      <section className="frame pb-24" aria-labelledby="historias">
+        <h2 id="historias" className="text-display">
+          <span className="strip">The four stories</span>
         </h2>
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
-          <SectionPaper to="/song" kind="song" title="Songs" body="Listen, follow the words and sing." count={songs.length} unit={['song', 'songs']} className="lg:col-span-5 lg:row-span-2" large />
-          <SectionPaper to="/storytelling" kind="story" title="Stories" body="Stories in chapters with new words." count={stories.length} unit={['story', 'stories']} className="lg:col-span-4" />
-          <SectionPaper to="/podcast" kind="podcast" title="Podcast" body="Listen to short talks." count={episodes.length} unit={['episode', 'episodes']} className="lg:col-span-3" />
-          <SectionPaper to="/short-film" kind="film" title="Short films" body="Little movies with questions at the end." count={films.length} unit={['short film', 'short films']} className="lg:col-span-3" />
-          <SectionPaper to="/activities" kind="activity" title="Activities" body="Games to practice what you learned." count={activityDefinitions.length} unit={['game', 'games']} className="lg:col-span-4" />
+        <p className="mt-5 max-w-[52ch] text-lead">
+          Each story comes in a different format, with its script and four activities.
+        </p>
+        <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-12">
+          <StoryPage to="/song" kind="song" cover={songs[0]?.cover} body="An original song. Listen and read the lyrics." count={songs.length} className="lg:col-span-7" />
+          <StoryPage to="/podcast" kind="podcast" cover={episodes[0]?.cover} body="A video episode with its script." count={episodes.length} className="lg:col-span-5" />
+          <StoryPage to="/short-film" kind="film" cover={films[0]?.cover} body="A film with no dialogue. Watch it and tell the story." count={films.length} className="lg:col-span-5" />
+          <StoryPage to="/storytelling" kind="story" cover={stories[0]?.cover} body="A legend, myth or fable, told and illustrated." count={stories.length} className="lg:col-span-7" />
         </div>
       </section>
 
-      {/* ── Para empezar ───────────────────────────────────────────────── */}
-      {featured.length > 0 ? (
-        <section className="bg-tint py-20" aria-labelledby="empezar">
-          <div className="frame">
-            <h2 id="empezar" className="text-display">
-              Start here
+      {/* ── Actividades ────────────────────────────────────────────────── */}
+      <section className="bg-green py-20 text-white" aria-labelledby="actividades-portada">
+        <div className="frame grid-editorial items-end gap-y-8">
+          <div className="col-span-4 lg:col-span-8">
+            <h2 id="actividades-portada" className="text-display">
+              <span className="strip">Activities</span>
             </h2>
-            <ul className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-3">
-              {featured.map((item, i) => (
-                <li key={item.id} className="animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
-                  <Link to={item.route} className="group relative flex h-full flex-col rounded-[var(--radius-xs)] bg-sheet p-3 pt-5 transition-transform hover:-translate-y-1">
-                    <span className="magnet" style={magnetStyle(i)} />
-                    <Cover src={item.cover} kind={item.kind} alt="" className="aspect-[4/3] rounded-[4px]" />
-                    <span className="flex flex-1 flex-col px-2 pb-2 pt-4">
-                      <span className="font-display text-3xl font-extrabold leading-tight text-ink group-hover:text-blue">{item.title}</span>
-                      <span className="mt-2 flex flex-wrap items-center gap-2">
-                        <LevelTag level={item.level} />
-                        <span className="text-sm text-ink-mute">{item.minutes} min</span>
-                        {item.example ? <Tag>Example</Tag> : null}
-                      </span>
-                      <span className="mt-2 line-clamp-3 text-base text-ink-soft">{item.summary}</span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-6 max-w-[48ch] text-lead">
+              Grammar, speaking, writing, reading, listening and vocabulary: {activityDefinitions.length}{' '}
+              activities, four for each story.
+            </p>
           </div>
-        </section>
-      ) : null}
+          <div className="col-span-4 lg:col-span-4 lg:justify-self-end">
+            <Link to="/activities" className="btn bg-sheet px-7 text-lg text-ink hover:bg-yellow-pale">
+              See all the activities
+              <Icon name="ArrowRight" size={20} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* ── For families ──────────────────────────────────────────── */}
-      <section className="frame grid-editorial gap-y-10 py-24" aria-labelledby="familias">
+      {/* ── Sobre esta guía ────────────────────────────────────────────── */}
+      <section className="frame grid-editorial gap-y-10 py-24" aria-labelledby="sobre">
         <div className="col-span-4 lg:col-span-6">
-          <h2 id="familias" className="text-display">
-            For families
+          <h2 id="sobre" className="text-display">
+            <span className="strip">About this guide</span>
           </h2>
-          <p className="mt-6 max-w-[46ch] text-lead text-ink">
-            {siteConfig.platformName} needs no accounts. It uses no third-party cookies, no analytics and
-            no ads. Your child's progress and name are saved only on this device.
+          <p className="mt-6 max-w-[46ch] text-lead">
+            A didactic web guide made by trainee teachers for teenagers who learn English at B1 level in
+            Colombian schools.
           </p>
           <p className="mt-4 max-w-[46ch] text-base text-ink-soft">
-            Every song, story and film page shows its source, license and credits.
+            No accounts, no analytics and no ads, and this site sets no cookies. Your progress and name stay on
+            this device. Every piece shows its source, license and credits.
           </p>
         </div>
-        <div className="col-span-4 flex flex-col gap-5 lg:col-span-5 lg:col-start-8">
+        <div className="col-span-4 flex flex-col gap-8 lg:col-span-5 lg:col-start-8">
           {(['introduccion', 'biodata'] as const).map((id) => {
             const page = pages[id]
             if (!page) return null
             return (
-              <Link key={id} to={`/${id}`} className="group flex items-center gap-5 rounded-[var(--radius-xs)] bg-sheet p-5 transition-colors hover:bg-tint">
-                <Drawing name={id === 'biodata' ? 'author' : 'info'} className="h-16 w-20 shrink-0" />
-                <span className="min-w-0">
-                  <span className="block font-display text-3xl font-extrabold text-ink group-hover:text-blue">{page.title}</span>
-                  <span className="mt-1 block text-base text-ink-soft">{page.summary}</span>
-                </span>
+              <Link key={id} to={`/${id}`} className="group relative block bg-sheet p-6 pt-8 transition-transform hover:-translate-y-1">
+                <span className="tape" />
+                <span className="block font-display text-4xl uppercase leading-none group-hover:text-blue">{page.title}</span>
+                <span className="mt-2 block text-base text-ink-soft">{page.summary}</span>
               </Link>
             )
           })}
@@ -140,67 +123,35 @@ export function HomeView() {
   )
 }
 
-function magnetStyle(i: number) {
-  const colors = ['red', 'blue', 'green']
-  const c = colors[i % colors.length]
-  return { '--m': `var(--color-${c})`, '--md': `var(--color-${c}-deep)` } as React.CSSProperties
-}
-
-/** Un dibujo pegado en la puerta. Decorativo: se inclina un poco. */
-function DecorPaper({ drawing, word, className }: { drawing: DrawingName; word: string; className?: string }) {
-  return (
-    <div aria-hidden="true" className={clsx('rounded-[var(--radius-xs)] bg-sheet px-3 pb-2 pt-4', className)}>
-      <span className="magnet" style={{ '--m': 'var(--color-green)', '--md': 'var(--color-green-deep)' } as React.CSSProperties} />
-      <Drawing name={drawing} className="w-full" />
-      <p lang="en" className="text-center font-display text-2xl font-extrabold">
-        {word}
-      </p>
-    </div>
-  )
-}
-
-function SectionPaper({
+/** Una de las cuatro historias: una página pegada con cinta, con su portada o su trama. */
+function StoryPage({
   to,
   kind,
-  title,
+  cover,
   body,
   count,
-  unit,
   className,
-  large = false,
+  tall = false,
 }: {
   to: string
   kind: keyof typeof SECTION_COLORS
-  title: string
+  cover?: string
   body: string
   count: number
-  unit: [string, string]
   className?: string
-  large?: boolean
+  tall?: boolean
 }) {
-  const section = SECTION_COLORS[kind]
   return (
-    <Link
-      to={to}
-      className={clsx(
-        'group flex justify-between gap-5 rounded-[var(--radius-xs)] p-6 transition-transform hover:-translate-y-1 sm:p-8',
-        large ? 'flex-col' : 'flex-row-reverse items-center sm:flex-col sm:items-start',
-        section.bg,
-        section.ink,
-        large && 'sm:col-span-2 lg:col-span-5',
-        className,
-      )}
-    >
-      <span className={clsx('grid place-items-center rounded-full bg-sheet p-3', large ? 'h-36 w-36 lg:h-48 lg:w-48' : 'h-20 w-20 shrink-0 sm:h-24 sm:w-24')}>
-        <Drawing name={section.drawing} className="w-full" />
-      </span>
-      <span className="min-w-0">
-        <span className={clsx('block font-display font-extrabold leading-none [overflow-wrap:anywhere]', large ? 'text-[clamp(3rem,2rem+3vw,5rem)]' : 'text-[clamp(1.875rem,1.4rem+1.6vw,2.25rem)]')}>
-          {title}
+    <Link to={to} className={clsx('group relative flex flex-col bg-sheet p-3 pt-6 transition-transform hover:-translate-y-1', className)}>
+      <span className="tape" />
+      <Cover src={cover} kind={kind} alt="" className={clsx('contrast-125 grayscale-[35%]', tall ? 'aspect-[4/5]' : 'aspect-[16/10]')} />
+      <span className="flex flex-1 flex-col px-2 pb-2 pt-4">
+        <span className="font-display text-[clamp(2.25rem,1.6rem+1.6vw,3.25rem)] uppercase leading-none group-hover:text-blue">
+          {SECTION_NAMES[kind]}
         </span>
-        <span className="mt-3 block text-lg">{body}</span>
-        <span className="mt-4 inline-flex items-center gap-2 font-bold">
-          {count} {count === 1 ? unit[0] : unit[1]}
+        <span className="mt-2 text-lg">{body}</span>
+        <span className="mt-auto inline-flex items-center gap-2 pt-4 font-bold">
+          {count > 0 ? `${count} ${count === 1 ? 'piece' : 'pieces'}` : 'Coming soon'}
           <Icon name="ArrowRight" size={20} className="transition-transform group-hover:translate-x-1" />
         </span>
       </span>
