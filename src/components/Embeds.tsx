@@ -7,6 +7,7 @@ const PLATFORM: Record<Exclude<EmbedPlatform, 'youtube'>, { name: string; aspect
   canva: { name: 'Canva', aspect: 'aspect-[16/9]' },
   wordwall: { name: 'Wordwall', aspect: 'aspect-[4/3]' },
   educaplay: { name: 'Educaplay', aspect: 'aspect-[7/6]' },
+  heyzine: { name: 'Heyzine', aspect: 'aspect-[4/3]' },
 }
 
 /**

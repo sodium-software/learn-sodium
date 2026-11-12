@@ -101,7 +101,7 @@ const meta: Field[] = [
   { name: 'cover', label: 'Cover or thumbnail', type: 'media', accept: 'image' },
   {
     name: 'embed',
-    label: 'Embed from Canva, Wordwall, Educaplay or YouTube',
+    label: 'Embed from Canva, Wordwall, Educaplay, Heyzine or YouTube',
     type: 'url',
     embed: 'any',
     help: 'Shown inside the page. Paste the link or the embed code (Share → Embed). Canva edit links are fine: the site only shows the design. YouTube only loads when the child taps play.',
@@ -352,7 +352,7 @@ export const SETTINGS_SCHEMA: Field[] = [
 
 // ── Enlaces insertados ──────────────────────────────────────────────────────
 
-export type EmbedPlatform = 'canva' | 'wordwall' | 'educaplay' | 'youtube'
+export type EmbedPlatform = 'canva' | 'wordwall' | 'educaplay' | 'heyzine' | 'youtube'
 
 const CANVA = /^https:\/\/(?:www\.)?canva\.com\/design\/([A-Za-z0-9_-]+)\/([A-Za-z0-9_-]+)\/(view|watch|edit)\b/
 const YOUTUBE = [
@@ -361,6 +361,7 @@ const YOUTUBE = [
   /^https:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/(?:embed|shorts|live)\/([A-Za-z0-9_-]{11})/,
 ]
 const WORDWALL = /^https:\/\/wordwall\.net\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?embed\/[A-Za-z0-9]+/
+const HEYZINE = /^https:\/\/(?:www\.)?heyzine\.com\/flip-book\/[A-Za-z0-9]+(?:\.html)?(?:[?#].*)?$/
 const EDUCAPLAY = /^https:\/\/(?:[a-z]{2,3}\.|www\.)?educaplay\.com\//
 
 /** Plataforma de un enlace ya convertido (para elegir cómo mostrarlo). */
@@ -368,6 +369,7 @@ export function embedPlatform(url: string): EmbedPlatform {
   if (url.includes('youtube-nocookie.com')) return 'youtube'
   if (url.includes('canva.com')) return 'canva'
   if (url.includes('wordwall.net')) return 'wordwall'
+  if (url.includes('heyzine.com')) return 'heyzine'
   return 'educaplay'
 }
 
@@ -380,7 +382,7 @@ export function embedSource(raw: unknown): string {
 
 /**
  * Convierte el enlace (o el código para insertar) que pega la autora en la
- * dirección que se inserta. Solo acepta Canva, Wordwall, Educaplay y YouTube:
+ * dirección que se inserta. Solo acepta Canva, Wordwall, Educaplay, Heyzine y YouTube:
  * la misma lista blanca que frame-src en public/_headers.
  * shortcut: no sigue enlaces cortos (canva.link, wordwall share); si hiciera falta, habría que resolver la redirección.
  */
@@ -401,8 +403,9 @@ export function embedUrl(link: string, only?: EmbedPlatform): string | { error: 
     return { error: 'use the Wordwall embed code: on the activity choose Share → Embed and paste it here' }
   }
   if (!only && EDUCAPLAY.test(link)) return link
+  if (!only && HEYZINE.test(link)) return link
   if (only === 'youtube') return { error: 'this is not a YouTube video link' }
-  return { error: 'only Canva, Wordwall, Educaplay or YouTube links can be shown inside the page' }
+  return { error: 'only Canva, Wordwall, Educaplay, Heyzine or YouTube links can be shown inside the page' }
 }
 
 // ── Saneado ─────────────────────────────────────────────────────────────────

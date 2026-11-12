@@ -16,6 +16,10 @@ assert.equal(embedUrl(ww), ww)
 assert.match(embedUrl('https://wordwall.net/resource/123/colores').error, /Wordwall embed code/)
 assert.equal(embedUrl('https://es.educaplay.com/juego/123-colores.html'), 'https://es.educaplay.com/juego/123-colores.html')
 assert.equal(embedPlatform(canvaEmbed), 'canva')
+const hz = 'https://heyzine.com/flip-book/7ae08737f4.html'
+assert.equal(embedUrl(hz), hz)
+assert.equal(embedPlatform(hz), 'heyzine')
+assert.match(embedUrl('https://heyzine.com.evil.example/flip-book/x.html').error, /only Canva/)
 
 // El servidor acepta el código <iframe> completo, guarda la forma insertable y convierte el de edición en uno de solo ver.
 const code = `<iframe style="max-width:100%" src="${ww.replace('&', '&amp;')}" width="500" height="380" frameborder="0" allowfullscreen></iframe>`
