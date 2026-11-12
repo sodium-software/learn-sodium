@@ -27,6 +27,8 @@ export interface Field {
   options?: [string, string][]
   accept?: 'image' | 'audio' | 'video'
   fields?: Field[]
+  /** Enlace que se muestra insertado: se valida y se guarda ya en su forma para insertar. */
+  embed?: 'any' | 'youtube'
   /** Solo aplica (y solo se valida) si otro campo tiene uno de estos valores. */
   showIf?: { field: string; in: string[] }
 }
@@ -95,6 +97,13 @@ const meta: Field[] = [
   { name: 'level', label: 'Level', type: 'select', options: LEVELS, required: true },
   { name: 'age', label: 'Recommended age', type: 'text', max: 40, help: 'For example: 7 to 9 years' },
   { name: 'cover', label: 'Cover or thumbnail', type: 'media', accept: 'image' },
+  {
+    name: 'embed',
+    label: 'Embed from Canva, Wordwall, Educaplay or YouTube',
+    type: 'url',
+    embed: 'any',
+    help: 'Shown inside the page. Paste the link or the embed code (Share → Embed). Canva edit links are fine: the site only shows the design. YouTube only loads when the child taps play.',
+  },
 ]
 
 const rights: Field[] = [
@@ -152,6 +161,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
         { name: 'text', label: 'Line in English', type: 'text', required: true, max: 300 },
         { name: 'note', label: 'Translation', type: 'text', max: 300 },
         { name: 'keywords', label: 'Key words', type: 'tags', max: 80 },
+        { name: 'image', label: 'Picture next to the line', type: 'media', accept: 'image' },
       ],
     },
     glossary,
@@ -212,6 +222,13 @@ export const SCHEMAS: Record<Kind, Field[]> = {
     ...meta,
     { name: 'director', label: 'Director', type: 'text', max: 120 },
     { name: 'video', label: 'Video', type: 'media', accept: 'video' },
+    {
+      name: 'youtube',
+      label: 'YouTube video',
+      type: 'url',
+      embed: 'youtube',
+      help: 'Instead of uploading a file. It only loads when the child taps play.',
+    },
     {
       name: 'scenes',
       label: 'Scenes',
@@ -299,6 +316,61 @@ export const SETTINGS_SCHEMA: Field[] = [
   { name: 'dedication', label: 'Game dedication', type: 'textarea', max: 600 },
 ]
 
+// ── Enlaces insertados ──────────────────────────────────────────────────────
+
+export type EmbedPlatform = 'canva' | 'wordwall' | 'educaplay' | 'youtube'
+
+const CANVA = /^https:\/\/(?:www\.)?canva\.com\/design\/([A-Za-z0-9_-]+)\/([A-Za-z0-9_-]+)\/(view|watch|edit)\b/
+const YOUTUBE = [
+  /^https:\/\/(?:www\.|m\.)?youtube\.com\/watch\?(?:.*&)?v=([A-Za-z0-9_-]{11})/,
+  /^https:\/\/youtu\.be\/([A-Za-z0-9_-]{11})/,
+  /^https:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/(?:embed|shorts|live)\/([A-Za-z0-9_-]{11})/,
+]
+const WORDWALL = /^https:\/\/wordwall\.net\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?embed\/[A-Za-z0-9]+/
+const EDUCAPLAY = /^https:\/\/(?:[a-z]{2,3}\.|www\.)?educaplay\.com\//
+
+/** Plataforma de un enlace ya convertido (para elegir cómo mostrarlo). */
+export function embedPlatform(url: string): EmbedPlatform {
+  if (url.includes('youtube-nocookie.com')) return 'youtube'
+  if (url.includes('canva.com')) return 'canva'
+  if (url.includes('wordwall.net')) return 'wordwall'
+  return 'educaplay'
+}
+
+/** Si la autora pega el código <iframe> completo, se queda con su src. */
+export function embedSource(raw: unknown): string {
+  const text = String(raw ?? '').trim()
+  const src = /<iframe[^>]*\ssrc=["']([^"']+)["']/i.exec(text)
+  return (src ? src[1] : text).replace(/&amp;/g, '&')
+}
+
+/**
+ * Convierte el enlace (o el código para insertar) que pega la autora en la
+ * dirección que se inserta. Solo acepta Canva, Wordwall, Educaplay y YouTube:
+ * la misma lista blanca que frame-src en public/_headers.
+ * shortcut: no sigue enlaces cortos (canva.link, wordwall share); si hiciera falta, habría que resolver la redirección.
+ */
+export function embedUrl(link: string, only?: EmbedPlatform): string | { error: string } {
+  const c = CANVA.exec(link)
+  if (c && (!only || only === 'canva')) {
+    // El enlace de edición se guarda como /view: en la web nunca queda un enlace que permita editar.
+    return `https://www.canva.com/design/${c[1]}/${c[2]}/view?embed`
+  }
+  if (!only || only === 'youtube') {
+    for (const pattern of YOUTUBE) {
+      const m = pattern.exec(link)
+      if (m) return `https://www.youtube-nocookie.com/embed/${m[1]}`
+    }
+  }
+  if (!only && WORDWALL.test(link)) return link
+  if (!only && /^https:\/\/wordwall\.net\//.test(link)) {
+    return { error: 'use the Wordwall embed code: on the activity choose Share → Embed and paste it here' }
+  }
+  if (!only && EDUCAPLAY.test(link)) return link
+  if (only === 'youtube') return { error: 'this is not a YouTube video link' }
+  return { error: 'only Canva, Wordwall, Educaplay or YouTube links can be shown inside the page' }
+}
+
 // ── Saneado ─────────────────────────────────────────────────────────────────
 
 export type Data = Record<string, unknown>
@@ -357,7 +429,7 @@ export function sanitize(fields: Field[], input: unknown, path = ''): { data: Da
         }
         break
       case 'url': {
-        const text = cleanText(raw, 2000)
+        const text = cleanText(field.embed ? embedSource(raw) : raw, 2000)
         if (text) {
           try {
             const url = new URL(text)
@@ -365,6 +437,15 @@ export function sanitize(fields: Field[], input: unknown, path = ''): { data: Da
             value = url.toString()
           } catch {
             errors.push(`${at}: the link must start with https://`)
+            break
+          }
+          if (field.embed) {
+            const embedded = embedUrl(String(value), field.embed === 'any' ? undefined : field.embed)
+            if (typeof embedded === 'string') value = embedded
+            else {
+              errors.push(`${at}: ${embedded.error}`)
+              value = undefined
+            }
           }
         }
         break

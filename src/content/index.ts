@@ -69,6 +69,7 @@ function meta(item: PublicItem): PieceMeta {
   return {
     example: item.example,
     age: data.age,
+    embed: text(data.embed) || undefined,
     rights: { source: text(data.source), license: text(data.license), credits: text(data.credits) },
   }
 }
@@ -128,6 +129,7 @@ function toSong(item: PublicItem): Song {
     text: text(line.text),
     note: text(line.note) || undefined,
     keywords: list<string>(line.keywords),
+    image: line.image ? asset(text(line.image)) : undefined,
   }))
   const duration = Math.max(0, ...list<Raw>(data.highlights).map((h) => num(h.end)), ...lyrics.map((l) => l.start + 3))
   return {
@@ -224,6 +226,7 @@ function toFilm(item: PublicItem): ShortFilm {
     comprehension: questions(data.comprehension, `${item.id}-`),
     relatedActivityIds: list<string>(data.relatedActivityIds),
     video: data.video ? asset(text(data.video)) : undefined,
+    youtube: text(data.youtube) || undefined,
     cover: asset(data.cover),
     coverTone: item.id,
   }

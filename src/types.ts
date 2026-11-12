@@ -16,6 +16,8 @@ export interface PieceMeta {
   example: boolean
   rights: Rights
   age?: string
+  /** Contenido insertado de Canva, Wordwall, Educaplay o YouTube (enlace ya convertido). */
+  embed?: string
 }
 
 export type Level = 'A1' | 'A2' | 'B1' | 'B2' | 'C1'
@@ -30,6 +32,8 @@ export interface TimedLine {
   note?: string
   /** Vocabulario clave que se resalta en la línea. */
   keywords?: string[]
+  /** Dibujo o foto junto a la línea. */
+  image?: string
 }
 
 /** Entrada de glosario. */
@@ -126,6 +130,8 @@ export interface FilmScene {
 export interface ShortFilm extends PieceMeta {
   id: string
   video?: string
+  /** Vídeo de YouTube (youtube-nocookie, se carga al tocar). */
+  youtube?: string
   title: string
   director: string
   level: Level

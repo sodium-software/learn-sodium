@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Cover } from '../components/Cover'
+import { Embed } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
 import { Icon, LevelTag, ProgressBar, Credits } from '../components/ui'
@@ -44,11 +46,7 @@ export function StoryDetailView() {
     <div>
       <header className="bg-sheet">
         <div className="frame grid grid-cols-1 gap-8 py-10 lg:grid-cols-[18rem_minmax(0,1fr)] lg:py-14">
-          <img
-            src={story.cover}
-            alt={`Cover of ${story.title}`}
-            className="aspect-[4/3] w-full object-cover lg:aspect-square"
-          />
+          <Cover src={story.cover} kind="story" alt={`Cover of ${story.title}`} className="aspect-[4/3] lg:aspect-square" />
           <div className="flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-3">
               <LevelTag level={story.level} />
@@ -64,6 +62,11 @@ export function StoryDetailView() {
       </header>
 
       <div className="frame py-12">
+        {story.embed ? (
+          <div className="mb-12">
+            <Embed src={story.embed} title={story.title} poster={story.cover} />
+          </div>
+        ) : null}
         {/* ── Introducción ─────────────────────────────────────────────── */}
         <p className="max-w-3xl border-accent font-read text-xl leading-relaxed text-ink">
           {story.intro}

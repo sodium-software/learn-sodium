@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { Embed } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
 import { Credits, Icon, LevelTag, ProgressBar } from '../components/ui'
@@ -32,6 +33,11 @@ export function ActivityRunnerView() {
           <Icon name="ChevronLeft" size={20} />
           All activities
         </Link>
+        {definition.embed ? (
+          <div className="mb-10">
+            <Embed src={definition.embed} title={definition.title} poster={definition.cover} />
+          </div>
+        ) : null}
         <div className="max-w-2xl">
           <ExternalActivityCard activity={definition} detailed />
         </div>
@@ -110,6 +116,11 @@ export function ActivityRunnerView() {
         </div>
       </header>
 
+      {definition.embed ? (
+        <div className="mt-10">
+          <Embed src={definition.embed} title={definition.title} poster={definition.cover} />
+        </div>
+      ) : null}
       <div className="mt-10">
         <Tool definition={definition} onComplete={(result) => recordActivity(definition.id, result)} />
       </div>
