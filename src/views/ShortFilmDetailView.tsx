@@ -158,6 +158,7 @@ export function ShortFilmDetailView() {
             </section>
 
             {/* ── Comprensión ──────────────────────────────────────────── */}
+            {film.comprehension.length > 0 ? (
             <section className="mt-16" aria-labelledby="comprension-film">
               <h2 id="comprension-film" className="text-head text-ink">
                 Questions
@@ -257,6 +258,7 @@ export function ShortFilmDetailView() {
                 </button>
               </div>
             </section>
+            ) : null}
           </div>
 
           <aside className="lg:sticky lg:top-8 lg:self-start">

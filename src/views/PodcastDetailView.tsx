@@ -137,6 +137,7 @@ export function PodcastDetailView() {
             </section>
 
             {/* ── Comprensión ──────────────────────────────────────────── */}
+            {episode.comprehension.length > 0 ? (
             <section className="mt-16" aria-labelledby="comprension-podcast">
               <h2 id="comprension-podcast" className="text-head text-ink">
                 Questions
@@ -228,6 +229,7 @@ export function PodcastDetailView() {
                 ) : null}
               </div>
             </section>
+            ) : null}
           </div>
 
           <aside className="lg:sticky lg:top-8 lg:self-start">

@@ -75,6 +75,9 @@ export function StoryDetailView() {
         {/* ── Capítulos ────────────────────────────────────────────────── */}
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="min-w-0">
+            {/* Una historia puede no tener capítulos (solo el diseño insertado). */}
+            {chapter ? (
+              <>
             <nav className="mb-8 flex flex-wrap gap-2" aria-label="Chapters">
               {story.chapters.map((entry, index) => (
                 <button
@@ -104,6 +107,8 @@ export function StoryDetailView() {
                 ))}
               </div>
             </article>
+              </>
+            ) : null}
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               {chapterIndex > 0 ? (
@@ -137,6 +142,7 @@ export function StoryDetailView() {
             </div>
 
             {/* ── Comprensión lectora ──────────────────────────────────── */}
+            {story.comprehension.length > 0 ? (
             <section className="mt-16" aria-labelledby="comprension">
               <h2 id="comprension" className="text-head text-ink">
                 Questions
@@ -241,6 +247,7 @@ export function StoryDetailView() {
                 ) : null}
               </div>
             </section>
+            ) : null}
           </div>
 
           {/* ── Glosario ─────────────────────────────────────────────────── */}
