@@ -18,7 +18,7 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
   const noteId = `aviso-${activity.id}`
 
   return (
-    <article className={clsx('panel flex flex-col overflow-hidden', done && 'bg-right-pale')}>
+    <article className={clsx('panel flex flex-col overflow-hidden', done && 'bg-correct-pale')}>
       {activity.cover ? <img src={activity.cover} alt="" className="aspect-[16/9] w-full object-cover" loading="lazy" /> : null}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap items-center gap-2">
