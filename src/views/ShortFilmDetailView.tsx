@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react'
 import { Cover } from '../components/Cover'
+import { PieceActivities } from '../components/PieceActivities'
 import { Embed, YouTubeOnTap } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
 import { Icon, LevelTag, ProgressBar, Credits } from '../components/ui'
 import { useProgress } from '../lib/progress-context'
 import { films, relatedContent } from '../content'
-import { activityDefinitions } from '../activities/registry'
 import { clsx } from '../lib/cn'
 import { formatTime } from '../lib/format'
 
@@ -262,32 +262,6 @@ export function ShortFilmDetailView() {
           </div>
 
           <aside className="lg:sticky lg:top-8 lg:self-start">
-            {film.relatedActivityIds.length > 0 ? (
-              <section className="panel px-5 py-5">
-                <h2 className="font-display text-lg font-extrabold text-ink">
-                  Practice with this
-                </h2>
-                <ul className="mt-3">
-                  {film.relatedActivityIds.map((activityId) => {
-                    const activity = activityDefinitions.find((entry) => entry.id === activityId)
-                    if (!activity) return null
-                    return (
-                      <li key={activityId}>
-                        <Link
-                          to={`/activities/${activityId}`}
-                          className="block py-3 text-sm text-ink transition-colors hover:text-accent"
-                        >
-                          {activity.title}
-                          <span className="mt-0.5 block text-xs text-ink-mute">
-                            {activity.tagline}
-                          </span>
-                        </Link>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </section>
-            ) : null}
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
@@ -318,6 +292,9 @@ export function ShortFilmDetailView() {
             </p>
           </aside>
         </div>
+      </div>
+      <div className="frame">
+        <PieceActivities pieceId={film.id} title={film.title} extraIds={film.relatedActivityIds} />
       </div>
       <div className="frame pb-12">
         <Credits piece={film} />

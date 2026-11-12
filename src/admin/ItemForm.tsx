@@ -219,27 +219,73 @@ function FieldInput({ field, value, onChange }: { field: Field; value: unknown; 
           {help}
         </div>
       )
+    case 'tags':
+      if (field.picker === 'pieces') return <PiecePicker field={field} value={text} onChange={onChange} />
+      break
     case 'media':
       return <MediaInput field={field} id={id} label={label} value={text} onChange={onChange} />
     case 'list':
       return <ListInput field={field} value={Array.isArray(value) ? (value as FormData[]) : []} onChange={onChange} />
-    default:
-      return (
-        <div>
-          {label}
-          <input
-            id={id}
-            type={field.type === 'url' ? 'url' : 'text'}
-            className="field mt-1.5"
-            value={text}
-            maxLength={field.type === 'text' ? field.max : undefined}
-            placeholder={field.type === 'url' ? 'https://' : field.type === 'tags' ? 'separate with commas' : undefined}
-            onChange={(event) => onChange(event.target.value)}
-          />
-          {help}
-        </div>
-      )
   }
+  // Texto de una línea: text, url y tags sin casillas.
+  return (
+    <div>
+      {label}
+      <input
+        id={id}
+        type={field.type === 'url' ? 'url' : 'text'}
+        className="field mt-1.5"
+        value={text}
+        maxLength={field.type === 'text' ? field.max : undefined}
+        placeholder={field.type === 'url' ? 'https://' : field.type === 'tags' ? 'separate with commas' : undefined}
+        onChange={(event) => onChange(event.target.value)}
+      />
+      {help}
+    </div>
+  )
+}
+
+const PIECE_KINDS = ['song', 'story', 'podcast', 'film']
+
+/** Casillas con las piezas (canciones, historias, podcasts y cortos) para enlazar una actividad. */
+function PiecePicker({ field, value, onChange }: { field: Field; value: string; onChange: (next: unknown) => void }) {
+  const [pieces, setPieces] = useState<ItemSummary[] | null>(null)
+  useEffect(() => {
+    api<ItemSummary[]>('items')
+      .then((items) => setPieces(items.filter((item) => PIECE_KINDS.includes(item.kind))))
+      .catch(() => setPieces([]))
+  }, [])
+  const chosen = value.split(',').map((id) => id.trim()).filter(Boolean)
+  const toggle = (id: string) =>
+    onChange((chosen.includes(id) ? chosen.filter((entry) => entry !== id) : [...chosen, id]).join(', '))
+  return (
+    <fieldset>
+      <legend className="label">{field.label}</legend>
+      {field.help ? <p className="mt-1 text-xs text-ink-mute">{field.help}</p> : null}
+      {pieces === null ? (
+        <p className="mt-2 text-sm text-ink-mute">Loading…</p>
+      ) : (
+        <div className="mt-2 grid gap-1 sm:grid-cols-2">
+          {pieces.map((piece) => (
+            <label key={piece.id} className="flex min-h-12 cursor-pointer items-center gap-3 rounded-[var(--radius-sm)] bg-sheet px-3">
+              <input type="checkbox" checked={chosen.includes(piece.id)} onChange={() => toggle(piece.id)} />
+              <span>
+                {piece.title} <span className="text-sm text-ink-mute">· {KIND_LABELS[piece.kind as Kind]}</span>
+              </span>
+            </label>
+          ))}
+          {chosen
+            .filter((id) => !pieces.some((piece) => piece.id === id))
+            .map((id) => (
+              <label key={id} className="flex min-h-12 cursor-pointer items-center gap-3 px-3 text-ink-mute">
+                <input type="checkbox" checked onChange={() => toggle(id)} />
+                {id} (not found)
+              </label>
+            ))}
+        </div>
+      )}
+    </fieldset>
+  )
 }
 
 const ACCEPT: Record<string, string> = {
@@ -308,6 +354,7 @@ function ListInput({ field, value, onChange }: { field: Field; value: FormData[]
       <legend className="label px-1">
         {field.label} <span className="text-ink-mute">({value.length})</span>
       </legend>
+      {field.help ? <p className="mb-3 text-xs text-ink-mute">{field.help}</p> : null}
       <ol className="space-y-4">
         {value.map((item, index) => (
           <li key={index} className="border-l-2 border-tint-deep pl-4">

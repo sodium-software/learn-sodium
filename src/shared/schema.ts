@@ -27,6 +27,8 @@ export interface Field {
   options?: [string, string][]
   accept?: 'image' | 'audio' | 'video'
   fields?: Field[]
+  /** Etiquetas que en el panel se eligen con casillas (las piezas publicadas o en borrador). */
+  picker?: 'pieces'
   /** Enlace que se muestra insertado: se valida y se guarda ya en su forma para insertar. */
   embed?: 'any' | 'youtube'
   /** Solo aplica (y solo se valida) si otro campo tiene uno de estos valores. */
@@ -201,7 +203,13 @@ export const SCHEMAS: Record<Kind, Field[]> = {
   podcast: [
     ...meta,
     { name: 'show', label: 'Show', type: 'text', max: 120 },
-    { name: 'audio', label: 'Audio', type: 'media', accept: 'audio', required: true },
+    {
+      name: 'audio',
+      label: 'Audio',
+      type: 'media',
+      accept: 'audio',
+      help: 'Optional. If the episode is a video, put its YouTube or Canva link in the Embed field instead.',
+    },
     {
       name: 'segments',
       label: 'Transcript',
@@ -299,7 +307,14 @@ export const SCHEMAS: Record<Kind, Field[]> = {
     },
     { name: 'passageTitle', label: 'Text title', type: 'text', max: 160, showIf: onlyFor('reading') },
     { name: 'passage', label: 'Text to read', type: 'paragraphs', max: 8000, showIf: onlyFor('reading') },
-    { name: 'relatedIds', label: 'Related content (IDs)', type: 'tags', max: 80 },
+    {
+      name: 'relatedIds',
+      label: 'Story it belongs to',
+      type: 'tags',
+      max: 80,
+      picker: 'pieces',
+      help: 'Tick the song, podcast, short film or story this activity is for. It appears on that page.',
+    },
     ...rights,
   ],
   page: [
@@ -308,6 +323,25 @@ export const SCHEMAS: Record<Kind, Field[]> = {
     { name: 'body', label: 'Text (leave a blank line between paragraphs)', type: 'paragraphs', max: 12000 },
     { name: 'cover', label: 'Photo', type: 'media', accept: 'image' },
     { name: 'credits', label: 'Photo credits', type: 'textarea', max: 600 },
+    {
+      name: 'people',
+      label: 'People',
+      type: 'list',
+      max: 10,
+      help: 'For the Bio page: one entry per trainee teacher.',
+      fields: [
+        { name: 'name', label: 'Name', type: 'text', required: true, max: 120 },
+        { name: 'photo', label: 'Photo', type: 'media', accept: 'image' },
+        { name: 'story', label: 'Short life story', type: 'paragraphs', max: 4000 },
+      ],
+    },
+    {
+      name: 'references',
+      label: 'References (one per line)',
+      type: 'lines',
+      max: 400,
+      help: 'For example the two authors cited in the introduction, in APA style.',
+    },
   ],
 }
 

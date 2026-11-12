@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Cover } from '../components/Cover'
+import { PieceActivities } from '../components/PieceActivities'
 import { Embed } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
@@ -307,6 +308,9 @@ export function StoryDetailView() {
             ) : null}
           </aside>
         </div>
+      </div>
+      <div className="frame">
+        <PieceActivities pieceId={story.id} title={story.title} />
       </div>
       <div className="frame pb-12">
         <Credits piece={story} />

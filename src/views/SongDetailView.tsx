@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { Cover } from '../components/Cover'
+import { PieceActivities } from '../components/PieceActivities'
 import { Embed } from '../components/Embeds'
 import { useState } from 'react'
 
@@ -283,6 +284,9 @@ export function SongDetailView() {
             ) : null}
           </aside>
         </div>
+      </div>
+      <div className="frame">
+        <PieceActivities pieceId={song.id} title={song.title} />
       </div>
       <div className="frame pb-12">
         <Credits piece={song} />

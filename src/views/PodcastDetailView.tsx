@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Cover } from '../components/Cover'
+import { PieceActivities } from '../components/PieceActivities'
 import { Embed } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
@@ -79,12 +80,9 @@ export function PodcastDetailView() {
         ) : null}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="min-w-0">
-            <AudioPlayer
-              src={episode.audio}
-              time={time}
-              onTimeChange={setTime}
-              label={episode.title}
-            />
+            {episode.audio ? (
+              <AudioPlayer src={episode.audio} time={time} onTimeChange={setTime} label={episode.title} />
+            ) : null}
 
             {/* ── Transcripción ────────────────────────────────────────── */}
             <section className="mt-12" aria-labelledby="transcripcion">
@@ -92,8 +90,9 @@ export function PodcastDetailView() {
                 What they say
               </h2>
               <p className="mt-2 text-sm text-ink-soft">
-                Tap a part to jump to that moment. The part you hear
-                lights up.
+                {episode.audio
+                  ? 'Tap a part to jump to that moment. The part you hear lights up.'
+                  : 'The words of the episode, part by part.'}
               </p>
 
               <div className="mt-6">
@@ -288,6 +287,9 @@ export function PodcastDetailView() {
             ) : null}
           </aside>
         </div>
+      </div>
+      <div className="frame">
+        <PieceActivities pieceId={episode.id} title={episode.title} />
       </div>
       <div className="frame pb-12">
         <Credits piece={episode} />

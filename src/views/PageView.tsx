@@ -26,6 +26,41 @@ export function PageView({ id }: { id: 'introduccion' | 'biodata' }) {
           </figure>
         ) : null}
       </div>
+
+      {page.people.length > 0 ? (
+        <ul className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {page.people.map((person) => (
+            <li key={person.name} className="flex flex-col gap-5 rounded-[var(--radius-xs)] bg-sheet p-6 sm:flex-row">
+              {person.photo ? (
+                <img src={person.photo} alt={`Photo of ${person.name}`} className="h-36 w-36 shrink-0 rounded-full object-cover" />
+              ) : null}
+              <div className="min-w-0">
+                <h2 className="font-display text-3xl font-extrabold text-ink">{person.name}</h2>
+                <div className="prose-read mt-3">
+                  {person.story.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
+      {page.references.length > 0 ? (
+        <section className="mt-16 max-w-[70ch]" aria-labelledby={`referencias-${id}`}>
+          <h2 id={`referencias-${id}`} className="text-head text-ink">
+            References
+          </h2>
+          <ul className="mt-4 space-y-3 text-base text-ink-soft">
+            {page.references.map((reference) => (
+              <li key={reference} className="pl-8 -indent-8">
+                {reference}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </article>
   )
 }

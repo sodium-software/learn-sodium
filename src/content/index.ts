@@ -92,6 +92,8 @@ export interface Page {
   cover: string
   credits: string
   example: boolean
+  people: { name: string; photo: string; story: string[] }[]
+  references: string[]
 }
 export const pages: Record<string, Page | undefined> = {}
 
@@ -314,6 +316,12 @@ export function applyContent(content: PublicContent): void {
       cover: asset(data.cover),
       credits: text(data.credits),
       example: item.example,
+      people: list<Raw>(data.people).map((person) => ({
+        name: text(person.name),
+        photo: asset(text(person.photo)),
+        story: list<string>(person.story),
+      })),
+      references: list<string>(data.references),
     }
   }
   Object.assign(settings, content.settings)
