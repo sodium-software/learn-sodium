@@ -216,7 +216,7 @@ export function AudioPlayer({
         </div>
 
         <p className="ml-auto text-sm text-ink-mute">
-          {ready ? 'Demo material made on this device' : 'Loading…'}
+          {ready ? '' : 'Loading…'}
         </p>
       </div>
     </div>

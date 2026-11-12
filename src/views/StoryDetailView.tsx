@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Cover } from '../components/Cover'
 import { PieceActivities } from '../components/PieceActivities'
+import { TextPictures } from '../components/TextPictures'
 import { Embed } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
@@ -76,6 +77,7 @@ export function StoryDetailView() {
         {/* ── Capítulos ────────────────────────────────────────────────── */}
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="min-w-0">
+            <TextPictures pictures={story.textPictures} title={story.title} />
             {/* Una historia puede no tener capítulos (solo el diseño insertado). */}
             {chapter ? (
               <>

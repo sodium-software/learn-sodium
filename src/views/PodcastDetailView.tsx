@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Cover } from '../components/Cover'
 import { PieceActivities } from '../components/PieceActivities'
+import { TextPictures } from '../components/TextPictures'
 import { Embed } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
@@ -95,6 +96,7 @@ export function PodcastDetailView() {
                   : 'The words of the episode, part by part.'}
               </p>
 
+              <TextPictures pictures={episode.textPictures} title={`Script of ${episode.title}`} />
               <div className="mt-6">
                 {episode.segments.map((segment, index) => {
                   const isActive = index === activeSegment

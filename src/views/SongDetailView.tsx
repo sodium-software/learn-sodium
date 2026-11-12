@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { Cover } from '../components/Cover'
 import { PieceActivities } from '../components/PieceActivities'
+import { TextPictures } from '../components/TextPictures'
 import { Embed } from '../components/Embeds'
 import { useState } from 'react'
 
@@ -108,13 +109,15 @@ export function SongDetailView() {
                   <h2 id="letra" className="text-head text-ink">
                     The words
                   </h2>
-                  <p className="mt-2 text-sm text-ink-soft">
-                    The line you hear lights up. Tap a line to
-                    jump to that part.
-                  </p>
+                  {song.lyrics.length > 0 ? (
+                    <p className="mt-2 text-sm text-ink-soft">
+                      The line you hear lights up. Tap a line to jump to that part.
+                    </p>
+                  ) : null}
                 </div>
               </div>
 
+              <TextPictures pictures={song.textPictures} title={`Lyrics of ${song.title}`} />
               <ol className="mt-6">
                 {song.lyrics.map((line, index) => {
                   const isActive = index === activeLine

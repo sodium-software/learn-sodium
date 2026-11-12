@@ -16,6 +16,8 @@ export interface PieceMeta {
   example: boolean
   rights: Rights
   age?: string
+  /** Imágenes con la letra, el guion o el cuento. */
+  textPictures?: { image: string; alt: string }[]
   /** Contenido insertado de Canva, Wordwall, Educaplay o YouTube (enlace ya convertido). */
   embed?: string
 }

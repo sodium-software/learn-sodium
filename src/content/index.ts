@@ -70,6 +70,7 @@ function meta(item: PublicItem): PieceMeta {
     example: item.example,
     age: data.age,
     embed: text(data.embed) || undefined,
+    textPictures: list<Raw>(data.textPictures).map((p) => ({ image: asset(text(p.image)), alt: text(p.alt) })),
     rights: { source: text(data.source), license: text(data.license), credits: text(data.credits) },
   }
 }

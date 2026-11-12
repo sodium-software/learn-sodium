@@ -108,6 +108,19 @@ const meta: Field[] = [
   },
 ]
 
+/** Imágenes con el texto (la letra o el guion hechos en Canva, por ejemplo). */
+const textPictures = (label: string): Field => ({
+  name: 'textPictures',
+  label,
+  type: 'list',
+  max: 12,
+  help: 'Pictures that show the text, for example a page made in Canva. They appear in order.',
+  fields: [
+    { name: 'image', label: 'Picture', type: 'media', accept: 'image', required: true },
+    { name: 'alt', label: 'Text in the picture (for screen readers)', type: 'textarea', max: 3000 },
+  ],
+})
+
 const rights: Field[] = [
   { name: 'source', label: 'Source', type: 'text', max: 200, required: true, help: 'Where the piece comes from (author, website, book).' },
   { name: 'license', label: 'License', type: 'select', options: LICENSES, required: true },
@@ -166,6 +179,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
         { name: 'image', label: 'Picture next to the line', type: 'media', accept: 'image' },
       ],
     },
+    textPictures('Lyrics pictures'),
     glossary,
     {
       name: 'highlights',
@@ -196,6 +210,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
         { name: 'paragraphs', label: 'Text (leave a blank line between paragraphs)', type: 'paragraphs', required: true, max: 4000 },
       ],
     },
+    textPictures('Story pictures'),
     glossary,
     questions('comprehension', 'Comprehension questions'),
     ...rights,
@@ -222,6 +237,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
         { name: 'note', label: 'Translation', type: 'text', max: 600 },
       ],
     },
+    textPictures('Script pictures'),
     { ...glossary, name: 'keyTerms', label: 'Key words' },
     questions('comprehension', 'Comprehension questions'),
     ...rights,
@@ -249,6 +265,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
         { name: 'translation', label: 'Translation', type: 'text', max: 400 },
       ],
     },
+    textPictures('Script pictures'),
     questions('comprehension', 'Comprehension questions'),
     { name: 'relatedActivityIds', label: 'Related activities (IDs)', type: 'tags', max: 80 },
     ...rights,

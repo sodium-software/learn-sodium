@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { Cover } from '../components/Cover'
 import { PieceActivities } from '../components/PieceActivities'
+import { TextPictures } from '../components/TextPictures'
 import { Embed, YouTubeOnTap } from '../components/Embeds'
 import { Link, useParams } from 'react-router-dom'
 
@@ -116,6 +117,7 @@ export function ShortFilmDetailView() {
                 What they say, with a translation. Tap a scene to jump to that moment.
               </p>
 
+              <TextPictures pictures={film.textPictures} title={`Script of ${film.title}`} />
               <ol className="mt-6">
                 {film.scenes.map((scene, index) => {
                   const isActive = index === activeScene
