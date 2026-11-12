@@ -1,63 +1,66 @@
-@import '@fontsource/anton/400.css';
-@import '@fontsource/space-grotesk/400.css';
-@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/archivo/700.css';
+@import '@fontsource/archivo/900.css';
+@import '@fontsource/atkinson-hyperlegible-next/400.css';
+@import '@fontsource/atkinson-hyperlegible-next/700.css';
 @import 'tailwindcss';
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SISTEMA VISUAL: «Fanzine»
+   SISTEMA VISUAL: «Viñetas» (novela gráfica)
    ───────────────────────────────────────────────────────────────────────────
-   La guía es un fanzine que hicieron las autoras: papel fotocopiado, tóner
-   negro, titulares recortados en tiras de papel, cinta adhesiva y trama de
-   fotocopia. Los cuatro colores del sitio anterior (rojo, azul, verde y
-   amarillo) siguen como marcador, cinta y trama.
+   El sitio es una página de cómic para adolescentes que aprenden inglés en B1:
+   cada bloque es una viñeta con borde de tinta, los textos destacados van en
+   cartelas amarillas y las frases de las historias en globos de diálogo.
    Reglas fijas:
-   - Papel y tóner de base; un color por sección, nunca degradados.
-   - Esquinas rectas: es papel cortado. Los botones son tiras negras.
-   - Solo los papeles decorativos se inclinan, y como mucho 2°. Los controles y
-     el texto de lectura van rectos.
+   - Una tinta (negro) y dos colores de impresión, rojo y amarillo. El azul y
+     el verde solo marcan secciones.
+   - Viñetas con borde de 3 a 4 px de tinta y esquinas rectas. Los globos son
+     los únicos elementos redondos.
+   - Las fotos llevan trama de puntos sobre un color de impresión.
+   - Solo las fotos decorativas se inclinan, y como mucho 2°. Los controles y
+     el texto van rectos.
    - Controles de 48 px como mínimo y contraste AA.
-   Tipos: Anton (titulares, en mayúsculas) y Space Grotesk (texto). Las dos
-   tienen licencia SIL OFL 1.1.
+   Tipos: Archivo Black para los títulos y Atkinson Hyperlegible Next para el
+   texto. Las dos tienen licencia SIL OFL 1.1.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme {
   /* Papel fotocopiado, la hoja y sus escalones */
-  --color-paper: #ebebe6;
-  --color-sheet: #fafafa;
-  --color-tint: #dddcd5;
-  --color-tint-deep: #c6c5bd;
+  --color-paper: #f3f3ef;
+  --color-sheet: #ffffff;
+  --color-tint: #e6e6e0;
+  --color-tint-deep: #cfcfc7;
 
   /* Tóner */
-  --color-ink: #141414;
-  --color-ink-soft: #2b2b2b;
-  --color-ink-mute: #44443f;
-  --color-ink-faint: #55554f;
+  --color-ink: #121212;
+  --color-ink-soft: #262626;
+  --color-ink-mute: #3f3f3c;
+  --color-ink-faint: #4a4a48;
 
   /* Marcadores (los mismos cuatro colores de antes) y su tono oscuro */
-  --color-red: #d42a2f;
-  --color-red-deep: #9d1b1f;
+  --color-red: #ff4a36;
+  --color-red-deep: #b8271a;
   --color-blue: #1f5fd0;
   --color-blue-deep: #143f8e;
   --color-green: #157a42;
   --color-green-deep: #11633a;
-  --color-yellow: #f4b400;
-  --color-yellow-deep: #b98700;
-  --color-yellow-pale: #fbe98f;
+  --color-yellow: #ffd23f;
+  --color-yellow-deep: #b58c00;
+  --color-yellow-pale: #fff0b3;
 
   /* Acción: tira de tóner */
-  --color-accent: #141414;
+  --color-accent: #121212;
   --color-accent-hover: #1f5fd0;
-  --color-accent-ink: #fafafa;
-  --color-accent-pale: #fbe98f;
+  --color-accent-ink: #ffffff;
+  --color-accent-pale: #fff0b3;
 
   --color-wrong: #b3261e;
   --color-wrong-pale: #fbe1df;
   --color-correct: #11633a;
   --color-correct-pale: #dcf1e4;
 
-  --font-display: 'Anton', 'Arial Narrow', sans-serif;
-  --font-text: 'Space Grotesk', system-ui, sans-serif;
-  --font-read: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Archivo', 'Arial Black', sans-serif;
+  --font-text: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --font-read: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
 
   /* Papel cortado: sin radios */
   --radius-xs: 0px;
@@ -78,9 +81,9 @@
   --text-sm: 1rem;
   --text-base: 1.125rem;
   --text-lead: clamp(1.1875rem, 1.08rem + 0.45vw, 1.5rem);
-  --text-head: clamp(2.125rem, 1.6rem + 2vw, 3.5rem);
-  --text-display: clamp(2.75rem, 1.9rem + 3.6vw, 5.5rem);
-  --text-hero: clamp(3rem, 1.9rem + 4.6vw, 6.5rem);
+  --text-head: clamp(1.75rem, 1.3rem + 1.5vw, 2.625rem);
+  --text-display: clamp(2.25rem, 1.5rem + 2.8vw, 4.25rem);
+  --text-hero: clamp(2.5rem, 1.5rem + 3.6vw, 5.25rem);
 }
 
 @layer base {
@@ -110,9 +113,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.005em;
+    letter-spacing: -0.03em;
     line-height: 0.95;
     text-wrap: balance;
     overflow-wrap: break-word;
@@ -304,31 +307,25 @@
   /* ── Hojas: separadas del papel por el tono ────────────────────────────── */
   .panel {
     background-color: var(--color-sheet);
+    border: 3px solid var(--color-ink);
   }
 
   .panel-quiet {
     background-color: var(--color-tint);
   }
 
-  /* Cinta adhesiva que pega una hoja. Decorativa. */
+  /* Sin cinta en este mundo: el elemento queda por compatibilidad. */
   .tape {
-    position: absolute;
-    top: -0.8rem;
-    left: 50%;
-    width: 5.5rem;
-    height: 1.6rem;
-    margin-left: -2.75rem;
-    background: rgb(255 255 255 / 0.62);
-    rotate: -3deg;
-    pointer-events: none;
+    display: none;
   }
 
-  /* Titular recortado: cada línea es una tira de papel. */
+  /* Cartela de cómic: el titular va en una caja amarilla con borde de tinta. */
   .strip {
     display: inline;
-    background: var(--strip, var(--color-sheet));
+    background: var(--strip, var(--color-yellow));
     color: var(--strip-ink, var(--color-ink));
-    padding: 0.02em 0.12em;
+    padding: 0.04em 0.2em;
+    outline: 3px solid var(--color-ink);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
@@ -358,8 +355,41 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(1) contrast(1.35) brightness(1.05);
+    filter: grayscale(1) contrast(1.3) brightness(1.08);
     mix-blend-mode: multiply;
+  }
+
+  /* Trama de puntos de imprenta encima de la foto. */
+  .xerox::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgb(18 18 18 / 0.28) 1.1px, transparent 1.4px);
+    background-size: 6px 6px;
+    pointer-events: none;
+  }
+
+  /* Globo de diálogo: el único elemento redondo. */
+  .balloon {
+    position: relative;
+    display: inline-block;
+    background: var(--color-sheet);
+    color: var(--color-ink);
+    border: 3px solid var(--color-ink);
+    border-radius: 50% / 42%;
+    padding: 0.85em 1.25em;
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 28%;
+    border: 9px solid transparent;
+    border-top: 14px solid var(--color-ink);
   }
 
   /* El momento de la página: la foto de portada se abre como una persiana. */
@@ -407,7 +437,7 @@
 
   .hl-strong {
     background-color: var(--color-red);
-    color: var(--color-sheet);
+    color: var(--color-ink);
     padding: 0 0.15em;
     font-weight: 700;
     box-decoration-break: clone;
@@ -416,6 +446,7 @@
 
   .hl-strong:hover {
     background-color: var(--color-ink);
+    color: var(--color-sheet);
   }
 
   /* Sello de «hecho» en la esquina de una hoja. */

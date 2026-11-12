@@ -1,30 +1,34 @@
-# Diseño: «Fanzine»
+# Diseño: «Viñetas» (novela gráfica)
 
-La dirección la eligió el fundador el 2026-11-11 para un público adolescente (nivel B1). Reemplaza a «La puerta de la nevera», que estaba pensada para niños de 6 a 9 años. La guía se presenta como un fanzine hecho por las autoras: papel fotocopiado, tóner, titulares recortados en tiras, cinta adhesiva y trama de fotocopia.
+Lo eligieron el fundador y Mariana el 2026-11-12 para un público adolescente (nivel B1). Reemplaza al «Fanzine», que a Mariana no le gustó, y conserva la estructura de su portada. El sitio es una página de cómic: cada bloque es una viñeta con borde de tinta, los títulos van en cartelas amarillas y las frases reales de las historias en globos de diálogo.
 
 ## Reglas
 - **Color:**
-  - Papel `#ebebe6` y hoja `#fafafa`.
-  - Tóner `#141414`.
-  - Los cuatro colores anteriores siguen como marcador, cinta y trama, porque Mariana pidió conservarlos: rojo `#d42a2f`, azul `#1f5fd0`, verde `#157a42` y amarillo `#f4b400`, cada uno con su tono oscuro.
-  - La acción es una tira de tóner (botón negro).
-  - Cada sección tiene su color: Song rojo, Storytale azul, Podcast amarillo, Short film tóner y Activities verde.
-- **Tipografía:** Anton para los titulares, en mayúsculas y recortados en tiras (`.strip`). Space Grotesk para el texto, con el cuerpo a 18 px. Las dos tienen licencia SIL OFL 1.1 y se instalan con `@fontsource`.
-- **Papel cortado:** sin radios, sin sombras en reposo y sin degradados. La trama (`.halftone`) es una textura de puntos, no un degradado.
-- **Inclinación:** solo la cinta y el nombre se inclinan, y como mucho 2°. Los controles y el texto de lectura van siempre rectos.
+  - Papel `#f3f3ef`, hoja `#ffffff` y tinta `#121212`.
+  - Colores de impresión: rojo `#ff4a36`, siempre con texto en tinta, y amarillo `#ffd23f`.
+  - Azul `#1f5fd0` y verde `#157a42` marcan solo secciones (Storytale y Activities).
+  - Para texto en rojo se usa `--color-red-deep`.
+- **Tipografía:** Archivo Black (900 y 700) para los títulos, en mayúsculas. Atkinson Hyperlegible Next para el texto, con el cuerpo a 18 px. Las dos tienen licencia SIL OFL 1.1.
+- **Piezas del mundo:**
+  - `.panel`: viñeta con borde de 3 px.
+  - `.strip`: cartela amarilla con contorno.
+  - `.balloon`: globo de diálogo; es lo único redondo.
+  - `.xerox`: foto con trama de puntos sobre un color de impresión.
+  - `.hl` y `.hl-strong`: marcador.
+- **Fotos:** son de archivo, con licencia abierta y crédito en el pie. Están en `public/media/zine/` y sus créditos en `credits.json`. Solo las fotos decorativas se inclinan, y como mucho 2°.
 - **Accesibilidad:** controles de 48 px (`scripts/check-targets.mjs`) y contraste AA (`scripts/check-contrast.mjs`).
 - **Movimiento:**
-  - Las tiras del titular se pegan al cargar (`.animate-stick`).
-  - Las secciones, tarjetas y titulares entran al hacer scroll (`.reveal`, lo activa AppShell).
-  - Las hojas se elevan al pasar el ratón.
+  - La foto de la canción se abre como una persiana (`.shutter`).
+  - Las secciones entran al hacer scroll (`.reveal`).
+  - Las viñetas se elevan al pasar el ratón.
   - En «Build the word», una letra equivocada tiembla.
   - Con `prefers-reduced-motion` no hay recorrido.
-- **Tono:** inglés B1 para adolescentes. Nada infantil.
 
-## Piezas
-- `SiteHeader`: muestra `Wordmark` (la tira con el nombre) y las secciones. «About» agrupa Introduction, Bio y Settings.
-- `SectionHeader`: la cabecera de cada sección, una hoja del color de la sección con el titular recortado y la trama.
-- `Cover`: si una pieza no tiene portada, muestra la trama de su sección con su nombre.
-- `WordGame` («Build the word»): vocabulario B1 abstracto, con una definición en inglés como pista.
-- `sections.ts`: colores, nombres y trama de cada sección.
-- El panel (`/admin`) hereda los tokens y conserva su estructura de herramienta.
+## Portada (`HomeView`)
+1. **Página de cómic:** la viñeta roja lleva el título, y las cuatro viñetas de formato llevan foto y globos con frases reales de las piezas. Debajo, una cartela con el nivel B1.
+2. **"Every word, in print":** video en bucle de una imprenta y tiras con fragmentos reales de los guiones.
+3. **Escalera de uso:** watch, read, try, tell.
+4. **"What is inside":** la lista de piezas.
+5. **"Practise here":** el juego «Build the word», con vocabulario B1.
+6. **"About this guide":** texto largo con marcador.
+7. **Pie:** el nombre construido con bloques de color, más los créditos de las fotos.

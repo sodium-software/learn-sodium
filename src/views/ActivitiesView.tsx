@@ -49,7 +49,7 @@ export function ActivitiesView() {
       <Link
         key={definition.id}
         to={`/activities/${definition.id}`}
-        className="group flex flex-col bg-sheet px-6 py-6 transition-transform hover:-translate-y-1"
+        className="group flex flex-col border-[3px] border-ink bg-sheet px-6 py-6 transition-transform hover:-translate-y-1"
       >
         <div className="flex items-center justify-between gap-3">
           <span className="inline-flex items-center gap-2 text-sm font-bold text-ink-soft">

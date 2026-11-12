@@ -3,7 +3,7 @@
  * fotocopia (puntos en el tono oscuro del mismo color).
  */
 export const SECTION_COLORS = {
-  song: { bg: 'bg-red', ink: 'text-white', ht: 'var(--color-red-deep)', base: 'var(--color-red)' },
+  song: { bg: 'bg-red', ink: 'text-ink', ht: 'var(--color-red-deep)', base: 'var(--color-red)' },
   story: { bg: 'bg-blue', ink: 'text-white', ht: 'var(--color-blue-deep)', base: 'var(--color-blue)' },
   podcast: { bg: 'bg-yellow', ink: 'text-ink', ht: 'var(--color-yellow-deep)', base: 'var(--color-yellow)' },
   film: { bg: 'bg-ink', ink: 'text-white', ht: '#3a3a36', base: 'var(--color-ink)' },

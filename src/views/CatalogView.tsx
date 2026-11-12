@@ -67,7 +67,7 @@ function PieceGrid({
         <li key={item.id}>
           <Link
             to={item.route}
-            className="group relative flex h-full flex-col bg-sheet p-3 pt-5 transition-transform hover:-translate-y-1"
+            className="group relative flex h-full flex-col border-[3px] border-ink bg-sheet p-3 transition-transform hover:-translate-y-1"
           >
             <span className="tape" />
             <span className="relative block">

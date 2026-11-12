@@ -27,7 +27,7 @@ export function PieceActivities({ pieceId, extraIds = [], title }: { pieceId: st
           <li key={activity.id}>
             <Link
               to={`/activities/${activity.id}`}
-              className="group flex h-full flex-col bg-sheet p-5 transition-transform hover:-translate-y-1"
+              className="group flex h-full flex-col border-[3px] border-ink bg-sheet p-5 transition-transform hover:-translate-y-1"
             >
               <span className="flex flex-wrap items-center gap-2 text-sm font-bold text-ink-soft">
                 {activity.kind === 'external'

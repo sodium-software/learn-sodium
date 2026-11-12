@@ -10,7 +10,7 @@ import { navEntries } from './nav'
 /** El nombre como tira de tóner recortada (la cabecera del fanzine). */
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={clsx('inline-block bg-ink px-[0.3em] py-[0.08em] font-display uppercase leading-none text-sheet tilt-l', className)}>
+    <span className={clsx('inline-block border-[3px] border-ink bg-yellow px-[0.3em] py-[0.12em] font-display font-black uppercase leading-none tracking-tight text-ink', className)}>
       {siteConfig.platformName}
     </span>
   )
@@ -36,7 +36,7 @@ export function Brand() {
     <Link
       to="/"
       onClick={onClick}
-      className="flex min-h-12 items-center pr-2 text-[1.625rem] leading-none"
+      className="flex min-h-12 items-center pr-2 text-[1.375rem] leading-none"
       aria-label={`${siteConfig.platformName}, go to Home`}
     >
       <Wordmark />

@@ -49,6 +49,12 @@ function slips(): Slip[] {
   return out.slice(0, 6)
 }
 
+/** Primeras frases reales de cada historia, para los globos de la portada. */
+function cut(text: string | undefined, max = 70): string {
+  if (!text) return ''
+  return text.length > max ? `${text.slice(0, max).replace(/\s+\S*$/, '')}…` : text
+}
+
 const SLIP_HEIGHTS = ['h-[38svh]', 'h-[30svh]', 'h-[44svh]', 'h-[34svh]', 'h-[40svh]', 'h-[28svh]']
 const STAIRS = ['lg:col-start-1', 'lg:col-start-3', 'lg:col-start-5', 'lg:col-start-7']
 
@@ -64,66 +70,68 @@ export function HomeView() {
   const name = preferences.displayName.trim()
   const done = state.completedActivityIds.length
   const printed = slips()
+  const quote = {
+    song: cut(songs[0]?.lyrics[0]?.text, 48),
+    podcast: cut(episodes[0]?.segments[0]?.text, 60),
+    story: cut(stories[0]?.chapters[0]?.paragraphs[0], 60),
+  }
 
   return (
     <div>
-      {/* ── Portada: campo rojo, banda de tóner, recorte en la costura ─── */}
-      <section className="relative overflow-hidden bg-ink text-sheet" aria-labelledby="portada">
-        <div className="relative bg-red pb-16 pt-[12vh] lg:min-h-[66svh] lg:pt-[14vh]">
-          <div className="frame relative z-10">
-            <h1 id="portada" className="text-[clamp(4.75rem,1rem+12vw,12rem)] leading-[0.84]">
-              Stories
+      {/* ── Portada: una página de cómic ──────────────────────────────── */}
+      <section className="frame pb-6 pt-4" aria-labelledby="portada">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-12 lg:grid-rows-[minmax(420px,58svh)_minmax(260px,34svh)]">
+          <div className="panel relative col-span-2 flex flex-col justify-end bg-red p-5 sm:p-10 lg:col-span-8">
+            <h1 id="portada" className="text-[clamp(1.875rem,0.6rem+5.6vw,6.5rem)] leading-[0.9]">
+              Four stories.
               <br />
-              in English
+              Your English.
             </h1>
+            <p className="mt-6 max-w-[40ch] text-lead font-bold">
+              {name ? <>Hi, {name}! </> : null}A song, a podcast, a short film and a storytale, each with its script and
+              four activities.
+            </p>
+            <Link to="/song" className="btn btn-primary mt-8 self-start px-7 text-lg">
+              Start with the song
+              <Icon name="ArrowRight" size={20} />
+            </Link>
           </div>
-          <figure className="pointer-events-none absolute -top-10 right-[6vw] z-20 hidden w-[30vw] max-w-[440px] rotate-2 lg:block">
-            <div className="xerox shutter aspect-[3/4] rounded-t-full [--xerox:var(--color-yellow)]">
+          <Link to="/song" className="panel group relative col-span-2 overflow-hidden lg:col-span-4">
+            <div className="xerox shutter h-full min-h-[320px] [--xerox:var(--color-yellow)]">
               <img src={IMG.river} alt="Caño Cristales, the river of five colours, in Colombia" width={1400} height={2104} />
             </div>
-          </figure>
-        </div>
-        <div className="frame relative z-10 flex flex-wrap items-center justify-between gap-6 py-8">
-          <p className="max-w-[44ch] text-xl">
-            {name ? <strong>Hi, {name}! </strong> : null}A zine of four stories for B1 learners in Colombian schools: a
-            song, a podcast, a short film and a storytale.
-          </p>
-          <Link to="/song" className="btn min-h-16 bg-yellow px-8 text-xl text-ink hover:bg-sheet">
-            Start with the song
-            <Icon name="ArrowRight" size={22} />
+            {quote.song ? <span className="balloon absolute right-4 top-4 max-w-[78%] text-base">“{quote.song}”</span> : null}
+            <PanelLabel name="The song" detail="MP3 · lyrics" />
+          </Link>
+          <Link to="/podcast" className="panel group relative col-span-2 min-h-[260px] overflow-hidden sm:col-span-1 lg:col-span-4">
+            <div className="xerox h-full [--xerox:var(--color-blue)]">
+              <img src={IMG.amazon} alt="Sunset over the Amazon river in Colombia" width={1400} height={700} loading="lazy" />
+            </div>
+            {quote.podcast ? <span className="balloon absolute left-4 top-4 max-w-[80%] text-base">{quote.podcast}</span> : null}
+            <PanelLabel name="Podcast" detail="video · script" />
+          </Link>
+          <Link to="/short-film" className="panel group relative col-span-2 min-h-[260px] overflow-hidden bg-yellow sm:col-span-1 lg:col-span-4">
+            <div className="xerox h-full [--xerox:var(--color-yellow)]">
+              <img src={IMG.chiva} alt="A painted chiva bus from Colombia" width={1400} height={1050} loading="lazy" />
+            </div>
+            <span className="strip absolute left-4 top-4 text-base font-bold">No words. Just pictures.</span>
+            <PanelLabel name="Short film" detail="no dialogue" />
+          </Link>
+          <Link to="/storytelling" className="panel group relative col-span-2 min-h-[260px] overflow-hidden lg:col-span-4">
+            <div className="xerox h-full [--xerox:var(--color-red)]">
+              <img src={IMG.paramo} alt="Frailejones in the páramo, a mountain ecosystem in Colombia" width={1400} height={788} loading="lazy" />
+            </div>
+            {quote.story ? <span className="balloon absolute bottom-16 right-4 max-w-[80%] text-base">{quote.story}</span> : null}
+            <PanelLabel name="Storytale" detail="legend · myth · fable" />
           </Link>
         </div>
-        <figure className="pointer-events-none mx-auto w-[62%] rotate-2 pb-10 lg:hidden">
-          <div className="xerox aspect-[3/4] rounded-t-full [--xerox:var(--color-yellow)]">
-            <img src={IMG.river} alt="" width={1400} height={2104} />
-          </div>
-        </figure>
-      </section>
-
-      {/* ── Mosaico de frases ─────────────────────────────────────────── */}
-      <section className="p-2" aria-labelledby="mosaico">
-        <div className="grid grid-cols-2 gap-2 lg:grid-cols-12 lg:grid-rows-[38svh_38svh]">
-          <div className="col-span-2 flex min-h-[46svh] items-end bg-ink p-5 text-sheet lg:col-span-8 lg:row-span-2 lg:min-h-0">
-            <h2 id="mosaico" className="text-[clamp(3.5rem,1rem+8vw,8.25rem)] leading-[0.86]">
-              Tell it
-              <br />
-              in English
-            </h2>
-          </div>
-          <div className="flex aspect-square items-end overflow-hidden bg-yellow p-5 lg:col-span-4 lg:aspect-auto">
-            <p className="font-display text-[clamp(4rem,2rem+8vw,8.25rem)] leading-[0.8]">B1</p>
-          </div>
-          <div className="xerox aspect-square [--xerox:var(--color-blue)] lg:col-span-4 lg:aspect-auto">
-            <img src={IMG.amazon} alt="Sunset over the Amazon river in Colombia" width={1400} height={700} loading="lazy" />
-          </div>
-          <div className="col-span-2 bg-paper px-5 py-10 lg:col-span-12 lg:grid lg:grid-cols-12 lg:px-10 lg:py-14">
-            <p className="text-lg leading-[1.45] lg:col-span-6 lg:col-start-7 lg:text-[1.4rem] lg:leading-[1.38]">
-              Four short stories, each told in a different way. One is about nature, one is about belonging, and all of
-              them are told in English at B1 level. You can watch them, listen to them and read them line by line.
-              Every story comes with its script and four activities for grammar, speaking, writing, reading, listening
-              and vocabulary. No account, no sign-up: just open a story and start.
-            </p>
-          </div>
+        <div className="panel mt-3 grid gap-6 bg-sheet p-6 sm:p-10 lg:grid-cols-12">
+          <p className="max-w-[68ch] text-lg leading-[1.6] lg:col-span-12 lg:text-[1.35rem]">
+            <span className="strip font-bold">Level B1</span> Four short stories, each told in a different way. One is about nature, one is about belonging, and all of
+            them are told in English at B1 level for teenagers in Colombian schools. Watch them, listen to them and read
+            them line by line. Every story comes with its script and four activities for grammar, speaking, writing,
+            reading, listening and vocabulary. No account, no sign-up: just open a story and start.
+          </p>
         </div>
       </section>
 
@@ -141,11 +149,11 @@ export function HomeView() {
             aria-hidden="true"
           />
           <div className="frame relative z-10 pt-[10svh]">
-            <div className="max-w-[34ch] bg-ink/80 p-6 text-sheet lg:ml-[14vw]">
-              <h2 id="guiones" className="text-[clamp(2.5rem,1.6rem+3vw,4.5rem)]">
-                Every word, printed
+            <div className="panel max-w-[44ch] bg-sheet p-6 text-ink lg:ml-[14vw]">
+              <h2 id="guiones" className="text-[clamp(2rem,1.4rem+2.2vw,3.5rem)]">
+                <span className="strip">Every word, in print</span>
               </h2>
-              <p className="mt-4 text-xl lg:text-[1.65rem] lg:leading-snug">
+              <p className="mt-5 text-xl lg:text-[1.5rem] lg:leading-snug">
                 Each story has its full script: the lyrics, what the hosts say, every scene and every page.
               </p>
             </div>
@@ -163,7 +171,7 @@ export function HomeView() {
                   i % 3 === 2 && '-rotate-1',
                 )}
               >
-                <Link to={slip.to} className="slip block h-full overflow-hidden bg-sheet p-4 text-base leading-snug text-ink hover:bg-yellow-pale">
+                <Link to={slip.to} className="slip block h-full overflow-hidden border-[3px] border-b-0 border-ink bg-sheet p-4 text-base leading-snug text-ink hover:bg-yellow-pale">
                   <strong className="block">{slip.head}</strong>
                   <span aria-hidden="true" className="my-2 block overflow-hidden whitespace-nowrap text-ink-mute">
                     · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -190,7 +198,7 @@ export function HomeView() {
             ['Now tell your own.', 'Use the new words to tell a story about your town, your people or your planet.'],
           ].map(([line, note], i) => (
             <li key={line} className={clsx('lg:col-span-6', STAIRS[i])}>
-              <h2 id={`paso-${i + 1}`} className={clsx('text-[clamp(2.25rem,1.4rem+3.6vw,4.75rem)] leading-none', i === 3 && 'text-red')}>
+              <h2 id={`paso-${i + 1}`} className={clsx('text-[clamp(2.25rem,1.4rem+3.6vw,4.75rem)] leading-none', i === 3 && 'text-red-deep')}>
                 {line}
               </h2>
               <p className="mt-3 max-w-[34ch] text-[17px] text-ink-soft">{note}</p>
@@ -205,9 +213,9 @@ export function HomeView() {
       </section>
 
       {/* ── Cartel: la lista de piezas, a un solo tamaño ───────────────── */}
-      <section className="mt-28 bg-yellow py-20" aria-labelledby="lista">
+      <section className="frame mt-28" aria-labelledby="lista"><div className="panel bg-yellow py-16">
         <div className="frame">
-          <h2 id="lista" className="sticky top-16 z-10 bg-yellow py-2 text-[clamp(1.5rem,1.1rem+1.6vw,2.25rem)] text-red-deep">
+          <h2 id="lista" className="sticky top-16 z-10 bg-yellow py-2 text-[clamp(1.5rem,1.1rem+1.6vw,2.25rem)]">
             What is inside
           </h2>
           {allContent.length === 0 ? (
@@ -230,14 +238,15 @@ export function HomeView() {
             </ul>
           )}
         </div>
+        </div>
       </section>
 
       {/* ── Actividades: la cosa viva ─────────────────────────────────── */}
-      <section className="bg-green py-24 text-white" aria-labelledby="actividades-portada">
+      <section className="bg-ink py-24 text-sheet" aria-labelledby="actividades-portada">
         <div className="frame grid grid-cols-1 items-start gap-x-6 gap-y-10 lg:grid-cols-12">
           <div className="lg:col-span-6 lg:row-start-1">
             <h2 id="actividades-portada" className="text-display">
-              Practise here
+              <span className="strip">Practise here</span>
             </h2>
             <p className="mt-6 max-w-[42ch] text-lead">
               {activityDefinitions.length} activities, four for each story. Try one right now: read the clue and build
@@ -285,5 +294,15 @@ export function HomeView() {
         </p>
       </section>
     </div>
+  )
+}
+
+/** Barra inferior de una viñeta: el nombre del formato y su detalle. */
+function PanelLabel({ name, detail }: { name: string; detail: string }) {
+  return (
+    <span className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-ink px-4 py-2.5 font-bold text-sheet">
+      <span className="font-display text-lg uppercase group-hover:text-yellow">{name}</span>
+      <span className="text-sm">{detail}</span>
+    </span>
   )
 }
