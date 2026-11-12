@@ -166,7 +166,7 @@ function Overview() {
   const { items, reload } = useItems()
   const [confirm, setConfirm] = useState(false)
   const [note, setNote] = useState('')
-  const examples = items?.filter((item) => item.example).length ?? 0
+  const examples = items?.filter((item) => item.example && item.kind !== 'page').length ?? 0
 
   return (
     <div>
@@ -188,7 +188,7 @@ function Overview() {
       <section className="mt-10 panel-quiet p-5">
         <h2 className="font-display text-xl font-semibold text-ink">Example pieces</h2>
         <p className="mt-1 text-sm text-ink-soft">
-          There are {examples} pieces marked “Example”. Once you have your own material, delete them all at once.
+          There are {examples} pieces marked “Example”. Once you have your own material, delete them all at once. The Introduction and Bio pages stay: edit them instead.
         </p>
         {examples > 0 ? (
           confirm ? (

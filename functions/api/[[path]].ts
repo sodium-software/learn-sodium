@@ -205,7 +205,8 @@ async function admin(request: Request, env: Env, session: Session, parts: string
     if (!action && method === 'PUT') {
       const body = (await readJson(request)) as { data?: unknown }
       const data = validate(row.kind, body.data)
-      await env.DB.prepare('UPDATE items SET draft = ?, updated_at = ? WHERE id = ?').bind(JSON.stringify(data), now(), id).run()
+      // Al editarla, la pieza deja de ser de ejemplo: ya es de la autora.
+      await env.DB.prepare('UPDATE items SET draft = ?, updated_at = ?, is_example = 0 WHERE id = ?').bind(JSON.stringify(data), now(), id).run()
       return json({ ok: true })
     }
     if (!action && method === 'DELETE') {
@@ -236,7 +237,7 @@ async function admin(request: Request, env: Env, session: Session, parts: string
   }
 
   if (section === 'examples' && method === 'DELETE') {
-    const result = await env.DB.prepare('DELETE FROM items WHERE is_example = 1').run()
+    const result = await env.DB.prepare("DELETE FROM items WHERE is_example = 1 AND kind <> 'page'").run()
     await refreshPublicMedia(env)
     return json({ deleted: result.meta.changes })
   }
