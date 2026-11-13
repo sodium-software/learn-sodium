@@ -11,7 +11,7 @@ export function PageView({ id }: { id: 'introduccion' | 'biodata' }) {
       <div className="grid-editorial gap-y-8">
         <header className="col-span-4 lg:col-span-8">
           {page.example ? <Tag>Example</Tag> : null}
-          <h1 className="mt-3 text-hero font-display font-extrabold leading-[0.98] text-ink">{page.title}</h1>
+          <h1 className="mt-3 text-hero font-display leading-[0.98] text-ink">{page.title}</h1>
           {page.summary ? <p className="mt-5 max-w-2xl text-lead text-ink-soft">{page.summary}</p> : null}
         </header>
         <div className="prose-read col-span-4 max-w-[65ch] lg:col-span-7">
@@ -30,12 +30,12 @@ export function PageView({ id }: { id: 'introduccion' | 'biodata' }) {
       {page.people.length > 0 ? (
         <ul className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
           {page.people.map((person) => (
-            <li key={person.name} className="flex flex-col gap-5 rounded-[var(--radius-xs)] bg-sheet p-6 sm:flex-row">
+            <li key={person.name} className="flex flex-col gap-5 bg-sheet p-6 sm:flex-row">
               {person.photo ? (
-                <img src={person.photo} alt={`Photo of ${person.name}`} className="h-36 w-36 shrink-0 rounded-full object-cover" />
+                <img src={person.photo} alt={`Photo of ${person.name}`} className="h-36 w-36 shrink-0 object-cover" />
               ) : null}
               <div className="min-w-0">
-                <h2 className="font-display text-3xl font-extrabold text-ink">{person.name}</h2>
+                <h2 className="font-display text-3xl text-ink">{person.name}</h2>
                 <div className="prose-read mt-3">
                   {person.story.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>

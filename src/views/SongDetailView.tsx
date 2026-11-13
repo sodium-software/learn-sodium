@@ -73,7 +73,7 @@ export function SongDetailView() {
               </span>
             </div>
 
-            <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
+            <h1 className="mt-4 text-display font-display leading-[0.98] text-ink">
               {song.title}
             </h1>
 
@@ -159,7 +159,7 @@ export function SongDetailView() {
                           ) : null}
                         </span>
                         {line.image ? (
-                          <img src={line.image} alt="" loading="lazy" className="h-20 w-20 shrink-0 rounded-[6px] object-cover sm:h-28 sm:w-28" />
+                          <img src={line.image} alt="" loading="lazy" className="h-20 w-20 shrink-0 object-cover sm:h-28 sm:w-28" />
                         ) : null}
                       </button>
                     </li>
@@ -195,7 +195,7 @@ export function SongDetailView() {
                         className="shrink-0 text-left"
                         aria-label={`Play from ${highlight.label}`}
                       >
-                        <span className="flex items-center gap-2 font-display text-base font-extrabold text-ink">
+                        <span className="flex items-center gap-2 font-display text-base text-ink">
                           <Icon name="Play" size={15} />
                           {highlight.label}
                         </span>
@@ -211,7 +211,7 @@ export function SongDetailView() {
                         onClick={() => toggleHighlight(highlight.id)}
                         aria-pressed={isOn}
                         className={clsx(
-                          'shrink-0 min-h-12 rounded-full px-5 text-base font-bold transition-colors',
+                          'shrink-0 min-h-12 px-5 text-base font-bold transition-colors',
                           isOn
                             ? 'bg-accent text-accent-ink'
                             : 'bg-tint text-ink hover:bg-tint-deep',
@@ -229,7 +229,7 @@ export function SongDetailView() {
           {/* ── Columna lateral ──────────────────────────────────────────── */}
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
-              <h2 className="font-display text-lg font-extrabold text-ink">
+              <h2 className="font-display text-lg text-ink">
                 Words
               </h2>
               <dl className="mt-4 space-y-4">
@@ -244,7 +244,7 @@ export function SongDetailView() {
                           onClick={() => toggleMastered(entry.term)}
                           aria-pressed={isMastered}
                           className={clsx(
-                            'shrink-0 min-h-12 rounded-full px-4 text-base font-bold transition-colors',
+                            'shrink-0 min-h-12 px-4 text-base font-bold transition-colors',
                             isMastered
                               ? 'bg-green text-white'
                               : 'bg-tint text-ink hover:bg-tint-deep',
@@ -265,7 +265,7 @@ export function SongDetailView() {
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
-                <h2 className="font-display text-lg font-extrabold text-ink">
+                <h2 className="font-display text-lg text-ink">
                   Try next
                 </h2>
                 <ul className="mt-3">

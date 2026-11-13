@@ -1,88 +1,89 @@
-@import '@fontsource/baloo-2/700.css';
-@import '@fontsource/baloo-2/800.css';
-@import '@fontsource/andika/400.css';
-@import '@fontsource/andika/700.css';
+@import '@fontsource/archivo/700.css';
+@import '@fontsource/archivo/900.css';
+@import '@fontsource/atkinson-hyperlegible-next/400.css';
+@import '@fontsource/atkinson-hyperlegible-next/700.css';
 @import 'tailwindcss';
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SISTEMA VISUAL: «La puerta de la nevera»
+   SISTEMA VISUAL: «Viñetas» (novela gráfica)
    ───────────────────────────────────────────────────────────────────────────
-   El sitio es la puerta de la nevera de casa: esmalte claro de suelo, papeles
-   blancos sujetos con imanes y letras-imán de plástico en cuatro colores.
+   El sitio es una página de cómic para adolescentes que aprenden inglés en B1:
+   cada bloque es una viñeta con borde de tinta, los textos destacados van en
+   cartelas amarillas y las frases de las historias en globos de diálogo.
    Reglas fijas:
-   - Solo cuatro plásticos (rojo, azul, verde y amarillo), el esmalte, el papel
-     y la tinta. Nada más.
-   - La jerarquía la marcan el tamaño y el color del papel, no el peso.
-   - Lo pendiente se ve como un hueco que invita a completarlo.
-   - Retícula firme: solo los papeles decorativos se inclinan, y como mucho
-     2°. Los controles y el texto de lectura van siempre rectos.
-   Tipos: Baloo 2 para las letras-imán y los títulos; Andika para leer (la
-   diseñó SIL para lectores que empiezan). Ambas con licencia SIL OFL 1.1.
+   - Una tinta (negro) y dos colores de impresión, rojo y amarillo. El azul y
+     el verde solo marcan secciones.
+   - Viñetas con borde de 3 a 4 px de tinta y esquinas rectas. Los globos son
+     los únicos elementos redondos.
+   - Las fotos llevan trama de puntos sobre un color de impresión.
+   - Solo las fotos decorativas se inclinan, y como mucho 2°. Los controles y
+     el texto van rectos.
+   - Controles de 48 px como mínimo y contraste AA.
+   Tipos: Archivo Black para los títulos y Atkinson Hyperlegible Next para el
+   texto. Las dos tienen licencia SIL OFL 1.1.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Esmalte (el suelo), el papel y sus escalones */
-  --color-paper: #eef1ee;
+  /* Papel fotocopiado, la hoja y sus escalones */
+  --color-paper: #f3f3ef;
   --color-sheet: #ffffff;
-  --color-tint: #e1e6e2;
-  --color-tint-deep: #c9d1cb;
+  --color-tint: #e6e6e0;
+  --color-tint-deep: #cfcfc7;
 
-  /* Tinta */
-  --color-ink: #1b1d24;
-  --color-ink-soft: #2f3340;
-  --color-ink-mute: #464b59;
-  --color-ink-faint: #555b69;
+  /* Tóner */
+  --color-ink: #121212;
+  --color-ink-soft: #262626;
+  --color-ink-mute: #3f3f3c;
+  --color-ink-faint: #4a4a48;
 
-  /* Los cuatro plásticos y su canto (la cara oscura del imán) */
-  --color-red: #d42a2f;
-  --color-red-deep: #9d1b1f;
+  /* Marcadores (los mismos cuatro colores de antes) y su tono oscuro */
+  --color-red: #ff4a36;
+  --color-red-deep: #b8271a;
   --color-blue: #1f5fd0;
   --color-blue-deep: #143f8e;
   --color-green: #157a42;
   --color-green-deep: #11633a;
-  --color-yellow: #f4b400;
-  --color-yellow-deep: #b98700;
-  --color-yellow-pale: #fdf0c4;
+  --color-yellow: #ffd23f;
+  --color-yellow-deep: #b58c00;
+  --color-yellow-pale: #fff0b3;
 
-  /* Acción: el plástico azul */
-  --color-accent: #1f5fd0;
-  --color-accent-hover: #143f8e;
+  /* Acción: tira de tóner */
+  --color-accent: #121212;
+  --color-accent-hover: #1f5fd0;
   --color-accent-ink: #ffffff;
-  --color-accent-pale: #dce7fb;
+  --color-accent-pale: #fff0b3;
 
-  /* Estado */
   --color-wrong: #b3261e;
   --color-wrong-pale: #fbe1df;
-  --color-right: #11633a;
-  --color-right-pale: #dcf1e4;
+  --color-correct: #11633a;
+  --color-correct-pale: #dcf1e4;
 
-  --font-display: 'Baloo 2', 'Andika', system-ui, sans-serif;
-  --font-text: 'Andika', system-ui, sans-serif;
-  --font-read: 'Andika', system-ui, sans-serif;
+  --font-display: 'Archivo', 'Arial Black', sans-serif;
+  --font-text: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --font-read: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
 
-  /* Papel casi recto, plástico redondo */
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
+  /* Papel cortado: sin radios */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
 
   --spacing-gutter: 1.5rem;
   --spacing-section: 7rem;
   --spacing-section-mobile: 4rem;
 
-  --shadow-float: 0 14px 34px -10px rgb(27 29 36 / 0.28);
-  --shadow-menu: 0 10px 30px -8px rgb(27 29 36 / 0.3);
+  --shadow-float: 0 14px 34px -10px rgb(20 20 20 / 0.3);
+  --shadow-menu: 0 10px 30px -8px rgb(20 20 20 / 0.32);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-magnet: cubic-bezier(0.34, 1.4, 0.64, 1);
 
-  /* Escala para lectores nuevos: nada de texto corrido por debajo de 17px */
   --text-xs: 0.9375rem;
-  --text-sm: 1.0625rem;
-  --text-base: 1.1875rem;
-  --text-lead: clamp(1.25rem, 1.12rem + 0.5vw, 1.625rem);
-  --text-head: clamp(2rem, 1.6rem + 1.6vw, 3rem);
-  --text-display: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
-  --text-hero: clamp(2.75rem, 1.9rem + 3.6vw, 5rem);
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lead: clamp(1.1875rem, 1.08rem + 0.45vw, 1.5rem);
+  --text-head: clamp(1.75rem, 1.3rem + 1.5vw, 2.625rem);
+  --text-display: clamp(2.25rem, 1.5rem + 2.8vw, 4.25rem);
+  --text-hero: clamp(2.5rem, 1.5rem + 3.6vw, 5.25rem);
 }
 
 @layer base {
@@ -112,9 +113,10 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    line-height: 1.05;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
     text-wrap: balance;
     overflow-wrap: break-word;
   }
@@ -199,9 +201,6 @@
 }
 
 @layer components {
-  /* ── Composición ───────────────────────────────────────────────────────── */
-
-  /* Un solo margen exterior, igual a ambos lados. */
   .frame {
     padding-inline: clamp(1rem, 0.5rem + 2.4vw, 3rem);
   }
@@ -223,7 +222,7 @@
     }
   }
 
-  /* ── Botones: plástico redondo, un relleno, 48px como mínimo ───────────── */
+  /* ── Botones: tiras de tóner, 48 px como mínimo ────────────────────────── */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -237,7 +236,7 @@
     font-weight: 700;
     line-height: 1.15;
     border: 0;
-    border-radius: 999px;
+    border-radius: 0;
     cursor: pointer;
     text-align: center;
     transition:
@@ -247,7 +246,7 @@
   }
 
   .btn:active {
-    transform: translateY(2px) scale(0.98);
+    transform: translateY(2px);
   }
 
   .btn-primary {
@@ -265,7 +264,7 @@
   }
 
   .btn-secondary:hover {
-    background-color: var(--color-tint);
+    background-color: var(--color-yellow-pale);
   }
 
   .btn-ghost {
@@ -285,25 +284,19 @@
     transform: none;
   }
 
-  /* ── Campos: llevan línea porque son formulario ────────────────────────── */
   .field {
     width: 100%;
     min-height: 3rem;
     background-color: var(--color-sheet);
-    border: 2px solid var(--color-tint-deep);
-    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-ink);
+    border-radius: 0;
     padding: 0.625rem 0.875rem;
     font-size: 1.0625rem;
     color: var(--color-ink);
-    transition: border-color 160ms var(--ease-out-soft);
   }
 
   .field::placeholder {
     color: var(--color-ink-faint);
-  }
-
-  .field:hover {
-    border-color: var(--color-ink-mute);
   }
 
   .field:focus {
@@ -311,41 +304,160 @@
     border-color: var(--color-blue);
   }
 
-  /* ── Papeles: separados del esmalte por el tono, sin sombra ni línea ─── */
+  /* ── Hojas: separadas del papel por el tono ────────────────────────────── */
   .panel {
     background-color: var(--color-sheet);
-    border-radius: var(--radius-xs);
+    border: 3px solid var(--color-ink);
   }
 
   .panel-quiet {
     background-color: var(--color-tint);
-    border-radius: var(--radius-xs);
   }
 
-  /* El imán que sujeta un papel: un círculo de plástico con su canto. */
-  .magnet {
+  /* Sin cinta en este mundo: el elemento queda por compatibilidad. */
+  .tape {
+    display: none;
+  }
+
+  /* Cartela de cómic: el titular va en una caja amarilla con borde de tinta. */
+  .strip {
+    display: inline;
+    background: var(--strip, var(--color-yellow));
+    color: var(--strip-ink, var(--color-ink));
+    padding: 0.04em 0.2em;
+    outline: 3px solid var(--color-ink);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* Las tiras de varias líneas necesitan aire para no taparse. */
+  :where(h1, h2, h3):has(.strip) {
+    line-height: 1.17;
+  }
+
+  /* Trama de fotocopia en el color de la sección. */
+  .halftone {
+    background-color: var(--ht-bg, var(--color-ink));
+    background-image: radial-gradient(circle, var(--ht, var(--color-red)) 1.7px, transparent 2px);
+    background-size: 8px 8px;
+  }
+
+  /* Foto fotocopiada: escala de grises con contraste, impresa sobre un color
+     de marcador (efecto risografía). Un único tratamiento para todas. */
+  .xerox {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--xerox, var(--color-yellow));
+  }
+
+  .xerox > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.3) brightness(1.08);
+    mix-blend-mode: multiply;
+  }
+
+  /* Trama de puntos de imprenta encima de la foto. */
+  .xerox::after {
+    content: '';
     position: absolute;
-    top: -0.75rem;
-    left: 50%;
-    width: 1.75rem;
-    height: 1.75rem;
-    margin-left: -0.875rem;
-    border-radius: 999px;
-    background: var(--m, var(--color-red));
-    box-shadow: inset 0 -4px 0 var(--md, var(--color-red-deep));
+    inset: 0;
+    background-image: radial-gradient(circle, rgb(18 18 18 / 0.28) 1.1px, transparent 1.4px);
+    background-size: 6px 6px;
     pointer-events: none;
   }
 
-  /* Letra-imán: plástico de color con su canto inferior. */
-  .mag-letter {
+  /* Globo de diálogo: el único elemento redondo. */
+  .balloon {
+    position: relative;
     display: inline-block;
+    background: var(--color-sheet);
+    color: var(--color-ink);
+    border: 3px solid var(--color-ink);
+    border-radius: 50% / 42%;
+    padding: 0.85em 1.25em;
     font-family: var(--font-display);
-    font-weight: 800;
-    color: var(--c, var(--color-red));
-    text-shadow: 0 0.05em 0 var(--d, var(--color-red-deep));
+    font-weight: 700;
+    line-height: 1.2;
   }
 
-  /* Inclinación de los papeles decorativos: como mucho 2°. */
+  .balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 28%;
+    border: 9px solid transparent;
+    border-top: 14px solid var(--color-ink);
+  }
+
+  /* El momento de la página: la foto de portada se abre como una persiana. */
+  .shutter {
+    animation: shutter 1.1s var(--ease-out-soft) both;
+  }
+
+  .shutter > img {
+    animation: settle 1.1s var(--ease-out-soft) both;
+  }
+
+  @keyframes shutter {
+    from {
+      clip-path: inset(100% 0 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes settle {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  /* En el móvil, cada tira muestra solo las primeras líneas del guion. */
+  @media (max-width: 40rem) {
+    .slip > span:nth-of-type(n + 5) {
+      display: none !important;
+    }
+  }
+
+  /* Marcador fosforescente sobre palabras sueltas. */
+  .hl {
+    background-color: var(--hl, var(--color-yellow));
+    color: var(--color-ink);
+    padding: 0 0.1em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .hl-strong {
+    background-color: var(--color-red);
+    color: var(--color-ink);
+    padding: 0 0.15em;
+    font-weight: 700;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .hl-strong:hover {
+    background-color: var(--color-ink);
+    color: var(--color-sheet);
+  }
+
+  /* Sello de «hecho» en la esquina de una hoja. */
+  .stamp {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    border: 3px solid currentColor;
+    padding: 0.1em 0.5em;
+    rotate: -6deg;
+  }
+
   .tilt-l {
     rotate: -1.5deg;
   }
@@ -365,13 +477,12 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* ── Lectura larga: grande, con aire ───────────────────────────────────── */
   .prose-read {
     font-family: var(--font-read);
-    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.4375rem);
-    line-height: 1.8;
+    font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+    line-height: 1.75;
     color: var(--color-ink);
-    max-width: 62ch;
+    max-width: 66ch;
   }
 
   .prose-read p + p {
@@ -381,14 +492,12 @@
   .progress-track {
     height: 0.75rem;
     background-color: var(--color-tint);
-    border-radius: 999px;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
-    background-color: var(--color-green);
-    border-radius: 999px;
+    background-color: var(--color-ink);
     transition: width 420ms var(--ease-out-soft);
   }
 }
@@ -398,17 +507,29 @@
     text-wrap: balance;
   }
 
-  /* Entrada: sube y aparece. El contenido es visible si no hay animación. */
   .animate-rise {
     animation: rise 560ms var(--ease-out-soft) both;
   }
 
-  /* El momento de la página: las letras-imán caen y se pegan a la puerta. */
+  /* El momento de la página: las tiras del titular se pegan una a una. */
   .animate-stick {
-    animation: stick 620ms var(--ease-magnet) both;
+    animation: stick 520ms var(--ease-magnet) both;
   }
 
-  /* Letra equivocada: un temblor corto, sin color de error. */
+  /* Entrada al hacer scroll (la añade AppShell solo si se permite movimiento). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 520ms var(--ease-out-soft),
+      transform 520ms var(--ease-out-soft);
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
   .animate-wobble {
     animation: wobble 360ms var(--ease-out-soft);
   }
@@ -436,10 +557,7 @@
   @keyframes stick {
     from {
       opacity: 0;
-      transform: translateY(-0.5em) scale(1.12);
-    }
-    60% {
-      opacity: 1;
+      transform: translateX(-24px) scale(1.04);
     }
     to {
       opacity: 1;

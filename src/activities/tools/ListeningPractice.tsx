@@ -112,7 +112,7 @@ export function ListeningPractice({ definition, onComplete }: ActivityToolProps)
                 disabled={answered}
                 aria-pressed={isChosen}
                 className={clsx(
-                  'flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-sm)] border-2 px-4 py-3 text-left text-lg transition-colors',
+                  'flex min-h-14 w-full items-center gap-3 border-2 px-4 py-3 text-left text-lg transition-colors',
                   showState && isAnswer
                     ? 'border-accent bg-accent-pale/40'
                     : showState && isChosen
@@ -123,7 +123,7 @@ export function ListeningPractice({ definition, onComplete }: ActivityToolProps)
               >
                 <span
                   className={clsx(
-                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base font-bold',
+                    'flex h-9 w-9 shrink-0 items-center justify-center border-2 text-base font-bold',
                     showState && isAnswer
                       ? 'border-accent bg-accent text-accent-ink'
                       : showState && isChosen

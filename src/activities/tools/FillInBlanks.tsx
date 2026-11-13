@@ -153,7 +153,7 @@ export function FillInBlanks({ definition, onComplete }: ActivityToolProps) {
                 disabled={revealed}
                 aria-pressed={isSelected}
                 className={clsx(
-                  'min-h-12 rounded-full border-2 px-5 text-lg font-bold transition-colors',
+                  'min-h-12 border-2 px-5 text-lg font-bold transition-colors',
                   isSelected
                     ? 'border-accent bg-accent text-accent-ink'
                     : 'border-transparent bg-tint text-ink hover:bg-tint-deep',

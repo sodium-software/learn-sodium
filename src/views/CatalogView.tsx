@@ -6,13 +6,6 @@ import { Icon, LevelTag, Tag } from '../components/ui'
 import { useProgress } from '../lib/progress-context'
 import { allContent, type ContentItem } from '../content'
 
-const MAGNETS = ['red', 'blue', 'green'] as const
-
-function magnet(i: number) {
-  const c = MAGNETS[i % MAGNETS.length]
-  return { '--m': `var(--color-${c})`, '--md': `var(--color-${c}-deep)` } as React.CSSProperties
-}
-
 /**
  * Catálogo. Compartido por canciones, historias, podcasts y cortometrajes:
  * cada pieza es un papel sujeto con un imán.
@@ -70,24 +63,24 @@ function PieceGrid({
 }) {
   return (
     <ul className="mt-14 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
-      {items.map((item, i) => (
+      {items.map((item) => (
         <li key={item.id}>
           <Link
             to={item.route}
-            className="group relative flex h-full flex-col rounded-[var(--radius-xs)] bg-sheet p-3 pt-5 transition-transform hover:-translate-y-1"
+            className="group relative flex h-full flex-col border-[3px] border-ink bg-sheet p-3 transition-transform hover:-translate-y-1"
           >
-            <span className="magnet" style={magnet(i)} />
+            <span className="tape" />
             <span className="relative block">
-              <Cover src={item.cover} kind={item.kind} alt={`Cover of ${item.title}`} className="aspect-[4/3] rounded-[4px]" />
+              <Cover src={item.cover} kind={item.kind} alt={`Cover of ${item.title}`} className="aspect-[4/3]" />
               {done(item.id) ? (
-                <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-green px-3 py-1 text-sm font-bold text-white">
+                <span className="absolute right-3 top-3 flex items-center gap-1.5 bg-green px-3 py-1 text-sm font-bold text-white">
                   <Icon name="Check" size={16} strokeWidth={3} />
                   {doneLabel}
                 </span>
               ) : null}
             </span>
             <span className="flex flex-1 flex-col px-2 pb-2 pt-4">
-              <h2 className="font-display text-3xl font-extrabold leading-tight text-ink group-hover:text-blue">
+              <h2 className="font-display text-3xl leading-tight text-ink group-hover:text-blue">
                 {item.title}
               </h2>
               <span className="mt-2 flex flex-wrap items-center gap-2">

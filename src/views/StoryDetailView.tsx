@@ -55,7 +55,7 @@ export function StoryDetailView() {
               <span className="text-sm text-ink-mute">{story.author}</span>
               <span className="text-sm text-ink-mute tnum">{story.readingTime} min</span>
             </div>
-            <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
+            <h1 className="mt-4 text-display font-display leading-[0.98] text-ink">
               {story.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lead text-ink-soft">{story.summary}</p>
@@ -89,7 +89,7 @@ export function StoryDetailView() {
                   onClick={() => setChapterIndex(index)}
                   aria-current={index === chapterIndex}
                   className={clsx(
-                    'min-h-12 rounded-full px-5 text-base font-bold transition-colors',
+                    'min-h-12 px-5 text-base font-bold transition-colors',
                     index === chapterIndex
                       ? 'bg-ink text-white'
                       : 'bg-sheet text-ink hover:bg-tint-deep',
@@ -101,7 +101,7 @@ export function StoryDetailView() {
             </nav>
 
             <article className="panel px-6 py-8 sm:px-10 sm:py-10">
-              <h2 className="font-display text-2xl font-extrabold text-ink">
+              <h2 className="font-display text-2xl text-ink">
                 {chapter.title}
               </h2>
               <div className="prose-read mt-6">
@@ -178,7 +178,7 @@ export function StoryDetailView() {
                               disabled={checked}
                               aria-pressed={isChosen}
                               className={clsx(
-                                'flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-sm)] border-2 px-4 py-2.5 text-left text-lg transition-colors',
+                                'flex min-h-14 w-full items-center gap-3 border-2 px-4 py-2.5 text-left text-lg transition-colors',
                                 showState && isAnswer
                                   ? 'border-accent bg-accent-pale/40'
                                   : showState && isChosen
@@ -189,7 +189,7 @@ export function StoryDetailView() {
                             >
                               <span
                                 className={clsx(
-                                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base font-bold',
+                                  'flex h-9 w-9 shrink-0 items-center justify-center border-2 text-base font-bold',
                                   showState && isAnswer
                                     ? 'border-accent bg-accent text-accent-ink'
                                     : showState && isChosen
@@ -256,7 +256,7 @@ export function StoryDetailView() {
           {/* ── Glosario ─────────────────────────────────────────────────── */}
           <aside className="lg:sticky lg:top-8 lg:self-start">
             <section className="panel px-5 py-5">
-              <h2 className="font-display text-lg font-extrabold text-ink">
+              <h2 className="font-display text-lg text-ink">
                 Words
               </h2>
               <dl className="mt-4 space-y-4">
@@ -271,7 +271,7 @@ export function StoryDetailView() {
                           onClick={() => toggleMastered(entry.term)}
                           aria-pressed={isMastered}
                           className={clsx(
-                            'shrink-0 min-h-12 rounded-full px-4 text-base font-bold transition-colors',
+                            'shrink-0 min-h-12 px-4 text-base font-bold transition-colors',
                             isMastered ? 'bg-green text-white' : 'bg-tint text-ink hover:bg-tint-deep',
                           )}
                         >
@@ -288,7 +288,7 @@ export function StoryDetailView() {
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
-                <h2 className="font-display text-lg font-extrabold text-ink">
+                <h2 className="font-display text-lg text-ink">
                   Try next
                 </h2>
                 <ul className="mt-3">

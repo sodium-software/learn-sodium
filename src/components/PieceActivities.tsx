@@ -27,7 +27,7 @@ export function PieceActivities({ pieceId, extraIds = [], title }: { pieceId: st
           <li key={activity.id}>
             <Link
               to={`/activities/${activity.id}`}
-              className="group flex h-full flex-col rounded-[var(--radius-xs)] bg-sheet p-5 transition-transform hover:-translate-y-1"
+              className="group flex h-full flex-col border-[3px] border-ink bg-sheet p-5 transition-transform hover:-translate-y-1"
             >
               <span className="flex flex-wrap items-center gap-2 text-sm font-bold text-ink-soft">
                 {activity.kind === 'external'
@@ -36,7 +36,7 @@ export function PieceActivities({ pieceId, extraIds = [], title }: { pieceId: st
                 {activity.skill ? <span>· {skillName(activity.skill)}</span> : null}
                 <LevelTag level={activity.level} />
               </span>
-              <span className="mt-2 font-display text-2xl font-extrabold leading-tight text-ink group-hover:text-blue">
+              <span className="mt-2 font-display text-2xl leading-tight text-ink group-hover:text-blue">
                 {activity.title}
               </span>
               {activity.tagline ? <span className="mt-1 text-base text-ink-mute">{activity.tagline}</span> : null}

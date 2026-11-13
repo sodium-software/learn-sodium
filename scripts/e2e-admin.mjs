@@ -35,7 +35,7 @@ const stamp = Date.now().toString(36)
 
 async function publicText(path) {
   await site.goto(BASE + path, { waitUntil: 'networkidle' })
-  return site.locator('main').innerText()
+  return site.locator('main').textContent()
 }
 const field = (label) => admin.getByLabel(new RegExp(`^${label}\\s*\\*?$`)).first()
 
@@ -78,7 +78,7 @@ const songId = await create('song', async () => {
   await admin.getByLabel(/^Cover or thumbnail/).setInputFiles('public/media/covers/paper-boats.jpg')
   await admin.getByLabel(/^Audio/).first().setInputFiles('public/media/audio/paper-boats.mp3')
   await admin.locator('audio[src^="/files/"]').waitFor({ timeout: 30000 })
-  await admin.getByRole('group', { name: /^Lyrics/ }).getByRole('button', { name: 'Add' }).click()
+  await admin.getByRole('group', { name: /^Lyrics \(/ }).getByRole('button', { name: 'Add' }).click()
   await field('Line in English').fill('Little paper boats go round and round')
   await field('Translation').fill('Barquitos de papel dan vueltas y vueltas')
   await field('Source').fill('Canción propia de Mariana')
@@ -111,7 +111,7 @@ await row.getByRole('button', { name: 'Publish' }).waitFor()
 text = await publicText(`/song/${songId}`)
 check('canción despublicada no se ve', !text.includes(songTitle))
 await site.goto(`${BASE}/song/${songId}?preview=1`, { waitUntil: 'networkidle' })
-check('vista previa muestra el borrador', (await site.locator('main').innerText()).includes(songTitle))
+check('vista previa muestra el borrador', (await site.locator('main').textContent()).includes(songTitle))
 
 await remove('song', songId, `${songTitle} (editada)`)
 text = await publicText(`/song/${songId}`)
@@ -123,7 +123,7 @@ const storyId = await create('story', async () => {
   await field('Title').fill(storyTitle)
   await field('Summary').fill('Un cuento corto para probar el panel.')
   await field('Introduction').fill('Había una vez un gato que quería aprender inglés.')
-  await admin.getByRole('group', { name: /^Chapters/ }).getByRole('button', { name: 'Add' }).click()
+  await admin.getByRole('group', { name: /^Chapters \(/ }).getByRole('button', { name: 'Add' }).click()
   await field('Chapter title').fill('The cat')
   await admin.getByLabel(/^Text \(leave a blank line/).fill('The cat is small.\n\nThe cat says hello.')
   await admin.getByRole('group', { name: /^Comprehension questions/ }).getByRole('button', { name: 'Add' }).click()
@@ -153,7 +153,7 @@ const actId = await create('activity', async () => {
   await field('Skill').selectOption('vocabulary')
   await field('Tool').selectOption('wordwall')
   await field('Link to the activity').fill('https://wordwall.net/')
-  await field('Instructions for the child').fill('Juega y luego vuelve aquí.')
+  await field('Instructions for the student').fill('Juega y luego vuelve aquí.')
   await field('Source').fill('Wordwall')
   await field('License').selectOption('permiso')
   await snap(admin, 'actividad-formulario')
@@ -167,7 +167,7 @@ check(
   (await link.getAttribute('target')) === '_blank' && (await link.getAttribute('rel')).includes('noopener'),
   `${await link.getAttribute('target')} ${await link.getAttribute('rel')}`,
 )
-check('aviso de salida visible', (await card.innerText()).includes('outside La Cartilla'))
+check('aviso de salida visible', (await card.textContent()).includes('outside La Cartilla'))
 await card.getByRole('button', { name: 'Mark as done' }).click()
 const stored = await site.evaluate(() => localStorage.getItem('la-cartilla:state:v1'))
 check('marcado como hecha en localStorage', stored.includes(actId))

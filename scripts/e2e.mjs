@@ -28,7 +28,7 @@ page.on('pageerror', (e) => consoleErrors.push(`pageerror: ${e.message}`))
 await page.goto(BASE, { waitUntil: 'networkidle' })
 for (const [label, expectPath] of [
   ['Songs', '/song'],
-  ['Stories', '/storytelling'],
+  ['Storytale', '/storytelling'],
   ['Podcast', '/podcast'],
   ['Short films', '/short-film'],
   ['Activities', '/activities'],
@@ -41,7 +41,7 @@ for (const [label, expectPath] of [
 }
 
 // ── 2. El menú «Para adultos» se abre y lleva a sus páginas ───────────────
-await page.getByRole('button', { name: 'For grown-ups' }).click()
+await page.getByRole('button', { name: 'About' }).click()
 await page.getByRole('link', { name: 'Bio', exact: true }).first().click()
 await page.waitForTimeout(300)
 check('menú para adultos', new URL(page.url()).pathname === '/biodata')

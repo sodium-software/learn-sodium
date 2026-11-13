@@ -1,21 +1,27 @@
 import { useMemo, useState } from 'react'
 
 import { clsx } from '../lib/cn'
-import { Drawing, type DrawingName } from './Drawings'
 
-/** Palabras del juego de la portada: cortas, concretas y con dibujo. */
-const WORDS: { en: string; es: string; drawing: DrawingName }[] = [
-  { en: 'cat', es: 'gato', drawing: 'cat' },
-  { en: 'sun', es: 'sol', drawing: 'sun' },
-  { en: 'fish', es: 'pez', drawing: 'fish' },
-  { en: 'boat', es: 'barco', drawing: 'boat' },
-  { en: 'tree', es: 'árbol', drawing: 'tree' },
-  { en: 'apple', es: 'manzana', drawing: 'apple' },
+/**
+ * Palabras del juego de la portada: nivel B1, abstractas y ligadas a los temas
+ * de la guía (naturaleza, inclusión y pertenencia). La pista es una definición
+ * en inglés sencillo.
+ */
+const WORDS: { en: string; clue: string }[] = [
+  { en: 'courage', clue: 'Being brave when something is difficult or scary.' },
+  { en: 'belonging', clue: 'The feeling of being accepted as part of a group.' },
+  { en: 'freedom', clue: 'The right to do, say or think what you want.' },
+  { en: 'journey', clue: 'A long trip from one place to another.' },
+  { en: 'memory', clue: 'Something you remember from the past.' },
+  { en: 'kindness', clue: 'Being friendly, generous and caring with other people.' },
+  { en: 'wisdom', clue: 'The ability to make good decisions from what you have learned.' },
+  { en: 'harmony', clue: 'When people or things live together peacefully.' },
 ]
 
-const TILE_COLORS = ['red', 'blue', 'green'] as const
+/** Colores de marcador de las letras colocadas, en orden. */
+const MARKERS = ['bg-yellow text-ink', 'bg-red text-white', 'bg-blue text-white', 'bg-green text-white'] as const
 
-/** Baraja las letras sin dejarlas en el orden de la respuesta. */
+/** Baraja las letras sin dejarlas en el orden de la respuesta (determinista). */
 function scramble(word: string): string[] {
   const letters = [...word]
   for (let shift = 1; shift < letters.length; shift++) {
@@ -32,9 +38,8 @@ function localEnglishVoice(): SpeechSynthesisVoice | null {
 }
 
 /**
- * «Arma la palabra»: el niño ve un dibujo y su nombre en español, y toca las
- * letras-imán en orden para escribirlo en inglés. Los huecos muestran lo que
- * falta.
+ * «Build the word»: el estudiante lee una definición en inglés y toca las
+ * letras en orden para escribir la palabra. Los huecos muestran lo que falta.
  */
 export function WordGame() {
   const [wordIndex, setWordIndex] = useState(0)
@@ -66,50 +71,41 @@ export function WordGame() {
     const utterance = new SpeechSynthesisUtterance(word.en)
     utterance.voice = voice
     utterance.lang = voice.lang
-    utterance.rate = 0.8
+    utterance.rate = 0.85
     window.speechSynthesis.speak(utterance)
   }
 
-  return (
-    <section aria-labelledby="arma-la-palabra" className="relative rounded-[var(--radius-xs)] bg-yellow px-5 pb-6 pt-8 sm:px-7">
-      <span className="magnet" style={{ '--m': 'var(--color-blue)', '--md': 'var(--color-blue-deep)' } as React.CSSProperties} />
-      <div className="flex items-start gap-4">
-        <div className="min-w-0 flex-1">
-          <h2 id="arma-la-palabra" className="font-display text-3xl font-extrabold text-ink">
-            Build the word
-          </h2>
-          <p className="mt-1 text-lg text-ink">
-            What is this in English? Tap the letters in order.
-          </p>
-        </div>
-        <Drawing name={word.drawing} className="h-20 w-24 shrink-0 rounded-[var(--radius-sm)] bg-sheet p-1.5" />
-      </div>
+  const tile = 'grid h-14 w-12 place-items-center font-display text-3xl uppercase leading-none sm:h-16 sm:text-4xl'
 
-      <div className="mt-5 flex flex-wrap gap-2" aria-label={`Your word: ${placed.map((i) => tiles[i]).join('') || 'empty'}`}>
+  return (
+    <section aria-labelledby="arma-la-palabra" className="relative bg-sheet px-5 pb-6 pt-8 sm:px-7">
+      <span className="tape" />
+      <h2 id="arma-la-palabra" className="text-4xl">
+        Build the word
+      </h2>
+      <p className="mt-2 text-lg">
+        <strong>Clue:</strong> {word.clue}
+      </p>
+      <p className="text-base text-ink-mute">Tap the letters in order. B1 vocabulary.</p>
+
+      <div className="mt-5 flex flex-wrap gap-1.5" aria-label={`Your word: ${placed.map((i) => tiles[i]).join('') || 'empty'}`}>
         {[...word.en].map((_, slot) => (
           <span
             key={slot}
-            className={clsx(
-              'grid h-16 w-14 place-items-center rounded-[var(--radius-sm)] text-[2.75rem] leading-none',
-              placed[slot] === undefined ? 'bg-yellow-pale' : 'bg-sheet',
-            )}
+            className={clsx(tile, placed[slot] === undefined ? 'bg-tint' : clsx(MARKERS[slot % MARKERS.length], 'animate-stick'))}
           >
-            {placed[slot] !== undefined ? (
-              <span className="mag-letter animate-stick" style={tileStyle(placed[slot])}>
-                {tiles[placed[slot]]}
-              </span>
-            ) : null}
+            {placed[slot] !== undefined ? tiles[placed[slot]] : null}
           </span>
         ))}
       </div>
 
       {done ? (
         <div className="mt-5 flex flex-wrap items-center gap-3" role="status">
-          <p className="mr-auto text-lg font-bold text-ink">
+          <p className="mr-auto text-lg font-bold">
             Well done! <span lang="en">{word.en}</span>
           </p>
           {voice ? (
-            <button type="button" className="btn btn-secondary" onClick={say}>
+            <button type="button" className="btn bg-tint text-ink hover:bg-yellow-pale" onClick={say}>
               Listen
             </button>
           ) : null}
@@ -119,7 +115,7 @@ export function WordGame() {
         </div>
       ) : (
         <>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-1.5">
             {tiles.map((letter, i) => (
               <button
                 key={`${word.en}-${i}`}
@@ -128,26 +124,20 @@ export function WordGame() {
                 disabled={placed.includes(i)}
                 aria-label={`Letter ${letter}`}
                 className={clsx(
-                  'grid h-16 w-14 place-items-center rounded-[var(--radius-sm)] bg-sheet text-[2.75rem] leading-none transition-transform active:scale-95 disabled:opacity-25',
+                  tile,
+                  'bg-ink text-sheet transition-transform hover:-translate-y-0.5 active:scale-95 disabled:opacity-20',
                   miss === i && 'animate-wobble',
                 )}
               >
-                <span className="mag-letter" style={tileStyle(i)}>
-                  {letter}
-                </span>
+                {letter}
               </button>
             ))}
           </div>
-          <p className="mt-3 min-h-7 text-base text-ink" aria-live="polite">
+          <p className="mt-3 min-h-7 text-base" aria-live="polite">
             {miss !== null ? 'Not that one. Try another letter.' : ''}
           </p>
         </>
       )}
     </section>
   )
-}
-
-function tileStyle(i: number) {
-  const color = TILE_COLORS[i % TILE_COLORS.length]
-  return { '--c': `var(--color-${color})`, '--d': `var(--color-${color}-deep)` } as React.CSSProperties
 }

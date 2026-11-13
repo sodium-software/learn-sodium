@@ -86,7 +86,7 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
             {flipped ? 'Meaning' : 'Tap to flip'}
           </span>
 
-          <p className="mt-5 font-display text-4xl font-extrabold text-ink">
+          <p className="mt-5 font-display text-4xl text-ink">
             {card.term}
           </p>
 
@@ -113,7 +113,7 @@ export function VocabularyBuilder({ definition, onComplete }: ActivityToolProps)
         <div className="flex flex-col gap-3">
           <div className="panel-quiet px-4 py-3">
             <p className="label">Your progress</p>
-            <p className="mt-1 font-display text-2xl font-extrabold text-ink tnum">
+            <p className="mt-1 font-display text-2xl text-ink tnum">
               {Object.values(known).filter(Boolean).length}
               <span className="text-base text-ink-mute"> / {cards.length}</span>
             </p>

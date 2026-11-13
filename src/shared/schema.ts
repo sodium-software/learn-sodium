@@ -104,7 +104,7 @@ const meta: Field[] = [
     label: 'Embed from Canva, Wordwall, Educaplay, Heyzine or YouTube',
     type: 'url',
     embed: 'any',
-    help: 'Shown inside the page. Paste the link or the embed code (Share → Embed). Canva edit links are fine: the site only shows the design. YouTube only loads when the child taps play.',
+    help: 'Shown inside the page. Paste the link or the embed code (Share → Embed). Canva edit links are fine: the site only shows the design. YouTube only loads when the student taps play.',
   },
 ]
 
@@ -251,7 +251,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
       label: 'YouTube video',
       type: 'url',
       embed: 'youtube',
-      help: 'Instead of uploading a file. It only loads when the child taps play.',
+      help: 'Instead of uploading a file. It only loads when the student taps play.',
     },
     {
       name: 'scenes',
@@ -280,7 +280,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
     { name: 'minutes', label: 'Estimated minutes', type: 'number', min: 1, max: 120 },
     { name: 'tool', label: 'Tool', type: 'select', options: EXTERNAL_TOOLS, required: true, showIf: onlyFor('external') },
     { name: 'url', label: 'Link to the activity', type: 'url', required: true, showIf: onlyFor('external') },
-    { name: 'instructions', label: 'Instructions for the child', type: 'textarea', max: 1500 },
+    { name: 'instructions', label: 'Instructions for the student', type: 'textarea', max: 1500 },
     {
       name: 'cards',
       label: 'Cards',

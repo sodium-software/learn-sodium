@@ -65,7 +65,7 @@ export function ShortFilmDetailView() {
                 {formatTime(film.duration)}
               </span>
             </div>
-            <h1 className="mt-4 text-display font-display font-extrabold leading-[0.98] text-ink">
+            <h1 className="mt-4 text-display font-display leading-[0.98] text-ink">
               {film.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lead text-ink-soft">{film.synopsis}</p>
@@ -188,7 +188,7 @@ export function ShortFilmDetailView() {
                               disabled={checked}
                               aria-pressed={isChosen}
                               className={clsx(
-                                'flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-sm)] border-2 px-4 py-2.5 text-left text-lg transition-colors',
+                                'flex min-h-14 w-full items-center gap-3 border-2 px-4 py-2.5 text-left text-lg transition-colors',
                                 showState && isAnswer
                                   ? 'border-accent bg-accent-pale/40'
                                   : showState && isChosen
@@ -199,7 +199,7 @@ export function ShortFilmDetailView() {
                             >
                               <span
                                 className={clsx(
-                                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base font-bold',
+                                  'flex h-9 w-9 shrink-0 items-center justify-center border-2 text-base font-bold',
                                   showState && isAnswer
                                     ? 'border-accent bg-accent text-accent-ink'
                                     : showState && isChosen
@@ -267,7 +267,7 @@ export function ShortFilmDetailView() {
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">
-                <h2 className="font-display text-lg font-extrabold text-ink">
+                <h2 className="font-display text-lg text-ink">
                   Try next
                 </h2>
                 <ul className="mt-3">

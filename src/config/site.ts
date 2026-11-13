@@ -12,6 +12,6 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   platformName: 'La Cartilla',
   shortName: 'Cartilla',
-  tagline: 'English for kids',
-  heroText: 'Songs, stories and games to learn your first words in English.',
+  tagline: 'Stories in English · B1',
+  heroText: 'A zine of four stories for B1 learners: a song, a podcast, a short film and a storytale, each with its script and activities.',
 }

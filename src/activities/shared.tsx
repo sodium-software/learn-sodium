@@ -85,7 +85,7 @@ export function ResultPanel({
   return (
     <div className="panel px-6 py-8 text-center">
       <p className="label">Result</p>
-      <p className="mt-3 font-display text-6xl font-extrabold text-ink tnum">
+      <p className="mt-3 font-display text-6xl text-ink tnum">
         {score}
         <span className="text-2xl text-ink-mute">/100</span>
       </p>
@@ -134,7 +134,7 @@ export function Feedback({
     >
       <p
         className={clsx(
-          'font-display text-sm font-extrabold',
+          'font-display text-sm',
           correct ? 'text-accent' : 'text-wrong',
         )}
       >
