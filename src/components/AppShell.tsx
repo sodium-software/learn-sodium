@@ -86,8 +86,9 @@ export function AppShell() {
       <footer className="bg-ink pb-10 pt-16 text-sheet">
         <div className="frame">
           {/* El nombre construido con bloques: cada letra recortada de su propio rectángulo. */}
+          <p aria-hidden="true" className="mb-2 font-display text-[clamp(1.5rem,1rem+2vw,3rem)] uppercase leading-none">Learning with</p>
           <p aria-hidden="true" className="flex h-[22svh] items-end gap-1 sm:h-[34svh]">
-            {[...'LACARTILLA'].map((letter, i) => (
+            {[...'STORIES'].map((letter, i) => (
               <span
                 key={i}
                 className={clsx('flex flex-1 items-end justify-center pb-[0.05em] font-display leading-none', BLOCKS[i % BLOCKS.length])}

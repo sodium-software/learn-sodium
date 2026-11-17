@@ -74,7 +74,7 @@ export default function GameView() {
   const stuck = !solved && !hasMoves(jars)
 
   useEffect(() => {
-    document.title = 'Color Jars · La Cartilla'
+    document.title = 'Color Jars · Learning with Stories'
   }, [])
 
   const startLevel = useCallback((next: number) => {

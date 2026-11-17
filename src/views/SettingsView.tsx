@@ -170,7 +170,7 @@ export function SettingsView() {
           About this notebook
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-ink-soft">
-          La Cartilla is a static site: all the songs, podcasts, short films and their
+          Learning with Stories is a static site: all the songs, podcasts, short films and their
           pictures are served from this same site. There is no backend, no accounts and
           no outside services. Your progress lives in this browser's local storage.
         </p>

@@ -55,7 +55,7 @@ export function ExternalActivityCard({ activity, detailed = false }: { activity:
           </button>
         </div>
         <p id={noteId} className="mt-3 text-sm text-ink-mute">
-          Opens in a new tab, outside La Cartilla.
+          Opens in a new tab, outside Learning with Stories.
         </p>
         {detailed ? (
           <div className="mt-6">

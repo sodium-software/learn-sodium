@@ -36,7 +36,7 @@ export function Brand() {
     <Link
       to="/"
       onClick={onClick}
-      className="flex min-h-12 items-center pr-2 text-[1.375rem] leading-none"
+      className="flex min-h-12 items-center whitespace-nowrap pr-2 text-base leading-none sm:text-[1.375rem]"
       aria-label={`${siteConfig.platformName}, go to Home`}
     >
       <Wordmark />

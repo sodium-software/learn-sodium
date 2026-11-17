@@ -10,8 +10,8 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  platformName: 'La Cartilla',
-  shortName: 'Cartilla',
+  platformName: 'Learning with Stories',
+  shortName: 'Stories',
   tagline: 'Stories in English · B1',
   heroText: 'A zine of four stories for B1 learners: a song, a podcast, a short film and a storytale, each with its script and activities.',
 }

@@ -167,7 +167,7 @@ check(
   (await link.getAttribute('target')) === '_blank' && (await link.getAttribute('rel')).includes('noopener'),
   `${await link.getAttribute('target')} ${await link.getAttribute('rel')}`,
 )
-check('aviso de salida visible', (await card.textContent()).includes('outside La Cartilla'))
+check('aviso de salida visible', (await card.textContent()).includes('outside Learning with Stories'))
 await card.getByRole('button', { name: 'Mark as done' }).click()
 const stored = await site.evaluate(() => localStorage.getItem('la-cartilla:state:v1'))
 check('marcado como hecha en localStorage', stored.includes(actId))

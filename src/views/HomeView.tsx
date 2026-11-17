@@ -5,7 +5,7 @@ import { clsx } from '../lib/cn'
 import { SECTION_NAMES } from '../components/sections'
 import { Icon } from '../components/ui'
 import { WordGame } from '../components/WordGame'
-import { activityDefinitions, allContent, asset, episodes, films, songs, stories } from '../content'
+import { activityDefinitions, allContent, asset, episodes, films, pages, songs, stories } from '../content'
 
 const IMG = {
   river: asset('/media/zine/cano-cristales-jacuzzis-naturales-de-colores-01.jpg'),
@@ -76,19 +76,29 @@ export function HomeView() {
     story: cut(stories[0]?.chapters[0]?.paragraphs[0], 60),
   }
 
+  // La introducción que escribe la autora en el panel; mientras sea el texto de ejemplo, la de la casa.
+  const page = pages.introduccion
+  const intro =
+    page && !page.example
+      ? [page.summary, ...page.body].filter(Boolean).slice(0, 2)
+      : [
+          'Learning with Stories is a didactic web guide for teenagers who learn English at B1 level in Colombian schools. It tells four short stories, each in a different way: a song, a podcast, a short film and a storytale. One is about nature and one is about belonging.',
+          'Watch them, listen to them and read them line by line. Every story comes with its script and four activities for grammar, speaking, writing, reading, listening and vocabulary. No account, no sign-up: just open a story and start.',
+        ]
+
   return (
     <div>
       {/* ── Portada: una página de cómic ──────────────────────────────── */}
       <section className="frame pb-6 pt-4" aria-labelledby="portada">
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-12 lg:grid-rows-[minmax(420px,58svh)_minmax(260px,34svh)]">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-12 lg:grid-rows-[minmax(420px,58svh)]">
           <div className="panel relative col-span-2 flex flex-col justify-end bg-red p-5 sm:p-10 lg:col-span-8">
             <h1 id="portada" className="text-[clamp(1.875rem,0.6rem+5.6vw,6.5rem)] leading-[0.9]">
-              Four stories.
+              Learning
               <br />
-              Your English.
+              with Stories
             </h1>
             <p className="mt-6 max-w-[40ch] text-lead font-bold">
-              {name ? <>Hi, {name}! </> : null}A song, a podcast, a short film and a storytale, each with its script and
+              {name ? <>Hi, {name}! </> : null}Four stories for your English: a song, a podcast, a short film and a storytale, each with its script and
               four activities.
             </p>
             <Link to="/song" className="btn btn-primary mt-8 self-start px-7 text-lg">
@@ -103,6 +113,21 @@ export function HomeView() {
             {quote.song ? <span className="balloon absolute right-4 top-4 max-w-[78%] text-base">“{quote.song}”</span> : null}
             <PanelLabel name="The song" detail="MP3 · lyrics" />
           </Link>
+        </div>
+        <div className="panel mt-3 bg-sheet p-6 sm:p-10" aria-labelledby="introduccion">
+          <h2 id="introduccion" className="text-head">
+            <span className="strip">Introduction</span>
+          </h2>
+          {intro.map((paragraph, i) => (
+            <p key={i} className="mt-5 max-w-[68ch] text-lg leading-[1.6] lg:text-[1.35rem]">
+              {paragraph}
+            </p>
+          ))}
+          <Link to="/introduccion" className="hl-strong mt-6 inline-flex min-h-12 items-center text-lg">
+            Read the full introduction →
+          </Link>
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-12 lg:grid-rows-[minmax(260px,34svh)]">
           <Link to="/podcast" className="panel group relative col-span-2 min-h-[260px] overflow-hidden sm:col-span-1 lg:col-span-4">
             <div className="xerox h-full [--xerox:var(--color-blue)]">
               <img src={IMG.amazon} alt="Sunset over the Amazon river in Colombia" width={1400} height={700} loading="lazy" />
@@ -124,14 +149,6 @@ export function HomeView() {
             {quote.story ? <span className="balloon absolute bottom-16 right-4 max-w-[80%] text-base">{quote.story}</span> : null}
             <PanelLabel name="Storytale" detail="legend · myth · fable" />
           </Link>
-        </div>
-        <div className="panel mt-3 grid gap-6 bg-sheet p-6 sm:p-10 lg:grid-cols-12">
-          <p className="max-w-[68ch] text-lg leading-[1.6] lg:col-span-12 lg:text-[1.35rem]">
-            <span className="strip font-bold">Level B1</span> Four short stories, each told in a different way. One is about nature, one is about belonging, and all of
-            them are told in English at B1 level for teenagers in Colombian schools. Watch them, listen to them and read
-            them line by line. Every story comes with its script and four activities for grammar, speaking, writing,
-            reading, listening and vocabulary. No account, no sign-up: just open a story and start.
-          </p>
         </div>
       </section>
 
@@ -279,7 +296,7 @@ export function HomeView() {
           About this guide
         </h2>
         <p className="mt-8 text-[clamp(1.25rem,1rem+1vw,2rem)] leading-[1.22] text-ink-soft lg:columns-2 lg:gap-8 lg:text-justify lg:hyphens-auto">
-          <span className="text-ink">La Cartilla</span> is a didactic web guide made by{' '}
+          <span className="text-ink">Learning with Stories</span> is a didactic web guide made by{' '}
           <mark className="hl [--hl:var(--color-yellow)]">trainee teachers</mark> for the Communicative English Project.
           It is for <mark className="hl [--hl:var(--color-yellow-pale)]">teenagers</mark> who learn English at{' '}
           <mark className="hl [--hl:var(--color-yellow)]">B1 level</mark> in public and private{' '}

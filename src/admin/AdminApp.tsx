@@ -13,7 +13,7 @@ export default function AdminApp() {
   const [session, setSession] = useState<{ email: string } | null | undefined>(undefined)
 
   useEffect(() => {
-    document.title = 'Panel · La Cartilla'
+    document.title = 'Panel · Learning with Stories'
     api<{ email: string | null; csrf: string | null }>('session')
       .then((data) => {
         if (!data.email || !data.csrf) return setSession(null)
@@ -125,7 +125,7 @@ function Login({ onDone }: { onDone: (email: string, csrf: string) => void }) {
           }
         }}
       >
-        <h1 className="font-display text-2xl font-semibold text-ink">La Cartilla panel</h1>
+        <h1 className="font-display text-2xl font-semibold text-ink">Learning with Stories panel</h1>
         <p className="mt-1 text-sm text-ink-mute">For the author only.</p>
         <label className="label mt-6 block" htmlFor="email">
           Email
