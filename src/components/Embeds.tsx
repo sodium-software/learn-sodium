@@ -8,6 +8,8 @@ const PLATFORM: Record<Exclude<EmbedPlatform, 'youtube'>, { name: string; aspect
   wordwall: { name: 'Wordwall', aspect: 'aspect-[4/3]' },
   educaplay: { name: 'Educaplay', aspect: 'aspect-[7/6]' },
   heyzine: { name: 'Heyzine', aspect: 'aspect-[4/3]' },
+  vocaroo: { name: 'Vocaroo', aspect: 'h-16' },
+  padlet: { name: 'Padlet', aspect: 'h-[min(80svh,40rem)]' },
 }
 
 /**

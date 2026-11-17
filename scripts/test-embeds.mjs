@@ -20,6 +20,14 @@ const hz = 'https://heyzine.com/flip-book/7ae08737f4.html'
 assert.equal(embedUrl(hz), hz)
 assert.equal(embedPlatform(hz), 'heyzine')
 assert.match(embedUrl('https://heyzine.com.evil.example/flip-book/x.html').error, /only Canva/)
+const voc = 'https://vocaroo.com/embed/1i2zeXiW6t2S?autoplay=0'
+for (const link of ['https://vocaroo.com/1i2zeXiW6t2S', 'https://voca.ro/1i2zeXiW6t2S', voc]) assert.equal(embedUrl(link), voc)
+assert.equal(embedPlatform(voc), 'vocaroo')
+assert.match(embedUrl('https://vocaroo.com.evil.example/1i2zeXiW6t2S').error, /only Canva/)
+const pad = 'https://padlet.com/embed/abc123xyz789'
+for (const link of ['https://padlet.com/maria_t/our-class-wall-abc123xyz789', 'https://padlet.com/maria_t/abc123xyz789', pad]) assert.equal(embedUrl(link), pad)
+assert.equal(embedPlatform(pad), 'padlet')
+assert.equal(sanitize(SCHEMAS.activity, { type: 'quiz', embed: `<iframe src="${pad}" frameborder="0" allow="camera;microphone"></iframe>` }).data.embed, pad)
 
 // El servidor acepta el código <iframe> completo, guarda la forma insertable y convierte el de edición en uno de solo ver.
 const code = `<iframe style="max-width:100%" src="${ww.replace('&', '&amp;')}" width="500" height="380" frameborder="0" allowfullscreen></iframe>`

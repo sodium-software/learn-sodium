@@ -101,7 +101,7 @@ const meta: Field[] = [
   { name: 'cover', label: 'Cover or thumbnail', type: 'media', accept: 'image' },
   {
     name: 'embed',
-    label: 'Embed from Canva, Wordwall, Educaplay, Heyzine or YouTube',
+    label: 'Embed from Canva, Wordwall, Educaplay, Heyzine, Vocaroo, Padlet or YouTube',
     type: 'url',
     embed: 'any',
     help: 'Shown inside the page. Paste the link or the embed code (Share → Embed). Canva edit links are fine: the site only shows the design. YouTube only loads when the student taps play.',
@@ -369,7 +369,7 @@ export const SETTINGS_SCHEMA: Field[] = [
 
 // ── Enlaces insertados ──────────────────────────────────────────────────────
 
-export type EmbedPlatform = 'canva' | 'wordwall' | 'educaplay' | 'heyzine' | 'youtube'
+export type EmbedPlatform = 'canva' | 'wordwall' | 'educaplay' | 'heyzine' | 'vocaroo' | 'padlet' | 'youtube'
 
 const CANVA = /^https:\/\/(?:www\.)?canva\.com\/design\/([A-Za-z0-9_-]+)\/([A-Za-z0-9_-]+)\/(view|watch|edit)\b/
 const YOUTUBE = [
@@ -379,6 +379,13 @@ const YOUTUBE = [
 ]
 const WORDWALL = /^https:\/\/wordwall\.net\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?embed\/[A-Za-z0-9]+/
 const HEYZINE = /^https:\/\/(?:www\.)?heyzine\.com\/flip-book\/[A-Za-z0-9]+(?:\.html)?(?:[?#].*)?$/
+// Vocaroo: vocaroo.com/<id>, voca.ro/<id> o el código /embed/<id>.
+const VOCAROO = /^https:\/\/(?:(?:www\.)?vocaroo\.com\/(?:embed\/)?|voca\.ro\/)([A-Za-z0-9]{6,20})(?:[?#].*)?$/
+// Padlet: el tablero padlet.com/<usuaria>/<nombre>-<id> o el código /embed/<id>.
+const PADLET = [
+  /^https:\/\/padlet\.com\/embed\/([a-z0-9]{8,24})(?:[?#].*)?$/,
+  /^https:\/\/padlet\.com\/[A-Za-z0-9_.-]+\/(?:[A-Za-z0-9-]*-)?([a-z0-9]{8,24})\/?(?:[?#].*)?$/,
+]
 const EDUCAPLAY = /^https:\/\/(?:[a-z]{2,3}\.|www\.)?educaplay\.com\//
 
 /** Plataforma de un enlace ya convertido (para elegir cómo mostrarlo). */
@@ -387,6 +394,8 @@ export function embedPlatform(url: string): EmbedPlatform {
   if (url.includes('canva.com')) return 'canva'
   if (url.includes('wordwall.net')) return 'wordwall'
   if (url.includes('heyzine.com')) return 'heyzine'
+  if (url.startsWith('https://vocaroo.com/')) return 'vocaroo'
+  if (url.startsWith('https://padlet.com/')) return 'padlet'
   return 'educaplay'
 }
 
@@ -399,7 +408,7 @@ export function embedSource(raw: unknown): string {
 
 /**
  * Convierte el enlace (o el código para insertar) que pega la autora en la
- * dirección que se inserta. Solo acepta Canva, Wordwall, Educaplay, Heyzine y YouTube:
+ * dirección que se inserta. Solo acepta Canva, Wordwall, Educaplay, Heyzine, Vocaroo, Padlet y YouTube:
  * la misma lista blanca que frame-src en public/_headers.
  * shortcut: no sigue enlaces cortos (canva.link, wordwall share); si hiciera falta, habría que resolver la redirección.
  */
@@ -421,8 +430,14 @@ export function embedUrl(link: string, only?: EmbedPlatform): string | { error: 
   }
   if (!only && EDUCAPLAY.test(link)) return link
   if (!only && HEYZINE.test(link)) return link
+  const v = only ? null : VOCAROO.exec(link)
+  if (v) return `https://vocaroo.com/embed/${v[1]}?autoplay=0`
+  for (const pattern of only ? [] : PADLET) {
+    const m = pattern.exec(link)
+    if (m) return `https://padlet.com/embed/${m[1]}`
+  }
   if (only === 'youtube') return { error: 'this is not a YouTube video link' }
-  return { error: 'only Canva, Wordwall, Educaplay, Heyzine or YouTube links can be shown inside the page' }
+  return { error: 'only Canva, Wordwall, Educaplay, Heyzine, Vocaroo, Padlet or YouTube links can be shown inside the page' }
 }
 
 // ── Saneado ─────────────────────────────────────────────────────────────────
