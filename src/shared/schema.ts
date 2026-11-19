@@ -266,6 +266,7 @@ export const SCHEMAS: Record<Kind, Field[]> = {
       ],
     },
     textPictures('Script pictures'),
+    { ...glossary, name: 'keyTerms', label: 'Key words' },
     questions('comprehension', 'Comprehension questions'),
     { name: 'relatedActivityIds', label: 'Related activities (IDs)', type: 'tags', max: 80 },
     ...rights,

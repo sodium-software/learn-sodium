@@ -17,7 +17,7 @@ import { formatTime } from '../lib/format'
 export function ShortFilmDetailView() {
   const { id } = useParams<{ id: string }>()
   const film = films.find((entry) => entry.id === id)
-  const { state, updateMedia } = useProgress()
+  const { state, updateMedia, toggleMastered } = useProgress()
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [time, setTime] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
@@ -264,6 +264,38 @@ export function ShortFilmDetailView() {
           </div>
 
           <aside className="lg:sticky lg:top-8 lg:self-start">
+            {film.keyTerms.length > 0 ? (
+              <section className="panel px-5 py-5" aria-labelledby="key-words-film">
+                <h2 id="key-words-film" className="font-display text-lg text-ink">
+                  Key words
+                </h2>
+                <dl className="mt-4 space-y-4">
+                  {film.keyTerms.map((entry) => {
+                    const isMastered = state.masteredTerms.includes(entry.term)
+                    return (
+                      <div key={entry.term}>
+                        <dt className="flex items-baseline justify-between gap-3">
+                          <span className="font-medium text-ink">{entry.term}</span>
+                          <button
+                            type="button"
+                            onClick={() => toggleMastered(entry.term)}
+                            aria-pressed={isMastered}
+                            className={clsx(
+                              'min-h-12 shrink-0 px-4 text-base font-bold transition-colors',
+                              isMastered ? 'bg-green text-white' : 'bg-tint text-ink hover:bg-tint-deep',
+                            )}
+                          >
+                            {isMastered ? 'Learned' : 'Mark as learned'}
+                          </button>
+                        </dt>
+                        <dd className="mt-1 text-sm text-ink-soft">{entry.definition}</dd>
+                        {entry.translation ? <dd className="mt-1 text-xs text-ink-mute">{entry.translation}</dd> : null}
+                      </div>
+                    )
+                  })}
+                </dl>
+              </section>
+            ) : null}
 
             {related.length > 0 ? (
               <section className="panel mt-6 px-5 py-5">

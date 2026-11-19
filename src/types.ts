@@ -140,6 +140,7 @@ export interface ShortFilm extends PieceMeta {
   duration: number
   synopsis: string
   scenes: FilmScene[]
+  keyTerms: GlossEntry[]
   comprehension: QuizQuestion[]
   relatedActivityIds: string[]
   cover: string

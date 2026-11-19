@@ -226,6 +226,7 @@ function toFilm(item: PublicItem): ShortFilm {
     duration: (scenes.at(-1)?.start ?? 0) + 5,
     synopsis: text(data.summary),
     scenes,
+    keyTerms: list<GlossEntry>(data.keyTerms),
     comprehension: questions(data.comprehension, `${item.id}-`),
     relatedActivityIds: list<string>(data.relatedActivityIds),
     video: data.video ? asset(text(data.video)) : undefined,
@@ -377,7 +378,7 @@ export function applyContent(content: PublicContent): void {
       minutes: Math.max(1, Math.round(film.duration / 60)),
       cover: film.cover,
       route: `/short-film/${film.id}`,
-      keywords: [film.title, film.synopsis.slice(0, 60)],
+      keywords: [film.title, film.synopsis.slice(0, 60), ...film.keyTerms.map((g) => g.term)],
       example: film.example,
     })),
   ])
