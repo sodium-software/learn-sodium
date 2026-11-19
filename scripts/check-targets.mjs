@@ -8,7 +8,7 @@ import { chromium } from 'playwright'
 const BASE = process.argv[2] ?? 'http://127.0.0.1:4173'
 const WIDTH = Number(process.argv[3] ?? 390)
 const ROUTES = [
-  '/', '/introduccion', '/bio', '/song', '/song/counting-the-miles', '/storytelling',
+  '/', '/introduccion', '/song', '/song/counting-the-miles', '/storytelling',
   '/storytelling/cartographers-apprentice', '/podcast', '/podcast/the-practice-room-ep1', '/short-film',
   '/short-film/the-last-tram', '/activities', '/activities/ejemplo-wordwall', '/activities/act-vocab-roads',
   '/activities/act-quiz-roads', '/activities/act-matching-market', '/activities/act-fill-water',

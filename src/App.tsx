@@ -47,8 +47,9 @@ export function AppRoutes() {
       <Route element={<AppShell />}>
         <Route index element={<HomeView />} />
         <Route path="introduccion" element={<PageView id="introduccion" />} />
-        <Route path="bio" element={<PageView id="biodata" />} />
-        <Route path="biodata" element={<Navigate to="/bio" replace />} />
+        {/* La página Bio está oculta: su contenido sigue en la base de datos por si la autora la quiere de vuelta. */}
+        <Route path="bio" element={<Navigate to="/" replace />} />
+        <Route path="biodata" element={<Navigate to="/" replace />} />
         <Route
           path="song"
           element={

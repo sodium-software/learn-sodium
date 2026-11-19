@@ -11,7 +11,6 @@ const OUT = process.argv[3] ?? '.taste-skill/shots'
 const ROUTES = [
   ['home', '/'],
   ['introduccion', '/introduccion'],
-  ['bio', '/bio'],
   ['activity-external', '/activities/ejemplo-wordwall'],
   ['admin-login', '/admin'],
   ['song', '/song'],

@@ -101,7 +101,6 @@ export function AppShell() {
           <div className="mt-14 grid gap-8 lg:grid-cols-12">
             <nav aria-label="Footer" className="flex flex-wrap gap-1 lg:col-span-6">
               <Link to="/introduccion" className="btn btn-ghost text-sheet hover:bg-sheet hover:text-ink">Introduction</Link>
-              <Link to="/bio" className="btn btn-ghost text-sheet hover:bg-sheet hover:text-ink">Bio</Link>
               <Link to="/activities" className="btn btn-ghost text-sheet hover:bg-sheet hover:text-ink">Activities</Link>
               <Link to="/settings" className="btn btn-ghost text-sheet hover:bg-sheet hover:text-ink">Settings</Link>
             </nav>

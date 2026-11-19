@@ -42,9 +42,9 @@ for (const [label, expectPath] of [
 
 // ── 2. El menú «Para adultos» se abre y lleva a sus páginas ───────────────
 await page.getByRole('button', { name: 'About' }).click()
-await page.getByRole('link', { name: 'Bio', exact: true }).first().click()
+await page.getByRole('link', { name: 'Introduction', exact: true }).first().click()
 await page.waitForTimeout(300)
-check('menú para adultos', new URL(page.url()).pathname === '/bio')
+check('menú para adultos', new URL(page.url()).pathname === '/introduccion')
 
 // ── 3. El reproductor de audio carga y avanza ──────────────────────────────
 await page.goto(`${BASE}/song/counting-the-miles`, { waitUntil: 'networkidle' })

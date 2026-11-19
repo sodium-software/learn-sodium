@@ -304,10 +304,7 @@ export function HomeView() {
           a face and a reason, so every piece here is a story, told as a song, a podcast, a short film or a storytale.
           One of them looks at <mark className="hl [--hl:var(--color-yellow)]">nature</mark> and another at{' '}
           <mark className="hl [--hl:var(--color-yellow-pale)]">inclusion and belonging</mark>. The site has no accounts,
-          no analytics and no ads; your progress stays on your device.{' '}
-          <Link to="/bio" className="hl-strong">
-            Meet the authors →
-          </Link>
+          no analytics and no ads; your progress stays on your device.
         </p>
       </section>
     </div>
