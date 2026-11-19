@@ -20,7 +20,7 @@ export function PieceActivities({ pieceId, extraIds = [], title }: { pieceId: st
         Activities
       </h2>
       <p className="mt-2 max-w-2xl text-base text-ink-soft">
-        {list.length} {list.length === 1 ? 'activity' : 'activities'} to practise with {title}.
+        {list.length} {list.length === 1 ? 'activity' : 'activities'} to practice with {title}.
       </p>
       <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {list.map((activity) => (

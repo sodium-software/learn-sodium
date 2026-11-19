@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { AppShell } from './components/AppShell'
 import { settings } from './content'
@@ -47,7 +47,8 @@ export function AppRoutes() {
       <Route element={<AppShell />}>
         <Route index element={<HomeView />} />
         <Route path="introduccion" element={<PageView id="introduccion" />} />
-        <Route path="biodata" element={<PageView id="biodata" />} />
+        <Route path="bio" element={<PageView id="biodata" />} />
+        <Route path="biodata" element={<Navigate to="/bio" replace />} />
         <Route
           path="song"
           element={

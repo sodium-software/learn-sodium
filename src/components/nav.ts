@@ -15,6 +15,6 @@ export const navEntries: NavEntry[] = [
   { id: 'short-film', label: 'Short films', to: '/short-film' },
   { id: 'activities', label: 'Activities', to: '/activities' },
   { id: 'introduccion', label: 'Introduction', to: '/introduccion', adult: true },
-  { id: 'biodata', label: 'Bio', to: '/biodata', adult: true },
+  { id: 'biodata', label: 'Bio', to: '/bio', adult: true },
   { id: 'settings', label: 'Settings', to: '/settings', adult: true },
 ]

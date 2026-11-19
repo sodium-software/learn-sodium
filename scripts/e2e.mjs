@@ -44,7 +44,7 @@ for (const [label, expectPath] of [
 await page.getByRole('button', { name: 'About' }).click()
 await page.getByRole('link', { name: 'Bio', exact: true }).first().click()
 await page.waitForTimeout(300)
-check('menú para adultos', new URL(page.url()).pathname === '/biodata')
+check('menú para adultos', new URL(page.url()).pathname === '/bio')
 
 // ── 3. El reproductor de audio carga y avanza ──────────────────────────────
 await page.goto(`${BASE}/song/counting-the-miles`, { waitUntil: 'networkidle' })

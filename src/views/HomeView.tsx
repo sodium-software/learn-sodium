@@ -263,7 +263,7 @@ export function HomeView() {
         <div className="frame grid grid-cols-1 items-start gap-x-6 gap-y-10 lg:grid-cols-12">
           <div className="lg:col-span-6 lg:row-start-1">
             <h2 id="actividades-portada" className="text-display">
-              <span className="strip">Practise here</span>
+              <span className="strip">Practice here</span>
             </h2>
             <p className="mt-6 max-w-[42ch] text-lead">
               {activityDefinitions.length} activities, four for each story. Try one right now: read the clue and build
@@ -305,7 +305,7 @@ export function HomeView() {
           One of them looks at <mark className="hl [--hl:var(--color-yellow)]">nature</mark> and another at{' '}
           <mark className="hl [--hl:var(--color-yellow-pale)]">inclusion and belonging</mark>. The site has no accounts,
           no analytics and no ads; your progress stays on your device.{' '}
-          <Link to="/biodata" className="hl-strong">
+          <Link to="/bio" className="hl-strong">
             Meet the authors →
           </Link>
         </p>

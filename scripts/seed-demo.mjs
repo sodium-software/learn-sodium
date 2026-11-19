@@ -103,7 +103,7 @@ add('page', 'introduccion', {
   summary: 'Example text: the introduction to the project goes here.',
   body: [
     'This is example text. From the panel it is replaced with the introduction to the project: who it is for, what the children should learn and how to use each section.',
-    'Each section brings together material to listen to, read, watch and practise English at your own pace.',
+    'Each section brings together material to listen to, read, watch and practice English at your own pace.',
   ],
 })
 add('page', 'biodata', {
